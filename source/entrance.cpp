@@ -1,0 +1,1 @@
+//to be filled with entrance randomizer information
