@@ -2,8 +2,10 @@
 A Majora's Mask 3D Randomization Project
 
 
-Still a work in progress. 
+Still very much so a work in progress. DO NOT ATTEMPT TO USE 
 
-Bug reports and dev updates on discord
+MOST ALL OF THE CODE IS NOT FINAL AND SHOULD ONLY BE USED FOR REFERNCE.
+
+Bug reports, dev updates, and collaboration on discord
 MM3DR Discord: https://discord.gg/EVvzb6varj
 Workspace Trello board: https://trello.com/b/EuIb8xde/majoras-mask-3d-randomizer
