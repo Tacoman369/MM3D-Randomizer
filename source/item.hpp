@@ -7,61 +7,51 @@
 #include "keys.hpp"
 #include "hint_list.hpp"
 #include "settings.hpp"
+#include "region.hpp"
+#include "item_category.hpp"
+
 
 union ItemOverride_Value;
 
-enum ItemType {
-    ITEMTYPE_ITEM,
-    ITEMTYPE_MAP,
-    ITEMTYPE_COMPASS,
-    ITEMTYPE_BOSSKEY,
-    ITEMTYPE_SMALLKEY,
-    ITEMTYPE_SWAMP_TOKEN,
-    ITEMTYPE_OCEANSIDE_TOKEN,
-    ITEMTYPE_EVENT,
-    ITEMTYPE_DROP,
-    ITEMTYPE_REFILL,
-    ITEMTYPE_SONG,
-    ITEMTYPE_SHOP,
-    ITEMTYPE_DUNGEONREWARD
-};
+
 
 class Item {
 public:
     Item() = default;
-    Item(Text name_, ItemType type_, int getItemId_, bool advancement_, bool* logicVar_, HintKey hintKey_, u16 price_ = 0);
-    Item(Text name_, ItemType type_, int getItemId_, bool advancement_, u8* logicVar_, HintKey hintKey_, u16 price_ = 0);
+    Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, );
+
     ~Item();
 
-    void ApplyEffect();
-    void UndoEffect();
-
-    ItemOverride_Value Value() const;
-
+    int GetStartAdd() const {
+        return startAdd;
+    }
+    int GetStartIndex() const {
+        return startIndex;
+    }
     const Text& GetName() const {
         return name;
     }
-
-    bool IsAdvancement() const {
-        return advancement;
+    const Text& GetLocationName() const {
+        return locationName;
     }
-
-    int GetItemID() const {
-        return getItemId;
+    const Region GetRegion() const {
+        return region;
     }
-
-    ItemType GetItemType() const {
-        return type;
+    const HintKey GetHintKey() const {
+        return hintKey;
     }
-
-    u16 GetPrice() const {
-        return price;
+    const HintText& GetHint() const {
+        return Hint(hintKey);
     }
-
-    void SetPrice(u16 price_) {
-        price = price_;
+    int GetItemIndex() const {
+        return getItemIndex;
     }
-
+    const ItemCategory GetItemCategory() const {
+        return itemCat;
+    }
+    const LocationCategory GetLocationCategory() const {
+        return locCat;
+    }
     void SetAsPlaythrough() {
         playthrough = true;
     }
@@ -70,53 +60,12 @@ public:
         return playthrough;
     }
 
-    bool IsBottleItem() const {
+   /* bool IsBottleItem() const {
         return getItemId == 0x0F || //Empty Bottle
                getItemId == 0X14 || //Bottle with Milk
               (getItemId >= 0x8C && getItemId <= 0x94); //Rest of bottled contents
-    }
+    } */
 
-    bool IsMajorItem() const {
-        using namespace Settings;
-
-        if (type == ITEMTYPE_DROP || type == ITEMTYPE_EVENT || type == ITEMTYPE_SHOP || type == ITEMTYPE_MAP || type == ITEMTYPE_COMPASS) {
-            return false;
-        }
-
-        if (type == ITEMTYPE_DUNGEONREWARD && (ShuffleRewards.Is(REWARDSHUFFLE_END_OF_DUNGEON))) {
-            return false;
-        }
-
-        if (name.GetEnglish().find("Bombchus") != std::string::npos && !BombchusInLogic) {
-            return false;
-        }
-
-        if (type == ITEMTYPE_SMALLKEY && (Keysanity.Is(KEYSANITY_VANILLA) || Keysanity.Is(KEYSANITY_OWN_DUNGEON))) {
-            return false;
-        }
-
-        if (type == ITEMTYPE_SWAMP_TOKEN && SwampTokens.Is(SWAMPTOKENS_VANILLA)) {
-            return false;
-        }
-		if (type == ITEMTYPE_OCEANSIDE_TOKEN_TOKEN && OceansideTokens.Is(OCEANSIDETOKENS_VANILLA)) {
-            return false;
-        }
-        if ((type == ITEMTYPE_BOSSKEY && getItemId != 0x9A) && (BossKeysanity.Is(BOSSKEYSANITY_VANILLA) || BossKeysanity.Is(BOSSKEYSANITY_OWN_DUNGEON))) {
-            return false;
-        }
-            //Ganons Castle Boss Key
-        
-
-        return IsAdvancement();
-    }
-
-    const HintKey GetHintKey() const {
-        return hintKey;
-    }
-
-    const HintText& GetHint() const {
-        return Hint(hintKey);
-    }
 
     bool operator== (const Item& right) const {
         return type == right.GetItemType() && getItemId == right.GetItemID();
@@ -125,14 +74,18 @@ public:
     bool operator!= (const Item& right) const {
         return !operator==(right);
     }
+    Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_,
+        HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, )
 
 private:
+    int startAdd;
+    int startIndex;
     Text name;
-    ItemType type;
-    int  getItemId;
-    bool advancement;
-    std::variant<bool*, u8*> logicVar;
+    Text locationName;
+    Region region;
     HintKey hintKey;
-    u16  price;
+    int getItemIndex;
+    ItemCategory itemCat;
+    LocationCategory locCat;
     bool playthrough = false;
 };

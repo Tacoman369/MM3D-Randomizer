@@ -7,29 +7,22 @@
 #include "item_pool.hpp"
 #include "settings.hpp"
 #include "../code/src/item_override.h"
+#include "region.hpp"
+#include "item_category.hpp"
 
-Item::Item(Text name_, ItemType type_, int getItemId_, bool advancement_, bool* logicVar_, HintKey hintKey_, bool* repeatVar, u16 price_)
-    : name(std::move(name_)),
-      type(type_),
-      getItemId(getItemId_),
-      advancement(advancement_),
-      logicVar(logicVar_),
-      hintKey(hintKey_),
-      repeatVar(repeatVar_),
-      price(price_) {}
-
-Item::Item(Text name_, ItemType type_, int getItemId_, bool advancement_, u8* logicVar_, HintKey hintKey_,bool* repeatVar, u16 price_)
-    : name(std::move(name_)),
-      type(type_),
-      getItemId(getItemId_),
-      advancement(advancement_),
-      logicVar(logicVar_),
-      hintKey(hintKey_),
-      repeatVar(repeatVar_),
-      price(price_) {}
+Item::Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, )
+    : startAdd(startAdd_),
+    startIndex(startIndex_),
+    name(std::move(name_)),
+    locationName(std::move(locationName_)),
+    region(region_),
+    hintKey(hintKey_),
+    getItemIndex(getItemIndex_),
+    itemCat(itemCat_),
+    locCat(locCat_) {}
 
 Item::~Item() = default;
-
+/*
 void Item::ApplyEffect() {
     if (std::holds_alternative<bool*>(logicVar)) {
         *std::get<bool*>(logicVar) = true;
@@ -67,5 +60,6 @@ ItemOverride_Value Item::Value() const {
         // unless there was a multiworld with 256 players... so, it should be fine.
         val.player = 0xFF;
     }
-    return val;
+    return val; 
+    */
 }

@@ -229,7 +229,7 @@ const std::array<ItemKey, 4> MOON_Vanilla = {
 	BLUE_RUPEE,
 	BLUE_RUPEE,
 }
-const std::array<ItemKey, 17> normalBottles = {
+const std::array<ItemKey, 16> normalBottles = {
   EMPTY_BOTTLE,
   BOTTLE_WITH_MILK,
   BOTTLE_WITH_RED_POTION,
@@ -239,7 +239,6 @@ const std::array<ItemKey, 17> normalBottles = {
   BOTTLE_WITH_FISH,
   BOTTLE_WITH_BUGS,
   BOTTLE_WITH_POE,
-  BOTTLE_WITH_BIG_POE,
   DEKU_PRINCESS,
   CHATEAU_ROMANI,
   HOT_SPRING_WATER,
