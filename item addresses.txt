@@ -1,0 +1,155 @@
+StartingItem(??, MM Item List array value)
+GetItemIndex(index of item inside GI-Table)
+ItemName
+LocationName,
+Region,
+Hint,
+ChestType?
+ItemPool,
+GI,
+
+StartingItem(uncompressed rom address, MM3D Item List Array Value)
+
+Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, 
+HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, );
+
+//ItemTableIndex - Name - 				Address
+01 - 			   Hero's Bow - 	   0x776355
+02 -			   Fire Arrow -  	   0x776356
+03 - 			   Ice Arrow - 	 	   0x776357
+04 - 			   Light Arrow - 	   0x776358
+06 -			   Bomb - 		 	   0x77635A
+07 - 			   Bombchu - 	 	   0x77635B
+08 - 			   Deku Stick -	 	   0x77635C
+09 - 			   Deku Nut - 	 	   0x77635D 
+0A - 			   Magic Bean -  	   0x77635E
+0C - 			   Powder Keg - 	   0x776360
+0D - 			   Pictograph Box -    0x776361
+0E - 			   Lens of Truth  -    0x776362
+0F - 			   Hookshot - 	   	   0x776363
+10 - 			   Great Fairy Sword - 0x776364
+//BOTTLES
+12 - 			   Empty Bottle - 	 	0x776384
+12 - 			   Empty Bottle - 	 	0x776385
+12 - 			   Empty Bottle -	 	0x776386
+12 - 			   Empty Bottle - 	 	0x776387
+12 - 			   Empty Bottle - 	 	0x776388
+12 - 			   Empty Bottle -	 	0x776389
+12 - 			   Empty Bottle - 	 	0x77638A
+
+01 - 			   Double Defense -     0x775320
+
+logic.cpp+hpp = 
+
+
+13 - Red Potion
+14 - Green Potion
+15 - Blue Potion
+16 - Fairy
+17 - Deku Princess
+18 - Milk
+19 - Milk (1/2)
+1A - Fish
+1B - Bug
+1C - Big Poe (error)
+1D - Poe
+1E - Big Poe
+1F - Spring Water
+20 - Hot Spring Water
+21 - Zora Egg
+22 - Gold Dust
+23 - Magic Mushroom
+24 - Seahorse
+25 - Chateau Romani
+26 - Mystery Milk
+27 - Moldy Milk
+28 - Moons Tear
+29 - Town Title Deed
+2A - Swamp Title Deed
+2B - Mountain Title Deed
+2C - Ocean Title Deed
+2D - Room Key
+2E - Special Delivery to Mama
+2F - Letter to Kafei
+30 - Pendant of Memories
+31 - map??
+32 - Deku Mask
+33 - Goron Mask
+34 - Zora Mask
+35 - Fierce Diety Mask
+36 - Mask of Truth
+37 - Kafei's Mask
+38 - All Night Mask
+39 - Bunny Hood
+3A - Keaton Mask
+3B - Garo Mask
+3C - Romani Mask
+3D - Circus Leader Mask
+3E - Postman's Hat
+3F - Couple's Mask
+40 - Great Fairy Mask
+41 - Gibdo Mask
+42 - Don Gero Mask
+43 - Kamaro Mask
+44 - Captain Hat
+45 - Stone Mask
+46 - Bremen Mask
+47 - Blast Mask
+48 - Mask of Scents
+49 - Giant's Mask
+4A - Bow with Fire Arrow Equipped
+4B - Bow with Ice Arrow Equipped
+4C - Bow with Light Arrow Equipped
+4D - Kokiri Sword
+4E - Razer Sword
+4F - Gilded Sword
+50 - Fishing Pass
+51 - Hero's Sheild
+52 - Mirror Shield
+53 - Regular Quiver
+54 - Big Quiver
+55 - Biggest Quiver
+56 - Bomb Bag
+57 - Big Bomb Bag
+58 - Biggest Bomb Bag
+59 - Base Wallet
+5A - Adult Wallet
+5B - Giant Wallet
+5C - Fishing Rod??
+5D - Odolwa's Remains
+5E - Goht's Remains
+5F - Gyorg's Remains
+60 - Twinmold's Remains
+61 - Sonata of Awakeneing
+62 - Goron Lullaby
+63 - New Wave Bossa Nova
+64 - Elegy of Emptiness
+65 - Oath to Order
+66 - Nocture of Shadow
+67 - Song of Time
+68 - Song of Healing
+69 - Epona's Song
+6A - Song of Soaring
+6B - Song of Storms
+6C - Suns Song JP??
+6D - Bomber's Notebook
+6E - Gold Skulltula Token ( OOT DO NOT USE) JP??
+6F - Heart Container
+70 - Piece of Heart
+71 - Suns Song JP??
+72 - Song of Time JP??
+73 - Lullaby Intro???
+74 - Big Key
+75 - Compass
+76 - Dungeon Map
+77 - Stray Fairy
+78 - Small Key
+79 - Magic Meter? (possibly magic drop)
+7A - Big Magic Meter? (possibly Big Magic drop)
+7B - Piece of Heart
+7C - Piece of Heart
+7D - Piece of Heart
+7E - Nothing?
+7F - Nothing?
+80 - Nothing?
+81 - Nothing?
