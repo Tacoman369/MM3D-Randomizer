@@ -17,6 +17,21 @@ enum class ItemCategory {
 	StrayFairies,
 	DungeonKeys,
 	Seahorse,
+	Shields,
+	DekuSticks,
+	ScoopedItems,
+	Remains,
+	BlueRupees,
+	RedRupees,
+	PurpleRupees,
+	SilverRupees,
+	Bombchu,
+	GoldRupees,
+	HeartContainer,
+	Arrows,
+	DekuNuts,
+
+
 };
 
 enum class LocationCategory {
@@ -34,5 +49,10 @@ enum class LocationCategory {
 	EnemySpawn, //items spawned by enemies (Gold Skulltulas, enemies that spawn stray fairies, etc.)
 	Beehives,
 	Events, //items from events (Moons Tear, Sword School Gong, Song Wall, Telescope Guay & Field Guay)
-
+	Jars,
+	Crates,
+	Barrels,
+	Scoops,
+	GlitchesRequired,
+	
 };

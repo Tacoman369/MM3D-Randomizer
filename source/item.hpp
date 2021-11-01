@@ -18,7 +18,7 @@ union ItemOverride_Value;
 class Item {
 public:
     Item() = default;
-    Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, );
+    Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_ );
 
     ~Item();
 

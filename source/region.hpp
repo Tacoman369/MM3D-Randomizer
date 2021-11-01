@@ -41,4 +41,5 @@ enum class Region {
 	StoneTowerTemple,
 	SecretShrine,
 	TheMoon,
+	Fake,
 };
