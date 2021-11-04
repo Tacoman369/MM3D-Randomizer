@@ -158,7 +158,6 @@ public:
 
     void SetPlacedItem(const ItemKey item) {
       placedItem = item;
-      SetPrice(ItemTable(placedItem).GetPrice());
     }
 
     //Saves an item to be set as placedItem later
@@ -171,22 +170,12 @@ public:
       placedItem = vanillaItem;
     }
 
-    void ApplyPlacedItemEffect() {
-      ItemTable(placedItem).ApplyEffect();
-    }
-
     //Set placedItem as item saved in SetDelayedItem
     void SaveDelayedItem() {
       placedItem = delayedItem;
       delayedItem = NONE;
     }
 
-    u16 GetPrice() const {
-      if (ItemTable(placedItem).GetItemType() == ITEMTYPE_SHOP) {
-        return ItemTable(placedItem).GetPrice();
-      }
-      return price;
-    }
 
     void SetPrice(u16 price_) {
       //don't override price if the price was set for shopsanity
@@ -308,9 +297,9 @@ public:
         return ItemLocation{scene, ItemLocationType::Collectable, flag, std::move(name), hintKey, vanillaItem, std::move(categories), 0, collectionCheck, collectionCheckGroup};
     }
 
-    static auto GSToken(u8 scene, u8 flag, std::string&& name, const HintKey hintKey, std::vector<Category>&& categories, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP) {
-        return ItemLocation{scene, ItemLocationType::GSToken, flag, std::move(name), hintKey, GOLD_SKULLTULA_TOKEN, std::move(categories), 0, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_GOLD_SKULLTULA, scene, flag), collectionCheckGroup};
-    }
+    //static auto GSToken(u8 scene, u8 flag, std::string&& name, const HintKey hintKey, std::vector<Category>&& categories, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP) {
+    //    return ItemLocation{scene, ItemLocationType::GSToken, flag, std::move(name), hintKey, GOLD_SKULLTULA_TOKEN, std::move(categories), 0, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_GOLD_SKULLTULA, scene, flag), collectionCheckGroup};
+    // }
 
     static auto GrottoScrub(u8 scene, u8 flag, std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories, SpoilerCollectionCheck collectionCheck = SpoilerCollectionCheck(), SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP) {
         return ItemLocation{scene, ItemLocationType::GrottoScrub, flag, std::move(name), hintKey, vanillaItem, std::move(categories), 0, collectionCheck, collectionCheckGroup};

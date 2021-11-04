@@ -54,5 +54,5 @@ enum class LocationCategory {
 	Barrels,
 	Scoops,
 	GlitchesRequired,
-	
+	SoftSoil,
 };

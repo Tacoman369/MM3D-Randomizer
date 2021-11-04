@@ -10,8 +10,9 @@
 #include "region.hpp"
 #include "item_category.hpp"
 
-Item::Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_, )
-    : startAdd(startAdd_),
+  Item::Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_,
+    HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_ )
+  : startAdd(startAdd_),
     startIndex(startIndex_),
     name(std::move(name_)),
     locationName(std::move(locationName_)),
@@ -61,5 +62,5 @@ ItemOverride_Value Item::Value() const {
         val.player = 0xFF;
     }
     return val; 
-    */
-}
+    
+}*/

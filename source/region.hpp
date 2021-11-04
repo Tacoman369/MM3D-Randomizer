@@ -3,7 +3,7 @@
 enum class Region {
 	Misc,
 	BottleCatch,
-	BeneathClocktown,
+	BeneathClockTown,
 	SouthClockTown,
 	NorthClockTown,
 	EastClockTown,
@@ -29,7 +29,7 @@ enum class Region {
 	ZoraHall,
 	PiratesFortressExterior,
 	PiratesFortressSewer,
-	PriatesFortressInterior,
+	PiratesFortressInterior,
 	PinnacleRock,
 	GreatBayTemple,
 	RoadToIkana,
