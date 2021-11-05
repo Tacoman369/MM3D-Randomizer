@@ -1,17 +1,16 @@
 #include "item_list.hpp"
-#include "logic.hpp"
+//#include "logic.hpp"
 #include "../code/include/z3D/z3Ditem.h"
 #include <array>
 
-using namespace Logic;
+//using namespace Logic;
 
 static std::array<Item, KEY_ENUM_MAX> itemTable;
 
 void ItemTable_Init() {   
     //Item(0, 0, "test", "test", regiion, hint, 0, Misc, test, );
     //itemTable[EXAMPLE] =                         Item( StartingItemAddress,  Starting Item Index, {English name     				         French          					  Spanish},                            Location Name,           Region,             HintKey,               GetItemIndexValue,Item Category,      Location Category,);
-    itemTable[NONE]                              = Item(0,                      0,                  Text{"No Item",                         "Rien",                             "Sin Objeto"},                          "No Item",               Region::Misc,               NONE,                  0,               ItemCategory::None,               LocationCategory::None,          );
-
+    itemTable[NONE] = Item(0, 0, Text{ "No Item",                         "Rien",                             "Sin Objeto" }, Text{ "No Item","No Item","No Item" },               Region::Misc, NONE, 0, ItemCategory::None, LocationCategory::None, );
     itemTable[KOKIRI_SWORD]                      = Item(0,                      0,                  Text{ "Kokiri Sword",                   "Épée Kokiri",                     "Espada Kokiri" },                       "Misc.",                 Region::Misc,               KOKIRI_SWORD,          0x37,            ItemCategory::MainInventory,      LocationCategory::StartingItems, );
 	itemTable[GREAT_FAIRYS_SWORD]                = Item(0x776364,               0x10,               Text{"Great Fairys Sword",              "Grande Épée de Fees",              "Espada de la Gran Hada"},              "Ikana Great Fairy",     Region::IkanaCanyon,        GREAT_FAIRYS_SWORD,    0x130,           ItemCategory::MainInventory,      LocationCategory::NpcRewards,    );
     itemTable[HEROS_SHIELD]                      = Item(0,                      0x10,               Text{"Heros Shield",                    "Bouclier du Heros",                "Escudo del Heroe"},                    "Starting Hero Shield",  Region::Misc.,              HEROS_SHIELD,          0x129,           ItemCategory::Shields,            LocationCategory::StartingItems, );
@@ -488,9 +487,8 @@ void ItemTable_Init() {
     //  itemTable[PROGRESSIVE_NUT_UPGRADE]           = Item(Text{"Progressive Nut Capacity",        "Capacité de noix (prog.)",         "Capacidad de nueces deku progresiva"},     ITEMTYPE_ITEM,     0x87,              false,      &noVariable,             PROGRESSIVE_NUT_UPGRADE,     false,);
   //  itemTable[PROGRESSIVE_STICK_UPGRADE]         = Item(Text{"Progressive Stick Capacity",      "Capacité de bâtons (prog.)",       "Capacidad de palos deku progresiva"},      ITEMTYPE_ITEM,     0x88,              false,       &noVariable,            PROGRESSIVE_STICK_UPGRADE,   false,);
   */
-} 
+};
 
 Item& ItemTable(const ItemKey itemKey) {
     return itemTable[itemKey];
-}
-
+};

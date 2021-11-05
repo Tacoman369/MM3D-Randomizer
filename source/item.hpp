@@ -3,10 +3,10 @@
 #include <3ds.h>
 #include <string>
 #include <variant>
-
+#include "text.hpp"
 #include "keys.hpp"
 #include "hint_list.hpp"
-#include "settings.hpp"
+//#include "settings.hpp"
 #include "region.hpp"
 #include "item_category.hpp"
 
@@ -15,9 +15,9 @@ union ItemOverride_Value;
 class Item {
 public:
     Item() = default;
-    Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_,
-        int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_ );
-
+    Item(int startAdd_, int startIndex_, Text name_, const char locationName_, Region region_, HintKey hintKey_,
+        int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_);
+    
     ~Item();
 
     int GetStartAdd() const {
@@ -29,7 +29,7 @@ public:
     const Text& GetName() const {
         return name;
     }
-    const Text& GetLocationName() const {
+    const char& GetLocationName() const {
         return locationName;
     }
     const Region GetRegion() const {
@@ -71,7 +71,7 @@ private:
     int startAdd;
     int startIndex;
     Text name;
-    Text locationName;
+    char locationName;
     Region region;
     HintKey hintKey;
     int getItemIndex;

@@ -1,0 +1,27 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/11.1.0\libgcc.a
+                0x0000000000100000                . = 0x100000
+
+.glue_7         0x0000000000100000        0x0
+ .glue_7        0x0000000000100000        0x0 linker stubs
+
+.glue_7t        0x0000000000100000        0x0
+ .glue_7t       0x0000000000100000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000100000        0x0
+ .vfp11_veneer  0x0000000000100000        0x0 linker stubs
+
+.v4_bx          0x0000000000100000        0x0
+ .v4_bx         0x0000000000100000        0x0 linker stubs
+
+.patch_loader
+ *(.patch_loader)
+OUTPUT(C:/Users/SKREEE/Desktop/ZMM3DR/application/code/code.elf elf32-littlearm)
+LOAD linker stubs

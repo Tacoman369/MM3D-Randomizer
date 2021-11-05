@@ -1,9 +1,9 @@
 #include "hint_list.hpp"
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 
 #include <array>
 
-using namespace CustomMessages;
+//using namespace CustomMessages;
 
 static std::array<HintText, KEY_ENUM_MAX> hintTable;
 
@@ -11,6 +11,7 @@ void HintTable_Init() {
    /*--------------------------
     |       GENERAL TEXT       |
     ---------------------------*/
+
     hintTable[NONE]            = HintText::Exclude({Text{"No Hint","",""}});
     hintTable[PREFIX]          = HintText::Exclude({Text{"They say that ",              /*french*/"Selon moi, ",                  /*spanish*/"Según dicen, "}});
     hintTable[WAY_OF_THE_HERO] = HintText::Exclude({Text{" is on the way of the hero.", /*french*/" est sur le chemin du héros.", /*spanish*/" conduce a la senda del héroe."}});

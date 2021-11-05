@@ -1,7 +1,7 @@
 #include "hints.hpp"
 
-#include "custom_messages.hpp"
-#include "item_location.hpp"
+//#include "custom_messages.hpp"
+//#include "item_location.hpp"
 #include "item_pool.hpp"
 //#include "location_access.hpp"
 //#include "logic.hpp"
@@ -12,9 +12,9 @@
 //#include "trial.hpp"
 //#include "entrance.hpp"
 
-using namespace CustomMessages;
+//using namespace CustomMessages;
 //using namespace Logic;
-using namespace Settings;
+//using namespace Settings;
 //using namespace Trial;
 /*
 constexpr std::array<HintSetting, 4> hintSettingTable{{

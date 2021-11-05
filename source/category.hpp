@@ -1,7 +1,7 @@
 #pragma once
 
 enum class Category {
-    cNull,
+    /*cNull,
     cKokiriForest,
     cForest,
     cGrotto,
@@ -60,7 +60,7 @@ enum class Category {
     cVanillaBossKey,
     cVanillaMap,
     cVanillaCompass,
-    cAdultTrade,
+    cAdultTrade,*/
 };
 
 enum class OptionCategory {
