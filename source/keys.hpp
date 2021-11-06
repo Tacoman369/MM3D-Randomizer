@@ -9,6 +9,7 @@ using AreaKey		= u32;
 
 typedef enum {
 NONE, 
+TEST,
 
 //Items
 	KOKIRI_SWORD,

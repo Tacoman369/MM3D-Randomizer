@@ -3,23 +3,23 @@
 #include <unistd.h>
 
 #include "debug.hpp"
-#include "dungeon.hpp"
+//#include "dungeon.hpp"
 #include "item_list.hpp"
 #include "settings.hpp"
 
 using namespace Settings;
-using namespace Dungeon;
+//using namespace Dungeon;
 
 std::vector<ItemKey> StartingInventory;
 u8 AdditionalHeartContainers;
-
+/*
 static void AddItemToInventory(ItemKey item, size_t count = 1) {
   StartingInventory.insert(StartingInventory.end(), count, item);
 }
-
+*/
 void GenerateStartingInventory() {
   StartingInventory.clear();
-
+  /*
   if (MapsAndCompasses.Is(MAPSANDCOMPASSES_START_WITH)) {
     for (auto* dungeon : dungeonList) {
       if (dungeon->GetMap() != NONE) {
@@ -44,16 +44,16 @@ void GenerateStartingInventory() {
     // locked behind the keys, which is not always true in rando.
     // We can resolve this by starting with some extra keys
     // - OoT Randomizer
-    }
+    }*/
   }
-
+/*
   if (BossKeysanity.Is(BOSSKEYSANITY_START_WITH)) {
     AddItemToInventory(WOODFALL_TEMPLE_BOSS_KEY);
     AddItemToInventory(SNOWHEAD_TEMPLE_BOSS_KEY);
     AddItemToInventory(GBT_BOSS_KEY);
     AddItemToInventory(STONE_TOWER_TEMPLE_BOSS_KEY);
   }
-
+  
   //Starting Inventory Menu
   //Values are associated so that the count of items matches the index of
   //the option selected. If None is selected, the value will be zero and
@@ -137,3 +137,4 @@ void ApplyStartingInventory() {
     ItemTable(item).ApplyEffect();
   }
 }
+*/

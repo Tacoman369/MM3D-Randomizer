@@ -116,10 +116,12 @@ public:
 
     Text& GetObscure() {
         //return RandomElement(obscureText);
+        
     }
 
     const Text& GetObscure() const {
        // return RandomElement(obscureText);
+        
     }
 
     const Text& GetClear() const {

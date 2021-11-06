@@ -1,7 +1,7 @@
 #pragma once
 
 #include <3ds.h>
-#include <string>
+//#include <string>
 
 #define MAIN_MENU 0
 #define OPTION_SUB_MENU 1

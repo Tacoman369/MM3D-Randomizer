@@ -1,16 +1,16 @@
 #include "item_pool.hpp"
 
-#include "dungeon.hpp"
-#include "fill.hpp"
+//#include "dungeon.hpp"
+//#include "fill.hpp"
 #include "item_list.hpp"
-#include "item_location.hpp"
-#include "pool_functions.hpp"
-#include "random.hpp"
-#include "settings.hpp"
+//#include "item_location.hpp"
+//#include "pool_functions.hpp"
+//#include "random.hpp"
+//#include "settings.hpp"
 #include "spoiler_log.hpp"
 
-using namespace Settings;
-using namespace Dungeon;
+//using namespace Settings;
+//using namespace Dungeon;
 
 std::vector<ItemKey> ItemPool = {};
 std::vector<ItemKey> PendingJunkPool = {};
@@ -574,7 +574,7 @@ const std::array<ItemKey, 12> songList = {
 void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count /*= 1*/) {
 	pool.insert(pool.end(), count, item);
 };
-
+/*
 template <typename FromPool>
 static void AddItemsToPool(std::vector<ItemKey>& toPool, const FromPool& fromPool) {
 	AddElementsToPool(toPool, fromPool);
@@ -674,7 +674,7 @@ static void SetScarceItemPool() {
 static void SetMinimalItemPool(){
 	//todo
 };
-
+/*
 void GenerateItemPool() {
 
 	ItemPool.clear();
@@ -822,7 +822,7 @@ void GenerateItemPool() {
 		AddItemToMainPool(SH_STRAY_FAIRY, 15);
 		AddItemToMainPool(GBT_STRAY_FAIRY, 15);
 		AddItemToMainPool(ST_STRAY_FAIRY, 15);
-	}*/
+	}
 
 
 	if (ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
@@ -883,12 +883,12 @@ void GenerateItemPool() {
 		AddItemsToPool(PendingJunkPool, songList);
 	}
 
-	/*For item pool generation, dungeon items are either placed in their vanilla
-	| location, or added to the pool now and filtered out later depending on when
-	| they need to get placed or removed in fill.cpp. These items are kept in the
-	| pool until removal because the filling algorithm needs to know all of the
-	| advancement items that haven't been placed yet for placing higher priority
-	| items like stones/medallions.*/
+	//For item pool generation, dungeon items are either placed in their vanilla
+	|// location, or added to the pool now and filtered out later depending on when
+	|// they need to get placed or removed in fill.cpp. These items are kept in the
+	|// pool until removal because the filling algorithm needs to know all of the
+	|// advancement items that haven't been placed yet for placing higher priority
+	|// items like stones/medallions.
 
 	if (MapsAndCompasses.Is(MAPSANDCOMPASSES_VANILLA)) {
 		PlaceVanillaMapsAndCompasses();
@@ -981,4 +981,4 @@ void GenerateItemPool() {
 	};
 
 	
-}
+}*/

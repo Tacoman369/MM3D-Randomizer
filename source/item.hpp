@@ -11,11 +11,11 @@
 #include "item_category.hpp"
 
 union ItemOverride_Value;
-
+using namespace std;
 class Item {
 public:
     Item() = default;
-    Item(int startAdd_, int startIndex_, Text name_, const char locationName_, Region region_, HintKey hintKey_,
+    Item(int startAdd_, int startIndex_, Text name_, string locationName_, Region region_, HintKey hintKey_,
         int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_);
     
     ~Item();
@@ -29,7 +29,7 @@ public:
     const Text& GetName() const {
         return name;
     }
-    const char& GetLocationName() const {
+    const string GetLocationName() const {
         return locationName;
     }
     const Region GetRegion() const {
@@ -71,7 +71,7 @@ private:
     int startAdd;
     int startIndex;
     Text name;
-    char locationName;
+    string locationName;
     Region region;
     HintKey hintKey;
     int getItemIndex;

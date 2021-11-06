@@ -96,7 +96,7 @@ extern string_view shopsFour;
 extern string_view shopsRandom;
 
 extern string_view tokensOff;
-extern string_view tokensDungeon;
+//extern string_view tokensDungeon;
 extern string_view tokensOverworld;
 extern string_view tokensAllTokens;
 
@@ -166,7 +166,7 @@ extern string_view childStealthDesc;
 
 extern string_view skipTowerEscapeDesc;
 
-extern string_view skipEponaRaceDesc;
+//extern string_view skipEponaRaceDesc;
 
 extern string_view skipMinigamePhasesDesc;
 

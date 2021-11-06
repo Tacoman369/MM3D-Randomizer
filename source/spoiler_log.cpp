@@ -1,5 +1,5 @@
 #include "spoiler_log.hpp"
-
+/*
 #include "dungeon.hpp"
 #include "item_list.hpp"
 #include "item_location.hpp"
@@ -555,3 +555,4 @@ bool PlacementLog_Write() {
   auto e = placementLog.SaveFile(GetPlacementLogPath().c_str());
   return e == tinyxml2::XML_SUCCESS;
 }
+*/

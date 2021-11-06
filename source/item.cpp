@@ -1,7 +1,7 @@
 #include "item.hpp"
 
 #include <array>
-
+#include <string>
 //#include "logic.hpp"
 //#include "random.hpp"
 #include "item_pool.hpp"
@@ -11,7 +11,7 @@
 #include "item_category.hpp"
 #include "text.hpp"
 
-Item::Item(int startAdd_, int startIndex_, Text name_, const char locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_)
+Item::Item(int startAdd_, int startIndex_, Text name_, string locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_)
     : startAdd(startAdd_),
     startIndex(startIndex_),
     name(std::move(name_)),
