@@ -81,15 +81,33 @@ settings.o: \
  C:/devkitPro/libctru/include/3ds/romfs.h \
  C:/devkitPro/libctru/include/3ds/font.h \
  C:/devkitPro/libctru/include/3ds/gdbhio_dev.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\src\settings.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/category.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/pool_functions.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/fill.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_location.hpp \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\src\item_override.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\src\spoiler_data.h \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/text.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hint_list.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hints.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/random.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/region.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_category.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/randomizer.hpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/setting_descriptions.hpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/setting_descriptions.hpp
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/settings.hpp:
 C:/devkitPro/libctru/include/3ds.h:
 C:/devkitPro/libctru/include/3ds/types.h:
@@ -171,12 +189,30 @@ C:/devkitPro/libctru/include/3ds/archive.h:
 C:/devkitPro/libctru/include/3ds/romfs.h:
 C:/devkitPro/libctru/include/3ds/font.h:
 C:/devkitPro/libctru/include/3ds/gdbhio_dev.h:
+c:\users\skreee\desktop\zmm3dr\application\code\src\settings.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/category.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/pool_functions.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/fill.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_location.hpp:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h:
+c:\users\skreee\desktop\zmm3dr\application\code\src\item_override.h:
+c:\users\skreee\desktop\zmm3dr\application\code\src\spoiler_data.h:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/text.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hint_list.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hints.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/random.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/region.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_category.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/randomizer.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/setting_descriptions.hpp:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp:

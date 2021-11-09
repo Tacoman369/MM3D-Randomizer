@@ -82,6 +82,12 @@ preset.o: C:/Users/SKREEE/Desktop/ZMM3DR/application/source/preset.cpp \
  C:/devkitPro/libctru/include/3ds/gdbhio_dev.h \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/category.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/settings.hpp \
+ c:\users\skreee\desktop\zmm3dr\application\code\src\settings.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h \
+ c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp \
@@ -171,6 +177,12 @@ C:/devkitPro/libctru/include/3ds/font.h:
 C:/devkitPro/libctru/include/3ds/gdbhio_dev.h:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/category.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/settings.hpp:
+c:\users\skreee\desktop\zmm3dr\application\code\src\settings.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h:
+c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp:

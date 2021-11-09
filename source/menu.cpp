@@ -10,7 +10,7 @@
 #include "menu.hpp"
 #include "patch.hpp"
 #include "preset.hpp"
-#include "randomizer.hpp"
+#include "version.hpp"
 #include "settings.hpp"
 #include "spoiler_log.hpp"
 //#include "location_access.hpp"
@@ -31,7 +31,7 @@ void PrintTopScreen()
 {
 	consoleSelect(&topScreen);
 	consoleClear();
-	printf("\x1b[2;11H%Majoras Mask 3D Randomizer%s", MEGANTA, RESET);
+	printf("\x1b[2;11H%sMajoras Mask 3D Randomizer%s", MEGANTA, RESET);
 	printf("\x1b[3;18H%s%s-%s%s",MEGANTA, RANDOMIZER_VERSION, COMMIT_NUMBER, RESET);
 	printf("\x1b[4;10HA/B/D-pad: Navigate Menu\n");
 	printf("			Select: Exit to Homebrew Menu\n");
@@ -69,7 +69,7 @@ void MenuInit() {
   LoadCachedCosmetics();
   //If Randomize all settings in a category is selected
   //Re-randomize them
-  //Settings::RandomizeAllSettings();
+  Settings::RandomizeAllSettings();
 
   PrintTopScreen();
 
@@ -164,12 +164,12 @@ void MenuUpdate(u32 kDown) {
     }
 
     //Input Custom Seed
-    /*
+    
     if (kDown & KEY_X) {
       pastSeedLength = Settings::seed.length();
       Settings::seed = GetInput("Enter Seed");
       seedChanged = true;
-    }*/
+    }
 
     //Reprint seed if it changed
     if (seedChanged) {
@@ -220,13 +220,13 @@ void ModeChangeInit() {
 
   } else if (currentMenu->mode == SAVE_PRESET) {
     ClearDescription();
-    /*if (SaveSpecifiedPreset(GetInput("Preset Name").substr(0, 19), OptionCategory::Setting)) {
+   if (SaveSpecifiedPreset(GetInput("Preset Name").substr(0, 19), OptionCategory::Setting)) {
       printf("\x1b[24;5HPreset Saved!");
       printf("\x1b[26;5HPress B to return to the preset menu.");
     } else {
       printf("\x1b[24;5HFailed to save preset.");
       printf("\x1b[26;5HPress B to return to the preset menu.");
-    }*/
+    }
 
   } else if (currentMenu->mode == LOAD_PRESET || currentMenu->mode == DELETE_PRESET) {
     presetEntries = GetSettingsPresets();
@@ -236,7 +236,7 @@ void ModeChangeInit() {
   }
 
 }
-/*
+
 void UpdateCustomCosmeticColors(u32 kDown) {
   if (kDown & KEY_A) {
     if (currentSetting->GetSelectedOptionText().compare(0, 8, Cosmetics::CUSTOM_COLOR_PREFIX) == 0) {
@@ -263,7 +263,7 @@ void UpdateOptionSubMenu(u32 kDown) {
   Settings::ForceChange(kDown, currentSetting);
   UpdateCustomCosmeticColors(kDown);
 }
-*/
+
 void UpdatePresetsMenu(u32 kDown) {
   consoleSelect(&topScreen);
   //clear any potential message
@@ -484,56 +484,58 @@ void PrintOptionDescription() {
 
 void GenerateRandomizer() {
 
-  consoleSelect(&topScreen);
-  consoleClear();
-  printf("\x1b[6;10HCaching Settings...");
+    consoleSelect(&topScreen);
+    consoleClear();
+    printf("\x1b[6;10HCaching Settings...");
 
-  //After choosing to generate, cache chosen settings for later
-  SaveCachedSettings();
-  SaveCachedCosmetics();
-  printf("Done");
+    //After choosing to generate, cache chosen settings for later
+    SaveCachedSettings();
+    SaveCachedCosmetics();
+    printf("Done");
 
-  //if a blank seed was entered, make a random one
-  if (Settings::seed.empty()) {
-    Settings::seed = std::to_string(rand());
-  } else if (Settings::seed.rfind("seed_testing_count", 0) == 0) {
-    const int count = std::stoi(Settings::seed.substr(18), nullptr);
-    //Playthrough::Playthrough_Repeat(count);
-    return;
-  }
-
-  /*int ret = Playthrough::Playthrough_Init(std::hash<std::string>{}(Settings::seed));
-  if (ret < 0) {
-    if(ret == -1) { //Failed to generate after 5 tries
-      printf("\n\nFailed to generate after 5 tries.\nPress Select to exit or B to go back to the menu.\n");
-      return;
+    //if a blank seed was entered, make a random one
+    if (Settings::seed.empty()) {
+        Settings::seed = std::to_string(rand());
     }
+    else if (Settings::seed.rfind("seed_testing_count", 0) == 0) {
+        //const int count = std::stoi(Settings::seed.substr(18), nullptr);
+        //Playthrough::Playthrough_Repeat(count);
+        return;
+    }
+
+    /*int ret = Playthrough::Playthrough_Init(std::hash<std::string>{}(Settings::seed));
+    if (ret < 0) {
+      if(ret == -1) { //Failed to generate after 5 tries
+        printf("\n\nFailed to generate after 5 tries.\nPress Select to exit or B to go back to the menu.\n");
+        return;
+      }
+      else {
+        printf("\n\nError %d with fill.\nPress Select to exit or B to go back to the menu.\n", ret);
+        return;
+      }
+    }
+    printf("\x1b[12;10HWriting Patch...");
+    if (WriteAllPatches()) {
+        printf("Done");
+        if (Settings::PlayOption == PATCH_CONSOLE) {
+            printf("\x1b[14;10HQuit out using the home menu. Then\n");
+            printf("\x1b[15;10Henable game patching and launch OoT3D!\n");
+        }
+        else if (Settings::PlayOption == PATCH_CITRA) {
+            printf("\x1b[14;10HCopy code.ips, exheader.bin and romfs to\n");
+            printf("\x1b[15;10Hthe OoT3D mods folder, then launch OoT3D!\n");
+        }
+
+
+        const auto& randomizerHash = GetRandomizerHash();
+        printf("\x1b[17;10HHash:");
+        for (size_t i = 0; i < randomizerHash.size(); i++) {
+            printf("\x1b[%zu;11H- %s", i + 18, randomizerHash[i].c_str());
+        }
+    }*/
     else {
-      printf("\n\nError %d with fill.\nPress Select to exit or B to go back to the menu.\n", ret);
-      return;
-    }
-  }*/
-  printf("\x1b[12;10HWriting Patch...");
-  /*if (WriteAllPatches()) {
-      printf("Done");
-      if (Settings::PlayOption == PATCH_CONSOLE) {
-          printf("\x1b[14;10HQuit out using the home menu. Then\n");
-          printf("\x1b[15;10Henable game patching and launch OoT3D!\n");
-      }
-      else if (Settings::PlayOption == PATCH_CITRA) {
-          printf("\x1b[14;10HCopy code.ips, exheader.bin and romfs to\n");
-          printf("\x1b[15;10Hthe OoT3D mods folder, then launch OoT3D!\n");
-      }
-  }*/
-    /*
-    const auto& randomizerHash = GetRandomizerHash();
-    printf("\x1b[17;10HHash:");
-    for (size_t i = 0; i < randomizerHash.size(); i++) {
-      printf("\x1b[%zu;11H- %s", i + 18, randomizerHash[i].c_str());
-    }
-  } else {
     printf("Failed\nPress Select to exit.\n");
-  }
+    }
 }
 
 //opens up the 3ds software keyboard for getting user input
@@ -554,5 +556,5 @@ std::string GetInput(const char* hintText) {
     return "";
   }
 
-  return std::string(text);*/
+  return std::string(text);
 }

@@ -2,11 +2,11 @@
 
 #include <array>
 #include <string>
-//#include "logic.hpp"
-//#include "random.hpp"
+#include "logic.hpp"
+#include "random.hpp"
 #include "item_pool.hpp"
-//#include "settings.hpp"
-//#include "../code/src/item_override.h"
+#include "settings.hpp"
+#include "../code/src/item_override.h"
 #include "region.hpp"
 #include "item_category.hpp"
 #include "text.hpp"
@@ -41,8 +41,8 @@ void Item::UndoEffect() {
     }
     Logic::UpdateHelpers();
 }
-*/
-/*
+
+
 ItemOverride_Value Item::Value() const {
     ItemOverride_Value val;
     val.all = 0;

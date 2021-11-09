@@ -4,11 +4,12 @@
 
 #include "cosmetics.hpp"
 //#include "dungeon.hpp"
-//#include "fill.hpp"
-//#include "item_location.hpp"
+#include "fill.hpp"
+#include "item_location.hpp"
 //#include "music.hpp"
 #include "random.hpp"
 #include "randomizer.hpp"
+#include "version.hpp"
 #include "setting_descriptions.hpp"
 //#include "trial.hpp"
 #include "keys.hpp"
@@ -26,99 +27,100 @@ namespace Settings {
   //                                        Setting name,              Options,                                                                     Setting Descriptions (assigned in setting_descriptions.cpp)                                                 Category (default: Setting),Default index (default: 0), Default hidden (default: false)
   //Open Settings                                                                                                                                   Any option index past the last description will use the last description
  //World Settings
+  /*
   Option RandomizeWorld            = Option::Bool("Randomize Settings",     {"No","Yes"},                                                      {worldRandomize},                                                                                                OptionCategory::Toggle);
   Option ShuffleEntrances          = Option::Bool("Shuffle Entrances",      {"Off", "On"},                                                     {shuffleEntrancesDesc});
   Option ShuffleDungeonEntrances   = Option::Bool("  Dungeon Entrances",    {"Off", "On"},                                                     {dungeonEntrancesDesc});
   Option ShuffleOverworldEntrances = Option::Bool("  Overworld Entrances",  {"Off", "On"},                                                     {overworldEntrancesDesc});
   Option BombchusInLogic           = Option::Bool("Bombchus in Logic",      {"Off", "On"},                                                     {bombchuLogicDesc});
-  //Option AmmoDrops                 = Option::U8  ("Ammo Drops",             {"On", "On + Bombchu", "Off"},                                     {defaultAmmoDropsDesc, bombchuDropsDesc, noAmmoDropsDesc},                                                       OptionCategory::Setting,    AMMODROPS_VANILLA);
-  //Option HeartDropRefill           = Option::U8  ("Heart Drops and Refills",{"On", "No Drop", "No Refill", "Off"},                             {defaultHeartDropsDesc, noHeartDropsDesc, noHeartRefillDesc, scarceHeartsDesc},                                  OptionCategory::Setting,    HEARTDROPREFILL_VANILLA);
+  Option AmmoDrops                 = Option::U8  ("Ammo Drops",             {"On", "On + Bombchu", "Off"},                                     {defaultAmmoDropsDesc, bombchuDropsDesc, noAmmoDropsDesc},                                                       OptionCategory::Setting,    AMMODROPS_VANILLA);
+  Option HeartDropRefill           = Option::U8  ("Heart Drops and Refills",{"On", "No Drop", "No Refill", "Off"},                             {defaultHeartDropsDesc, noHeartDropsDesc, noHeartRefillDesc, scarceHeartsDesc},                                  OptionCategory::Setting,    HEARTDROPREFILL_VANILLA);
   std::vector<Option *> worldOptions = {
     &RandomizeWorld,
     &ShuffleEntrances,
     &ShuffleDungeonEntrances,
     &ShuffleOverworldEntrances,
     &BombchusInLogic,
-   // &AmmoDrops,
-   // &HeartDropRefill,
-  };
+    &AmmoDrops,
+    &HeartDropRefill,
+  };*/
 
   //Shuffle Settings
   Option RandomizeShuffle       = Option::Bool("Randomize Settings",     {"No","Yes"},                                                      {shuffleRandomize},                                                                                                    OptionCategory::Toggle);
   Option ShuffleRewards         = Option::U8  ("Shuffle Dungeon Rewards",{"End of Dungeons", "Any Dungeon", "Overworld", "Anywhere"},       {shuffleRewardsEndOfDungeon, shuffleRewardsAnyDungeon, shuffleRewardsOverworld, shuffleRewardsAnywhere});
   Option LinksPocketItem        = Option::U8  ("Link's Pocket",          {"Dungeon Reward", "Advancement", "Anything", "Nothing"},          {linksPocketDungeonReward, linksPocketAdvancement, linksPocketAnything, linksPocketNothing});
   Option ShuffleSongs           = Option::U8  ("Shuffle Songs",          {"Song Locations", "Dungeon Rewards", "Anywhere"},                 {songsSongLocations, songsDungeonRewards, songsAllLocations});
-  Option Shopsanity             = Option::U8  ("Shopsanity",             {"Off", "0", "1", "2", "3", "4", "Random"},                        {shopsOff, shopsZero, shopsOne, shopsTwo, shopsThree, shopsFour, shopsRandom});
+  //Option Shopsanity             = Option::U8  ("Shopsanity",             {"Off", "0", "1", "2", "3", "4", "Random"},                        {shopsOff, shopsZero, shopsOne, shopsTwo, shopsThree, shopsFour, shopsRandom});
   //Option Tokensanity            = Option::U8  ("Tokensanity",            {"Off", "Dungeons", "Overworld", "All Tokens"},                    {tokensOff, tokensDungeon, tokensOverworld, tokensAllTokens});
-  Option Scrubsanity            = Option::U8  ("Scrub Shuffle",          {"Off", "Affordable", "Expensive", "Random Prices"},               {scrubsOff, scrubsAffordable, scrubsExpensive, scrubsRandomPrices});
-  Option ShuffleCows            = Option::Bool("Shuffle Cows",           {"Off", "On"},                                                     {shuffleCowsDesc});
+  //Option Scrubsanity            = Option::U8  ("Scrub Shuffle",          {"Off", "Affordable", "Expensive", "Random Prices"},               {scrubsOff, scrubsAffordable, scrubsExpensive, scrubsRandomPrices});
+  //Option ShuffleCows            = Option::Bool("Shuffle Cows",           {"Off", "On"},                                                     {shuffleCowsDesc});
   Option ShuffleKokiriSword     = Option::Bool("Shuffle Kokiri Sword",   {"Off", "On"},                                                     {kokiriSwordDesc});
-  Option ShuffleOcarinas        = Option::Bool("Shuffle Ocarinas",       {"Off", "On"},                                                     {ocarinasDesc});
+  //Option ShuffleOcarinas        = Option::Bool("Shuffle Ocarinas",       {"Off", "On"},                                                     {ocarinasDesc});
   Option ShuffleMagicBeans      = Option::Bool("Shuffle Magic Beans",    {"Off", "On"},                                                     {magicBeansDesc});
   std::vector<Option *> shuffleOptions = {
     &RandomizeShuffle,
     &ShuffleRewards,
     &LinksPocketItem,
     &ShuffleSongs,
-    &Shopsanity,
+    //&Shopsanity,
    // &Tokensanity,
-    &Scrubsanity,
-    &ShuffleCows,
+   // &Scrubsanity,
+   // &ShuffleCows,
     &ShuffleKokiriSword,
-    &ShuffleOcarinas,
+   // &ShuffleOcarinas,
     &ShuffleMagicBeans,
   };
 
   //Shuffle Dungeon Items
-  Option RandomizeDungeon    = Option::Bool("Randomize Settings",     {"No","Yes"},                                                      {dungeonRandomize},                                                                                                    OptionCategory::Toggle);
-  //Option MapsAndCompasses    = Option::U8  ("Maps/Compasses",         {"Start With", "Vanilla", "Own Dungeon", "Any Dungeon", "Overworld", "Anywhere"},
-  //                                                                    {mapCompassStartWith, mapCompassVanilla, mapCompassOwnDungeon, mapCompassAnyDungeon, mapCompassOverworld, mapCompassAnywhere},                                                            OptionCategory::Setting,    MAPSANDCOMPASSES_VANILLA);
+ // Option RandomizeDungeon    = Option::Bool("Randomize Settings",     {"No","Yes"},                                                      {dungeonRandomize},                                                                                                    OptionCategory::Toggle);
+ // Option MapsAndCompasses = Option::U8("Maps/Compasses", { "Start With", "Vanilla", "Own Dungeon", "Any Dungeon", "Overworld", "Anywhere" }
+  //                                                                   {mapCompassStartWith, mapCompassVanilla, mapCompassOwnDungeon, mapCompassAnyDungeon, mapCompassOverworld, mapCompassAnywhere},                                                            OptionCategory::Setting,    MAPSANDCOMPASSES_VANILLA);
  // Option Keysanity           = Option::U8  ("Small Keys",             {"Start With", "Vanilla", "Own Dungeon", "Any Dungeon", "Overworld", "Anywhere"},
   //                                                                    {smallKeyStartWith, smallKeyVanilla, smallKeyOwnDungeon, smallKeyAnyDungeon, smallKeyOverworld, smallKeyAnywhere},                                                                        OptionCategory::Setting,    KEYSANITY_VANILLA);
   //Option BossKeysanity       = Option::U8  ("Boss Keys",              {"Start With", "Vanilla", "Own Dungeon", "Any Dungeon", "Overworld", "Anywhere"},
   //                                                                    {bossKeyStartWith, bossKeyVanilla, bossKeyOwnDungeon, bossKeyAnyDungeon, bossKeyOverworld, bossKeyAnywhere},                                                                              OptionCategory::Setting,    BOSSKEYSANITY_VANILLA);
-  /*std::vector<Option*> shuffleDungeonItemOptions = {
-    &RandomizeDungeon,
-    &MapsAndCompasses,
-    &Keysanity,
-    &BossKeysanity,
-  };*/
+ // std::vector<Option *> shuffleDungeonItemOptions = {
+ //   &RandomizeDungeon,
+ //   &MapsAndCompasses,
+  //  &Keysanity,
+  //  &BossKeysanity,
+ // };
 
   //Timesaver Settings
- // Option SkipEponaRace       = Option::Bool("Skip Epona Race",        {"Don't Skip", "Skip"},                                                 {skipEponaRaceDesc});
+  /*Option SkipEponaRace = Option::Bool("Skip Epona Race", {"Don't Skip", "Skip"}, {skipEponaRaceDesc});
   Option SkipMinigamePhases  = Option::Bool("Minigames repetitions",  {"Don't Skip", "Skip"},                                                 {skipMinigamePhasesDesc});
   Option FreeScarecrow       = Option::Bool("Free Scarecrow",         {"Off", "On"},                                                          {freeScarecrowDesc});
-  //Option QuickText           = Option::U8  ("Quick Text",             {"0: Vanilla", "1: Skippable", "2: Instant", "3: Turbo"},               {quickTextDesc0, quickTextDesc1, quickTextDesc2, quickTextDesc3},                                                 OptionCategory::Setting,    QUICKTEXT_SKIPPABLE);
+  Option QuickText           = Option::U8  ("Quick Text",             {"0: Vanilla", "1: Skippable", "2: Instant", "3: Turbo"},               {quickTextDesc0, quickTextDesc1, quickTextDesc2, quickTextDesc3},                                                 OptionCategory::Setting,    QUICKTEXT_SKIPPABLE);
   Option SkipSongReplays     = Option::U8  ("  Skip Song Replays",    {"Don't Skip", "Skip (No SFX)", "Skip (Keep SFX)"},                     {skipSongReplaysDesc});
   std::vector<Option *> timesaverOptions = {
-   // &SkipEponaRace,
+    &SkipEponaRace,
     &SkipMinigamePhases,
     &FreeScarecrow,
- //   &QuickText,
+    &QuickText,
     &SkipSongReplays,
-  };
+  };*/
 
   //Misc Settings
  // Option GossipStoneHints    = Option::U8  ("Gossip Stone Hints",     {"No Hints", "Need Nothing", "Mask of Truth", "Shard of Agony"},        {gossipStonesHintsDesc},                                                                                          OptionCategory::Setting,    HINTS_NEED_NOTHING);
-  Option ClearerHints        = Option::Bool("  Clearer Hints",        {"Off", "On"},                                                          {clearerHintsDesc});
-  Option HintDistribution    = Option::U8  ("  Hint Distribution",    {"Useless", "Balanced", "Strong", "Very Strong"},                       {uselessHintsDesc, balancedHintsDesc, strongHintsDesc, veryStrongHintsDesc},                                      OptionCategory::Setting,    1); // Balanced
+    Option ClearerHints        = Option::Bool("  Clearer Hints",        {"Off", "On"},                                                          {clearerHintsDesc});
+ // Option HintDistribution    = Option::U8  ("  Hint Distribution",    {"Useless", "Balanced", "Strong", "Very Strong"},                       {uselessHintsDesc, balancedHintsDesc, strongHintsDesc, veryStrongHintsDesc},                                      OptionCategory::Setting,    1); // Balanced
  // Option DamageMultiplier    = Option::U8  ("Damage Multiplier",      {"x1/2", "x1", "x2", "x4", "x8", "x16", "OHKO"},                        {damageMultiDesc},                                                                                                OptionCategory::Setting,    DAMAGEMULTIPLIER_DEFAULT);
-  Option ChestAnimations     = Option::Bool("Chest Animations",       {"Always Fast", "Match Contents"},                                      {chestAnimDesc});
-  Option ChestSize           = Option::Bool("Chest Size and Color",   {"Vanilla", "Match Contents"},                                          {chestSizeDesc});
+//  Option ChestAnimations     = Option::Bool("Chest Animations",       {"Always Fast", "Match Contents"},                                      {chestAnimDesc});
+//  Option ChestSize           = Option::Bool("Chest Size and Color",   {"Vanilla", "Match Contents"},                                          {chestSizeDesc});
   Option GenerateSpoilerLog  = Option::Bool("Generate Spoiler Log",   {"No", "Yes"},                                                          {"", ""},                                                                                                         OptionCategory::Setting,    1); // On
-  Option IngameSpoilers      = Option::Bool("Ingame Spoilers",        {"Hide", "Show"},                                                       {ingameSpoilersHideDesc, ingameSpoilersShowDesc });
+//  Option IngameSpoilers      = Option::Bool("Ingame Spoilers",        {"Hide", "Show"},                                                       {ingameSpoilersHideDesc, ingameSpoilersShowDesc });
   Option MenuOpeningButton   = Option::U8  ("Open Info Menu with",    {"Select","Start","D-Pad Up","D-Pad Down","D-Pad Right","D-Pad Left",}, {menuButtonDesc});
   Option RandomTrapDmg       = Option::U8  ("Random Trap Damage",     {"Off", "Basic", "Advanced"},                                           {randomTrapDmgDesc, basicTrapDmgDesc, advancedTrapDmgDesc});
   bool HasNightStart         = false;
   std::vector<Option *> miscOptions = {
   //  &GossipStoneHints,
-    &ClearerHints,
-    &HintDistribution,
+      &ClearerHints,
+  //  &HintDistribution,
   //  &DamageMultiplier,
-    &ChestAnimations,
-    &ChestSize,
+  //  &ChestAnimations,
+  //  &ChestSize,
     &GenerateSpoilerLog,
-    &IngameSpoilers,
+  //  &IngameSpoilers,
     &MenuOpeningButton,
     &RandomTrapDmg,
   };
@@ -126,18 +128,18 @@ namespace Settings {
 
   //Item Pool Settings
  // Option ItemPoolValue         = Option::U8  ("Item Pool",             {"Plentiful", "Balanced", "Scarce", "Minimal"},                        {itemPoolPlentiful, itemPoolBalanced, itemPoolScarce, itemPoolMinimal},                                           OptionCategory::Setting,    ITEMPOOL_BALANCED);
- // Option IceTrapValue          = Option::U8  ("Ice Traps",             {"Off", "Normal", "Extra", "Mayhem", "Onslaught"},                     {iceTrapsOff, iceTrapsNormal, iceTrapsExtra, iceTrapsMayhem, iceTrapsOnslaught},                                  OptionCategory::Setting,    ICETRAPS_NORMAL);
+  Option IceTrapValue          = Option::U8  ("Ice Traps",             {"Off", "Normal", "Extra", "Mayhem", "Onslaught"},                     {iceTrapsOff, iceTrapsNormal, iceTrapsExtra, iceTrapsMayhem, iceTrapsOnslaught},                                  OptionCategory::Setting,    ICETRAPS_NORMAL);
   Option RemoveDoubleDefense   = Option::Bool("Remove Double Defense", {"No", "Yes"},                                                         {removeDDDesc});
   std::vector<Option *> itemPoolOptions = {
    // &ItemPoolValue,
-  //  &IceTrapValue,
+     &IceTrapValue,
     &RemoveDoubleDefense,
   };
 
   //Excluded Locations (Individual definitions made in ItemLocation class)
   std::vector<Option *> excludeLocationsOptions = {};
 
-  std::vector<std::string> bottleOptions = {"None", "Empty Bottle", "Red Potion", "Green Potion", "Blue Potion", "Fairy", "Fish", "Milk", "Blue Fire", "Bugs", "Big Poe", "Half Milk", "Poe"};
+  std::vector<std::string> bottleOptions = {"None", "Empty Bottle", "Red Potion", "Green Potion", "Blue Potion", "Fairy", "Fish", "Milk", "Bugs", "Big Poe", "Half Milk", "Poe"};
   std::vector<std::string> healthOptions = { "3 hearts",  "4 hearts",  "5 hearts",  "6 hearts",  "7 hearts",  "8 hearts",  "9 hearts", "10 hearts", "11 hearts", "12 hearts",
                                             "13 hearts", "14 hearts", "15 hearts", "16 hearts", "17 hearts", "18 hearts", "19 hearts", "20 hearts"};//,  "1 heart",   "2 hearts"}; // TODO: logic for lower health
   Option StartingConsumables      = Option::Bool("Start with Consumables", {"No",               "Yes"},                                                     {startWithConsumablesDesc});
@@ -507,29 +509,29 @@ namespace Settings {
   };
 
   Option CustomTunicColors          = Option::Bool("Custom Tunic Colors",    {"Off", "On"},   {""},                                                                                                                                                             OptionCategory::Cosmetic);
-  Option ChildTunicColor            = Option::U8  ("  Child Tunic Color",    tunicOptions,    cosmeticDescriptions,                                                                                                                                             OptionCategory::Cosmetic,               3); // Kokiri Green
+  Option ChildTunicColor            = Option::U8  ("   Tunic Color",    tunicOptions,    cosmeticDescriptions,                                                                                                                                             OptionCategory::Cosmetic,               3); // Kokiri Green
   std::string finalChildTunicColor      = ChildTunicColor.GetSelectedOptionText();
 
   Option ColoredKeys =     Option::Bool("Colored Small Keys", {"Off", "On"}, {coloredKeysDesc},                                                                                                                                                                 OptionCategory::Cosmetic);
   Option ColoredBossKeys = Option::Bool("Colored Boss Keys",  {"Off", "On"}, {coloredBossKeysDesc},                                                                                                                                                             OptionCategory::Cosmetic);
-
+//
   static std::vector<std::string> fanfareOptions = {"Off", "Only Fanfares", "Fanfares +\n                         Ocarina Music"};
   static std::vector<std::string_view> fanfareDescriptions = {fanfaresOffDesc, onlyFanfaresDesc, fanfaresOcarinaDesc};
 
-  Option ShuffleMusic =    Option::Bool("Shuffle Music",           {"Off", "On"},    {musicRandoDesc},                                                                                                                                                          OptionCategory::Cosmetic,               0); // Off
-  Option ShuffleBGM =      Option::Bool("  Shuffle BGM",           {"Off", "On"},    {shuffleBGMDesc},                                                                                                                                                          OptionCategory::Cosmetic,               1); // On
-  Option ShuffleFanfares = Option::U8  ("  Shuffle Fanfares",      {fanfareOptions}, {fanfareDescriptions},                                                                                                                                                     OptionCategory::Cosmetic,               1); // Fanfares only
-  Option ShuffleOcaMusic = Option::Bool("  Shuffle Ocarina Music", {"Off", "On"},    {shuffleOcaMusicDesc},                                                                                                                                                     OptionCategory::Cosmetic,               1); // On
+//  Option ShuffleMusic =    Option::Bool("Shuffle Music",           {"Off", "On"},    {musicRandoDesc},                                                                                                                                                          OptionCategory::Cosmetic,               0); // Off
+//  Option ShuffleBGM =      Option::Bool("  Shuffle BGM",           {"Off", "On"},    {shuffleBGMDesc},                                                                                                                                                          OptionCategory::Cosmetic,               1); // On
+//  Option ShuffleFanfares = Option::U8  ("  Shuffle Fanfares",      {fanfareOptions}, {fanfareDescriptions},                                                                                                                                                     OptionCategory::Cosmetic,               1); // Fanfares only
+//  Option ShuffleOcaMusic = Option::Bool("  Shuffle Ocarina Music", {"Off", "On"},    {shuffleOcaMusicDesc},                                                                                                                                                     OptionCategory::Cosmetic,               1); // On
 
   std::vector<Option *> cosmeticOptions = {
     &CustomTunicColors,
     &ChildTunicColor,
     &ColoredKeys,
     &ColoredBossKeys,
-    &ShuffleMusic,
-    &ShuffleBGM,
-    &ShuffleFanfares,
-    &ShuffleOcaMusic,
+ //   &ShuffleMusic,
+ //   &ShuffleBGM,
+ //   &ShuffleFanfares,
+ //   &ShuffleOcaMusic,
   };
 
   Menu loadSettingsPreset       = Menu::Action("Load Settings Preset",       LOAD_PRESET);
@@ -557,12 +559,12 @@ namespace Settings {
   };
 
  // Menu open                     = Menu::SubMenu("Open Settings",              &openOptions);
-  Menu world                    = Menu::SubMenu("World Settings",             &worldOptions);
+ // Menu world                    = Menu::SubMenu("World Settings",             &worldOptions);
   Menu shuffle                  = Menu::SubMenu("Shuffle Settings",           &shuffleOptions);
-  //Menu shuffleDungeonItems      = Menu::SubMenu("Shuffle Dungeon Items",      &shuffleDungeonItemOptions);
+//  Menu shuffleDungeonItems      = Menu::SubMenu("Shuffle Dungeon Items",      &shuffleDungeonItemOptions);
   Menu detailedLogic            = Menu::SubMenu("Detailed Logic Settings",    &detailedLogicOptions);
   Menu startingInventory        = Menu::SubMenu("Starting Inventory",         &startingInventoryOptions, false);
-  Menu timesaverSettings        = Menu::SubMenu("Timesaver Settings",         &timesaverOptions);
+//  Menu timesaverSettings        = Menu::SubMenu("Timesaver Settings",         &timesaverOptions);
   Menu miscSettings             = Menu::SubMenu("Misc Settings",              &miscOptions);
   Menu itemPoolSettings         = Menu::SubMenu("Item Pool Settings",         &itemPoolOptions);
 //  Menu itemUsabilitySettings    = Menu::SubMenu("Item Usability Settings",    &itemUsabilityOptions);
@@ -573,10 +575,10 @@ namespace Settings {
   //adding a menu with no options crashes, might fix later
   std::vector<Menu *> mainMenu = {
    // &open,
-    &world,
+   // &world,
     &shuffle,
-  //  &shuffleDungeonItems,
-    &timesaverSettings,
+   // &shuffleDungeonItems,
+ //   &timesaverSettings,
     &detailedLogic,
     &startingInventory,
     &miscSettings,
@@ -597,7 +599,7 @@ namespace Settings {
   //Fills and returns a SettingsContext struct.
   //This struct is written to the code.ips patch and allows the game
   //to read what settings the player selected to make in game decisions.
-  /*/SettingsContext FillContext() {
+    SettingsContext FillContext() {
     SettingsContext ctx = {};
     ctx.hashIndexes[0] = hashIconIndexes[0];
     ctx.hashIndexes[1] = hashIconIndexes[1];
@@ -629,15 +631,15 @@ namespace Settings {
     ctx.heartDropRefill      = HeartDropRefill.Value<u8>();
 //    ctx.randomMQDungeons        = (MQDungeonCount.Value<u8>() == 13) ? 1 : 0;
 //    ctx.mqDungeonCount          = MQSet;
-
+*/
     ctx.shuffleRewards       = ShuffleRewards.Value<u8>();
     ctx.linksPocketItem      = LinksPocketItem.Value<u8>();
     ctx.shuffleSongs         = ShuffleSongs.Value<u8>();
-    ctx.tokensanity          = Tokensanity.Value<u8>();
-    ctx.scrubsanity          = Scrubsanity.Value<u8>();
-    ctx.shuffleCows          = (ShuffleCows) ? 1 : 0;
+//    ctx.tokensanity          = Tokensanity.Value<u8>();
+//    ctx.scrubsanity          = Scrubsanity.Value<u8>();
+//    ctx.shuffleCows          = (ShuffleCows) ? 1 : 0;
     ctx.shuffleKokiriSword   = (ShuffleKokiriSword) ? 1 : 0;
-    ctx.shuffleOcarinas      = (ShuffleOcarinas) ? 1 : 0;
+//    ctx.shuffleOcarinas      = (ShuffleOcarinas) ? 1 : 0;
 //    ctx.shuffleWeirdEgg      = (ShuffleWeirdEgg) ? 1 : 0;
 //    ctx.shuffleGerudoToken   = (ShuffleGerudoToken) ? 1 : 0;
     ctx.shuffleMagicBeans    = (ShuffleMagicBeans) ? 1 : 0;
@@ -645,24 +647,24 @@ namespace Settings {
 //    ctx.shuffleAdultTradeQuest = (ShuffleAdultTradeQuest) ? 1 : 0;
 
     ctx.mapsAndCompasses     = MapsAndCompasses.Value<u8>();
-    ctx.keysanity            = Keysanity.Value<u8>();
+//    ctx.keysanity            = Keysanity.Value<u8>();
 //    ctx.gerudoKeys           = GerudoKeys.Value<u8>();
-    ctx.bossKeysanity        = BossKeysanity.Value<u8>();
+//    ctx.bossKeysanity        = BossKeysanity.Value<u8>();
 
-    ctx.skipEponaRace        = (SkipEponaRace) ? 1 : 0;
-    ctx.skipMinigamePhases   = (SkipMinigamePhases) ? 1 : 0;
-    ctx.freeScarecrow        = (FreeScarecrow) ? 1 : 0;
-    ctx.quickText            = QuickText.Value<u8>();
-    ctx.skipSongReplays      = SkipSongReplays.Value<u8>();
+   // ctx.skipEponaRace        = (SkipEponaRace) ? 1 : 0;
+   // ctx.skipMinigamePhases   = (SkipMinigamePhases) ? 1 : 0;
+   // ctx.freeScarecrow        = (FreeScarecrow) ? 1 : 0;
+   // ctx.quickText            = QuickText.Value<u8>();
+   // ctx.skipSongReplays      = SkipSongReplays.Value<u8>();
 
-    ctx.gossipStoneHints     = GossipStoneHints.Value<u8>();
-    ctx.damageMultiplier     = DamageMultiplier.Value<u8>();
-    ctx.chestAnimations      = (ChestAnimations) ? 1 : 0;
-    ctx.chestSize            = (ChestSize) ? 1 : 0;
+   // ctx.gossipStoneHints     = GossipStoneHints.Value<u8>();
+   // ctx.damageMultiplier     = DamageMultiplier.Value<u8>();
+   // ctx.chestAnimations      = (ChestAnimations) ? 1 : 0;
+   // ctx.chestSize            = (ChestSize) ? 1 : 0;
     ctx.generateSpoilerLog   = (GenerateSpoilerLog) ? 1 : 0;
-    ctx.ingameSpoilers       = (IngameSpoilers) ? 1 : 0;
+   // ctx.ingameSpoilers       = (IngameSpoilers) ? 1 : 0;
     ctx.menuOpeningButton    = MenuOpeningButton.Value<u8>();
-    ctx.randomTrapDmg        = RandomTrapDmg.Value<u8>();
+//    ctx.randomTrapDmg        = RandomTrapDmg.Value<u8>();
 
     ctx.itemPoolValue        = ItemPoolValue.Value<u8>();
     ctx.iceTrapValue         = IceTrapValue.Value<u8>();
@@ -688,14 +690,14 @@ namespace Settings {
     ctx.startingBottle1       = StartingBottle1.Value<u8>();
     ctx.startingBottle2       = StartingBottle2.Value<u8>();
     ctx.startingBottle3       = StartingBottle3.Value<u8>();
-    ctx.startingBottle4       = StartingBottle4.Value<u8>();
-    ctx.startingBottle5       = StartingBottle5.Value<u8>();
-    ctx.startingBottle6       = StartingBottle6.Value<u8>();
-    ctx.startingBottle7       = StartingBottle7.Value<u8>();
+//    ctx.startingBottle4       = StartingBottle4.Value<u8>();
+//    ctx.startingBottle5       = StartingBottle5.Value<u8>();
+//    ctx.startingBottle6       = StartingBottle6.Value<u8>();
+//    ctx.startingBottle7       = StartingBottle7.Value<u8>();
     ctx.startingOcarina       = StartingOcarina.Value<u8>();
     ctx.startingKokiriSword   = StartingKokiriSword.Value<u8>();
-    ctx.startingGreatFairySword = StartingGreatFairySword.Value<u8>();
-    ctx.startingHealth        = (StartingHealth.Value<u8>() + 2) % 20 + 1;
+//    ctx.startingGreatFairySword = StartingGreatFairySword.Value<u8>();
+//    ctx.startingHealth        = (StartingHealth.Value<u8>() + 2) % 20 + 1;
     ctx.startingMagicMeter    = StartingMagicMeter.Value<u8>();
     ctx.startingDoubleDefense = StartingDoubleDefense.Value<u8>();
 
@@ -712,13 +714,13 @@ namespace Settings {
     ctx.startingQuestItems |= StartingInvertedSong.Value<u8>()      << 15;
     ctx.startingQuestItems |= StartingSongOfTime.Value<u8>()       << 16;
     ctx.startingQuestItems |= StartingSongOfStorms.Value<u8>()     << 17;
-    ctx.startingDungeonReward |= StartingOdolwaRemains.Value<u8>()    << 18;
-    ctx.startingDungeonReward |= StartingGohtRemains.Value<u8>()        << 19;
-    ctx.startingDungeonReward |= StartingGyorgRemains.Value<u8>()     << 20;
-    ctx.startingDungeonReward |= StartingTwinmoldRemains.Value<u8>()   << 5;
+//    ctx.startingDungeonReward |= StartingOdolwaRemains.Value<u8>()    << 18;
+//    ctx.startingDungeonReward |= StartingGohtRemains.Value<u8>()        << 19;
+//    ctx.startingDungeonReward |= StartingGyorgRemains.Value<u8>()     << 20;
+//    ctx.startingDungeonReward |= StartingTwinmoldRemains.Value<u8>()   << 5;
 
-    ctx.startingTokens        = StartingSwampToken.Value<u8>();
-    ctx.startingTokens        = StartingOceanToken.Value<u8>();
+//    ctx.startingTokens        = StartingSwampToken.Value<u8>();
+//    ctx.startingTokens        = StartingOceanToken.Value<u8>();
 
 
     //Starting Equipment
@@ -731,7 +733,7 @@ namespace Settings {
     ctx.startingUpgrades |= StartingWallet.Value<u8>() << 12;
 
     return ctx;
-  }*/
+  }
 
   //Set default cosmetics where the default is not the first option
   static void SetDefaultCosmetics() {
@@ -768,18 +770,18 @@ namespace Settings {
     //for (auto op : openOptions) {
     //  op->SetToDefault();
    // }
-    for (auto op : worldOptions) {
-      op->SetToDefault();
-    }
+   // for (auto op : worldOptions) {
+   //   op->SetToDefault();
+   // }
     for (auto op : shuffleOptions) {
       op->SetToDefault();
     }
     //for (auto op : shuffleDungeonItemOptions) {
     //  op->SetToDefault();
     //}
-    for (auto op : timesaverOptions) {
-      op->SetToDefault();
-    }
+    //for (auto op : timesaverOptions) {
+    //  op->SetToDefault();
+    //}
     for (auto op : miscOptions) {
       op->SetToDefault();
     }
@@ -795,19 +797,19 @@ namespace Settings {
     for (auto op : startingInventoryOptions) {
       op->SetToDefault();
     }
-    for (auto op : logicOptions) {
-      op->SetToDefault();
-    }
+   // for (auto op : logicOptions) {
+   //   op->SetToDefault();
+   // }
     //for (auto op : trickOptions) {
     //  op->SetToDefault();
     //}
-    for (auto op : glitchOptions) {
-      op->SetToDefault();
-    }
-
-   // for (auto loc : allLocations) {
-   //   Location(loc)->GetExcludedOption()->SetToDefault();
+   // for (auto op : glitchOptions) {
+   //   op->SetToDefault();
    // }
+
+//      for (auto loc : allLocations) {
+//      Location(loc)->GetExcludedOption()->SetToDefault();
+//    }
     //Don't let users exclude these locations
     //TODO: Make sure the defaults are set appropriately for these?
 	//Also TODO: make sure some checks cant be skpped?
@@ -817,22 +819,22 @@ namespace Settings {
 
     SetDefaultCosmetics();
   }
-
+  /*
   //Include and Lock the desired locations
-  //static void IncludeAndHide(std::vector<LocationKey> locations) {
-   // for (LocationKey loc : locations) {
-  //    Location(loc)->GetExcludedOption()->SetSelectedIndex(INCLUDE);
-  //    Location(loc)->GetExcludedOption()->Hide();
-   // }
- // }
+  static void IncludeAndHide(std::vector<LocationKey> locations) {
+    for (LocationKey loc : locations) {
+      Location(loc)->GetExcludedOption()->SetSelectedIndex(INCLUDE);
+      Location(loc)->GetExcludedOption()->Hide();
+   }
+  }
 
   //Unlock the desired locations
- // static void Unhide(std::vector<LocationKey> locations) {
- //   for (LocationKey loc : locations) {
- //     Location(loc)->GetExcludedOption()->Unhide();
- //   }
- // }
-
+  static void Unhide(std::vector<LocationKey> locations) {
+    for (LocationKey loc : locations) {
+      Location(loc)->GetExcludedOption()->Unhide();
+    }
+  }
+  */
 
   //Used for Starting Inventory options, enables/disables the options or expands/collapses each category based on their index number
   void CollapseCategory(Option startingInventorySections, int startNum, int endNum) {
@@ -856,123 +858,133 @@ namespace Settings {
   //This function will hide certain locations from the Excluded Locations
   //menu if the player's current settings would require non-junk to be placed
   //at those locations. Excluded locations will have junk placed at them.
+  /*
   static void ResolveExcludedLocationConflicts() {
 
-   // std::vector<LocationKey> shopLocations = GetLocations(everyPossibleLocation, Category::cShop);
-    //For now, just always hide shop locations, as not sure how to handle hiding them-
-    //1-4 should always be hidden, while the others should be settings dependent, but random shopsanity makes that more complicated...
-    //Excluded shop locations are also wonky
-    //IncludeAndHide(shopLocations);
+      //std::vector<LocationKey> shopLocations = GetLocations(everyPossibleLocation, Category::cShop);
+      //For now, just always hide shop locations, as not sure how to handle hiding them-
+      //1-4 should always be hidden, while the others should be settings dependent, but random shopsanity makes that more complicated...
+      //Excluded shop locations are also wonky
+      IncludeAndHide(shopLocations);
 
-    //Force include song locations
-  //  std::vector<LocationKey> songLocations = GetLocations(everyPossibleLocation, Category::cSong);
-  //  std::vector<LocationKey> songDungeonRewards = GetLocations(everyPossibleLocation, Category::cSongDungeonReward);
+      //Force include song locations
+      //std::vector<LocationKey> songLocations = GetLocations(everyPossibleLocation, Category::cSong);
+      //std::vector<LocationKey> DungeonRewards = GetLocations(everyPossibleLocation, Category::cDungeonReward);
 
-    //Unhide all song locations, then lock necessary ones
-   // Unhide(songLocations);
-   // Unhide(songDungeonRewards);
+      //Unhide all song locations, then lock necessary ones
+      Unhide(songLocations);
+      Unhide(DungeonRewards);
 
-   /* if (ShuffleSongs.Is(SONGSHUFFLE_SONG_LOCATIONS)) {
-      IncludeAndHide(songLocations);
-    } else if (ShuffleSongs.Is(SONGSHUFFLE_DUNGEON_REWARDS)) {
-      IncludeAndHide(songDungeonRewards);
-    }
-    
-    //Force Include Vanilla Skulltula locations
-    std::vector<LocationKey> SwampSkulltulaLocations = GetLocations(everyPossibleLocation, Category::cSwampSkulltula);
-    std::vector<LocationKey> OceanSkulltulaLocations = GetLocations(everyPossibleLocation, Category::cOceanSkulltula);
-    Unhide(SwampSkulltulaLocations);
-	Unhide(OceanSkulltulaLocations);
-    if (Tokensanity.IsNot(TOKENSANITY_ALL_TOKENS)) {
-      if (Tokensanity.Is(TOKENSANITY_OVERWORLD)) {
-        //filter overworld skulls so we're just left with dungeons
-        FilterAndEraseFromPool(SwampSkulltulaLocations, [](const LocationKey loc1){return Location(loc1)->GetScene() >= 0x0A;});
-		FilterAndEraseFromPool(OceanSkulltulaLocations, [](const LocationKey loc2){return Location(loc2)->GetScene() >= 0x0A;});
-      } else if (Tokensanity.Is(TOKENSANITY_DUNGEONS)) {
-        //filter dungeon skulls so we're just left with overworld
-        FilterAndEraseFromPool(SwampSkulltulaLocations, [](const LocationKey loc1){return Location(loc1)->GetScene() < 0x0A;});
-		FilterAndEraseFromPool(OceanSkulltulaLocations, [](const LocationKey loc2){return Location(loc2)->GetScene() < 0x0A;});
+      if (ShuffleSongs.Is(SONGSHUFFLE_SONG_LOCATIONS)) {
+          IncludeAndHide(songLocations);
       }
-      IncludeAndHide(SwampSkulltulaLocations);
-	  IncludeAndHide(OceanSkulltulaLocations);
-    }
-    
-    //Force Include scrubs if Scrubsanity is Off
-    std::vector<LocationKey> scrubLocations = GetLocations(everyPossibleLocation, Category::cDekuScrub, Category::cDekuScrubUpgrades);
-    if (Scrubsanity.Is(OFF)) {
-      IncludeAndHide(scrubLocations);
-    } else {
-      Unhide(scrubLocations);
-    }
+      else if (ShuffleSongs.Is(SONGSHUFFLE_DUNGEON_REWARDS)) {
+          IncludeAndHide(songDungeonRewards);
+      }
 
-    //Force include Cows if Shuffle Cows is Off
-    std::vector<LocationKey> cowLocations = GetLocations(everyPossibleLocation, Category::cCow);
-    if (ShuffleCows) {
-      Unhide(cowLocations);
-    } else {
-      IncludeAndHide(cowLocations);
-    }
+      //Force Include Vanilla Skulltula locations
+      std::vector<LocationKey> SwampSkulltulaLocations = GetLocations(everyPossibleLocation, Category::cSwampSkulltula);
+      std::vector<LocationKey> OceanSkulltulaLocations = GetLocations(everyPossibleLocation, Category::cOceanSkulltula);
+      Unhide(SwampSkulltulaLocations);
+      Unhide(OceanSkulltulaLocations);
+      if (Tokensanity.IsNot(TOKENSANITY_ALL_TOKENS)) {
+          if (Tokensanity.Is(TOKENSANITY_OVERWORLD)) {
+              //filter overworld skulls so we're just left with dungeons
+              FilterAndEraseFromPool(SwampSkulltulaLocations, [](const LocationKey loc1) {return Location(loc1)->GetScene() >= 0x0A;});
+              FilterAndEraseFromPool(OceanSkulltulaLocations, [](const LocationKey loc2) {return Location(loc2)->GetScene() >= 0x0A;});
+          }
+          else if (Tokensanity.Is(TOKENSANITY_DUNGEONS)) {
+              //filter dungeon skulls so we're just left with overworld
+              FilterAndEraseFromPool(SwampSkulltulaLocations, [](const LocationKey loc1) {return Location(loc1)->GetScene() < 0x0A;});
+              FilterAndEraseFromPool(OceanSkulltulaLocations, [](const LocationKey loc2) {return Location(loc2)->GetScene() < 0x0A;});
+          }
+          IncludeAndHide(SwampSkulltulaLocations);
+          IncludeAndHide(OceanSkulltulaLocations);
+      }
 
-    //Force include the Kokiri Sword Chest if Shuffle Kokiri Sword is Off
-    if (ShuffleKokiriSword) {
-      Unhide({HMS_KOKIRI_SWORD});
-    } else {
-      IncludeAndHide({HMS_KOKIRI_SWORD});
-    }
+      //Force Include scrubs if Scrubsanity is Off
+      std::vector<LocationKey> scrubLocations = GetLocations(everyPossibleLocation, Category::cDekuScrub, Category::cDekuScrubUpgrades);
+      if (Scrubsanity.Is(OFF)) {
+          IncludeAndHide(scrubLocations);
+      }
+      else {
+          Unhide(scrubLocations);
+      }
 
-    //Force include the ocarina locations if Shuffle Ocarinas is Off
-    std::vector<LocationKey> ocarinaLocations = {LW_GIFT_FROM_SARIA, HF_OCARINA_OF_TIME_ITEM};
-    if (ShuffleOcarinas) {
-      Unhide(ocarinaLocations);
-    } else {
-      IncludeAndHide(ocarinaLocations);
-    }
+      //Force include Cows if Shuffle Cows is Off
+      std::vector<LocationKey> cowLocations = GetLocations(everyPossibleLocation, Category::cCow);
+      if (ShuffleCows) {
+          Unhide(cowLocations);
+      }
+      else {
+          IncludeAndHide(cowLocations);
+      }
 
-    //Force include Magic Bean salesman if Shuffle Magic Beans is off
-    if (ShuffleMagicBeans) {
-      Unhide({ZR_MAGIC_BEAN_SALESMAN});
-    } else {
-      IncludeAndHide({ZR_MAGIC_BEAN_SALESMAN});
-    }
-    }
-    //Force include Map and Compass Chests when Vanilla
-    std::vector<LocationKey> mapChests = GetLocations(everyPossibleLocation, Category::cVanillaMap);
-    std::vector<LocationKey> compassChests = GetLocations(everyPossibleLocation, Category::cVanillaCompass);
-    if (MapsAndCompasses.Is(MAPSANDCOMPASSES_VANILLA)) {
-      IncludeAndHide(mapChests);
-      IncludeAndHide(compassChests);
-    } else {
-      Unhide(mapChests);
-      Unhide(compassChests);
-    }
+      //Force include the Kokiri Sword Chest if Shuffle Kokiri Sword is Off
+      if (ShuffleKokiriSword) {
+          Unhide({ HMS_KOKIRI_SWORD });
+      }
+      else {
+          IncludeAndHide({ HMS_KOKIRI_SWORD });
+      }
 
-    //Force include Vanilla Small Key Locations (except gerudo Fortress) on Vanilla Keys
-    std::vector<LocationKey> smallKeyChests = GetLocations(everyPossibleLocation, Category::cVanillaSmallKey);
-    if (Keysanity.Is(KEYSANITY_VANILLA)) {
-      IncludeAndHide(smallKeyChests);
-    } else {
-      Unhide(smallKeyChests);
-    }
+      //Force include the ocarina locations if Shuffle Ocarinas is Off
+   //   std::vector<LocationKey> ocarinaLocations = {LW_GIFT_FROM_SARIA, HF_OCARINA_OF_TIME_ITEM};
+  //    if (ShuffleOcarinas) {
+  //      Unhide(ocarinaLocations);
+  //    } else {
+  //      IncludeAndHide(ocarinaLocations);
+  //    }
 
-    //Force include Boss Key Chests if Boss Keys are Vanilla
-    std::vector<LocationKey> bossKeyChests = GetLocations(everyPossibleLocation, Category::cVanillaBossKey);
-    if (BossKeysanity.Is(BOSSKEYSANITY_VANILLA)) {
-      IncludeAndHide(bossKeyChests);
-    } else {
-      Unhide(bossKeyChests);
-    }
+      //Force include Magic Bean salesman if Shuffle Magic Beans is off
+      if (ShuffleMagicBeans) {
+          Unhide({ DEKU_PALACE_BEAN_DADDY });
+      }
+      else {
+          IncludeAndHide({ DEKU_PALACE_BEAN_DADDY });
+      }
 
-    
-  u8 DungeonsOfType(u8 type) {
-    u8 count = 0;
+      //Force include Map and Compass Chests when Vanilla
+      std::vector<LocationKey> mapChests = GetLocations(everyPossibleLocation, Category::cVanillaMap);
+      std::vector<LocationKey> compassChests = GetLocations(everyPossibleLocation, Category::cVanillaCompass);
+      if (MapsAndCompasses.Is(MAPSANDCOMPASSES_VANILLA)) {
+          IncludeAndHide(mapChests);
+          IncludeAndHide(compassChests);
+      }
+      else {
+          Unhide(mapChests);
+          Unhide(compassChests);
+      }
+      
+      //Force include Vanilla Small Key Locations (except gerudo Fortress) on Vanilla Keys
+      std::vector<LocationKey> smallKeyChests = GetLocations(everyPossibleLocation, Category::cVanillaSmallKey);
+      if (Keysanity.Is(KEYSANITY_VANILLA)) {
+          IncludeAndHide(smallKeyChests);
+      }
+      else {
+          Unhide(smallKeyChests);
+      }
 
-    for (Option *option : dungeonOptions) {
-      count += (option->Value<u8>() == type) ? 1 : 0;
-    }
+      //Force include Boss Key Chests if Boss Keys are Vanilla
+      std::vector<LocationKey> bossKeyChests = GetLocations(everyPossibleLocation, Category::cVanillaBossKey);
+      if (BossKeysanity.Is(BOSSKEYSANITY_VANILLA)) {
+          IncludeAndHide(bossKeyChests);
+      }
+      else {
+          Unhide(bossKeyChests);
+      }
+      
 
-    return count;
-  }
-  
+      u8 DungeonsOfType(u8 type) {
+          u8 count = 0;
+
+          for (Option* option : dungeonOptions) {
+              count += (option->Value<u8>() == type) ? 1 : 0;
+          }
+
+          return count;
+      }
+  }*/
   //Hide certain settings if they aren't relevant or Lock settings if they
   //can't be changed due to another setting that was chosen. (i.e. Closed Forest
   //will force Starting Age to Child).
@@ -1004,7 +1016,7 @@ namespace Settings {
       
 
     //Force Link's Pocket Item to be a dungeon reward if Shuffle Rewards is end of dungeons
-    if (ShuffleRewards.Is(REWARDSHUFFLE_END_OF_DUNGEON)) {
+   /* if (ShuffleRewards.Is(REWARDSHUFFLE_END_OF_DUNGEON)) {
       LinksPocketItem.Lock();
       LinksPocketItem.SetSelectedIndex(LINKSPOCKETITEM_DUNGEON_REWARD);
       if (RandomizeShuffle) {
@@ -1014,65 +1026,24 @@ namespace Settings {
       }
     } else {
       LinksPocketItem.Unlock();
-    }
-
-      //Only show Medallion Count if setting Ganons Boss Key to LACS Medallions
-      if (GanonsBossKey.Is(GANONSBOSSKEY_LACS_MEDALLIONS)) {
-        LACSMedallionCount.Unhide();
-      } else {
-        LACSMedallionCount.SetSelectedIndex(6);
-        LACSMedallionCount.Hide();
-      }
-
-      //Only show Stone Count if setting Ganons Boss Key to LACS Stones
-      if (GanonsBossKey.Is(GANONSBOSSKEY_LACS_STONES)) {
-        LACSStoneCount.Unhide();
-      } else {
-        LACSStoneCount.SetSelectedIndex(3);
-        LACSStoneCount.Hide();
-      }
-
-      //Only show Reward Count if setting Ganons Boss Key to LACS Rewards
-      if (GanonsBossKey.Is(GANONSBOSSKEY_LACS_REWARDS)) {
-        LACSRewardCount.Unhide();
-      } else {
-        LACSRewardCount.SetSelectedIndex(9);
-        LACSRewardCount.Hide();
-      }
-
-      //Only show Dungeon Count if setting Ganons Boss Key to LACS Dungeons
-      if (GanonsBossKey.Is(GANONSBOSSKEY_LACS_DUNGEONS)) {
-        LACSDungeonCount.Unhide();
-      } else {
-        LACSDungeonCount.SetSelectedIndex(8);
-        LACSDungeonCount.Hide();
-      }
-
-      //Only show Token Count if setting Ganons Boss Key to LACS Tokens
-      if (GanonsBossKey.Is(GANONSBOSSKEY_LACS_TOKENS)) {
-        LACSTokenCount.Unhide();
-      } else {
-        LACSTokenCount.SetSelectedIndex(100);
-        LACSTokenCount.Hide();
-      }
-    }
+    }*/
 
     //Only show Skip Song Replays if Quick Text is enabled
-    if (QuickText.Is(QUICKTEXT_VANILLA)) {
-      SkipSongReplays.SetSelectedIndex(DONT_SKIP);
-      SkipSongReplays.Hide();
-    } else {
-      SkipSongReplays.Unhide();
-    }
+//    if (QuickText.Is(QUICKTEXT_VANILLA)) {
+//      SkipSongReplays.SetSelectedIndex(DONT_SKIP);
+//      SkipSongReplays.Hide();
+//    } else {
+//      SkipSongReplays.Unhide();
+//    }
 
     //Only show hint options if hints are enabled
-    if (GossipStoneHints.Is(HINTS_NO_HINTS)) {
+    /*if (GossipStoneHints.Is(HINTS_NO_HINTS)) {
       ClearerHints.Hide();
       HintDistribution.Hide();
     } else {
       ClearerHints.Unhide();
       HintDistribution.Unhide();
-    }
+    }*/
 
     if (RemoveDoubleDefense) {
       StartingDoubleDefense.SetSelectedIndex(0);
@@ -1092,26 +1063,26 @@ namespace Settings {
      }
 
     // Music
-    if (ShuffleMusic) {
-      ShuffleBGM.Unhide();
-      ShuffleFanfares.Unhide();
-      if(ShuffleFanfares.Is(2)) // Fanfares + ocarina
-        ShuffleOcaMusic.Hide();
-      else
-        ShuffleOcaMusic.Unhide();
-    } else {
-      ShuffleBGM.Hide();
-      ShuffleFanfares.Hide();
-      ShuffleOcaMusic.Hide();
-    }
+//    if (ShuffleMusic) {
+//      ShuffleBGM.Unhide();
+//      ShuffleFanfares.Unhide();
+//      if(ShuffleFanfares.Is(2)) // Fanfares + ocarina
+//        ShuffleOcaMusic.Hide();
+//      else
+//        ShuffleOcaMusic.Unhide();
+//    } else {
+//      ShuffleBGM.Hide();
+//      ShuffleFanfares.Hide();
+//      ShuffleOcaMusic.Hide();
+//    }
 
-    ResolveExcludedLocationConflicts();
+    //ResolveExcludedLocationConflicts();
   }
 
 
   // Randomizes all settings in a category if chosen
   // Hides all relevant options
-  void RandomizeAllSettings(const bool selectOptions /*= false*///) {
+  void RandomizeAllSettings(const bool selectOptions /*= false*/) {
   /*
     // Open Settings
     if (RandomizeOpen) {
@@ -1177,7 +1148,7 @@ namespace Settings {
     //resolve any settings that need to change
     if (selectOptions) {
       ForceChange(0, nullptr);
-    }
+    }*/
   }
 
   //eventual settings
@@ -1209,20 +1180,17 @@ namespace Settings {
     RandomizeAllSettings(true); //now select any random options instead of just hiding them
 
     //shuffle the dungeons and then set MQ for as many as necessary
-    auto dungeons = dungeonList;
+   /* auto dungeons = dungeonList;
     if (SetDungeonTypes) {
-      u8 dungeonCount = 0;
-      
-
-      for (size_t i = 0; i < dungeons.size(); i++) {
-        
-
-        dungeonOptions[i]->Value<u8>());
-      }
+        u8 dungeonCount = 0;
+        for (size_t i = 0; i < dungeons.size(); i++) {
+            dungeonOptions[i]->Value<u8>());
+        }
+    }*/
 	UpdateCosmetics();
 
     //If vanilla logic, we want to set all settings which unnecessarily modify vanilla behavior to off
-    if (Logic.Is(LOGIC_VANILLA)) {
+   /* if (Logic.Is(LOGIC_VANILLA)) {
       ShuffleRewards.SetSelectedIndex(0);
       LinksPocketItem.SetSelectedIndex(0);
       ShuffleSongs.SetSelectedIndex(0);
@@ -1231,8 +1199,8 @@ namespace Settings {
       ShuffleMagicBeans.SetSelectedIndex(0);
       Keysanity.SetSelectedIndex(3); //Set small keys to any dungeon so FiT basement door will be locked
       GossipStoneHints.SetSelectedIndex(0);
-    }
-
+    }*/
+    /*
     InitMusicRandomizer();
     if (ShuffleMusic) {
       if (ShuffleBGM) {
@@ -1250,7 +1218,7 @@ namespace Settings {
           ShuffleSequences(SeqType::SEQ_OCARINA);
         }
       }
-    }
+    }*/
   }
   
   //If this is an option menu, return th options
@@ -1276,6 +1244,6 @@ namespace Settings {
       allMenus.insert(allMenus.end(), foundMenus.begin(), foundMenus.end());
     }
     return allMenus;
-  */}
+  }
   
 } // namespace Settings

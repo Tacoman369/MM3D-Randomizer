@@ -1,15 +1,15 @@
 #include "item_pool.hpp"
 
 //#include "dungeon.hpp"
-//#include "fill.hpp"
+#include "fill.hpp"
 #include "item_list.hpp"
-//#include "item_location.hpp"
-//#include "pool_functions.hpp"
-//#include "random.hpp"
-//#include "settings.hpp"
+#include "item_location.hpp"
+#include "pool_functions.hpp"
+#include "random.hpp"
+#include "settings.hpp"
 #include "spoiler_log.hpp"
 
-//using namespace Settings;
+using namespace Settings;
 //using namespace Dungeon;
 
 std::vector<ItemKey> ItemPool = {};
@@ -570,11 +570,11 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
-
-void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count /*= 1*/) {
+/*
+void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count = 1*/ /*) {
 	pool.insert(pool.end(), count, item);
 };
-/*
+
 template <typename FromPool>
 static void AddItemsToPool(std::vector<ItemKey>& toPool, const FromPool& fromPool) {
 	AddElementsToPool(toPool, fromPool);
@@ -657,7 +657,7 @@ static void PlaceVanillaBossKeys() {
 		dungeon->PlaceVanillaBossKey();
 	}
 };
-/*
+
 static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(GBC_GROTTO_COW1, MILK);
 	PlaceItemInLocation(GBC_GROTTO_COW2, MILK);
@@ -667,14 +667,14 @@ static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW_1, MILK);
 	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW_2, MILK);
 	PlaceItemInLocation(BENEATH_THE_WELL_COW, MILK);
-};*/
+};
 static void SetScarceItemPool() {
 	//todo
 };
 static void SetMinimalItemPool(){
 	//todo
 };
-/*
+
 void GenerateItemPool() {
 
 	ItemPool.clear();
@@ -747,7 +747,7 @@ void GenerateItemPool() {
 		PlaceItemInLocation(DEKU_PALACE_BEAN_DADDY, MAGIC_BEAN);
 	}
 	//TOKEN SANITY
-	/*
+	
 	if (Tokensanity.Is(TOKENSANITY_OFF)) {
 		for (LocationKey loc : GetLocations(allLocations, Category::cSwampSkulltula) &&
 			LocationKey loc2 : GetLocations(allLocations, Category::cOceanSkulltula)) {

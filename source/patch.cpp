@@ -117,7 +117,7 @@ bool WriteAllPatches() {
   //Create the actor directory if it doesn't exist
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/romfs/actor"), FS_ATTRIBUTE_DIRECTORY);
 
-  /*romfs is used to get files from the romfs folder. This allows us to copy
+  romfs is used to get files from the romfs folder. This allows us to copy
   from basecode and write the exheader without the user needing to worry about
   placing them manually on their SD card.*/
   //Result rc = romfsInit();
@@ -125,7 +125,7 @@ bool WriteAllPatches() {
   //  printf("\nromfsInit: %08lX\n", rc);
  // }
 
-  /*-------------------------
+  /*------------------------ -
   |       basecode.ips      |
   --------------------------*/
 /*
@@ -159,7 +159,7 @@ bool WriteAllPatches() {
     #endif
   }
 
-  /*-------------------------
+  -------------------------
   |      rItemOverrides     |
   --------------------------*/
 /*
@@ -176,7 +176,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*-------------------------
+  -------------------------
   |    rEntranceOverrides   |
   --------------------------*/
 /*
@@ -193,7 +193,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*-------------------------
+  -------------------------
   |     gSettingsContext    |
   --------------------------*/
 /*
@@ -205,7 +205,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*-------------------------
+  -------------------------
   |       gSpoilerData      |
   --------------------------*/
 /*
@@ -217,7 +217,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*-------------------------------
+  -------------------------------
   |     rScrubRandomItemPrices    |
   |     rScrubTextIdTable         |
   --------------------------------*/
@@ -257,7 +257,7 @@ bool WriteAllPatches() {
     }
   }
 
-  /*-------------------------------
+  -------------------------------
   |     rShopsanityPrices         |
   --------------------------------*/
 /*
@@ -276,7 +276,7 @@ bool WriteAllPatches() {
     }
   }
 
-  /*--------------------------------
+  --------------------------------
   |     rDungeonRewardOverrides    |
   ---------------------------------*/
 /*
@@ -287,7 +287,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*--------------------------------
+  --------------------------------
   |     rCustomMessageEntries      |
   ---------------------------------*/
 /*
@@ -324,7 +324,7 @@ bool WriteAllPatches() {
     return false;
   }
 
-  /*--------------------------------
+  --------------------------------
   |         rBGMOverrides          |
   ---------------------------------*/
 /*
@@ -335,7 +335,7 @@ bool WriteAllPatches() {
   }
 
   
-  /*-------------------------
+  -------------------------
   |           EOF           |
   --------------------------*/
 /*
@@ -346,7 +346,7 @@ bool WriteAllPatches() {
 
   FSFILE_Close(code);
 
-  /*-------------------------
+  -------------------------
   |       exheader.bin      |
   --------------------------*/
 /*
@@ -360,7 +360,7 @@ bool WriteAllPatches() {
 
   CopyFile(sdmcArchive, "/luma/titles/0004000000125500/exheader.bin", filePath);
 
-  /*-------------------------
+  -------------------------
   |       custom assets      |
   --------------------------*/
 /*

@@ -6,8 +6,8 @@
 #include <vector>
 
 #include "text.hpp"
-//#include "random.hpp"
-//#include "settings.hpp"
+#include "random.hpp"
+#include "settings.hpp"
 
 enum class HintType {
   Trial,
@@ -115,12 +115,12 @@ public:
     }
 
     Text& GetObscure() {
-        //return RandomElement(obscureText);
+        return RandomElement(obscureText);
         
     }
 
     const Text& GetObscure() const {
-       // return RandomElement(obscureText);
+        return RandomElement(obscureText);
         
     }
 
@@ -131,19 +131,19 @@ public:
         return clearText;
     }
 
-    //const Text& GetText() const {
-       // if (Settings::ClearerHints) {
-       //     return GetClear();
-       // }
-       // return GetObscure();
-    //}
+    const Text& GetText() const {
+       if (Settings::ClearerHints) {
+            return GetClear();
+        }
+        return GetObscure();
+    }
 
-    //const Text GetTextCopy() const {
-       // if (Settings::ClearerHints) {
-       //     return GetClear();
-       // }
-       // return GetObscure();
-    //}
+    const Text GetTextCopy() const {
+        if (Settings::ClearerHints) {
+            return GetClear();
+        }
+        return GetObscure();
+    }
 
     HintCategory GetType() const {
         return type;

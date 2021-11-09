@@ -126,7 +126,7 @@ bool LoadPreset(std::string_view presetName, OptionCategory category) {
       return false;
   }
 
-  XMLElement* curNode = rootNode->FirstChildElement();
+  //XMLElement* curNode = rootNode->FirstChildElement();
   /*
   for (Menu* menu : Settings::GetAllMenus()) {
     if (menu->mode != OPTION_SUB_MENU) {

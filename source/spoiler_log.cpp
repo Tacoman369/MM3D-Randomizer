@@ -1,12 +1,12 @@
 #include "spoiler_log.hpp"
-/*
-#include "dungeon.hpp"
+
+//#include "dungeon.hpp"
 #include "item_list.hpp"
 #include "item_location.hpp"
-#include "entrance.hpp"
+//#include "entrance.hpp"
 #include "random.hpp"
 #include "settings.hpp"
-#include "trial.hpp"
+//#include "trial.hpp"
 #include "tinyxml2.h"
 #include "utils.hpp"
 
@@ -87,7 +87,7 @@ const std::string GetRandomizerHashAsString() {
 const SpoilerData& GetSpoilerData() {
   return spoilerData;
 }
-
+/*
 static auto GetGeneralPath() {
   return "/3ds/" + Settings::seed + " (" + GetRandomizerHashAsString() + ")";
 }
@@ -106,7 +106,7 @@ static void WriteIngameSpoilerLog() {
   u16 spoilerSphereItemoffset = 0;
   u16 spoilerGroupOffset = 0;
   // Intentionally junk value so we trigger the 'new group, record some stuff' code
-  u8 currentGroup = SpoilerCollectionCheckGroup::SPOILER_COLLECTION_GROUP_COUNT;
+ // u8 currentGroup = SpoilerCollectionCheckGroup::SPOILER_COLLECTION_GROUP_COUNT;
   bool spoilerOutOfSpace = false;
 
   // Create map of string data offsets for all _unique_ item locations and names in the playthrough

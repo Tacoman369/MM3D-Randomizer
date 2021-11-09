@@ -12,11 +12,11 @@ using namespace Settings;
 
 std::vector<ItemKey> StartingInventory;
 u8 AdditionalHeartContainers;
-/*
+
 static void AddItemToInventory(ItemKey item, size_t count = 1) {
   StartingInventory.insert(StartingInventory.end(), count, item);
 }
-*/
+
 void GenerateStartingInventory() {
   StartingInventory.clear();
   /*
@@ -31,7 +31,7 @@ void GenerateStartingInventory() {
       }
     }
   }
-
+  
   if (Keysanity.Is(KEYSANITY_START_WITH)) {
     for (auto* dungeon : dungeonList) {
       if (dungeon->GetSmallKeyCount() > 0) {
@@ -44,24 +44,25 @@ void GenerateStartingInventory() {
     // locked behind the keys, which is not always true in rando.
     // We can resolve this by starting with some extra keys
     // - OoT Randomizer
-    }*/
-  }
+    }
+  }*/
+  
 /*
   if (BossKeysanity.Is(BOSSKEYSANITY_START_WITH)) {
     AddItemToInventory(WOODFALL_TEMPLE_BOSS_KEY);
     AddItemToInventory(SNOWHEAD_TEMPLE_BOSS_KEY);
     AddItemToInventory(GBT_BOSS_KEY);
     AddItemToInventory(STONE_TOWER_TEMPLE_BOSS_KEY);
-  }
+  }*/
   
   //Starting Inventory Menu
   //Values are associated so that the count of items matches the index of
   //the option selected. If None is selected, the value will be zero and
   //zero of the item will be added to the starting inventory.
-  AddItemToInventory(PROGRESSIVE_STICK_UPGRADE, StartingStickCapacity.Value<u8>());
-  AddItemToInventory(PROGRESSIVE_NUT_UPGRADE,   StartingNutCapacity.Value<u8>());
+ // AddItemToInventory(PROGRESSIVE_STICK_UPGRADE, StartingStickCapacity.Value<u8>());
+ // AddItemToInventory(PROGRESSIVE_NUT_UPGRADE,   StartingNutCapacity.Value<u8>());
   AddItemToInventory(PROGRESSIVE_BOMB_BAG,      StartingBombBag.Value<u8>());
-  AddItemToInventory((BombchusInLogic ? PROGRESSIVE_BOMBCHUS : BOMBCHU_20), StartingBombchus.Value<u8>());
+ // AddItemToInventory((BombchusInLogic ? PROGRESSIVE_BOMBCHUS : BOMBCHU_20), StartingBombchus.Value<u8>());
   AddItemToInventory(PROGRESSIVE_BOW,           StartingBow.Value<u8>());
   AddItemToInventory(FIRE_ARROWS,               StartingFireArrows.Value<u8>());
   AddItemToInventory(ICE_ARROWS,                StartingIceArrows.Value<u8>());
@@ -71,19 +72,19 @@ void GenerateStartingInventory() {
   AddItemToInventory(HOOKSHOT,     				StartingHookshot.Value<u8>());
   //For starting bottles, we need to check if they are a big poe and add that if so
   // since a big poe bottle is not logically equivalent to an empty bottle.
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle1.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle2.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle3.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle4.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle5.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle6.Value<u8<());
-  AddItemToInventory(EMPTY_BOTTLE,				StartingBottle7.Value<u8<());
+  AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle1.Value<u8>());
+  AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle2.Value<u8>());
+  //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle3.Value<u8<());
+  //AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle4.Value<u8<());
+  //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle5.Value<u8<());
+  //AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle6.Value<u8<());
+  //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle7.Value<u8<());
   
   AddItemToInventory(OCARINA_OF_TIME,     		StartingOcarina.Value<u8>());
   AddItemToInventory(OATH_TO_ORDER,             StartingOathToOrder.Value<u8>());
   AddItemToInventory(EPONAS_SONG,               StartingEponasSong.Value<u8>());
   AddItemToInventory(INVERTED_SONG_OF_TIME,     StartingInvertedSong.Value<u8>());
-  AddItemToInventory(SONG_OF_DOUBLE_TIME,       StartingDoubleSong.Value<u8>());
+  //AddItemToInventory(SONG_OF_DOUBLE_TIME,       StartingDoubleSong.Value<u8>());
   AddItemToInventory(SONG_OF_TIME,              StartingSongOfTime.Value<u8>());
   AddItemToInventory(SONG_OF_STORMS,            StartingSongOfStorms.Value<u8>());
   AddItemToInventory(SONATA_OF_AWAKENING,       StartingSonataOfAwakening.Value<u8>());
@@ -102,17 +103,15 @@ void GenerateStartingInventory() {
   AddItemToInventory(GOHTS_REMAINS,             StartingGohtRemains.Value<u8>());
   AddItemToInventory(GYORGS_REMAINS,            StartingGyorgRemains.Value<u8>());
   AddItemToInventory(TWINMOLDS_REMAINS,         StartingTwinmoldRemains.Value<u8>());
-  AddItemToInventory(SWAMP_SKULLTULA_TOKEN,     StartingSwampToken.Value<u8>());
-  AddItemToInventory(OCEANSIDE_SKULLTULA_TOKEN, StartingOceanToken.Value<u8>());
-
+  //AddItemToInventory(SWAMP_SKULLTULA_TOKEN,     StartingSwampToken.Value<u8>());
+  //AddItemToInventory(OCEANSIDE_SKULLTULA_TOKEN, StartingOceanToken.Value<u8>());
+  
   s8 hearts = (StartingHealth.Value<u8>() + 2) % 20 - 2;
   AdditionalHeartContainers = 0;
   if (hearts < 0) {
     AddItemToInventory(PIECE_OF_HEART, 4);
     // Plentiful and minimal have less than 4 standard pieces of heart so also replace the winner heart
-    if (ItemPoolValue.Value<u8>() == 0 || ItemPoolValue.Value<u8>() == 3) {
-        AddItemToInventory(TREASURE_GAME_HEART);
-    }
+   
 
     AdditionalHeartContainers = 1 - hearts;
   } else if (hearts > 0) {
@@ -125,10 +124,6 @@ void GenerateStartingInventory() {
       AddItemToInventory(HEART_CONTAINER, maxContainers);
       AddItemToInventory(PIECE_OF_HEART, (hearts - maxContainers) * 4);
     }
-
-    if (hearts == 17) {
-      AddItemToInventory(TREASURE_GAME_HEART);
-    }
   }
 }
 
@@ -137,4 +132,3 @@ void ApplyStartingInventory() {
     ItemTable(item).ApplyEffect();
   }
 }
-*/

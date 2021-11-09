@@ -1,5 +1,5 @@
 #include "item_list.hpp"
-//#include "logic.hpp"
+#include "logic.hpp"
 #include "../code/include/z3D/z3Ditem.h"
 #include <array>
 
@@ -204,7 +204,7 @@ void ItemTable_Init() {
     itemTable[EMPTY_BOTTLE1]                      = Item(0,                       0x12,               Text{ "Empty Bottle",                    "Flacon vide",                      "Botella vacía" },                            "Beaver Race #1",                      Region::ZoraCape,         EMPTY_BOTTLE1,          0x5A, ItemCategory::MainInventory, LocationCategory::Minigames);
     itemTable[EMPTY_BOTTLE2]                      = Item(0,                       0x12,               Text{ "Empty Bottle",                    "Flacon vide",                      "Botella vacía" },                            "Dampe Digging",                       Region::IkanaGraveyard,   EMPTY_BOTTLE2,          0x64, ItemCategory::MainInventory, LocationCategory::BossFights);
     itemTable[BOTTLE_WITH_MILK]                  = Item(0,                       0x18,               Text{ "Bottle with Milk",                "Flacon de lait",                   "Botella de leche Lon Lon"},                  "Alien Defense",                       Region::RomaniRanch,      BOTTLE_WITH_MILK,       0x60, ItemCategory::MainInventory, LocationCategory::NpcRewards);
-    itemTable[BOTTLE_WITH_RED_POTION]            = Item(0,                       0x11,               Text{ "Bottle with Red Potion",          "Flacon de potion rouge",           "Botella de poción roja"},                    "Kotake",                              Region::SouthernSwamp,    BOTTLE_WITH_RED_POTION, 0x59, ItemCategory::MainInventory, LocationCategory::NpcRewards); 
+    itemTable[BOTTLE_WITH_RED_POTION]            = Item(0,                       0x11,               Text{ "Bottle with Red Potion",          "Flacon de potion rouge",           "Botella de poción roja"},                    "Kotake",                              Region::SouthernSwamp,    BOTTLE_WITH_RED_POTION, 0x59, ItemCategory::MainInventory, LocationCategory::NpcRewards);
     itemTable[GOLD_DUST]                         = Item(0,                       0x22,               Text{ "Gold Dust",   			  	      "Poudre d'Or",       	      		  "Polvo de Oro" },                             "Goron Race",                          Region::TwinIslands,      GOLD_DUST,              0x6A, ItemCategory::MainInventory, LocationCategory::Minigames );
     itemTable[CHATEAU_ROMANI]                    = Item(0,                       0x25,               Text{ "Chateau Romani",           		  "Chateau Romani",          	      "Reserva Romani" },                           "Madame Aroma in Bar",                 Region::EastClockTown,    CHATEAU_ROMANI,         0x6F, ItemCategory::MainInventory, LocationCategory::NpcRewards);
     //Other bottle items
@@ -424,10 +424,17 @@ void ItemTable_Init() {
     itemTable[STARTING_HEART_CONTAINER1]         = Item(0,                       0,                  Text{ "Heart Container",                 "Réceptacle de cœur",               "Contenedor de corazón" },                                "Starting Heart Container #1",                 Region::Misc,                    STARTING_HEART_CONTAINER1,         0x12A, ItemCategory::HeartContainer, LocationCategory::StartingItems);
     itemTable[STARTING_HEART_CONTAINER2]         = Item(0,                       0,                  Text{ "Heart Container",                 "Réceptacle de cœur",               "Contenedor de corazón" },                                "Starting Heart Container #2",                 Region::Misc,                    STARTING_HEART_CONTAINER2,         0x12B, ItemCategory::HeartContainer, LocationCategory::StartingItems);
 
-
+ /* //Progression Items
+    itemTable[PROGRESSIVE_SWORD] = Item(Text{ "Progressive Sword",				"Lame (prog.)",						"Espada progresivo" }, ITEMTYPE_ITEM, 0x80, true, &ProgressiveSword, PROGRESSIVE_SWORD, false, );
+    itemTable[PROGRESSIVE_BOMB_BAG] = Item(Text{ "Progressive Bomb Bag",            "Sac de bombes (prog.)",            "Saco de bombas progresivo" }, ITEMTYPE_ITEM, 0x82, true, &ProgressiveBombBag, PROGRESSIVE_BOMB_BAG, false, );
+    itemTable[PROGRESSIVE_BOW] = Item(Text{ "Progressive Bow",                 "Arc (prog.)",                      "Arco progresivo" }, ITEMTYPE_ITEM, 0x83, true, &ProgressiveBow, PROGRESSIVE_BOW, false, );
+    itemTable[PROGRESSIVE_WALLET] = Item(Text{ "Progressive Wallet",              "Bourse (prog.)",                   "Bolsa de rupias progresiva" }, ITEMTYPE_ITEM, 0x85, true, &ProgressiveWallet, PROGRESSIVE_WALLET, false, );
+    //itemTable[PROGRESSIVE_BOMBCHUS] = Item(Text{ "Progressive Bombchu",             "Bombchus (prog.)",                 "Bombchus progresivos" }, ITEMTYPE_ITEM, 0x89, true, &Bombchus, PROGRESSIVE_BOMBCHUS, false, );
+    itemTable[PROGRESSIVE_MAGIC_METER] = Item(Text{ "Progressive Magic Meter",         "Jauge de magie (prog.)",           "Poder mágico progresivo" }, ITEMTYPE_ITEM, 0x8A, true, &ProgressiveMagic, PROGRESSIVE_MAGIC_METER, false, );
+*/
 
     //Generic Items
-    itemTable[RECOVERY_HEART]                    = Item(0,                       0,                  Text{"Recovery Heart",                  "Cœur d'énergie",                   "Corazón"},                                               "Recovery Heart",                              Region::Fake,                     RECOVERY_HEART,                    0x0A,  ItemCategory::Fake, LocationCategory::Fake );
+    itemTable[RECOVERY_HEART]                    = Item(0,                       0,                  Text{"Recovery Heart",                  "Cœur d'énergie",                   "Corazón"},                                               "Recovery Heart",                              Region::Fake,                     RECOVERY_HEART,                    0x0A,  ItemCategory::Fake, LocationCategory::Fake);
     itemTable[GREEN_RUPEE]                       = Item(0,                       0,                  Text{"Green Rupee",                     "Rubis vert",                       "Rupia verde"},                                           "Green Rupee",                                 Region::Fake,                     GREEN_RUPEE,                       0x00,  ItemCategory::Fake, LocationCategory::Fake);
     itemTable[BLUE_RUPEE]                        = Item(0,                       0,                  Text{"Blue Rupee",                      "Rubis bleu",                       "Rupia azul"},                                            "Blue Rupee",                                  Region::Fake,                     BLUE_RUPEE,                        0x00,  ItemCategory::Fake, LocationCategory::Fake);
     itemTable[RED_RUPEE]                         = Item(0,                       0,                  Text{"Red Rupee",                       "Rubis rouge",                      "Rupia roja"},                                            "Red Rupee",                                   Region::Fake,                     RED_RUPEE,                         0x00,  ItemCategory::Fake, LocationCategory::Fake);
@@ -478,12 +485,12 @@ void ItemTable_Init() {
     itemTable[HINT]                              = Item(Text{"Hint",                            "Indice",                           "Pista"},                                   ITEMTYPE_EVENT, GI_RUPEE_BLUE_LOSE,   false,       &noVariable,             NONE				        true,);
    
     //Progression Items
-    //itemTable[PROGRESSIVE_SWORD] = Item(Text{ "Progressive Sword",				"Lame (prog.)",						"Espada progresivo" }, ITEMTYPE_ITEM, 0x80, true, &ProgressiveSword, PROGRESSIVE_SWORD, false, );
-    //itemTable[PROGRESSIVE_BOMB_BAG] = Item(Text{ "Progressive Bomb Bag",            "Sac de bombes (prog.)",            "Saco de bombas progresivo" }, ITEMTYPE_ITEM, 0x82, true, &ProgressiveBombBag, PROGRESSIVE_BOMB_BAG, false, );
-    //itemTable[PROGRESSIVE_BOW] = Item(Text{ "Progressive Bow",                 "Arc (prog.)",                      "Arco progresivo" }, ITEMTYPE_ITEM, 0x83, true, &ProgressiveBow, PROGRESSIVE_BOW, false, );
-    //itemTable[PROGRESSIVE_WALLET] = Item(Text{ "Progressive Wallet",              "Bourse (prog.)",                   "Bolsa de rupias progresiva" }, ITEMTYPE_ITEM, 0x85, true, &ProgressiveWallet, PROGRESSIVE_WALLET, false, );
+    itemTable[PROGRESSIVE_SWORD] = Item(Text{ "Progressive Sword",				"Lame (prog.)",						"Espada progresivo" }, ITEMTYPE_ITEM, 0x80, true, &ProgressiveSword, PROGRESSIVE_SWORD, false, );
+    itemTable[PROGRESSIVE_BOMB_BAG] = Item(Text{ "Progressive Bomb Bag",            "Sac de bombes (prog.)",            "Saco de bombas progresivo" }, ITEMTYPE_ITEM, 0x82, true, &ProgressiveBombBag, PROGRESSIVE_BOMB_BAG, false, );
+    itemTable[PROGRESSIVE_BOW] = Item(Text{ "Progressive Bow",                 "Arc (prog.)",                      "Arco progresivo" }, ITEMTYPE_ITEM, 0x83, true, &ProgressiveBow, PROGRESSIVE_BOW, false, );
+    itemTable[PROGRESSIVE_WALLET] = Item(Text{ "Progressive Wallet",              "Bourse (prog.)",                   "Bolsa de rupias progresiva" }, ITEMTYPE_ITEM, 0x85, true, &ProgressiveWallet, PROGRESSIVE_WALLET, false, );
     //itemTable[PROGRESSIVE_BOMBCHUS] = Item(Text{ "Progressive Bombchu",             "Bombchus (prog.)",                 "Bombchus progresivos" }, ITEMTYPE_ITEM, 0x89, true, &Bombchus, PROGRESSIVE_BOMBCHUS, false, );
-    //itemTable[PROGRESSIVE_MAGIC_METER] = Item(Text{ "Progressive Magic Meter",         "Jauge de magie (prog.)",           "Poder mágico progresivo" }, ITEMTYPE_ITEM, 0x8A, true, &ProgressiveMagic, PROGRESSIVE_MAGIC_METER, false, );
+    itemTable[PROGRESSIVE_MAGIC_METER] = Item(Text{ "Progressive Magic Meter",         "Jauge de magie (prog.)",           "Poder mágico progresivo" }, ITEMTYPE_ITEM, 0x8A, true, &ProgressiveMagic, PROGRESSIVE_MAGIC_METER, false, );
 
     //  itemTable[PROGRESSIVE_NUT_UPGRADE]           = Item(Text{"Progressive Nut Capacity",        "Capacité de noix (prog.)",         "Capacidad de nueces deku progresiva"},     ITEMTYPE_ITEM,     0x87,              false,      &noVariable,             PROGRESSIVE_NUT_UPGRADE,     false,);
   //  itemTable[PROGRESSIVE_STICK_UPGRADE]         = Item(Text{"Progressive Stick Capacity",      "Capacité de bâtons (prog.)",       "Capacidad de palos deku progresiva"},      ITEMTYPE_ITEM,     0x88,              false,       &noVariable,            PROGRESSIVE_STICK_UPGRADE,   false,);

@@ -11,7 +11,7 @@
 #include <variant>
 #include <vector>
 
-//#include "../code/src/settings.h"
+#include "../code/src/settings.h"
 #include "category.hpp"
 #include "cosmetics.hpp"
 #include "debug.hpp"
@@ -252,7 +252,7 @@ class Menu {
 
 namespace Settings {
   void UpdateSettings();
-  //SettingsContext FillContext();
+  SettingsContext FillContext();
   void InitSettings();
   void SetDefaultSettings();
   void RandomizeAllSettings(const bool selectOptions = false);
@@ -263,7 +263,7 @@ namespace Settings {
   extern std::string seed;
   extern std::string version;
   extern std::array<u8, 5> hashIconIndexes;
-
+  /*
   extern Option RandomizeWorld;
   extern Option ShuffleEntrances;
   extern Option ShuffleDungeonEntrances;
@@ -271,38 +271,39 @@ namespace Settings {
   extern Option BombchusInLogic;
   extern Option AmmoDrops;
   extern Option HeartDropRefill;
-
+  */
   extern Option RandomizeShuffle;
   extern Option ShuffleRewards;
   extern Option LinksPocketItem;
   extern Option ShuffleSongs;
-  extern Option Shopsanity;
-  extern Option Tokensanity;
-  extern Option Scrubsanity;
-  extern Option ShuffleCows;
+//  extern Option Shopsanity;
+//  extern Option Tokensanity;
+//  extern Option Scrubsanity;
+//  extern Option ShuffleCows;
   extern Option ShuffleKokiriSword;
-  extern Option ShuffleOcarinas;
+//  extern Option ShuffleOcarinas;
   extern Option ShuffleMagicBeans;
 
   extern Option RandomizeDungeon;
   extern Option MapsAndCompasses;
-  extern Option Keysanity;
-  extern Option BossKeysanity;
-
+//  extern Option Keysanity;
+//  extern Option BossKeysanity;
+/*
   extern Option SkipEponaRace;
   extern Option SkipMinigamePhases;
   extern Option FreeScarecrow;
   extern Option QuickText;
   extern Option SkipSongReplays;
 
-  extern Option GossipStoneHints;
+  extern Option GossipStoneHints; */
   extern Option ClearerHints;
-  extern Option HintDistribution;
+ /* extern Option HintDistribution;
   extern Option DamageMultiplier;
   extern Option ChestAnimations;
   extern Option ChestSize;
+  */
   extern Option GenerateSpoilerLog;
-  extern Option IngameSpoilers;
+  //extern Option IngameSpoilers;
   extern Option MenuOpeningButton;
   extern Option RandomTrapDmg;
 
@@ -310,8 +311,8 @@ namespace Settings {
   extern Option IceTrapValue;
   extern Option RemoveDoubleDefense;
 
-  extern bool ShuffleInteriorEntrances;
-  extern bool ShuffleSpecialIndoorEntrances;
+  //extern bool ShuffleInteriorEntrances;
+  //extern bool ShuffleSpecialIndoorEntrances;
 
   //Starting Inventory
   extern Option StartingConsumables;
@@ -468,10 +469,10 @@ namespace Settings {
   extern Option ColoredKeys;
   extern Option ColoredBossKeys;
 
-  extern Option ShuffleMusic;
-  extern Option ShuffleBGM;
-  extern Option ShuffleFanfares;
-  extern Option ShuffleOcaMusic;
+//  extern Option ShuffleMusic;
+//  extern Option ShuffleBGM;
+//  extern Option ShuffleFanfares;
+//  extern Option ShuffleOcaMusic;
 
   extern u32 LinksPocketRewardBitMask;
   extern std::array<u32, 9> rDungeonRewardOverrides;
