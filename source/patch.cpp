@@ -1,7 +1,7 @@
 #include "patch.hpp"
 
 #include "cosmetics.hpp"
-//#include "custom_messages.hpp"
+#include "custom_messages.hpp"
 //#include "music.hpp"
 //#include "shops.hpp"
 #include "spoiler_log.hpp"
@@ -13,7 +13,7 @@
 #include <memory>
 #include <string>
 #include <vector>
-/*
+
 // For specification on the IPS file format, visit: https://zerosoft.zophar.net/ips.php
 
 using FILEPtr = std::unique_ptr<FILE, decltype(&std::fclose)>;
@@ -110,27 +110,27 @@ bool WriteAllPatches() {
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma"), FS_ATTRIBUTE_DIRECTORY);
   //Create the titles directory if it doesn't exist
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles"), FS_ATTRIBUTE_DIRECTORY);
-  //Create the 0004000000125500 directory if it doesn't exist (oot3d game id)
+  //Create the 0004000000125500 directory if it doesn't exist (mm3d game id)
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500"), FS_ATTRIBUTE_DIRECTORY);
   //Create the romfs directory if it doesn't exist (for LayeredFS)
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/romfs"), FS_ATTRIBUTE_DIRECTORY);
   //Create the actor directory if it doesn't exist
   FSUSER_CreateDirectory(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/romfs/actor"), FS_ATTRIBUTE_DIRECTORY);
 
-  romfs is used to get files from the romfs folder. This allows us to copy
-  from basecode and write the exheader without the user needing to worry about
-  placing them manually on their SD card.*/
-  //Result rc = romfsInit();
-  //if (rc) {
-  //  printf("\nromfsInit: %08lX\n", rc);
- // }
+  /*romfs is used to get files from the romfs folder.This allows us to copy
+  //from basecode and write the exheader without the user needing to worry about
+  //placing them manually on their SD card.*/
+  Result rc = romfsInit();
+  if (rc) {
+    printf("\nromfsInit: %08lX\n", rc);
+  }
 
   /*------------------------ -
   |       basecode.ips      |
   --------------------------*/
-/*
+
   // Delete code.ips if it exists
- /FSUSER_DeleteFile(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/code.ips"));
+  FSUSER_DeleteFile(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/code.ips"));
 
  // Open code.ips
   if (!R_SUCCEEDED(res = FSUSER_OpenFile(&code, sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/code.ips"), FS_OPEN_WRITE | FS_OPEN_CREATE, 0))) {
@@ -159,24 +159,24 @@ bool WriteAllPatches() {
     #endif
   }
 
-  -------------------------
+  /*------------------------ -
   |      rItemOverrides     |
   --------------------------*/
-/*
+  /*
   u32 patchOffset = V_TO_P(RITEMOVERRIDES_ADDR);
-  s32 patchSize = sizeof(ItemOverride) * overrides.size();
-  ItemOverride ovrPatchData[overrides.size()] = {};
+ // s32 patchSize = sizeof(ItemOverride) * overrides.size();
+ // ItemOverride ovrPatchData[overrides.size()] = {};
   //generate override data
   size_t i = 0;
   for (const auto& override : overrides) {
     ovrPatchData[i] = override;
     i++;
   }
-  if (!WritePatch(patchOffset, patchSize, (char*)ovrPatchData, code, bytesWritten, totalRW, buf)) {
-    return false;
-  }
-
-  -------------------------
+ // if (!WritePatch(patchOffset, patchSize, (char*)ovrPatchData, code, bytesWritten, totalRW, buf)) {
+ //   return false;
+ // }
+  */
+  /*------------------------ -
   |    rEntranceOverrides   |
   --------------------------*/
 /*
@@ -192,11 +192,11 @@ bool WriteAllPatches() {
   if (!WritePatch(patchOffset, patchSize, (char*)eOvrPatchData, code, bytesWritten, totalRW, buf)) {
     return false;
   }
-
-  -------------------------
+  */
+  /*-------------------------
   |     gSettingsContext    |
   --------------------------*/
-/*
+  /*
   patchOffset = V_TO_P(GSETTINGSCONTEXT_ADDR);
   patchSize = sizeof(SettingsContext);
   //get the settings context
@@ -204,11 +204,11 @@ bool WriteAllPatches() {
   if (!WritePatch(patchOffset, patchSize, (char*)(&ctx), code, bytesWritten, totalRW, buf)) {
     return false;
   }
-
-  -------------------------
+  */
+  /*------------------------ -
   |       gSpoilerData      |
   --------------------------*/
-/*
+  /*
   patchOffset = V_TO_P(GSPOILERDATA_ADDR);
   patchSize = sizeof(SpoilerData);
   //Get the spoiler data
@@ -216,8 +216,8 @@ bool WriteAllPatches() {
   if (!WritePatch(patchOffset, patchSize, (char*)(&spoilerData), code, bytesWritten, totalRW, buf)) {
     return false;
   }
-
-  -------------------------------
+  */
+  /*------------------------------ -
   |     rScrubRandomItemPrices    |
   |     rScrubTextIdTable         |
   --------------------------------*/
@@ -256,8 +256,8 @@ bool WriteAllPatches() {
       return false;
     }
   }
-
-  -------------------------------
+  */
+  /*------------------------------ -
   |     rShopsanityPrices         |
   --------------------------------*/
 /*
@@ -275,8 +275,8 @@ bool WriteAllPatches() {
       return false;
     }
   }
-
-  --------------------------------
+  */
+  /*--------------------------------
   |     rDungeonRewardOverrides    |
   ---------------------------------*/
 /*
@@ -286,11 +286,11 @@ bool WriteAllPatches() {
   if (!WritePatch(patchOffset, patchSize, (char*)(&Settings::rDungeonRewardOverrides), code, bytesWritten, totalRW, buf)) {
     return false;
   }
-
-  --------------------------------
+  */
+  /*--------------------------------
   |     rCustomMessageEntries      |
   ---------------------------------*/
-/*
+
   std::pair<const char*, u32> messageDataInfo = CustomMessages::RawMessageData();
   std::pair<const char*, u32> messageEntriesInfo = CustomMessages::RawMessageEntryData();
 
@@ -307,7 +307,7 @@ bool WriteAllPatches() {
   if (!WritePatch(messageEntriesOffset, messageEntriesSize, (char*)messageEntriesInfo.first, code, bytesWritten, totalRW, buf)) {
     return false;
   }
-
+  /*
   // Write ptrCustomMessageEntries to patch
   patchOffset = V_TO_P(PTRCUSTOMMESSAGEENTRIES_ADDR);
   patchSize = 4;
@@ -322,9 +322,9 @@ bool WriteAllPatches() {
   u32 numCustomMessageEntriesData = CustomMessages::NumMessages();
   if (!WritePatch(patchOffset, patchSize, (char*)(&numCustomMessageEntriesData), code, bytesWritten, totalRW, buf)) {
     return false;
-  }
+  }*/
 
-  --------------------------------
+  /*--------------------------------
   |         rBGMOverrides          |
   ---------------------------------*/
 /*
@@ -334,11 +334,11 @@ bool WriteAllPatches() {
     return false;
   }
 
-  
-  -------------------------
+  */
+  /*------------------------ -
   |           EOF           |
   --------------------------*/
-/*
+
   // Write EOF to code
   if (!R_SUCCEEDED(res = FSFILE_Write(code, &bytesWritten, totalRW, "EOF", 3, FS_WRITE_FLUSH | FS_WRITE_UPDATE_TIME))) {
     return false;
@@ -346,10 +346,10 @@ bool WriteAllPatches() {
 
   FSFILE_Close(code);
 
-  -------------------------
+ /*------------------------ -
   |       exheader.bin      |
   --------------------------*/
-/*
+
   // Get exheader for proper playOption
   const char * filePath;
   if (Settings::PlayOption == PATCH_CONSOLE) {
@@ -360,10 +360,10 @@ bool WriteAllPatches() {
 
   CopyFile(sdmcArchive, "/luma/titles/0004000000125500/exheader.bin", filePath);
 
-  -------------------------
+  /*------------------------ -
   |       custom assets      |
   --------------------------*/
-/*
+
   Cosmetics::Color_RGB childTunicColor  = Cosmetics::HexStrToColorRGB(Settings::finalChildTunicColor);
   
 
@@ -406,4 +406,3 @@ bool WriteAllPatches() {
 
   return true;
 }
-*/

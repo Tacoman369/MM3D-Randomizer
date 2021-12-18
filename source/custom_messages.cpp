@@ -179,13 +179,14 @@ constexpr std::array DungeonColors = {
                 UNSKIPPABLE()+ITEM_OBTAINED(ITEM_DUNGEON_MAP)+INSTANT_TEXT_ON()+"¡Has obtenido el "+COLOR(DungeonColors[dungeon])+"mapa "+SpanishDungeonArticles[dungeon]+NEWLINE()+SpanishDungeonNames[dungeon]+COLOR(QM_WHITE)+"!"+INSTANT_TEXT_OFF()+MESSAGE_END());
         }
         //Small Keys
-        for (u32 smallKey = 0; smallKey <= (DUNGEON_WOODFALL - DUNGEON_STONE_TOWER); smallKey++) {
+        for (u32 smallKey = 0; smallKey <= (DUNGEON_STONE_TOWER - DUNGEON_WOODFALL); smallKey++) {
             u32 dungeon = DUNGEON_WOODFALL + smallKey;
             CreateMessage(0x9EE + smallKey, 0, 2, 3,
-                UNSKIPPABLE()+ITEM_OBTAINED(ITEM_KEY_SMALL)+INSTANT_TEXT_ON()+"You got a "+COLOR(DungeonColors[dungeon])+EnglishDungeonNames[dungeon]+NEWLINE()+"Small Key"+COLOR(QM_WHITE)+"!"+INSTANT_TEXT_OFF()+MESSAGE_END(),
-                UNSKIPPABLE()+ITEM_OBTAINED(ITEM_KEY_SMALL)+INSTANT_TEXT_ON()+"Vous trouvez une "+COLOR(DungeonColors[dungeon])+"petite clé"+NEWLINE()+FrenchDungeonArticles[dungeon]+FrenchDungeonNames[dungeon]+COLOR(QM_WHITE)+"!"+INSTANT_TEXT_OFF()+MESSAGE_END(),
-                UNSKIPPABLE()+ITEM_OBTAINED(ITEM_KEY_SMALL)+INSTANT_TEXT_ON()+"¡Has obtenido una "+COLOR(DungeonColors[dungeon])+"llave pequeña "+SpanishDungeonArticles[dungeon]+NEWLINE()+SpanishDungeonNames[dungeon]+COLOR(QM_WHITE)+"!"+INSTANT_TEXT_OFF()+MESSAGE_END());
+                UNSKIPPABLE() + ITEM_OBTAINED(ITEM_KEY_SMALL) + INSTANT_TEXT_ON() + "You got a " + COLOR(DungeonColors[dungeon]) + EnglishDungeonNames[dungeon] + NEWLINE() + "Small Key" + COLOR(QM_WHITE) + "!" + INSTANT_TEXT_OFF() + MESSAGE_END(),
+                UNSKIPPABLE() + ITEM_OBTAINED(ITEM_KEY_SMALL) + INSTANT_TEXT_ON() + "Vous trouvez une " + COLOR(DungeonColors[dungeon]) + "petite clé" + NEWLINE() + FrenchDungeonArticles[dungeon] + FrenchDungeonNames[dungeon] + COLOR(QM_WHITE) + "!" + INSTANT_TEXT_OFF() + MESSAGE_END(),
+                UNSKIPPABLE() + ITEM_OBTAINED(ITEM_KEY_SMALL) + INSTANT_TEXT_ON() + "¡Has obtenido una " + COLOR(DungeonColors[dungeon]) + "llave pequeña " + SpanishDungeonArticles[dungeon] + NEWLINE() + SpanishDungeonNames[dungeon] + COLOR(QM_WHITE) + "!" + INSTANT_TEXT_OFF() + MESSAGE_END());
         }
+
         //Tycoon's Wallet
         CreateMessage(0x09F7, 0, 2, 3,
                 UNSKIPPABLE()+ITEM_OBTAINED(ITEM_WALLET_GIANT)+INSTANT_TEXT_ON()+"You got a "+COLOR(QM_RED)+"Tycoon's Wallet"+COLOR(QM_WHITE)+"!"+INSTANT_TEXT_OFF()+NEWLINE()+"It's gigantic! Now you can carry"+NEWLINE()+"up to "+COLOR(QM_YELLOW)+"999 "+COLOR(QM_WHITE)+COLOR(QM_YELLOW)+"Rupees"+COLOR(QM_WHITE)+"!"+MESSAGE_END(),
@@ -204,10 +205,10 @@ constexpr std::array DungeonColors = {
                 INSTANT_TEXT_ON()+"Je te vends un truc super pour "+COLOR(QM_RED)+std::to_string(price)+" Rubis"+COLOR(QM_WHITE)+"!"+NEWLINE()+NEWLINE()+TWO_WAY_CHOICE()+COLOR(QM_GREEN)+"D'accord"+NEWLINE()+"Hors de question"+COLOR(QM_WHITE)+INSTANT_TEXT_OFF()+MESSAGE_END(),
                 INSTANT_TEXT_ON()+"¡Te puedo vender algo bueno por "+COLOR(QM_RED)+std::to_string(price)+" rupias"+COLOR(QM_WHITE)+"!"+NEWLINE()+NEWLINE()+TWO_WAY_CHOICE()+COLOR(QM_GREEN)+"Vale"+NEWLINE()+"Ni hablar"+COLOR(QM_WHITE)+INSTANT_TEXT_OFF()+MESSAGE_END());
         }
-       /*
+       
         //Shopsanity items
         //64 textboxes, 2 for each of 32 potential shopsanity items
-        for(u32 shopitems = 0; shopitems < NonShopItems.size(); shopitems++) {
+        /*for (u32 shopitems = 0; shopitems < NonShopItems.size(); shopitems++) {
             Text name = NonShopItems[shopitems].Name;
             std::string price = std::to_string(NonShopItems[shopitems].Price);
             //Prevent names from being too long and overflowing textbox
@@ -235,7 +236,7 @@ constexpr std::array DungeonColors = {
                 INSTANT_TEXT_ON()+name.GetFrench()+": "+price+" rubis"+INSTANT_TEXT_OFF()+NEWLINE()+NEWLINE()+TWO_WAY_CHOICE()+COLOR(QM_GREEN)+"Acheter"+NEWLINE()+"Ne pas acheter"+COLOR(QM_WHITE)+INSTANT_TEXT_OFF()+MESSAGE_END(),
                 INSTANT_TEXT_ON()+name.GetSpanish()+": "+price+" rupias"+INSTANT_TEXT_OFF()+NEWLINE()+NEWLINE()+TWO_WAY_CHOICE()+COLOR(QM_GREEN)+"Comprar"+NEWLINE()+"No comprar"+COLOR(QM_WHITE)+INSTANT_TEXT_OFF()+MESSAGE_END());
         }
-        */
+        
         //easter egg
         CreateMessage(0x96F, 0, 2, 2,
             UNSKIPPABLE()+INSTANT_TEXT_ON()+CENTER_TEXT()+"Oh hey, you watched all the credits!"+NEWLINE()+CENTER_TEXT()+"Here's a prize for your patience."+NEWLINE()+CENTER_TEXT()+"Unlocking MQ and saving..."+NEWLINE()+NEWLINE()+CENTER_TEXT()+COLOR(QM_RED)+"Do not remove the Game Card"+NEWLINE()+CENTER_TEXT()+"or turn the power off."+INSTANT_TEXT_OFF()+MESSAGE_END(),
@@ -246,7 +247,7 @@ constexpr std::array DungeonColors = {
             UNSKIPPABLE()+INSTANT_TEXT_ON()+CENTER_TEXT()+"Vous pouvez désormais jouer à"+NEWLINE()+CENTER_TEXT()+"The Legend of Zelda Ocarina of Time 3D"+NEWLINE()+CENTER_TEXT()+"Master Quest!"+INSTANT_TEXT_OFF()+MESSAGE_END(),
             UNSKIPPABLE()+INSTANT_TEXT_ON()+CENTER_TEXT()+"¡Ya puedes jugar The Legend of Zelda"+NEWLINE()+CENTER_TEXT()+"Ocarina of Time 3D Master Quest!"+INSTANT_TEXT_OFF()+MESSAGE_END());
 
-       
+       */
     }
 
     Text AddColorsAndFormat(Text text, const std::vector<u8>& colors /*= {}*/) {

@@ -252,7 +252,7 @@ class Menu {
 
 namespace Settings {
   void UpdateSettings();
-  SettingsContext FillContext();
+  //SettingsContext FillContext();
   void InitSettings();
   void SetDefaultSettings();
   void RandomizeAllSettings(const bool selectOptions = false);
@@ -286,24 +286,24 @@ namespace Settings {
 
   extern Option RandomizeDungeon;
   extern Option MapsAndCompasses;
-//  extern Option Keysanity;
-//  extern Option BossKeysanity;
-/*
+  extern Option Keysanity;
+  extern Option BossKeysanity;
+
   extern Option SkipEponaRace;
   extern Option SkipMinigamePhases;
   extern Option FreeScarecrow;
   extern Option QuickText;
   extern Option SkipSongReplays;
 
-  extern Option GossipStoneHints; */
+  extern Option GossipStoneHints; 
   extern Option ClearerHints;
- /* extern Option HintDistribution;
-  extern Option DamageMultiplier;
+  extern Option HintDistribution;
+ /* extern Option DamageMultiplier;
   extern Option ChestAnimations;
   extern Option ChestSize;
   */
   extern Option GenerateSpoilerLog;
-  //extern Option IngameSpoilers;
+  extern Option IngameSpoilers;
   extern Option MenuOpeningButton;
   extern Option RandomTrapDmg;
 
@@ -369,88 +369,7 @@ namespace Settings {
   //Trick Settings
   extern Option ToggleAllTricks;
   extern Option LogicGrottosWithoutAgony;
-  extern Option LogicVisibleCollision;
-  extern Option LogicFewerTunicRequirements;
-  extern Option LogicLostWoodsGSBean;
-  extern Option LogicLabDiving;
-  extern Option LogicLabWallGS;
-  extern Option LogicGraveyardPoH;
-  extern Option LogicChildDampeRacePoH;
-  extern Option LogicGerudoKitchen;
-  extern Option LogicLensWasteland;
-  extern Option LogicReverseWasteland;
-  extern Option LogicColossusGS;
-  extern Option LogicOutsideGanonsGS;
-  extern Option LogicManOnRoof;
-  extern Option LogicDMTBombable;
-  extern Option LogicDMTSoilGS;
-  extern Option LogicLinkGoronDins;
-  extern Option LogicGoronCityLeftMost;
-  extern Option LogicGoronCityPot;
-  extern Option LogicGoronCityPotWithStrength;
-  extern Option LogicChildRollingWithStrength;
-  extern Option LogicCraterUpperToLower;
-  extern Option LogicCraterBeanPoHWithHovers;
-  extern Option LogicBiggoronBolero;
-  extern Option LogicZoraRiverLower;
-  extern Option LogicZoraRiverUpper;
-  extern Option LogicDekuB1WebsWithBow;
-  extern Option LogicDekuB1Skip;
-  extern Option LogicDekuBasementGS;
-  extern Option LogicDCStaircase;
-  extern Option LogicDCJump;
-  extern Option LogicDCSlingshotSkip;
-  extern Option LogicDCScarecrowGS;
-  extern Option LogicJabuBossGSAdult;
-  extern Option LogicJabuScrubJumpDive;
-  extern Option LogicForestOutsideBackdoor;
-  extern Option LogicForestDoorFrame;
-  extern Option LogicForestOutdoorEastGS;
-  extern Option LogicFireBossDoorJump;
-  extern Option LogicFireStrength;
-  extern Option LogicFireScarecrow;
-  extern Option LogicFireFlameMaze;
-  extern Option LogicFireSongOfTime;
-  extern Option LogicWaterTempleTorchLongshot;
-  extern Option LogicWaterTempleUpperBoost;
-  extern Option LogicWaterCentralBow;
-  extern Option LogicWaterCentralGSFW;
-  extern Option LogicWaterCrackedWallNothing;
-  extern Option LogicWaterCrackedWallHovers;
-  extern Option LogicWaterBossKeyRegion;
-  extern Option LogicWaterBKJumpDive;
-  extern Option LogicWaterNorthBasementLedgeJump;
-  extern Option LogicWaterDragonJumpDive;
-  extern Option LogicWaterDragonAdult;
-  extern Option LogicWaterRiverGS;
-  extern Option LogicWaterFallingPlatformGS;
-  extern Option LogicSpiritLowerAdultSwitch;
-  extern Option LogicSpiritChildBombchu;
-  extern Option LogicSpiritWall;
-  extern Option LogicSpiritLobbyGS;
-  extern Option LogicSpiritMapChest;
-  extern Option LogicSpiritSunChest;
-  extern Option LogicShadowFireArrowEntry;
-  extern Option LogicShadowUmbrella;
-  extern Option LogicShadowFreestandingKey;
-  extern Option LogicShadowStatue;
-  extern Option LogicChildDeadhand;
-  extern Option LogicGtgWithoutHookshot;
-  extern Option LogicGtgFakeWall;
-  extern Option LogicLensSpirit;
-  extern Option LogicLensShadow;
-  extern Option LogicLensShadowBack;
-  extern Option LogicLensBotw;
-  extern Option LogicLensGtg;
-  extern Option LogicLensCastle;
-  extern Option LogicLensJabuMQ;
-  extern Option LogicLensSpiritMQ;
-  extern Option LogicLensShadowMQ;
-  extern Option LogicLensShadowMQBack;
-  extern Option LogicLensBotwMQ;
-  extern Option LogicLensGtgMQ;
-  extern Option LogicLensCastleMQ;
-  extern Option LogicSpiritTrialHookshot;
+ 
 */
   //Glitch Settings
   extern Option GlitchISG;

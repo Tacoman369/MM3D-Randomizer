@@ -12,13 +12,14 @@
 #include <3ds.h>
 
 #include "../code/include/z3D/z3D.h"
-#include "../code/src/item_override.h"
+//#include "../code/src/item_override.h"
 #include "../code/src/spoiler_data.h"
 #include "category.hpp"
 #include "item_list.hpp"
 #include "hint_list.hpp"
 #include "settings.hpp"
 #include "keys.hpp"
+#include "fill.hpp"
 
 class Entrance;
 
@@ -36,21 +37,86 @@ enum class ItemLocationType {
     OtherHint
 };
 
+class SpoilerCollectionCheck {
+public:
+    SpoilerCollectionCheckType type = SpoilerCollectionCheckType::SPOILER_CHK_NONE;
+    u8 scene = 0;
+    u8 flag = 0;
+
+    SpoilerCollectionCheck() {}
+    SpoilerCollectionCheck(SpoilerCollectionCheckType type_, u8 scene_, u8 flag_) : type(type_), scene(scene_), flag(flag_) {}
+
+    static auto None() {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_NONE, 0x00, 0x00);
+    }
+
+    static auto AlwaysCollected() {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_ALWAYS_COLLECTED, 0x00, 0x00);
+    }
+
+    static auto ItemGetInf(u8 slot) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_ITEM_GET_INF, 0x00, slot);
+    }
+
+    static auto EventChkInf(u8 flag) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_EVENT_CHK_INF, 0xFF, flag);
+    }
+
+    static auto InfTable(u8 offset, u8 bit) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_INF_TABLE, offset, bit);
+    }
+
+    static auto Collectable(u8 scene, u8 flag) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_COLLECTABLE, scene, flag);
+    }
+
+    static auto Chest(u8 scene, u8 flag) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_CHEST, scene, flag);
+    }
+
+    static auto Cow(u8 scene, u8 flag) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_COW, scene, flag);
+    }
+
+    static auto Fishing(u8 bit) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_MINIGAME, 0x00, bit);
+    }
+
+    static auto Scrub(u8 scene, u8 bit) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_SCRUB, scene, bit);
+    }
+
+    static auto ShopItem(u8 scene, u8 itemSlot) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_SHOP_ITEM, scene, itemSlot);
+    }
+
+    static auto MagicBeans(u8 scene, u8 flag) {
+        return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_MAGIC_BEANS, scene, flag);
+    }
+};
 class ItemLocation {
 public:
     ItemLocation() = default;
     ItemLocation(ItemLocationType type_, std::string name_, HintKey hintKey_, ItemKey vanillaItem_, std::vector<Category> categories_, u16 price_ = 0)
         : type(type_), name(std::move(name_)), hintKey(hintKey_), vanillaItem(vanillaItem_), categories(std::move(categories_)), price(price_) {}
-
-    ItemOverride_Key Key() const {
-        ItemOverride_Key key;
-        key.all = 0;
+    /*
+   // ItemOverride_Key Key() const {
+   //     ItemOverride_Key key;
+   //     key.all = 0;
 
         //key.scene = scene;
-        key.type = static_cast<u8>(type); //TODO make sure these match up
+ //       key.type = static_cast<u8>(type); //TODO make sure these match up
         //key.flag = flag;
         return key;
+    }*/
+    SpoilerCollectionCheck GetCollectionCheck() const {
+        return collectionCheck;
     }
+
+    SpoilerCollectionCheckGroup GetCollectionCheckGroup() const {
+        return collectionCheckGroup;
+    }
+    
     /*
     u8 GetScene() const {
       return scene;
@@ -112,14 +178,14 @@ public:
         placedItem = delayedItem;
         delayedItem = NONE;
     }
-    /*
+    
     u16 GetPrice() const {
         //if (ItemTable(placedItem).GetItemType() == ITEMTYPE_SHOP) {
         return ItemTable(placedItem).GetPrice();
         //}
         //return price;
     }
-
+    /*
     void SetPrice(u16 price_) {
         //don't override price if the price was set for shopsanity
         if (hasShopsanityPrice) {
@@ -149,15 +215,9 @@ public:
     bool IsDungeon() const  {return true;
         //return LocationCategory = Category::cWoodfallTemple;
             
-            /*(type != ItemLocationType::OGSToken && LocationCategory = Category::cWoodfallTemple ||
-            type != ItemLocationType::OGSToken && LocationCategory = Category::cSnowheadTemple ||
-            type != ItemLocationType::OGSToken && LocationCategory = Category::cGreatBayTemple ||
-            type != ItemLocationType::OGSToken && LocationCategory = Category::cStoneTowerTemple ||
-            type != ItemLocationType::SGSToken && LocationCategory = Category::cWoodfallTemple ||
-            type != ItemLocationType::SGSToken && LocationCategory = Category::cSnowheadTemple ||
-            type != ItemLocationType::SGSToken && LocationCategory = Category::cGreatBayTemple ||
-            type != ItemLocationType::SGSToken && LocationCategory = Category::cStoneTowerTemple ||
-            );*/
+            (type != ItemLocationType::OGSToken ||
+            type != ItemLocationType::SGSToken
+            );
     }
 
     bool IsOverworld() const {
@@ -165,7 +225,8 @@ public:
     }
 
     bool IsShop() const {
-        return (scene >= 0x2C && scene <= 0x32);
+        return IsCategory(Category::cShop);
+        //return (scene >= 0x2C && scene <= 0x32);
     }
 
     Option* GetExcludedOption() {
@@ -231,37 +292,38 @@ public:
         Settings::excludeLocationsOptions.push_back(&excludedOption);
     }
 
-    static auto Base(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::Base, std::move(name), hintKey, vanillaItem, std::move(categories),0 };
+    static auto Base(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) { //, SpoilerCollectionCheck collectionCheck = SpoilerCollectionCheck(), SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/
+    return ItemLocation{ ItemLocationType::Base, std::move(name), hintKey, vanillaItem, std::move(categories), 0 }; /*, collectionCheck, collectionCheckGroup*/ 
     }
 
-    static auto Chest(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::Chest, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
+    static auto Chest(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) { //, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/ 
+    return ItemLocation{ ItemLocationType::Chest, std::move(name), hintKey, vanillaItem, std::move(categories), 0 }; /*, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_CHEST, flag), collectionCheckGroup*/ 
+    }
+  
+    static auto Collectable(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) { //, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/ 
+    return ItemLocation{ ItemLocationType::Collectable, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_COLLECTABLE, flag), collectionCheckGroup*/ 
+    }
+  
+    static auto SGSToken(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {//, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP */ 
+    return ItemLocation{ ItemLocationType::SGSToken, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_SWAMP_SKULLTULA, flag), collectionCheckGroup*/ 
     }
 
-    static auto Collectable(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::Collectable, std::move(name), hintKey, vanillaItem, std::move(categories),0 };
-    }
-
-    static auto OGSToken(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::OGSToken, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
-    }
-    static auto SGSToken(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::SGSToken, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
+    static auto OGSToken(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {//, SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP */ 
+    return ItemLocation{ ItemLocationType::OGSToken, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_OCEAN_SKULLTULA, flag), collectionCheckGroup */ 
     }
     static auto StrayFairy(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
         return ItemLocation{ ItemLocationType::StrayFairy, std::move(name), hintKey, vanillaItem, std::move(categories),0 };
     }
-    static auto GrottoScrub(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::GrottoScrub, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
+    static auto GrottoScrub(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {/*, SpoilerCollectionCheck collectionCheck = SpoilerCollectionCheck(), SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/
+    return ItemLocation{ ItemLocationType::GrottoScrub, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, collectionCheck, collectionCheckGroup*/
     }
 
-    static auto Delayed(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::Delayed, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
+    static auto Delayed(std::string && name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category> && categories) {/*, SpoilerCollectionCheck collectionCheck = SpoilerCollectionCheck(), SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/
+    return ItemLocation{ ItemLocationType::Delayed, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, collectionCheck, collectionCheckGroup*/
     }
 
-    static auto Reward(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {
-        return ItemLocation{ ItemLocationType::TempleReward, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };
+    static auto Reward(std::string&& name, const HintKey hintKey, const ItemKey vanillaItem, std::vector<Category>&& categories) {/*, SpoilerCollectionCheck collectionCheck = SpoilerCollectionCheck(), SpoilerCollectionCheckGroup collectionCheckGroup = SpoilerCollectionCheckGroup::GROUP_NO_GROUP*/
+    return ItemLocation{ ItemLocationType::TempleReward, std::move(name), hintKey, vanillaItem, std::move(categories), 0 };/*, collectionCheck, collectionCheckGroup*/
     }
 
     static auto OtherHint(std::string&& name, std::vector<Category>&& categories) {
@@ -284,9 +346,9 @@ public:
     }
 
 private:
-    u8 scene;
+    //u8 scene;
     ItemLocationType type;
-    u8 flag;
+    //u8 flag;
     bool checked = false;
 
     std::string name;
@@ -299,17 +361,19 @@ private:
     ItemKey delayedItem = NONE;
     Option excludedOption = Option::Bool(name, { "Include", "Exclude" }, { "", "" });
     u16 price = 0;
+    SpoilerCollectionCheck collectionCheck;
+    SpoilerCollectionCheckGroup collectionCheckGroup;
     bool isHintable = false;
     AreaKey parentRegion = NONE;
     bool hasShopsanityPrice = false;
 };
-
+/*
 class ItemOverride_Compare {
 public:
     bool operator()(ItemOverride lhs, ItemOverride rhs) const {
         return lhs.key.all < rhs.key.all;
     }
-};
+};*/
 
 void LocationTable_Init();
 
@@ -317,23 +381,23 @@ ItemLocation* Location(LocationKey locKey);
 
 //extern std::vector<std::vector<LocationKey>> ShopLocationLists;
 
-//extern std::vector<LocationKey> gossipStoneLocations;
+extern std::vector<LocationKey> gossipStoneLocations;
 
-//extern std::vector<LocationKey> dungeonRewardLocations;
-//extern std::vector<LocationKey> overworldLocations;
-//extern std::vector<LocationKey> allLocations;
-//extern std::vector<LocationKey> everyPossibleLocation;
+extern std::vector<LocationKey> dungeonRewardLocations;
+extern std::vector<LocationKey> overworldLocations;
+extern std::vector<LocationKey> allLocations;
+extern std::vector<LocationKey> everyPossibleLocation;
 
 //set of overrides to write to the patch
 //extern std::set<ItemOverride, ItemOverride_Compare> overrides;
 
-//extern std::vector<std::vector<LocationKey>> playthroughLocations;
-//extern std::vector<LocationKey> wothLocations;
-//extern bool playthroughBeatable;
-//extern bool allLocationsReachable;
-//extern bool showItemProgress;
+extern std::vector<std::vector<LocationKey>> playthroughLocations;
+extern std::vector<LocationKey> wothLocations;
+extern bool playthroughBeatable;
+extern bool allLocationsReachable;
+extern bool showItemProgress;
 
-//extern u16 itemsPlaced;
+extern u16 itemsPlaced;
 
 void GenerateLocationPool();
 void PlaceItemInLocation(LocationKey loc, ItemKey item, bool applyEffectImmediately = false);
@@ -343,74 +407,3 @@ void ItemReset();
 void HintReset();
 void AddExcludedOptions();
 void CreateItemOverrides();
-/*
-class SpoilerCollectionCheck {
-public:
-  SpoilerCollectionCheckType type = SpoilerCollectionCheckType::SPOILER_CHK_NONE;
-  u8 scene = 0;
-  u8 flag = 0;
-
-  SpoilerCollectionCheck() {}
-  SpoilerCollectionCheck(SpoilerCollectionCheckType type_, u8 scene_, u8 flag_) : type(type_), scene(scene_), flag(flag_) {}
-
-  static auto None() {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_NONE, 0x00, 0x00);
-  }
-
-  static auto AlwaysCollected() {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_ALWAYS_COLLECTED, 0x00, 0x00);
-  }
-
-  static auto ItemGetInf(u8 slot) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_ITEM_GET_INF, 0x00, slot);
-  }
-
-  static auto EventChkInf(u8 flag) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_EVENT_CHK_INF, 0xFF, flag);
-  }
-
-  static auto InfTable(u8 offset, u8 bit) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_INF_TABLE, offset, bit);
-  }
-
-  static auto Collectable(u8 scene, u8 flag) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_COLLECTABLE, scene, flag);
-  }
-
-  static auto Chest(u8 scene, u8 flag) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_CHEST, scene, flag);
-  }
-
-  static auto Cow(u8 scene, u8 flag) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_COW, scene, flag);
-  }
-
-  static auto Fishing(u8 bit) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_MINIGAME, 0x00, bit);
-  }
-
-  static auto Scrub(u8 scene, u8 bit) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_SCRUB, scene, bit);
-  }
-
-  static auto GerudoToken() {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_GERUDO_TOKEN, 0x00, 0x00);
-  }
-
-  static auto ShopItem(u8 scene, u8 itemSlot) {
-    return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_SHOP_ITEM, scene, itemSlot);
-  }
-
-  static auto MagicBeans(u8 scene, u8 flag) {
-      return SpoilerCollectionCheck(SpoilerCollectionCheckType::SPOILER_CHK_MAGIC_BEANS, scene, flag);
-  }
-};
-
-    SpoilerCollectionCheck GetCollectionCheck() const {
-      return collectionCheck;
-    }
-
-    SpoilerCollectionCheckGroup GetCollectionCheckGroup() const {
-      return collectionCheckGroup;
-    }
-    */

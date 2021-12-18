@@ -21,6 +21,39 @@ namespace Logic {
 	extern bool Hookshot;
 	extern bool Pictobox;
 	extern bool PowderKeg;
+	extern bool Seahorse;
+	extern bool DekuPrincess;
+	extern bool BigPoe;
+	extern bool ZoraEgg;
+	extern bool Mushroom;
+	extern bool SpringWater;
+	extern bool HotSpringWater;
+	extern bool SpinAttack;
+	extern bool Epona;
+	extern bool WitchBottle;
+	extern bool AlienBottle;
+	extern bool GoronRaceBottle;
+	extern bool BeaverRaceBottle;
+	extern bool DampeBottle;
+	extern bool ChateauBottle;
+	extern bool BombersNotebook;
+	extern bool MirrorShield;
+	extern bool HerosShield;
+	extern bool RazorSword;
+	extern bool GildedSword;
+	extern bool GretFairysMask;
+	extern bool BombBag20;
+	extern bool TownBombBag;
+	extern bool MountainBombBag;
+	extern bool TownArcheryQuiver;
+	extern bool SwampArcheryQuiver;
+	extern bool Townwallet200;
+	extern bool OceanWallet500;
+	extern bool MagicPower;
+	extern bool ExtendedMagicPower;
+	extern bool GreatFairySword;
+	extern bool StoneTowerMagicBean;
+	extern bool SwampScrubMagicBean;
 	extern bool Epona;
 	//mask logic
 	extern bool DekuMask;
@@ -47,6 +80,11 @@ namespace Logic {
 	extern bool GiantsMask;
 	extern bool FierceDietyMask;
 	extern bool MaskOfTruth;
+	extern bool OneMask;
+	extern bool TwoMasks;
+	extern bool ThreeMasks;
+	extern bool FourMasks;
+	extern bool AllMasks;
 	//trade items logic
 	extern bool LandTitle;
 	extern bool SwampTitle;
@@ -68,13 +106,16 @@ namespace Logic {
 	extern bool LetterMamaAccess;
 	extern bool MoonsTearAccess;
 	//Songs
+	extern bool ScarecrowSong;
 	extern bool SongOfStorms;
+	extern bool SongOfHealing;
 	extern bool SonataOfAwakening;
 	extern bool GoronsLullaby;
 	extern bool NewWaveBossaNova;
 	extern bool ElegyOfEmptiness;
 	extern bool OathToOrder;
 	extern bool EponasSong;
+	extern bool SongOfSoaring;
 	//Remains
 	extern bool OdolwaRemains;
 	extern bool GohtRemains;
@@ -126,8 +167,8 @@ namespace Logic {
 	//Helpers, Events, Locations
 	extern bool MagicMeter;
 	extern bool BombBag;
+	extern bool Explosives;
 	extern bool Scarecrow;
-	extern bool ScarecrowSong;
 	extern bool Bombs;
 	extern bool Nuts;
 	extern bool Sticks;
@@ -151,6 +192,73 @@ namespace Logic {
 	extern bool IsItem;
 	extern bool CanShootBubble;
 	extern bool CanUseProjectile;
+	extern bool Arrows;
+	extern bool AnyBottle;
+	extern bool AnySword;
+	extern bool AnyBombBag;
+	extern bool AnyMagicBean;
+	extern bool WaterForBeans;
+	extern bool TwoBottles;
+	extern bool AnyWallet;
+	extern bool LimitlessBeans;
+	extern bool AnyShield;
+	extern bool AnyHealingPotion;
+	extern bool AnyRedPotion;
+	extern bool AnyBluePotion;
+	extern bool UseFireArrow;
+	extern bool UseIceArrow;
+	extern bool UseLightArrow;
+	extern bool AnyBSword;
+	//Locational Helpers
+	extern bool PoisonSwampAccess;
+	extern bool WoodfallTempleAccess;
+	extern bool WoodfallClear;
+	extern bool NorthAccess;
+	extern bool SnowheadTempleAccess;
+	extern bool SnowheadClear;
+	extern bool EponaAccess;
+	extern bool WestAccess;
+	extern bool PiratesFortressAccess;
+	extern bool GreatBayTempleAccess;
+	extern bool GreatBayClear;
+	extern bool EastAccess;
+	extern bool IkanaCanyonAccess;
+	extern bool StoneTowerTempleAcccess;
+	extern bool InvertedStoneTowerTempleAccess;
+	extern bool StoneTowerClear;
+	extern bool MoonAccess;
+	extern bool OneWoodfallKey;
+	extern bool OneSnowheadKey;
+	extern bool TwoSnowheadKeys;
+	extern bool OneGreatBayKey;
+	extern bool OneStoneTowerKey;
+	extern bool TwoStoneTowerKeys;
+	extern bool ThreeStoneTowerKeys;
+	extern bool SwampSpiderhouseTreeRoom;
+	extern bool OceanSkulltulas;
+	extern bool IkanaGraveyardAccess;
+	extern bool FightTwinmold;
+	extern bool PinnacleRockAccess;
+	extern bool ExitOceanSpiderHouse;
+	extern bool NightInnAccess;
+	extern bool EnterSnowheadTemple;
+	extern bool GBTReverseWaterDirection;
+	extern bool Fighting;
+	extern bool CrossPoisonWater;
+	extern bool AccessToAllOceanSpiders;
+	extern bool AccessToAllSwampSpiders;
+	extern bool ClockTownStrayFairy;
+	extern bool AllWoodfallStrays;
+	extern bool AllSnowheadStrays;
+	extern bool AllGreatBayStrays;
+		extern bool AllStoneTowerStrays;
+		extern bool AnyPaper;
+
+	//Tricks
+		extern bool DekuStickFighting;
+	extern bool PoisonWaterAsZora;
+	extern bool WFT2ndFloorSkip;
+	extern bool TakeDamage;
 
 	//placement tracking
 	extern u8 AddedProgressiveBombBags;
@@ -200,5 +308,5 @@ namespace Logic {
 	bool HasProjectile(CanUseItem itemName);
 	bool SmallKeys(u8 dungeonKeyCount, u8 requiredAmount);
 	bool EventsUpdated();
-	bool LogicReset();
+	void LogicReset();
 }

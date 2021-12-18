@@ -90,7 +90,7 @@ bool SavePreset(std::string_view presetName, OptionCategory category) {
   // Create the root node
   XMLElement* rootNode = preset.NewElement("settings");
   preset.InsertEndChild(rootNode);
-  /*
+  
   for (Menu* menu : Settings::GetAllMenus()) {
     if (menu->mode != OPTION_SUB_MENU) {
       continue;
@@ -104,7 +104,7 @@ bool SavePreset(std::string_view presetName, OptionCategory category) {
       newSetting->SetAttribute("name", RemoveLineBreaks(setting->GetName()).c_str());
       newSetting->SetText(setting->GetSelectedOptionText().c_str());
     }
-  }*/
+  }
 
   XMLError e = preset.SaveFile(PresetPath(presetName, category).c_str());
   return e == XML_SUCCESS;
@@ -126,8 +126,8 @@ bool LoadPreset(std::string_view presetName, OptionCategory category) {
       return false;
   }
 
-  //XMLElement* curNode = rootNode->FirstChildElement();
-  /*
+  XMLElement* curNode = rootNode->FirstChildElement();
+  
   for (Menu* menu : Settings::GetAllMenus()) {
     if (menu->mode != OPTION_SUB_MENU) {
       continue;
@@ -164,7 +164,7 @@ bool LoadPreset(std::string_view presetName, OptionCategory category) {
         curNode = rootNode->FirstChildElement();
       }
     }
-  }*/
+  }
   return true;
 }
 

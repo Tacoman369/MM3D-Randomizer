@@ -66,7 +66,7 @@ s32 Settings_ApplyDamageMultiplier(GlobalContext* globalCtx, s32 changeHealth) {
 }
 //With the No Health Refill option on, full health refills from health upgrades and Bombchu Bowling are turned off, and fairies restore 3 hearts
 //Otherwise, they grant a full heal, and the default effect applies (full heal from bottle, 8 hearts on contact)
-u32 Settings_SetFullHealthRestore(u8 setAmount) {
+/*u32 Settings_SetFullHealthRestore(u8 setAmount) {
     if((gSettingsContext.heartDropRefill == HEARTDROPREFILL_NOREFILL) || (gSettingsContext.heartDropRefill == HEARTDROPREFILL_NODROPREFILL)){
         return setAmount;
     } else {
@@ -88,12 +88,12 @@ u32 FairyUseHealAmount(void) {
 typedef void (*Health_ChangeBy_proc)(GlobalContext* arg1, u32 arg2);
 #define Health_ChangeBy_addr 0x352dbc
 #define Health_ChangeBy ((Health_ChangeBy_proc)Health_ChangeBy_addr)
-void FairyPickupHealAmount(void) { /*
+void FairyPickupHealAmount(void) { 
     if(gSettingsContext.heartDropRefill == HEARTDROPREFILL_NOREFILL || gSettingsContext.heartDropRefill == HEARTDROPREFILL_NODROPREFILL){
         Health_ChangeBy(gGlobalContext, 0x30);
     } else {
         Health_ChangeBy(gGlobalContext, 0x80);
-    }*/
+    }
 }
 
 u32 Settings_GetQuickTextOption() {
@@ -105,13 +105,14 @@ u32 Settings_GetSongReplaysOption() {
 }
 
 u32 Settings_IsTurboText() {
-    //return (gSettingsContext.quickText >= QUICKTEXT_TURBO && rInputCtx.cur.b);
+    return (gSettingsContext.quickText >= QUICKTEXT_TURBO && rInputCtx.cur.b);
+    
 }
 
 void Settings_SkipSongReplays() {
     // msgModes 18 to 23 are used to manage the song replays. Skipping to mode 23 ends the replay.
     // msgMode 18 starts the playback music. It can't be skipped for scarecrow's song (song "12") because it spawns Pierre.
-    /*if ((gSettingsContext.skipSongReplays == SONGREPLAYS_SKIP_NO_SFX && gGlobalContext->msgMode == 18 && gGlobalContext->unk_2A91[0xEB] != 12) ||
+    if ((gSettingsContext.skipSongReplays == SONGREPLAYS_SKIP_NO_SFX && gGlobalContext->msgMode == 18 && gGlobalContext->unk_2A91[0xEB] != 12) ||
         (gSettingsContext.skipSongReplays != SONGREPLAYS_DONT_SKIP   && gGlobalContext->msgMode == 19)
        ) {
         // In Water Temple, playing ZL cycles through the modes to avoid problems with the dimmed bottom screen at the ZL switches
@@ -124,8 +125,8 @@ void Settings_SkipSongReplays() {
     }
     else if (gSettingsContext.skipSongReplays != SONGREPLAYS_DONT_SKIP && gGlobalContext->msgMode > 19 && gGlobalContext->msgMode < 23) {
         gGlobalContext->msgMode++;
-    }*/
-}
+    }
+}*/
 
 // From section 5 of https://www.cs.ubc.ca/~rbridson/docs/schechter-sca08-turbulence.pdf
 u32 Hash(u32 state) {
@@ -172,26 +173,26 @@ u8 Bias(u32 seed) {
     "Slingshot",
     "Fairy Ocarina",
     "Bombchu",
-    "Longshot",
-    "Boomerang",
+    "Hookshot",
+    "Pictobox",
     "Lens of Truth",
     "Beans",
-    "Megaton Hammer",
+    "Deku Mask",
     "Bottled Fish",
     "Bottled Milk",
     "Mask of Truth",
     "SOLD OUT",
-    "Cucco",
+    "Goron Mask",
     "Mushroom",
-    "Saw",
-    "Frog",
-    "Master Sword",
+    "Zora Mask",
+    "Bremen Mask",
+    "Kafeis Mask",
     "Mirror Shield",
     "Kokiri Tunic",
-    "Hover Boots",
-    "Silver Gauntlets",
-    "Gold Scale",
-    "Shard of Agony",
+    "Light Arrows",
+    "Fire Arrows",
+    "Ice Arrows",
+    "Small Key",
     "Skull Token",
     "Heart Container",
     "Boss Key",

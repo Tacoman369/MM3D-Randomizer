@@ -3,7 +3,7 @@
 #include "custom_messages.hpp"
 #include "item_location.hpp"
 #include "item_pool.hpp"
-//#include "location_access.hpp"
+#include "location_access.hpp"
 #include "logic.hpp"
 #include "random.hpp"
 #include "spoiler_log.hpp"
@@ -106,7 +106,7 @@ constexpr std::array<HintSetting, 4> hintSettingTable{{
     }},
   },
 }};
-/*
+
 static Area* GetHintRegion(const AreaKey area) {
 
   std::vector<AreaKey> alreadyChecked = {};
@@ -122,7 +122,8 @@ static Area* GetHintRegion(const AreaKey area) {
     }
 
     //add unchecked exits to spot queue
-    bool checked = false;
+    //bool checked = false;
+    /*
     for (auto& exit : AreaTable(region)->exits) {
       for (AreaKey checkedExit : alreadyChecked) {
         if (exit.GetAreaKey() == checkedExit) {
@@ -134,7 +135,7 @@ static Area* GetHintRegion(const AreaKey area) {
       if (!checked) {
         spotQueue.insert(spotQueue.begin(), exit.GetAreaKey());
       }
-    }
+    }*/
   }
 
   return AreaTable(NONE);
@@ -160,16 +161,16 @@ static void AddHint(Text hint, const LocationKey gossipStone, const std::vector<
   Location(gossipStone)->SetPlacedItem(gossipStone);
 
   //create the in game message
-  u32 messageId = 0x400 + Location(gossipStone)->GetFlag();
-  u32 sariaMessageId = 0xA00 + Location(gossipStone)->GetFlag();
-  CreateMessageFromTextObject(messageId, 0, 2, 3, AddColorsAndFormat(hint, colors));
-  CreateMessageFromTextObject(sariaMessageId, 0, 2, 3, AddColorsAndFormat(hint + EVENT_TRIGGER(), colors));
+  //u32 messageId = 0x400 + Location(gossipStone)->GetFlag();
+  //u32 sariaMessageId = 0xA00 + Location(gossipStone)->GetFlag();
+  //CreateMessageFromTextObject(messageId, 0, 2, 3, AddColorsAndFormat(hint, colors));
+  //CreateMessageFromTextObject(sariaMessageId, 0, 2, 3, AddColorsAndFormat(hint + EVENT_TRIGGER(), colors));
 }
 
 static void CreateLocationHint(const std::vector<LocationKey>& possibleHintLocations) {
   //return if there aren't any hintable locations or gossip stones available
   if (possibleHintLocations.empty()) {
-    //PlacementLog_Msg("\tNO LOCATIONS TO HINT\n\n");
+    PlacementLog_Msg("\tNO LOCATIONS TO HINT\n\n");
     return;
   }
 
@@ -413,13 +414,15 @@ static std::vector<LocationKey> CalculateBarrenRegions() {
 
 
 //Find the location which has the given itemKey and create the generic altar text for the reward
+/*
 static Text BuildDungeonRewardText(ItemID itemID, const ItemKey itemKey) {
   LocationKey location = FilterFromPool(allLocations, [itemKey](const LocationKey loc){return Location(loc)->GetPlacedItemKey() == itemKey;})[0];
   //Calling ITEM_OBTAINED draws the passed in itemID to the left side of the textbox
   return Text()+ITEM_OBTAINED(itemID)+"#"+GetHintRegion(Location(location)->GetParentRegionKey())->GetHint().GetText()+"#...^";
 }
-
+*/
 //insert the required number into the hint and set the singular/plural form
+/*
 static Text BuildCountReq(const HintKey req, const Option& count) {
   Text requirement = Hint(req).GetTextCopy();
   if (count.Value<u8>() == 1) {
@@ -430,7 +433,7 @@ static Text BuildCountReq(const HintKey req, const Option& count) {
   requirement.Replace("%d", std::to_string(count.Value<u8>()));
   return requirement;
 }
-
+*/
 void CreateAllHints() {
 
   //CreateGanonText();
@@ -525,4 +528,4 @@ void CreateAllHints() {
   //Call the function one last time to get rid of false positives on locations not
   //being reachable.
   GetAccessibleLocations({});
-}*/
+}

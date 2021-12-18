@@ -79,7 +79,7 @@ typedef struct {
     /* 0x004A */ u16          bgsHitsLeft;
     /* 0x004C */ u16          naviTimer;
     /* 0x004E */ u8           magicAcquired;
-    /* 0x004F */ char         unk_4F;
+    /* 0x004F */ u8           biggoronTrades; // usually unused, repurposed for rando
     /* 0x0050 */ u8           doubleMagic;
     /* 0x0051 */ u8           doubleDefense;
     /* 0x0052 */ s8           bgsFlag;
@@ -89,11 +89,12 @@ typedef struct {
     /* 0x007E */ u16          sceneIndex;
     /* 0x0080 */ ItemEquips   equips;
     /* 0x008C */ u8           items[26];
-    /* 0x00A6 */ s8           ammo[16];
+    /* 0x00A6 */ s8           ammo[15];
+    /* 0x00B5 */ u8           magic_beans_available; //counts bought
     /* 0x00B6 */ u16          equipment; //bits: swords 0-3, shields 4-6, tunics 8-10, boots 12-14
     /* 0x00B8 */ u32          upgrades; //bits: quiver 0-2, bombs 3-5, strength 6-8, dive 9-11, wallet 12-13, seeds 14-16, sticks 17-19, nuts 20-22
     /* 0x00BC */ u32          questItems; //bits: medallions 0-5, warp songs 6-11, songs 12-17, stones 18-20, shard 21, token 22, skull 23, heart pieces 24-31
-    /* 0x00C0 */ u8           dungeonItems[20];
+    /* 0x00C0 */ u8           dungeonItems[20]; //bits: boss key 0, compass 1, map 2
     /* 0x00D4 */ s8           dungeonKeys[19];
     /* 0x00E7 */ char         unk_E7[0x0001]; //in oot: defenseHearts. seems not here.
     /* 0x00E8 */ s16          gsTokens;
@@ -112,7 +113,13 @@ typedef struct {
     /* 0x0EB4 */ u8           gsFlags[22]; //due to reordering, array is smaller
     /* 0x0ECA */ char         unk_ECA[0x0006]; //the extra two bytes move here
     /* 0x0ED0 */ u32          unk_ED0; //horseback archery highscore?
-    /* 0x0ED4 */ char         unk_ED4[0x0008];
+    /* 0x0ED4 */ u32          bigPoePoints; //number of big poes sold * 100
+    struct {
+        /* 0x0ED4 */ u8 recordFishChild; //seems to be unique ID of fish, this is copied into adult value if player has not yet fished as adult
+        /* 0x0ED5 */ u8 flags; //bits: 0 - ever fished as child, 1 - ever fished as adult, 2 - caught record as child, 3 - caught record as adult
+        /* 0x0ED6 */ u8 timesPaidToFish;
+        /* 0x0ED7 */ u8 recordFishAdult; //seems to be unique ID of fish
+    }                         fishingStats;
     /* 0x0EDC */ u32          unk_EDC; //horse race record time?
     /* 0x0EE0 */ u32          unk_EE0; //marathon race record time?
     /* 0x0EE4 */ char         unk_EE4[0x0008];
@@ -244,15 +251,15 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ u8*  texture;
-    /* 0x04 */ s16  unk_04;
-    /* 0x06 */ s16  unk_06;
-    /* 0x08 */ s16  unk_08;
-    /* 0x0A */ s16  unk_0A;
+    /* 0x04 */ s16  x;
+    /* 0x06 */ s16  y;
+    /* 0x08 */ s16  width;
+    /* 0x0A */ s16  height;
     /* 0x0C */ s32  unk_0C;
-    /* 0x10 */ u8   delayA;
-    /* 0x11 */ u8   delayB;
-    /* 0x12 */ s16  unk_12;
-    /* 0x14 */ s16  unk_14;
+    /* 0x10 */ u8   durationTimer;
+    /* 0x11 */ u8   delayTimer;
+    /* 0x12 */ s16  alpha;
+    /* 0x14 */ s16  intensity;
     /* 0x16 */ s16  unk_16;
 } TitleCardContext; // size = 0x18
 
@@ -381,7 +388,7 @@ typedef struct GlobalContext {
     /* 0x0106 */ char                  unk_106[0x0012];
     /* 0x0118 */ SubGlobalContext_118  sub118;
     /* 0x017C */ char                  unk_17C[0x08D8];
-    /* 0x0A54 */ Camera* cameraPtrs[4];
+    /* 0x0A54 */ Camera*               cameraPtrs[4];
     /* 0x0A64 */ s16                   activeCamera;
     /* 0x0A66 */ char                  unk_A66[0x0032];
     /* 0x0A98 */ CollisionContext      colCtx;
@@ -461,10 +468,17 @@ extern const char DungeonNames[][25];
 #define PLAYER ((Player*)gGlobalContext->actorCtx.actorList[ACTORTYPE_PLAYER].first)
 
 typedef enum {
-    DUNGEON_WOODFALL,
+    DUNGEON_WOODFALL = 0,
     DUNGEON_SNOWHEAD,
     DUNGEON_GREAT_BAY,
     DUNGEON_STONE_TOWER,
+    DUNGEON_BENEATH_THE_WELL,
+    DUNGEON_PIRATES_FORTRESS,
+    DUNGEON_THE_MOON,
+    DUNGEON_SECRET_SHRINE,
+    DUNGEON_SWAMP_SPIDER_HOUSE,
+    DUNGEON_OCEAN_SPIDER_HOUSE,
+    DUNGEON_IKANA_CASTLE
 } DungeonId;
 
 /* TODO: figure out what to do with this stuff */
@@ -510,8 +524,22 @@ typedef void (*PlaySound_proc)(u32);
 #define PlaySound_addr 0x35C528
 #define PlaySound ((PlaySound_proc)PlaySound_addr) //this function plays sound effects and music tracks, overlaid on top of the current BGM
 
-typedef Actor* (*Actor_Spawn_proc)(ActorContext *actorCtx,GlobalContext *globalCtx,s16 actorId,float posX,float posY,float posZ,s16 rotX,s16 rotY,s16 rotZ,s16 params);
+typedef Actor* (*Actor_Spawn_proc)(ActorContext *actorCtx,GlobalContext *globalCtx,s16 actorId,float posX,float posY,float posZ,s16 rotX,s16 rotY,s16 rotZ,s16 params)
+    __attribute__((pcs("aapcs-vfp")));;
 #define Actor_Spawn_addr 0x3738D0
 #define Actor_Spawn ((Actor_Spawn_proc)Actor_Spawn_addr)
+
+typedef void (*FireDamage_proc)(Actor* player, GlobalContext* globalCtx, int flamesColor);
+#define FireDamage_addr 0x35D8D8
+#define FireDamage ((FireDamage_proc)FireDamage_addr)
+
+typedef void (*Flags_SetEnv_proc)(GlobalContext* globalCtx, s16 flag);
+#define Flags_SetEnv_addr 0x366704
+#define Flags_SetEnv ((Flags_SetEnv_proc)Flags_SetEnv_addr)
+
+typedef void (*GiveItem_proc)(Actor* actor, GlobalContext* globalCtx, s32 getItemId, f32 xzRange, f32 yRange)
+    __attribute__((pcs("aapcs-vfp")));
+#define GiveItem_addr 0x3724DC
+#define GiveItem ((GiveItem_proc)0x3724DC)
 
 #endif //_Z3D_H_

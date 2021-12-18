@@ -15,7 +15,7 @@ using namespace std;
 class Item {
 public:
     Item() = default;
-    Item(int startAdd_, int startIndex_, Text name_, string locationName_, Region region_, HintKey hintKey_,
+    Item(bool advancement_, int startAdd_, int startIndex_, Text name_, string locationName_, Region region_, HintKey hintKey_,
         int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_);
     
     ~Item();
@@ -28,6 +28,9 @@ public:
     }
     int GetStartIndex() const {
         return startIndex;
+    }
+    bool IsAdvancement() const {
+        return advancement;
     }
     const Text& GetName() const {
         return name;
@@ -53,14 +56,14 @@ public:
     const LocationCategory GetLocationCategory() const {
         return locCat;
     }
-    /*
+    
     u16 GetPrice() const {
         return price;
     }
 
     void SetPrice(u16 price_) {
         price = price_;
-    }*/
+    }
     void SetAsPlaythrough() {
         playthrough = true;
     }
@@ -68,7 +71,9 @@ public:
     bool IsPlaythrough() const {
         return playthrough;
     }
-    
+    bool IsMajorItem() const {
+        return IsAdvancement();
+    }
     bool IsBottleItem() const {
         return getItemIndex == 0x5A || //Empty Bottle1
             getItemIndex == 0x64 || //Empty Bottle 2
@@ -92,6 +97,7 @@ public:
   //  Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_ );
 
 private:
+    bool advancement;
     int startAdd;
     int startIndex;
     Text name;
@@ -102,4 +108,5 @@ private:
     ItemCategory itemCat;
     LocationCategory locCat;
     bool playthrough = false;
+    int price;
 };

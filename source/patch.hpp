@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 #include <3ds.h>
-//#include "playthrough.hpp"
+#include "playthrough.hpp"
 #include "settings.hpp"
 #include "patch_symbols.hpp"
 //#include "../code/src/settings.h"

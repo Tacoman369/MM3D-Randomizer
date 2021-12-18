@@ -13,7 +13,7 @@
 #include "version.hpp"
 #include "settings.hpp"
 #include "spoiler_log.hpp"
-//#include "location_access.hpp"
+#include "location_access.hpp"
 #include "debug.hpp"
 
 namespace {
@@ -189,7 +189,7 @@ void MenuUpdate(u32 kDown) {
     PrintMainMenu();
     ClearDescription();
   } else if (currentMenu->mode == OPTION_SUB_MENU) {
-    //UpdateOptionSubMenu(kDown);
+    UpdateOptionSubMenu(kDown);
     PrintOptionSubMenu();
   } else if (currentMenu->mode == LOAD_PRESET) {
     UpdatePresetsMenu(kDown);
@@ -498,12 +498,12 @@ void GenerateRandomizer() {
         Settings::seed = std::to_string(rand());
     }
     else if (Settings::seed.rfind("seed_testing_count", 0) == 0) {
-        //const int count = std::stoi(Settings::seed.substr(18), nullptr);
-        //Playthrough::Playthrough_Repeat(count);
+        const int count = std::stoi(Settings::seed.substr(18), nullptr);
+        Playthrough::Playthrough_Repeat(count);
         return;
     }
 
-    /*int ret = Playthrough::Playthrough_Init(std::hash<std::string>{}(Settings::seed));
+    int ret = Playthrough::Playthrough_Init(std::hash<std::string>{}(Settings::seed));
     if (ret < 0) {
       if(ret == -1) { //Failed to generate after 5 tries
         printf("\n\nFailed to generate after 5 tries.\nPress Select to exit or B to go back to the menu.\n");
@@ -519,11 +519,11 @@ void GenerateRandomizer() {
         printf("Done");
         if (Settings::PlayOption == PATCH_CONSOLE) {
             printf("\x1b[14;10HQuit out using the home menu. Then\n");
-            printf("\x1b[15;10Henable game patching and launch OoT3D!\n");
+            printf("\x1b[15;10Henable game patching and launch MM3D!\n");
         }
         else if (Settings::PlayOption == PATCH_CITRA) {
             printf("\x1b[14;10HCopy code.ips, exheader.bin and romfs to\n");
-            printf("\x1b[15;10Hthe OoT3D mods folder, then launch OoT3D!\n");
+            printf("\x1b[15;10Hthe MM3D mods folder, then launch MM3D!\n");
         }
 
 
@@ -532,7 +532,7 @@ void GenerateRandomizer() {
         for (size_t i = 0; i < randomizerHash.size(); i++) {
             printf("\x1b[%zu;11H- %s", i + 18, randomizerHash[i].c_str());
         }
-    }*/
+    }
     else {
     printf("Failed\nPress Select to exit.\n");
     }

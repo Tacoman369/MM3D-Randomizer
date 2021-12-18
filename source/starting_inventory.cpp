@@ -3,12 +3,12 @@
 #include <unistd.h>
 
 #include "debug.hpp"
-//#include "dungeon.hpp"
+#include "dungeon.hpp"
 #include "item_list.hpp"
 #include "settings.hpp"
 
 using namespace Settings;
-//using namespace Dungeon;
+using namespace Dungeon;
 
 std::vector<ItemKey> StartingInventory;
 u8 AdditionalHeartContainers;
@@ -19,7 +19,7 @@ static void AddItemToInventory(ItemKey item, size_t count = 1) {
 
 void GenerateStartingInventory() {
   StartingInventory.clear();
-  /*
+  
   if (MapsAndCompasses.Is(MAPSANDCOMPASSES_START_WITH)) {
     for (auto* dungeon : dungeonList) {
       if (dungeon->GetMap() != NONE) {
@@ -45,7 +45,7 @@ void GenerateStartingInventory() {
     // We can resolve this by starting with some extra keys
     // - OoT Randomizer
     }
-  }*/
+  
   
 /*
   if (BossKeysanity.Is(BOSSKEYSANITY_START_WITH)) {
@@ -59,8 +59,6 @@ void GenerateStartingInventory() {
   //Values are associated so that the count of items matches the index of
   //the option selected. If None is selected, the value will be zero and
   //zero of the item will be added to the starting inventory.
- // AddItemToInventory(PROGRESSIVE_STICK_UPGRADE, StartingStickCapacity.Value<u8>());
- // AddItemToInventory(PROGRESSIVE_NUT_UPGRADE,   StartingNutCapacity.Value<u8>());
   AddItemToInventory(PROGRESSIVE_BOMB_BAG,      StartingBombBag.Value<u8>());
  // AddItemToInventory((BombchusInLogic ? PROGRESSIVE_BOMBCHUS : BOMBCHU_20), StartingBombchus.Value<u8>());
   AddItemToInventory(PROGRESSIVE_BOW,           StartingBow.Value<u8>());
@@ -70,14 +68,12 @@ void GenerateStartingInventory() {
   AddItemToInventory(LENS_OF_TRUTH,             StartingLensOfTruth.Value<u8>());
   AddItemToInventory(MAGIC_BEAN_PACK,           StartingMagicBean.Value<u8>());
   AddItemToInventory(HOOKSHOT,     				StartingHookshot.Value<u8>());
-  //For starting bottles, we need to check if they are a big poe and add that if so
-  // since a big poe bottle is not logically equivalent to an empty bottle.
   AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle1.Value<u8>());
   AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle2.Value<u8>());
-  //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle3.Value<u8<());
-  //AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle4.Value<u8<());
-  //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle5.Value<u8<());
-  //AddItemToInventory(EMPTY_BOTTLE2,				StartingBottle6.Value<u8<());
+  //AddItemToInventory(BOTTLE_WITH_MILK,			StartingBottle3.Value<u8<());
+  //AddItemToInventory(BOTTLE_WITH_RED_POTION,	StartingBottle4.Value<u8<());
+  //AddItemToInventory(GOLD_DUST,				    StartingBottle5.Value<u8<());
+  //AddItemToInventory(CHATEAU_ROMANI,			StartingBottle6.Value<u8<());
   //AddItemToInventory(EMPTY_BOTTLE1,				StartingBottle7.Value<u8<());
   
   AddItemToInventory(OCARINA_OF_TIME,     		StartingOcarina.Value<u8>());
@@ -114,10 +110,11 @@ void GenerateStartingInventory() {
    
 
     AdditionalHeartContainers = 1 - hearts;
-  } else if (hearts > 0) {
+  } 
+  else if (hearts > 0) {
     // 16 containers in plentiful, 8 in balanced and 0 in the others
     u8 maxContainers = 8 * std::max(0, 2 - ItemPoolValue.Value<u8>());
-
+    
     if (hearts <= maxContainers) {
       AddItemToInventory(HEART_CONTAINER, hearts);
     } else {

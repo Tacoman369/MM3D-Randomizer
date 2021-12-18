@@ -4,19 +4,19 @@
 #include <3ds.h>
 
 #include "menu.hpp"
-//#include "hint_list.hpp"
-//#include "item_list.hpp"
-//#include "item_location.hpp"
-//#include "location_access.hpp"
+#include "hint_list.hpp"
+#include "item_list.hpp"
+#include "item_location.hpp"
+#include "location_access.hpp"
 
 
 #define TICKS_PER_SEC 268123480.0
 
 int main() {
     gfxInitDefault();
-    //HintTable_Init();
-    //ItemTable_Init();
-    //LocationTable_Init();
+    HintTable_Init();
+    ItemTable_Init();
+    LocationTable_Init();
     MenuInit();
 
     u64 initialHoldTime = svcGetSystemTick();
@@ -46,7 +46,7 @@ int main() {
         if (kDown)
             MenuUpdate(kDown);
 
-        //launch oot3d directly by holding L and R (cartridge only)
+        //launch MM3d directly by holding L and R (cartridge only)
         if (kHeld & KEY_L && kHeld & KEY_R) {
             aptSetChainloader(0x00040000000125500, 2);
             break;

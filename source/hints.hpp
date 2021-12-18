@@ -164,4 +164,3 @@ private:
 };
 
 extern void CreateAllHints();
-extern void CreateMerchantsHints();

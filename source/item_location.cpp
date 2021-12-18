@@ -1,18 +1,19 @@
 #include "item_location.hpp"
 
-//#include "dungeon.hpp"
+#include "dungeon.hpp"
 #include "settings.hpp"
 #include "spoiler_log.hpp"
 //#include "shops.hpp"
 #include "debug.hpp"
 #include "keys.hpp"
+#include "fill.hpp"
 
 //Location definitions
 static std::array<ItemLocation, KEY_ENUM_MAX> locationTable;
 
 void LocationTable_Init() {
     locationTable[NONE]                                                        = ItemLocation::Base       ( "Invalid Location",                                  NONE,                                  NONE,                      {} );
-    //LocationTable                                                             itemlocation::type        name                                   				hint key (hint_list.cpp)               vanilla item             categories                                                                                                           
+    //LocationTable                                                             itemlocation::type        name                                   				hint key (hint_list.cpp)               vanilla item             categories                                                     collection check???                                                                                                
     
 	//Happy Mask Salesman - Starting Items
 	locationTable[SONG_OF_HEALING]										       = ItemLocation::Base		( "Song of Healing",					               HMS_SONG_OF_HEALING,				    SONG_OF_HEALING,			{Category::cClockTower}	);
@@ -211,7 +212,7 @@ void LocationTable_Init() {
 	locationTable[TERMINA_FIELD_STUMP_CHEST]								   = ItemLocation::Chest	( "Termina Field Stump Chest",							TERMINA_FIELD_STUMP_CHEST,			RED_RUPEE,					{Category::cTerminaField} );
 	
 	//Twin Islands
-	locationTable[HOT_SPRING_WATER_GROTTO]						               = ItemLocation::Chest	 ( "Twin Islands Hot Spring Water Grotto",				HOT_SPRING_WATER_GROTTO,	RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto} );
+	locationTable[HOT_SPRING_WATER_GROTTO]						               = ItemLocation::Chest	 ( "Twin Islands Hot Spring Water Grotto",				HOT_SPRING_WATER_GROTTO,	            RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto} );
 	locationTable[TWIN_ISLANDS_GORON_RACE]									   = ItemLocation::Base		 ( "Twin Islands Goron Race",							TWIN_ISLANDS_GORON_RACE,				GOLD_DUST,				{Category::cTwinIslands} );
 	locationTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO]						   = ItemLocation::Chest	 ( "Twin Islands Goron Racetrack Grotto",				TWIN_ISLANDS_GORON_RACETRACK_GROTTO,	BOMBCHU_5,				{Category::cTwinIslands, Category::cGrotto} );
 	locationTable[TWIN_ISLANDS_UNDERWATER_RAMP_CHEST]						   = ItemLocation::Chest	 ( "Twin Islands Underwater Ramp",						TWIN_ISLANDS_UNDERWATER_RAMP_CHEST,		PIECE_OF_HEART,			{Category::cTwinIslands} );
@@ -326,6 +327,8 @@ void LocationTable_Init() {
 	locationTable[THE_MOON_GORON_TRIAL_BONUS]								   = ItemLocation::Base		( "The Moon Goron Trial Bonus",							THE_MOON_GORON_TRIAL_BONUS,			PIECE_OF_HEART,				{Category::cTheMoon} );
 	locationTable[THE_MOON_ZORA_TRIAL_BONUS]								   = ItemLocation::Base		( "The Moon Zora Trial Bonus",							THE_MOON_ZORA_TRIAL_BONUS,			PIECE_OF_HEART,				{Category::cTheMoon} );
 	locationTable[THE_MOON_LINK_TRIAL_BONUS]								   = ItemLocation::Base		( "The Moon Link Trial Bonus",							THE_MOON_LINK_TRIAL_BONUS,			PIECE_OF_HEART,				{Category::cTheMoon} );
+	locationTable[THE_MOON_GARO_CHEST]                                         = ItemLocation::Chest    ("The Moon Garo Chest",                                 THE_MOON_GARO_CHEST,                ARROWS_30,                  {Category::cTheMoon} );
+	locationTable[THE_MOON_IRON_KNUCKLE_CHEST]                                 = ItemLocation::Chest    ("The Moon Iron Knuckle Chest",                         THE_MOON_IRON_KNUCKLE_CHEST,        BOMBCHU_10,                 {Category::cTheMoon} );
 	locationTable[THE_MOON_MAJORA_CHILD]									   = ItemLocation::Base		( "The Moon Majora Child",								THE_MOON_MAJORA_CHILD,				FIERCE_DIETY_MASK,			{Category::cTheMoon} );
 	
 	/*-------------------------------
@@ -756,51 +759,12 @@ std::vector<std::vector<LocationKey>> ShopLocationLists = {
 };
 */
 
-/*TODO--GOSSIP STONE LOCATION VECTOR FOR ASSIGNING HINTS TO STONES
+//TODO--GOSSIP STONE LOCATION VECTOR FOR ASSIGNING HINTS TO STONES
 //List of gossip stone locations for hints
 std::vector<LocationKey> gossipStoneLocations = {
-  DMC_GOSSIP_STONE,
-  DMT_GOSSIP_STONE,
-  COLOSSUS_GOSSIP_STONE,
-  DODONGOS_CAVERN_GOSSIP_STONE,
-  GV_GOSSIP_STONE,
-  GC_MAZE_GOSSIP_STONE,
-  GC_MEDIGORON_GOSSIP_STONE,
-  GRAVEYARD_GOSSIP_STONE,
-  HC_MALON_GOSSIP_STONE,
-  HC_ROCK_WALL_GOSSIP_STONE,
-  HC_STORMS_GROTTO_GOSSIP_STONE,
-  KF_DEKU_TREE_GOSSIP_STONE_LEFT,
-  KF_DEKU_TREE_GOSSIP_STONE_RIGHT,
-  KF_GOSSIP_STONE,
-  LH_LAB_GOSSIP_STONE,
-  LH_GOSSIP_STONE_SOUTHEAST,
-  LH_GOSSIP_STONE_SOUTHWEST,
-  LW_GOSSIP_STONE,
-  SFM_MAZE_GOSSIP_STONE_LOWER,
-  SFM_MAZE_GOSSIP_STONE_UPPER,
-  SFM_SARIA_GOSSIP_STONE,
-  TOT_GOSSIP_STONE_LEFT,
-  TOT_GOSSIP_STONE_RIGHT,
-  TOT_GOSSIP_STONE_RIGHT_CENTER,
-  TOT_GOSSIP_STONE_LEFT_CENTER,
-  ZD_GOSSIP_STONE,
-  ZF_FAIRY_GOSSIP_STONE,
-  ZF_JABU_GOSSIP_STONE,
-  ZR_NEAR_GROTTOS_GOSSIP_STONE,
-  ZR_NEAR_DOMAIN_GOSSIP_STONE,
-  HF_COW_GROTTO_GOSSIP_STONE,
-  HF_NEAR_MARKET_GROTTO_GOSSIP_STONE,
-  HF_SOUTHEAST_GROTTO_GOSSIP_STONE,
-  HF_OPEN_GROTTO_GOSSIP_STONE,
-  KAK_OPEN_GROTTO_GOSSIP_STONE,
-  ZR_OPEN_GROTTO_GOSSIP_STONE,
-  KF_STORMS_GROTTO_GOSSIP_STONE,
-  LW_NEAR_SHORTCUTS_GROTTO_GOSSIP_STONE,
-  DMT_STORMS_GROTTO_GOSSIP_STONE,
-  DMC_UPPER_GROTTO_GOSSIP_STONE,
+  
 };
-*/
+
 std::vector<LocationKey> dungeonRewardLocations = {
   //Bosses
   WOODFALL_TEMPLE_ODOLWAS_REMAINS,
@@ -1049,7 +1013,7 @@ std::vector<LocationKey> allLocations = {};
 std::vector<LocationKey> everyPossibleLocation = {};
 
 //set of overrides to write to the patch
-std::set<ItemOverride, ItemOverride_Compare> overrides = {};
+//std::set<ItemOverride, ItemOverride_Compare> overrides = {};
 
 std::vector<std::vector<LocationKey>> playthroughLocations;
 std::vector<LocationKey> wothLocations;
@@ -1069,7 +1033,7 @@ void AddLocations(const Container& locations, std::vector<LocationKey>* destinat
 }
 
 //sort through dungeon locations
-/*
+
 void GenerateLocationPool() {
 
   allLocations.clear();
@@ -1081,7 +1045,7 @@ void GenerateLocationPool() {
   }
 }
 
-void PlaceItemInLocation(LocationKey locKey, ItemKey item, bool applyEffectImmediately = false*/ /*) {
+void PlaceItemInLocation(LocationKey locKey, ItemKey item, bool applyEffectImmediately/* = false*/) {
   auto loc = Location(locKey);
   PlacementLog_Msg("\n");
   PlacementLog_Msg(ItemTable(item).GetName().GetEnglish());
@@ -1102,16 +1066,16 @@ void PlaceItemInLocation(LocationKey locKey, ItemKey item, bool applyEffectImmed
   }
 
   //If we're placing a non-shop item in a shop location, we want to record it for custom messages
-  if (ItemTable(item).GetItemType() != ITEMTYPE_SHOP && loc->IsCategory(Category::cShop)) {
+ /* if (ItemTable(item).GetItemType() != ITEMTYPE_SHOP && loc->IsCategory(Category::cShop)) {
     int index = TransformShopIndex(GetShopIndex(locKey));
     NonShopItems[index].Name = ItemTable(item).GetName();
     NonShopItems[index].Repurchaseable = ItemTable(item).GetItemType() == ITEMTYPE_REFILL || ItemTable(item).GetHintKey() == PROGRESSIVE_BOMBCHUS;
-  }
+  }*/
 
   loc->SetPlacedItem(item);
 }
 
-std::vector<LocationKey> GetLocations(const std::vector<LocationKey>& locationPool, Category categoryInclude, Category categoryExclude = Category::cNull*/ /*) {
+std::vector<LocationKey> GetLocations(const std::vector<LocationKey>& locationPool, Category categoryInclude, Category categoryExclude /*= Category::cNull*/ ) {
   std::vector<LocationKey> locationsInCategory;
   for (LocationKey locKey : locationPool) {
     if (Location(locKey)->IsCategory(categoryInclude) && !Location(locKey)->IsCategory(categoryExclude)) {
@@ -1173,11 +1137,12 @@ void CreateItemOverrides() {
   PlacementLog_Msg("NOW CREATING OVERRIDES\n\n");
   for (LocationKey locKey : allLocations) {
     auto loc = Location(locKey);
-    ItemOverride_Value val = ItemTable(loc->GetPlacedItemKey()).Value();
+    //ItemOverride_Value val = ItemTable(loc->GetPlacedItemKey()).Value();
     //If this is an ice trap in a shop, change the name based on what the model will look like
     if (loc->GetPlacedItemKey() == ICE_TRAP && loc->IsCategory(Category::cShop)) {
-      NonShopItems[TransformShopIndex(GetShopIndex(locKey))].Name = GetIceTrapName(val.looksLikeItemId);
+      //NonShopItems[TransformShopIndex(GetShopIndex(locKey))].Name = GetIceTrapName(val.looksLikeItemId);
     }
+	/*
     overrides.insert({
       .key = loc->Key(),
       .value = val,
@@ -1187,14 +1152,13 @@ void CreateItemOverrides() {
     PlacementLog_Msg("\tType: ");
     PlacementLog_Msg(std::to_string(loc->Key().type));
     PlacementLog_Msg("\tFlag:  ");
-    PlacementLog_Msg(std::to_string(loc->Key().flag));
+    PlacementLog_Msg(std::to_string(loc->Key().flag));*/
     PlacementLog_Msg("\t");
     PlacementLog_Msg(loc->GetName());
     PlacementLog_Msg(": ");
     PlacementLog_Msg(loc->GetPlacedItemName().GetEnglish());
     PlacementLog_Msg("\n");
   }
-  PlacementLog_Msg("Overrides Created: ");
-  PlacementLog_Msg(std::to_string(overrides.size()));
+  //PlacementLog_Msg("Overrides Created: ");
+  //PlacementLog_Msg(std::to_string(overrides.size()));
 }
-*/

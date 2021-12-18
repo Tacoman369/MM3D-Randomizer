@@ -430,9 +430,13 @@ typedef struct {
   u8 startingBottle2;
   u8 startingBottle3;
   u8 startingBottle4;
+  u8 startingBottle5;
+  u8 startingBottle6;
+  u8 startingBottle7;
   u8 startingRutoBottle;
   u8 startingOcarina;
   u8 startingKokiriSword;
+  u8 startingGreatFairySword;
   u8 startingBiggoronSword;
   u8 startingMagicMeter;
   u8 startingDoubleDefense;
@@ -451,7 +455,7 @@ extern SettingsContext gSettingsContext;
 extern const char hashIconNames[32][25];
 
 s32 Settings_ApplyDamageMultiplier(GlobalContext*, s32);
-void Settings_SkipSongReplays();
+//void Settings_SkipSongReplays();
 u32 Hash(u32);
 u8  Bias(u32);
 

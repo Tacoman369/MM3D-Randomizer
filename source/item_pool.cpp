@@ -1,6 +1,6 @@
 #include "item_pool.hpp"
 
-//#include "dungeon.hpp"
+#include "dungeon.hpp"
 #include "fill.hpp"
 #include "item_list.hpp"
 #include "item_location.hpp"
@@ -10,7 +10,7 @@
 #include "spoiler_log.hpp"
 
 using namespace Settings;
-//using namespace Dungeon;
+using namespace Dungeon;
 
 std::vector<ItemKey> ItemPool = {};
 std::vector<ItemKey> PendingJunkPool = {};
@@ -570,23 +570,24 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
-/*
-void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count = 1*/ /*) {
+
+
+void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count /*= 1*/) {
 	pool.insert(pool.end(), count, item);
-};
+}
 
 template <typename FromPool>
 static void AddItemsToPool(std::vector<ItemKey>& toPool, const FromPool& fromPool) {
 	AddElementsToPool(toPool, fromPool);
-};
+}
 
 static void AddItemToMainPool(const ItemKey item, size_t count = 1) {
 	ItemPool.insert(ItemPool.end(), count, item);
-};
+}
 
 static void AddRandomBottle(std::vector<ItemKey>& bottlePool) {
 	AddItemToMainPool(RandomElement(bottlePool, true));
-};
+}
 
 ItemKey GetJunkItem() {
 	if (IceTrapValue.Is(ICETRAPS_MAYHEM) || IceTrapValue.Is(ICETRAPS_ONSLAUGHT)) {
@@ -664,8 +665,8 @@ static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(ROMANI_RANCH_COW_1, MILK);
 	PlaceItemInLocation(ROMANI_RANCH_COW_2, MILK);
 	PlaceItemInLocation(ROMANI_RANCH_COW_3, MILK);
-	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW_1, MILK);
-	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW_2, MILK);
+	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW1, MILK);
+	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW2, MILK);
 	PlaceItemInLocation(BENEATH_THE_WELL_COW, MILK);
 };
 static void SetScarceItemPool() {
@@ -720,21 +721,21 @@ void GenerateItemPool() {
 
 	if (ShuffleKokiriSword) {
 		AddItemToMainPool(KOKIRI_SWORD);
-		IceTrapModels.push_back(GI_SWORD_KOKIRI);
+		//IceTrapModels.push_back(GI_SWORD_KOKIRI);
 	}
 	else {
 		PlaceItemInLocation(LINKS_POCKET, KOKIRI_SWORD);
 	}
 
-	if (ShuffleCows) {
-		//9 total cow locations
-		for (u8 i = 0; i < 8; i++) {
-			AddItemToMainPool(GetJunkItem());
-		}
-	}
-	else {
+	//if (ShuffleCows) {
+	//	//9 total cow locations
+	//	for (u8 i = 0; i < 8; i++) {
+	//		AddItemToMainPool(GetJunkItem());
+	//	}
+	//}
+	//else {
 		PlaceVanillaCowMilk();
-	}
+	//}
 
 	if (ShuffleMagicBeans) {
 		AddItemToMainPool(MAGIC_BEAN_PACK);
@@ -747,38 +748,41 @@ void GenerateItemPool() {
 		PlaceItemInLocation(DEKU_PALACE_BEAN_DADDY, MAGIC_BEAN);
 	}
 	//TOKEN SANITY
-	
+	/*
 	if (Tokensanity.Is(TOKENSANITY_OFF)) {
-		for (LocationKey loc : GetLocations(allLocations, Category::cSwampSkulltula) &&
-			LocationKey loc2 : GetLocations(allLocations, Category::cOceanSkulltula)) {
+		for (LocationKey loc : GetLocations(allLocations, Category::cSwampSkulltula)) {
 			PlaceItemInLocation(loc, SWAMP_SKULLTULA_TOKEN);
-			PlaceItemInLocation(loc2, OCEANSIDE_SKULLTULA_TOKEN);
+		}
+		for (LocationKey loc2 : GetLocations(allLocations, Category::cOceanSkulltula)) {
+			PlaceItemInLocation(loc2, OCEAN_SKULLTULA_TOKEN);
 		}
 	}
 	else if (Tokensanity.Is(TOKENSANITY_OVERWORLD)) {
-		for (LocationKey loc : GetLocations(allLocations, Category::cSwampSkulltula) &&
-			LocationKey loc2 : GetLocations(allLocations, Category::cOceanSkulltula)) {
+		for (LocationKey loc : GetLocations(allLocations, Category::cSwampSkulltula)) {
 			if (Location(loc)->IsDungeon()) {
 				PlaceItemInLocation(loc, SWAMP_SKULLTULA_TOKEN);
 			}
 			else {
 				AddItemToMainPool(SWAMP_SKULLTULA_TOKEN);
 			}
+		}
+		for (LocationKey loc2 : GetLocations(allLocations, Category::cOceanSkulltula)) {
 			if (Location(loc2)->IsDungeon()) {
-				PlaceItemInLocation(loc2, OCEANSIDE_SKULLTULA_TOKEN);
+				PlaceItemInLocation(loc2, OCEAN_SKULLTULA_TOKEN);
 			}
 			else {
-				AddItemToMainPool(OCEANSIDE_SKULLTULA_TOKEN);
+				AddItemToMainPool(OCEAN_SKULLTULA_TOKEN);
 			}
 		}
 	}
+
 	else {
 		AddItemToMainPool(SWAMP_SKULLTULA_TOKEN, 30);
-		AddItemToMainPool(OCEANSIDE_SKULLTULA_TOKEN, 30);
+		AddItemToMainPool(OCEAN_SKULLTULA_TOKEN, 30);
 	}
 	*/
 	//STRAY FAIRY SANITY
-	/*/
+	/*
 	if (Straysanity.IS(STRAYSANITY_OFF)) {//if off place in vanilla locations
 		for (LocationKey loc1 : GetLocations(allLocations, Category::cCTStray) &&
 			LocationKey loc2 : GetLocations(allLocations, Category::cWFStray) &&
@@ -824,7 +828,7 @@ void GenerateItemPool() {
 		AddItemToMainPool(ST_STRAY_FAIRY, 15);
 	}
 
-
+	*/
 	if (ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
 
 		//Plentiful small keys
@@ -848,7 +852,7 @@ void GenerateItemPool() {
 		}
 
 	}
-
+	/*
 	if (Settings::Scrubsanity.IsNot(SCRUBSANITY.OFF)) {
 		AddItemsToPool(ItemPool, dekuScrubItems);
 		//I'm not sure what this is for, but it was in ootr3d so I copied it
@@ -861,10 +865,10 @@ void GenerateItemPool() {
 			}
 		}
 	}
-	else {
+	else {*/
 		PlaceVanillaDekuScrubItems();
-	}
-
+	//}
+	
 	AddItemsToPool(ItemPool, alwaysItems);
 	AddItemsToPool(ItemPool, dungeonRewards);
 
@@ -872,23 +876,23 @@ void GenerateItemPool() {
 	u8 bottleCount = 7;
 	std::vector<ItemKey> bottles;
 	bottles.assign(normalBottles.begin(), normalBottles.end());
-	IceTrapModels.push_back(ItemTable(RandomElement(bottles)).GetItemID()); //Get one random bottle type for ice traps
+	IceTrapModels.push_back(ItemTable(RandomElement(bottles)).GetItemIndex()); //Get one random bottle type for ice traps
 	for (u8 i = 0; i < bottleCount; i++) {
 		AddRandomBottle(bottles);
 	}
 
 	//add extra songs only if song shuffle is anywhere
-	AddItemsToPool(ItemPool, songList);
-	if (ShuffleSongs.Is(SONGSHUFFLE_ANYWHERE) && ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
-		AddItemsToPool(PendingJunkPool, songList);
-	}
+	//AddItemsToPool(ItemPool, songList);
+	//if (ShuffleSongs.Is(SONGSHUFFLE_ANYWHERE) && ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
+	//	AddItemsToPool(PendingJunkPool, songList);
+	//}
 
 	//For item pool generation, dungeon items are either placed in their vanilla
-	|// location, or added to the pool now and filtered out later depending on when
-	|// they need to get placed or removed in fill.cpp. These items are kept in the
-	|// pool until removal because the filling algorithm needs to know all of the
-	|// advancement items that haven't been placed yet for placing higher priority
-	|// items like stones/medallions.
+	// location, or added to the pool now and filtered out later depending on when
+	// they need to get placed or removed in fill.cpp. These items are kept in the
+	// pool until removal because the filling algorithm needs to know all of the
+	// advancement items that haven't been placed yet for placing higher priority
+	// items like stones/medallions.
 
 	if (MapsAndCompasses.Is(MAPSANDCOMPASSES_VANILLA)) {
 		PlaceVanillaMapsAndCompasses();
@@ -959,7 +963,7 @@ void GenerateItemPool() {
 	}
 
 	//this feels ugly and there's probably a better way, but
-  //it replaces random junk with pending junk.
+   //it replaces random junk with pending junk.
 	bool junkSet;
 	for (ItemKey pendingJunk : PendingJunkPool) {
 		junkSet = false;
@@ -974,11 +978,9 @@ void GenerateItemPool() {
 			if (junkSet) break;
 		}
 	}
-
-	void AddJunk() {
-		PlacementLog_Msg("HAD TO PLACE EXTRA JUNK ");
-		AddItemToMainPool(GetPendingJunkItem());
-	};
-
 	
-}*/
+}
+void AddJunk() {
+	PlacementLog_Msg("HAD TO PLACE EXTRA JUNK ");
+	AddItemToMainPool(GetPendingJunkItem());
+};

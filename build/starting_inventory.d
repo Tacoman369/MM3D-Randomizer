@@ -83,7 +83,7 @@ starting_inventory.o: \
  C:/devkitPro/libctru/include/3ds/gdbhio_dev.h \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/dungeon.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/text.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hint_list.hpp \
@@ -101,7 +101,8 @@ starting_inventory.o: \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/pool_functions.hpp \
  C:/Users/SKREEE/Desktop/ZMM3DR/application/source/region.hpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_category.hpp
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_category.hpp \
+ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/starting_inventory.hpp:
 C:/devkitPro/libctru/include/3ds.h:
 C:/devkitPro/libctru/include/3ds/types.h:
@@ -185,7 +186,7 @@ C:/devkitPro/libctru/include/3ds/font.h:
 C:/devkitPro/libctru/include/3ds/gdbhio_dev.h:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/keys.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/dungeon.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/text.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/hint_list.hpp:
@@ -204,3 +205,4 @@ C:/Users/SKREEE/Desktop/ZMM3DR/application/source/menu.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/pool_functions.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/region.hpp:
 C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_category.hpp:
+C:/Users/SKREEE/Desktop/ZMM3DR/application/source/item_list.hpp:
