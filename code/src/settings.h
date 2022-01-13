@@ -182,6 +182,15 @@ typedef enum {
 } BossKeysanitySetting;
 
 typedef enum {
+	FAIRYSANITY_START_WITH,
+	FAIRYSANITY_VANILLA,
+	FAIRYSANITY_OWN_DUNGEON,
+	FAIRYSANITY_ANY_DUNGEON,
+	FAIRYSANITY_OVERWORLD,
+	FAIRYSANITY_ANYWHERE,
+} FairysanitySetting;
+
+typedef enum {
   GANONSBOSSKEY_START_WITH,
   GANONSBOSSKEY_VANILLA,
   GANONSBOSSKEY_OWN_DUNGEON,
@@ -292,30 +301,10 @@ typedef struct {
   u8 hashIndexes[5];
 
   u8 logic;
-  u8 openForest;
-  u8 openKakariko;
-  u8 openDoorOfTime;
-  u8 zorasFountain;
-  u8 gerudoFortress;
-  u8 rainbowBridge;
-  u8 bridgeStoneCount;
-  u8 bridgeMedallionCount;
-  u8 bridgeRewardCount;
-  u8 bridgeDungeonCount;
-  u8 bridgeTokenCount;
-  u8 randomGanonsTrials;
-  u8 ganonsTrialsCount;
+  u8 locationsReachable;
 
-  u8 startingAge;
-  u8 resolvedStartingAge;
-  u8 shuffleDungeonEntrances;
-  u8 shuffleOverworldEntrances;
-  u8 bombchusInLogic;
-  u8 ammoDrops;
-  u8 heartDropRefill;
-  u8 randomMQDungeons;
-  u8 mqDungeonCount;
-
+  u8 toggleAllTricks;
+  u8 randomizeDungeon;
   u8 shuffleRewards;
   u8 linksPocketItem;
   u8 shuffleSongs;
@@ -325,83 +314,47 @@ typedef struct {
   u8 shuffleCows;
   u8 shuffleKokiriSword;
   u8 shuffleOcarinas;
-  u8 shuffleWeirdEgg;
-  u8 shuffleGerudoToken;
   u8 shuffleMagicBeans;
-  u8 shuffleMerchants;
-  u8 shuffleAdultTradeQuest;
 
   u8 mapsAndCompasses;
   u8 keysanity;
   u8 gerudoKeys;
   u8 bossKeysanity;
-  u8 ganonsBossKey;
-  u8 lacsCondition;
-  u8 lacsMedallionCount;
-  u8 lacsStoneCount;
-  u8 lacsRewardCount;
-  u8 lacsDungeonCount;
-  u8 lacsTokenCount;
+  u8 strayFairysanity;
 
-  u8 skipChildStealth;
-  u8 skipTowerEscape;
-  u8 skipEponaRace;
   u8 skipMinigamePhases;
   u8 freeScarecrow;
-  u8 fourPoesCutscene;
-  u8 templeOfTimeIntro;
-  u8 lakeHyliaOwl;
-  u8 bigPoeTargetCount;
-  u8 numRequiredCuccos;
-  u8 kingZoraSpeed;
-  u8 completeMaskQuest;
   u8 quickText;
   u8 skipSongReplays;
 
   u8 damageMultiplier;
-  u8 startingTime;
   u8 gossipStoneHints;
+  u8 clearHints;
+  u8 hintDistribution;
   u8 chestAnimations;
   u8 chestSize;
   u8 generateSpoilerLog;
   u8 ingameSpoilers;
   u8 menuOpeningButton;
   u8 randomTrapDmg;
-
-  u8 faroresWindAnywhere;
-  u8 stickAsAdult;
-  u8 boomerangAsAdult;
-  u8 hammerAsChild;
-  u8 gkDurability;
-
+  u8 changeOverworldItems;
+  u8 removeDDValue;
+  u8 blastMaskCooldown;
+  u8 underwaterOcarina;
+  u8 fierceDietyAnywhere;
+  u8 fastLabFish;
+  u8 fastBank;
+  u8 fastDogRace;
+  u8 goodDampeRNG;
+  u8 increasePushSpeed;
+  u8 fastArrowSwitch;
+  u8 fastElegyStatues;
   u8 itemPoolValue;
   u8 iceTrapValue;
-  u8 progressiveGoronSword;
 
   u8 customTunicColors;
   u8 coloredKeys;
   u8 coloredBossKeys;
-  u8 mirrorWorld;
-
-  u8 dekuTreeDungeonMode;
-  u8 dodongosCavernDungeonMode;
-  u8 jabuJabusBellyDungeonMode;
-  u8 forestTempleDungeonMode;
-  u8 fireTempleDungeonMode;
-  u8 waterTempleDungeonMode;
-  u8 spiritTempleDungeonMode;
-  u8 shadowTempleDungeonMode;
-  u8 bottomOfTheWellDungeonMode;
-  u8 iceCavernDungeonMode;
-  u8 gerudoTrainingGroundsDungeonMode;
-  u8 ganonsCastleDungeonMode;
-
-  u8 forestTrialSkip;
-  u8 fireTrialSkip;
-  u8 waterTrialSkip;
-  u8 spiritTrialSkip;
-  u8 shadowTrialSkip;
-  u8 lightTrialSkip;
 
   u32 linksPocketRewardBitMask;
 

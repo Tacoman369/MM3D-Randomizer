@@ -168,25 +168,25 @@ LOAD spoiler_data.o
 .igot.plt       0x0000000000100f1c        0x0
  .igot.plt      0x0000000000100f1c        0x0 message.o
 
-.bss            0x0000000000100f1c     0x561c
+.bss            0x0000000000100f1c     0x55e8
  .bss           0x0000000000100f1c        0x4 message.o
                 0x0000000000100f1c                ptrCustomMessageEntries
- .bss           0x0000000000100f20       0xa9 settings.o
+ .bss           0x0000000000100f20       0x75 settings.o
                 0x0000000000100f20                gSettingsContext
-                0x0000000000100fc8                Damage32
- *fill*         0x0000000000100fc9        0x3 
- .bss           0x0000000000100fcc     0x556c spoiler_data.o
-                0x0000000000100fcc                gSpoilerData
+                0x0000000000100f94                Damage32
+ *fill*         0x0000000000100f95        0x3 
+ .bss           0x0000000000100f98     0x556c spoiler_data.o
+                0x0000000000100f98                gSpoilerData
 
 .patch_loader
  *(.patch_loader)
 OUTPUT(C:/Users/SKREEE/Desktop/ZMM3DR/application/code/code.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x0000000000000000     0x42c4
+.debug_info     0x0000000000000000     0x3d63
  .debug_info    0x0000000000000000      0x296 message.o
- .debug_info    0x0000000000000296     0x2728 settings.o
- .debug_info    0x00000000000029be     0x1906 spoiler_data.o
+ .debug_info    0x0000000000000296     0x245e settings.o
+ .debug_info    0x00000000000026f4     0x166f spoiler_data.o
 
 .debug_abbrev   0x0000000000000000      0x611
  .debug_abbrev  0x0000000000000000      0x14a message.o
@@ -215,13 +215,13 @@ LOAD linker stubs
  .debug_line    0x00000000000001c3      0x2d2 settings.o
  .debug_line    0x0000000000000495      0x38b spoiler_data.o
 
-.debug_str      0x0000000000000000     0x22ae
+.debug_str      0x0000000000000000     0x1f08
  .debug_str     0x0000000000000000      0x25e message.o
                                         0x2a8 (size before relaxing)
- .debug_str     0x000000000000025e     0x1878 settings.o
-                                       0x1a79 (size before relaxing)
- .debug_str     0x0000000000001ad6      0x7d8 spoiler_data.o
-                                       0x1901 (size before relaxing)
+ .debug_str     0x000000000000025e     0x14d2 settings.o
+                                       0x16cd (size before relaxing)
+ .debug_str     0x0000000000001730      0x7d8 spoiler_data.o
+                                       0x1555 (size before relaxing)
 
 .comment        0x0000000000000000       0x23
  .comment       0x0000000000000000       0x23 message.o

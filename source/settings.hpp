@@ -252,7 +252,7 @@ class Menu {
 
 namespace Settings {
   void UpdateSettings();
-  //SettingsContext FillContext();
+  SettingsContext FillContext();
   void InitSettings();
   void SetDefaultSettings();
   void RandomizeAllSettings(const bool selectOptions = false);
@@ -263,56 +263,17 @@ namespace Settings {
   extern std::string seed;
   extern std::string version;
   extern std::array<u8, 5> hashIconIndexes;
-  /*
-  extern Option RandomizeWorld;
-  extern Option ShuffleEntrances;
-  extern Option ShuffleDungeonEntrances;
-  extern Option ShuffleOverworldEntrances;
-  extern Option BombchusInLogic;
-  extern Option AmmoDrops;
-  extern Option HeartDropRefill;
-  */
-  extern Option RandomizeShuffle;
-  extern Option ShuffleRewards;
-  extern Option LinksPocketItem;
-  extern Option ShuffleSongs;
-//  extern Option Shopsanity;
-//  extern Option Tokensanity;
-//  extern Option Scrubsanity;
-//  extern Option ShuffleCows;
-  extern Option ShuffleKokiriSword;
-//  extern Option ShuffleOcarinas;
-  extern Option ShuffleMagicBeans;
-
-  extern Option RandomizeDungeon;
-  extern Option MapsAndCompasses;
-  extern Option Keysanity;
-  extern Option BossKeysanity;
-
-  extern Option SkipEponaRace;
-  extern Option SkipMinigamePhases;
-  extern Option FreeScarecrow;
-  extern Option QuickText;
-  extern Option SkipSongReplays;
-
-  extern Option GossipStoneHints; 
-  extern Option ClearerHints;
-  extern Option HintDistribution;
- /* extern Option DamageMultiplier;
-  extern Option ChestAnimations;
-  extern Option ChestSize;
-  */
-  extern Option GenerateSpoilerLog;
-  extern Option IngameSpoilers;
-  extern Option MenuOpeningButton;
-  extern Option RandomTrapDmg;
-
-  extern Option ItemPoolValue;
-  extern Option IceTrapValue;
-  extern Option RemoveDoubleDefense;
-
-  //extern bool ShuffleInteriorEntrances;
-  //extern bool ShuffleSpecialIndoorEntrances;
+  
+  //Logic Sttings
+  extern Option Logic;
+  extern Option LocationsReachable;
+  extern std::vector<Option*> logicOptions;
+  extern Option LogicTrick;
+ 
+  //Trick Settings
+  extern Option ToggleAllTricks;
+  extern Option LogicGrottosWithoutAgony;
+  extern std::vector<Option*> trickOptions;
 
   //Starting Inventory
   extern Option StartingConsumables;
@@ -361,48 +322,116 @@ namespace Settings {
   extern Option StartingTwinmoldRemains;
   extern Option StartingSwampToken;
   extern Option StartingOceanToken;
+  extern std::vector<Option*> startingInventoryOptions;
 
-  //Logic Settings
-  extern Option Logic;
-  extern Option LocationsReachable;
-/*
-  //Trick Settings
-  extern Option ToggleAllTricks;
-  extern Option LogicGrottosWithoutAgony;
- 
-*/
-  //Glitch Settings
-  extern Option GlitchISG;
-  extern Option GlitchHover;
-  extern Option GlitchMegaflip;
-  extern Option GlitchHookshotClip;
-  extern Option GlitchHookshotJump_Bonk;
-  extern Option GlitchHookshotJump_Boots;
-  extern Option GlitchLedgeClip;
-  extern Option GlitchTripleSlashClip;
+  //Excluded Locations
+  extern std::vector<Option*> excludeLocationsOptions;
 
+  //Shuffle Dungeon Items
+  extern Option RandomizeDungeon;
+  extern Option MapsAndCompasses;
+  extern Option Keysanity;
+  extern Option BossKeysanity;
+  extern Option StrayFairysanity;
+  extern Option ShuffleRewards;
+  extern Option ShuffleMagicBeans;
+  extern Option ShuffleKokiriSword;
+//  extern Option Shopsanity;
+//  extern Option Tokensanity;
+//  extern Option Scrubsanity;
+//  extern Option ShuffleCows;
+//  extern Option ShuffleOcarinas;
+  extern std::vector<Option*> shuffleItemOptions;
+
+  //Other Settings
+  extern Option ShuffleSongs;
+  extern Option GossipStoneHints; 
+  extern Option ClearerHints;
+  extern Option HintDistribution;
+ /*extern Option DamageMultiplier;
+  extern Option ChestAnimations;
+  extern Option ChestSize;*/
+  extern Option ChangeOverworldItems;
+  extern Option GenerateSpoilerLog;
+  extern Option IngameSpoilers;
+  extern Option MenuOpeningButton;
+  extern Option RandomTrapDmg;
+  extern std::vector<Option*>otherSettingsOptions;
+
+  //Gimmicks
+  extern Option ItemPoolValue;
+  extern Option IceTrapValue;
+  extern Option RemoveDoubleDefense;
+  extern Option BlastMaskCooldown;
+  extern Option UnderwaterOcarina;
+  extern Option FierceDietyAnywhere;
+  extern std::vector<Option*>gimmickOptions;
+
+  //Comfort||Timesaver Options
+  
+  extern Option SkipMinigamePhases;
+  extern Option FastLabFish;
+  extern Option FastBank;
+  extern Option FastDogRace;
+  extern Option GoodDampeRNG;
+  extern Option IncreasePushSpeed;
+  extern Option FastArrowSwitch;
+  extern Option FastElegyStatues;
+  extern Option SkipSongReplays;
+
+  //Cosmetics
+  
   extern Option CustomTunicColors;
   extern Option ChildTunicColor;
   extern std::string finalChildTunicColor;
 
   extern Option ColoredKeys;
   extern Option ColoredBossKeys;
-
 //  extern Option ShuffleMusic;
 //  extern Option ShuffleBGM;
 //  extern Option ShuffleFanfares;
 //  extern Option ShuffleOcaMusic;
+  extern std::vector<Option*>cosmeticOptions;
+
+  //Glitches
+  extern Option FakeGlitch;
+  extern std::vector<Option*>glitchOptions;
+  
+  //Presets
+  extern Menu loadSettingPreset;
+  extern Menu saveSettingPreset;
+  extern Menu deleteSettingsPreset;
+  extern Menu resetToDefaultSettings;
+  extern std::vector<Menu*>settingsPresetItems;
+
+  //detailed Logic options submenu
+  extern Menu logicSettings;
+  extern Menu tricks;
+  extern Menu startingInventory;
+  extern Menu excludeLocations;
+  extern Menu glitchSettings;
+  extern Menu itemSettings;
+  extern Menu otherSettings;
+  
+  //Main Menu
+  extern std::vector<Menu *> mainSettingsOptions;
+  extern Menu mainSettings;
+  extern Menu gimmicks;
+  extern Menu timeSaverSettings;
+  extern Menu settingsPresets;
+  extern Menu cosmetics;
+  extern Menu generateRandomizer;
+  extern std::vector<Menu *> mainMenu;
+
+
+  extern Option LinksPocketItem;
+  //extern bool ShuffleInteriorEntrances;
+  //extern bool ShuffleSpecialIndoorEntrances;
 
   extern u32 LinksPocketRewardBitMask;
   extern std::array<u32, 9> rDungeonRewardOverrides;
 
   extern u8 PlayOption;
-
-  extern std::vector<Option *> excludeLocationsOptions;
-  extern std::vector<Option *> startingInventoryOptions;
- // extern std::vector<Option *> trickOptions;
-
-  extern std::vector<Menu *> detailedLogicOptions;
-
-  extern std::vector<Menu *> mainMenu;
 }
+  
+
