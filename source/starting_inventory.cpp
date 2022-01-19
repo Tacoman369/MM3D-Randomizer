@@ -79,9 +79,9 @@ void GenerateStartingInventory() {
   AddItemToInventory(OCARINA_OF_TIME,     		StartingOcarina.Value<u8>());
   AddItemToInventory(OATH_TO_ORDER,             StartingOathToOrder.Value<u8>());
   AddItemToInventory(EPONAS_SONG,               StartingEponasSong.Value<u8>());
-  AddItemToInventory(INVERTED_SONG_OF_TIME,     StartingInvertedSong.Value<u8>());
+  //AddItemToInventory(INVERTED_SONG_OF_TIME,     StartingInvertedSong.Value<u8>());
   //AddItemToInventory(SONG_OF_DOUBLE_TIME,       StartingDoubleSong.Value<u8>());
-  AddItemToInventory(SONG_OF_TIME,              StartingSongOfTime.Value<u8>());
+  //AddItemToInventory(SONG_OF_TIME,              StartingSongOfTime.Value<u8>());
   AddItemToInventory(SONG_OF_STORMS,            StartingSongOfStorms.Value<u8>());
   AddItemToInventory(SONATA_OF_AWAKENING,       StartingSonataOfAwakening.Value<u8>());
   AddItemToInventory(GORONS_LULLABY,            StartingGoronsLullaby.Value<u8>());
@@ -101,6 +101,7 @@ void GenerateStartingInventory() {
   AddItemToInventory(TWINMOLDS_REMAINS,         StartingTwinmoldRemains.Value<u8>());
   //AddItemToInventory(SWAMP_SKULLTULA_TOKEN,     StartingSwampToken.Value<u8>());
   //AddItemToInventory(OCEANSIDE_SKULLTULA_TOKEN, StartingOceanToken.Value<u8>());
+
   
   s8 hearts = (StartingHealth.Value<u8>() + 2) % 20 - 2;
   AdditionalHeartContainers = 0;

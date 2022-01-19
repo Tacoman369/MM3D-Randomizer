@@ -298,9 +298,9 @@ namespace Settings {
   extern Option StartingOcarina;
   extern Option StartingOathToOrder;
   extern Option StartingEponasSong;
-  extern Option StartingInvertedSong;
-  extern Option StartingDoubleTime;
-  extern Option StartingSongOfTime;
+  //extern Option StartingInvertedSong;
+  //extern Option StartingDoubleTime;
+  //extern Option StartingSongOfTime;
   extern Option StartingSongOfStorms;
   extern Option StartingSonataOfAwakening;
   extern Option StartingGoronsLullaby;
@@ -324,6 +324,31 @@ namespace Settings {
   extern Option StartingOceanToken;
   extern std::vector<Option*> startingInventoryOptions;
 
+  //Starting Masks
+  extern Option StartingMaskToggle;
+  extern Option StartingDekuMask;
+  extern Option StartingGoronMask;
+  extern Option StartingZoraMask;
+  extern Option StartingBunnyHood;
+  extern Option StartingKeatonMask;
+  extern Option StartingPostmanHat;
+  extern Option StartingAllNightMask;
+  extern Option StartingBlastMask;
+  extern Option StartingStoneMask;
+  extern Option StartingGreatFairyMask;
+  extern Option StartingBremenMask;
+  extern Option StartingDonGeroMask;
+  extern Option StartingMaskOfScents;
+  extern Option StartingRomanisMask;
+  extern Option StartingCircusLeaderMask;
+  extern Option StartingKafeiMask;
+  extern Option StartingCouplesMask;
+  extern Option StartingKamarosMask;
+  extern Option StartingGibdosMask;
+  extern Option StartingCaptainsHat;
+  extern Option StartingGiantsMask;
+  extern Option StartingFierceDietyMask;
+  extern Option StartingMaskOfTruth;
   //Excluded Locations
   extern std::vector<Option*> excludeLocationsOptions;
 

@@ -40,7 +40,7 @@ namespace Settings {
 
       return selectableDifficulties;
   }
-  //                                        Setting name,              Options,                                                                     Setting Descriptions (assigned in setting_descriptions.cpp)                                                 Category (default: Setting),Default index (default: 0), Default hidden (default: false)
+  //                                Setting name,              Options,                                                                     Setting Descriptions (assigned in setting_descriptions.cpp)                                                 Category (default: Setting),Default index (default: 0), Default hidden (default: false)
   Option LinksPocketItem = Option::U8("Link's Pocket", { "Dungeon Reward", "Advancement", "Anything", "Nothing" }, { linksPocketDungeonReward, linksPocketAdvancement, linksPocketAnything, linksPocketNothing });
 
   /*MAIN SETTINGS*/
@@ -50,20 +50,20 @@ namespace Settings {
   Option LocationsReachable = Option::Bool("All Locations Reachable", { "Off", "On" }, { locationsReachableDesc }, OptionCategory::Setting, 1); //All Locations Reachable On
   std::vector<Option*> logicOptions = {
     &Logic,
-    &LocationsReachable,
+    &LocationsReachable
   };
   
   //TODO MM3D LOGIC TRICKS
   //Function to make defining logic tricks easier to read
   /*Option LogicTrick(std::string setting, std::string_view description) {
       return Option::Bool(setting, { "Disabled", "Enabled" }, { description });
-  };
-  */
+  };*/
+  
   //Detailed Logic Tricks                               ---------------------
   Option ToggleAllTricks                  = Option::U8("All Tricks", {"None", "Novice", "Intermediate", "Expert"},  {ToggleLogicNoneDesc, ToggleLogicNoviceDesc, ToggleLogicIntermediateDesc, ToggleLogicExpertDesc},                                           OptionCategory::Toggle);
   //Option LogicGrottosWithoutAgony         = LogicTrick(" Grotto Access\n   w/o Shard of Agony",       LogicGrottosWithoutAgonyDesc);
   std::vector<Option *> trickOptions = {
-    &ToggleAllTricks,
+    &ToggleAllTricks
     //&LogicGrottosWithoutAgony,
    };
 
@@ -90,12 +90,12 @@ namespace Settings {
   Option StartingBottle6 = Option::U8("  Bottle Slot 6", bottleOptions, { "" });
   Option StartingBottle7 = Option::U8("  Bottle Slot 7", bottleOptions, { "" });
   Option StartingBottle8 = Option::U8("  Bottle Slot 8", bottleOptions, { "" });
-  Option StartingSongsToggle = Option::U8("  Ocarina Songs", { "All Off",          "All On",           "Choose" }, { "" });
+  Option StartingSongsToggle = Option::U8("Ocarina Songs", { "All Off",          "All On",           "Choose" }, { "" });
   Option StartingOathToOrder = Option::U8("  Oath To Order", { "None",             "Oath to Order" }, { "" });
   Option StartingEponasSong = Option::U8("  Epona's Song", { "None",             "Epona's Song" }, { "" });
-  Option StartingInvertedSong = Option::U8("  Inverted Song of Time", { "None",             "I. Song of Time" }, { "" });
-  Option StartingDoubleSong = Option::U8("  Song of Double Time", { "None",             "Song of D. Time" }, { "" });
-  Option StartingSongOfTime = Option::U8("  Song of Time", { "None",             "Song of Time" }, { "" });
+//  Option StartingInvertedSong = Option::U8("  Inverted Song of Time", { "None",             "I. Song of Time" }, { "" });
+//  Option StartingDoubleSong = Option::U8("  Song of Double Time", { "None",             "Song of D. Time" }, { "" });
+//  Option StartingSongOfTime = Option::U8("  Song of Time", { "None",             "Song of Time" }, { "" });
   Option StartingSongOfStorms = Option::U8("  Song of Storms", { "None",             "Song of Storms" }, { "" });
   Option StartingSonataOfAwakening = Option::U8("  Sonata of Awakening", { "None",             "Sonata of A." }, { "" });
   Option StartingGoronsLullaby = Option::U8("  Gorons Lullaby", { "None",             "Gorons Lullaby" }, { "" });
@@ -103,7 +103,7 @@ namespace Settings {
   Option StartingElegyOfEmptiness = Option::U8("  Elegy of Emptiness", { "None",             "Elegy of Emptiness" }, { "" });
   Option StartingSongOfHealing = Option::U8("  Song of Healing", { "None",             "Song of Healing" }, { "" });
   Option StartingSongOfSoaring = Option::U8("  Song of Soaring", { "None",             "Song of Soaring" }, { "" });
-  Option StartingUpgradesToggle = Option::U8("  Equipment & Upgrades", { "All Off",          "All On",           "Choose" }, { "" });
+  Option StartingUpgradesToggle = Option::U8("Equipment & Upgrades", { "All Off",          "All On",           "Choose" }, { "" });
   Option StartingKokiriSword = Option::U8("  Kokiri Sword", { "None",             "Kokiri Sword" }, { "" });
   Option StartingGreatFairySword = Option::U8("  Great Fairy Sword", { "None",             "Great Fairys Sword" }, { "" });
   Option StartingHerosShield = Option::U8("  Hero's Shield", { "None",             "Hero's Shield" }, { "" });
@@ -112,13 +112,40 @@ namespace Settings {
   Option StartingHealth = Option::U8("  Health", healthOptions, { "" });
   Option StartingMagicMeter = Option::U8("  Magic Meter", { "None",             "Single Magic",     "Double Magic" }, { "" });
   Option StartingDoubleDefense = Option::U8("  Double Defense", { "None",             "Double Defence" }, { "" });
-  Option StartingQuestToggle = Option::U8("  Quest Items", { "All Off",          "All On",           "Choose" }, { "" });
+  Option StartingQuestToggle = Option::U8("Quest Items", { "All Off",          "All On",           "Choose" }, { "" });
   Option StartingOdolwaRemains = Option::U8("  Odolwa's Remains", { "None",             "Odolwa's R." }, { "" });
   Option StartingGohtRemains = Option::U8("  Goht's Remains", { "None",             "Goht's R." }, { "" });
   Option StartingGyorgRemains = Option::U8("  Gyorg's Remains", { "None",             "Gyorg's R." }, { "" });
   Option StartingTwinmoldRemains = Option::U8("  Twinmold's Remains", { "None",             "TwinMold's R." }, { "" });
-  Option StartingSwampToken = Option::U8("  Swamp Skulltula Tokens", {/*Options 0-30 defined in InitSettings()*/ }, { "" }, OptionCategory::Setting, 0, false);
-  Option StartingOceanToken = Option::U8("  Ocean Skulltula Tokens", {/*Options 0-30 defined in InitSettings()*/ }, { "" }, OptionCategory::Setting, 0, false);
+  Option StartingSwampToken = Option::U8("Swamp Skulltula Tokens", {/*Options 0-30 defined in InitSettings()*/ }, { "" }, OptionCategory::Setting, 0, false);
+  Option StartingOceanToken = Option::U8("Ocean Skulltula Tokens", {/*Options 0-30 defined in InitSettings()*/ }, { "" }, OptionCategory::Setting, 0, false);
+  //Starting Masks 
+  Option StartingMaskToggle = Option::U8("Masks", { "All Off",          "All On",           "Choose" }, { "" });
+  Option StartingDekuMask = Option::U8("  Deku Mask", { "None",             "Deku M." }, { "" });
+  Option StartingGoronMask = Option::U8("  Goron Mask", { "None",             "Goron M." }, { "" });
+  Option StartingZoraMask = Option::U8("  Zora Mask", { "None",             "Zora M." }, { "" });
+  Option StartingBunnyHood = Option::U8("  Bunny Hood", { "None",             "Bunny H." }, { "" });
+  Option StartingKeatonMask = Option::U8("  Keaton Mask", { "None",             "Keaton M." }, { "" });
+  Option StartingPostmanHat = Option::U8("  Postman's Hat", { "None",             "Postman's H." }, { "" });
+  Option StartingAllNightMask = Option::U8("  All-Night Mask", { "None",             "All-Night M." }, { "" });
+  Option StartingBlastMask = Option::U8("  Blast Mask", { "None",             "Blast M." }, { "" });
+  Option StartingStoneMask = Option::U8("  Stone Mask", { "None",             "Stone M." }, { "" });
+  Option StartingGreatFairyMask = Option::U8("  Great Fairys Mask", { "None",             "G.F M." }, { "" });
+  Option StartingBremenMask = Option::U8("  Bremen Mask", { "None",             "Bremen M." }, { "" });
+  Option StartingDonGeroMask = Option::U8("  Don Gero's Mask", { "None",             "DonGero M." }, { "" });
+  Option StartingMaskOfScents = Option::U8("  Mask of Scents", { "None",             "Scents M." }, { "" });
+  Option StartingRomanisMask = Option::U8("  Romani's Mask", { "None",             "Romani M." }, { "" });
+  Option StartingCircusLeaderMask = Option::U8("  Circus Leader's Mask", { "None",             "T.L M." }, { "" });
+  Option StartingKafeiMask = Option::U8("  Kafei Mask", { "None",             "Kafei M." }, { "" });
+  Option StartingCouplesMask = Option::U8("  Couples Mask", { "None",             "Couples M." }, { "" });
+  Option StartingKamarosMask = Option::U8("  Kamaro's Mask", { "None",             "Kamaros M." }, { "" });
+  Option StartingGibdosMask = Option::U8("  Gibdos Mask", { "None",             "Gibdos M." }, { "" });
+  Option StartingCaptainsHat = Option::U8("  Captain's Mask", { "None",             "Captains M." }, { "" });
+  Option StartingGiantsMask = Option::U8("  Giants Mask", { "None",             "Giants M." }, { "" });
+  Option StartingFierceDietyMask = Option::U8("  Fierce Diety Mask", { "None",             "F.D M." }, { "" });
+  Option StartingMaskOfTruth = Option::U8("  Mask of Truth", { "None",             "Truth M." }, { "" });
+
+  
   std::vector<Option*> startingInventoryOptions = {
     &StartingConsumables,
     &StartingMaxRupees,
@@ -141,12 +168,33 @@ namespace Settings {
     &StartingBottle5,
     &StartingBottle6,
     &StartingBottle7,
+    &StartingMaskToggle,
+    &StartingDekuMask,
+    &StartingGoronMask,
+    &StartingZoraMask,
+    &StartingBunnyHood,
+    &StartingKeatonMask,
+    &StartingPostmanHat,
+    &StartingAllNightMask,
+    &StartingBlastMask,
+    &StartingStoneMask,
+    &StartingGreatFairyMask,
+    &StartingBremenMask,
+    &StartingDonGeroMask,
+    &StartingMaskOfScents,
+    &StartingRomanisMask,
+    &StartingCircusLeaderMask,
+    &StartingKafeiMask,
+    &StartingCouplesMask,
+    &StartingKamarosMask,
+    &StartingGibdosMask,
+    &StartingCaptainsHat,
+    &StartingGiantsMask,
+    &StartingFierceDietyMask,
+    &StartingMaskOfTruth,
     &StartingSongsToggle,
     &StartingOathToOrder,
     &StartingEponasSong,
-    &StartingInvertedSong,
-    &StartingDoubleSong,
-    &StartingSongOfTime,
     &StartingSongOfStorms,
     &StartingSonataOfAwakening,
     &StartingGoronsLullaby,
@@ -170,6 +218,7 @@ namespace Settings {
     &StartingTwinmoldRemains,
     &StartingSwampToken,
     &StartingOceanToken,
+    
   };
 
   //Excluded Locations (Individual definitions made in ItemLocation class)
@@ -524,9 +573,9 @@ namespace Settings {
     ctx.startingQuestItems |= StartingSongOfSoaring.Value<u8>()   << 11;
     ctx.startingQuestItems |= StartingOathToOrder.Value<u8>()    << 12;
     ctx.startingQuestItems |= StartingEponasSong.Value<u8>()       << 13;
-    ctx.startingQuestItems |= StartingDoubleSong.Value<u8>()       << 14;
-    ctx.startingQuestItems |= StartingInvertedSong.Value<u8>()      << 15;
-    ctx.startingQuestItems |= StartingSongOfTime.Value<u8>()       << 16;
+    //ctx.startingQuestItems |= StartingDoubleSong.Value<u8>()       << 14;
+    //ctx.startingQuestItems |= StartingInvertedSong.Value<u8>()      << 15;
+    //ctx.startingQuestItems |= StartingSongOfTime.Value<u8>()       << 16;
     ctx.startingQuestItems |= StartingSongOfStorms.Value<u8>()     << 17;
     ctx.startingDungeonReward |= StartingOdolwaRemains.Value<u8>()    << 18;
     ctx.startingDungeonReward |= StartingGohtRemains.Value<u8>()        << 19;
@@ -536,7 +585,8 @@ namespace Settings {
 //    ctx.startingTokens        = StartingSwampToken.Value<u8>();
 //    ctx.startingTokens        = StartingOceanToken.Value<u8>();
 
-
+    //Starting Masks
+    //To-DO
     //Starting Equipment
     ctx.startingEquipment |= StartingKokiriSword.Value<u8>();
     ctx.startingEquipment |= (StartingGreatFairySword.Value<u8>() ? 1: 0) << 2;
@@ -787,11 +837,12 @@ namespace Settings {
   void ForceChange(u32 kDown, Option* currentSetting) {
 
     //Groups the item categories; bottles are handled separately because the proper item is Empty Bottle (1)
-    CollapseCategory(StartingInventoryToggle, 3, 23);
-    CollapseCategory(StartingSongsToggle, 29, 41);
-    CollapseCategory(StartingUpgradesToggle, 42, 56);
-    CollapseCategory(StartingQuestToggle, 57, 66);
-    for(int i = 23; i < 28 ;++i){
+      CollapseCategory(StartingInventoryToggle, 3, 14);
+      CollapseCategory(StartingMaskToggle, 22, 45);
+      CollapseCategory(StartingSongsToggle, 46, 55);
+      CollapseCategory(StartingUpgradesToggle, 56, 64);
+      CollapseCategory(StartingQuestToggle, 65, 69);
+    for(int i = 14; i < 21 ;++i){
       switch(StartingInventoryToggle.Value<u8>()) {
         case 0:
           startingInventoryOptions[i]->Hide();
