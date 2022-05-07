@@ -1,4 +1,4 @@
-# MM3DR
+# MM3D Randomizer
 
 This is the home for my attempt at making a Majora's Mask 3D Randomizer. So far it's only a working menu concept but should be getting updates soon!
 
