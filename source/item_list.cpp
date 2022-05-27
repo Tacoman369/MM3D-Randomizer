@@ -1,6 +1,6 @@
 #include "item_list.hpp"
 #include "logic.hpp"
-#include "../code/include/rnd/item_override.h"
+#include "rnd/item_override.h"
 #include <array>
 using namespace Logic;
 using namespace std;

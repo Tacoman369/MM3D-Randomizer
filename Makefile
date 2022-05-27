@@ -38,10 +38,10 @@ TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
-INCLUDES	:=	include
+INCLUDES	:=	source/include mm3dr/code/include
 GRAPHICS	:=	gfx
 GFXBUILD	:=	$(BUILD)
-#ROMFS		:=	romfs
+ROMFS		:=	romfs
 #GFXBUILD	:=	$(ROMFS)/gfx
 
 #---------------------------------------------------------------------------------
@@ -174,8 +174,9 @@ all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 $(BUILD):
-	$(MAKE) -C code
-	@mv code/basecode.ips $(ROMFS)/basecode.ips
+	@git submodule update --init
+	$(MAKE) -C mm3dr/code
+	@mv mm3dr/code/basecode.ips $(ROMFS)/basecode.ips
 	@mkdir -p $@
 
 ifneq ($(GFXBUILD),$(BUILD))
@@ -190,9 +191,9 @@ endif
 
 #---------------------------------------------------------------------------------
 clean:
-	@echo clean ...
+	@echo Cleaning app and basecode ...
 	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD) $(ROMFS)/basecode.ips
-	$(MAKE) clean -C code
+	$(MAKE) -f mm3dr/code/Makefile clean
 	
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
