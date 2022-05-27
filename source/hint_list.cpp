@@ -1,9 +1,9 @@
 #include "hint_list.hpp"
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 
 #include <array>
 
-using namespace CustomMessages;
+//using namespace CustomMessages;
 
 static std::array<HintText, KEY_ENUM_MAX> hintTable;
 

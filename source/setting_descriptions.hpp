@@ -124,7 +124,7 @@ extern string_view shopsFour;
 extern string_view shopsRandom;
 
 extern string_view tokensOff;
-//extern string_view tokensDungeon;
+extern string_view tokensDungeon;
 extern string_view tokensOverworld;
 extern string_view tokensAllTokens;
 
@@ -175,3 +175,23 @@ extern string_view linksPocketDefault;
 extern string_view ToggleAllTricksDesc;
 
 extern const std::vector<string_view> GlitchDifficulties;
+
+extern string_view shuffleChestItemsVanilla;
+extern string_view shuffleChestItemsRandom;
+extern string_view shuffleGFVanilla;
+extern string_view shuffleGFSelf;
+extern string_view shuffleGFAnywhere;
+extern string_view shuffleMerchantsDesc;
+extern string_view skipEponaRaceDesc;
+extern string_view rsDurabilityVanilla;
+extern string_view rsDurabilityInf;
+extern string_view odolwaTrialSkipDesc;
+extern string_view gohtTrialSkipDesc;
+extern string_view gyorgTrialSkipDesc;
+extern string_view twinmoldTrialSkipDesc;
+extern string_view progressiveGildedSwordDesc;
+extern string_view startingSpinDesc;
+extern string_view shuffleDungeonEntrancesDesc;
+extern string_view bombchuInLogicDesc;
+extern string_view ammoDropDesc;
+extern string_view heartDropDesc;

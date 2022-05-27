@@ -29,9 +29,9 @@ include $(DEVKITARM)/3ds_rules
 #---------------------------------------------------------------------------------
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	src
+SOURCES		:=	source source/asm source/lib source/common source/game source/rnd
 DATA		:=	data
-INCLUDES	:=	include
+INCLUDES	:=	include 
 INCLUDES    +=  assets
 #ROMFS		:=	romfs
 
@@ -62,7 +62,7 @@ CFLAGS	:=	-g -Wall -mword-relocations -D DEBUG \
 
 CFLAGS	+=	$(INCLUDE) -DARM11 -D_3DS $(VERFLAGS)
 
-CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17
+CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++17 -Wno-invalid-offsetof
 
 ASFLAGS	+=	-g $(ARCH) $(VERFLAGS)
 LDFLAGS	=	-g $(ARCH) -Wl,-Map,$(notdir $*.map) -T $(TOPDIR)/$(LINK_SCRIPT) -nostdlib $(VERFLAGS) -lgcc
@@ -76,11 +76,17 @@ ifneq ($(debug), 0)
 	CXXFLAGS += -g -DENABLE_DEBUG
 endif
 
+chaos ?= 0
+ifneq ($(chaos), 0)
+	CFLAGS += -g -DENABLE_NOLOGIC
+	CXXFLAGS += -g -DENABLE_NOLOGIC
+endif
+
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:= $(DEVKITARM) include/citro3d
+LIBDIRS	:= $(DEVKITARM) $(CTRULIB)
 
 
 #---------------------------------------------------------------------------------
@@ -161,7 +167,7 @@ $(BUILD):
 #---------------------------------------------------------------------------------
 clean:
 	@echo clean ...
-	@rm -fr $(BUILD)  $(TARGET).elf
+	@rm -fr $(BUILD)  $(TARGET).elf basecode.ips
 
 
 #---------------------------------------------------------------------------------

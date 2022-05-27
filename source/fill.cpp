@@ -1,6 +1,6 @@
 #include "fill.hpp"
 
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 #include "dungeon.hpp"
 #include "item_location.hpp"
 #include "item_pool.hpp"
@@ -18,7 +18,7 @@
 #include <unistd.h>
 #include <list>
 
-using namespace CustomMessages;
+//using namespace CustomMessages;
 using namespace Logic;
 using namespace Settings;
 
@@ -58,7 +58,7 @@ std::vector<LocationKey> GetAllEmptyLocations() {
 std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& allowedLocations, SearchMode mode) {
     std::vector<LocationKey> accessibleLocations;
     //Reset all access to begin a new search
-        ApplyStartingInventory();
+        //ApplyStartingInventory();
     
     Areas::AccessReset();
     LocationReset();
@@ -126,20 +126,21 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                                 bombchusFound = true;
                                 exclude = false;
                             }
+                            
                             //Has not been excluded, add to playthrough
                             if (!exclude) {
                                 itemSphere.push_back(loc);
                             }
                         }
-                        //MAJORA has been found, seed is beatable, nothing else in this or future spheres matters
-                        else if (location->GetPlacedItemKey() == MAJORA) {
+                        //MAJORA'S_MASK has been found, seed is beatable, nothing else in this or future spheres matters
+                        else if (location->GetPlacedItemKey() == MAJORAS_MASK) {
                             itemSphere.clear();
                             itemSphere.push_back(loc);
                             playthroughBeatable = true;
                         }
                     }
                     //All we care about is if the game is beatable, used to pare down playthrough
-                    else if (location->GetPlacedItemKey() == MAJORA && mode == SearchMode::CheckBeatable) {
+                    else if (location->GetPlacedItemKey() == MAJORAS_MASK && mode == SearchMode::CheckBeatable) {
                         playthroughBeatable = true;
                         return {}; //Return early for efficiency
                     }
@@ -208,10 +209,10 @@ static void PareDownPlaythrough() {
             //Playthrough is still beatable without this item, therefore it can be removed from playthrough section.
             if (playthroughBeatable) {
                 //Uncomment to print playthrough deletion log in citra
-                // std::string itemname(ItemTable(copy).GetName().GetEnglish());
-                // std::string locationname(Location(loc)->GetName());
-                // std::string removallog = itemname + " at " + locationname + " removed from playthrough";
-                // CitraPrint(removallog);
+                 //std::string itemname(ItemTable(copy).GetName().GetEnglish());
+                 //std::string locationname(Location(loc)->GetName());
+                 //std::string removallog = itemname + " at " + locationname + " removed from playthrough";
+                 //CitraPrint(removallog);
                 playthroughLocations[i].erase(playthroughLocations[i].begin() + j);
                 Location(loc)->SetDelayedItem(copy); //Game is still beatable, don't add back until later
                 toAddBackItem.push_back(loc);
@@ -473,22 +474,22 @@ static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
 
     //filter out locations that may be required to have songs placed at them
     dungeonLocations = FilterFromPool(dungeonLocations, [](const LocationKey loc) {
-        if (ShuffleSongs.Is(SONGSHUFFLE_SONG_LOCATIONS)) {
+        if (ShuffleSongs.Is(rnd::SongShuffleSetting::SONGSHUFFLE_SONG_LOCATIONS)) {
             return !(Location(loc)->IsCategory(Category::cSong));
         }
-        if (ShuffleSongs.Is(SONGSHUFFLE_DUNGEON_REWARDS)) {
+        if (ShuffleSongs.Is(rnd::SongShuffleSetting::SONGSHUFFLE_DUNGEON_REWARDS)) {
             return !(Location(loc)->IsCategory(Category::cDungeonReward));
         }
         return true;
         });
 
     //Add specific items that need be randomized within this dungeon
-    if (Keysanity.Is(KEYSANITY_OWN_DUNGEON) && dungeon->GetSmallKey() != NONE) {
+    if (Keysanity.Is(rnd::KeysanitySetting::KEYSANITY_OWN_DUNGEON) && dungeon->GetSmallKey() != NONE) {
         std::vector<ItemKey> dungeonSmallKeys = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) { return i == dungeon->GetSmallKey();});
         AddElementsToPool(dungeonItems, dungeonSmallKeys);
     }
 
-    if (BossKeysanity.Is(BOSSKEYSANITY_OWN_DUNGEON) && dungeon->GetBossKey() != NONE) {
+    if (BossKeysanity.Is(rnd::BossKeysanitySetting::BOSSKEYSANITY_OWN_DUNGEON) && dungeon->GetBossKey() != NONE) {
         auto dungeonBossKey = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) { return i == dungeon->GetBossKey();});
         AddElementsToPool(dungeonItems, dungeonBossKey);
     }
@@ -497,7 +498,7 @@ static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
     AssumedFill(dungeonItems, dungeonLocations);
 
     //randomize map and compass separately since they're not progressive
-    if (MapsAndCompasses.Is(MAPSANDCOMPASSES_OWN_DUNGEON) && dungeon->GetMap() != NONE && dungeon->GetCompass() != NONE) {
+    if (MapsAndCompasses.Is(rnd::MapsAndCompassesSetting::MAPSANDCOMPASSES_OWN_DUNGEON) && dungeon->GetMap() != NONE && dungeon->GetCompass() != NONE) {
         auto dungeonMapAndCompass = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) { return i == dungeon->GetMap() || i == dungeon->GetCompass();});
         AssumedFill(dungeonMapAndCompass, dungeonLocations);
     }
@@ -523,31 +524,31 @@ static void RandomizeDungeonItems() {
     std::vector<ItemKey> overworldItems;
 
     for (auto dungeon : dungeonList) {
-        if (Keysanity.Is(KEYSANITY_ANY_DUNGEON)) {
+        if (Keysanity.Is(rnd::KeysanitySetting::KEYSANITY_ANY_DUNGEON)) {
             auto dungeonKeys = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetSmallKey();});
             AddElementsToPool(anyDungeonItems, dungeonKeys);
         }
-        else if (Keysanity.Is(KEYSANITY_OVERWORLD)) {
+        else if (Keysanity.Is(rnd::KeysanitySetting::KEYSANITY_OVERWORLD)) {
             auto dungeonKeys = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetSmallKey();});
             AddElementsToPool(overworldItems, dungeonKeys);
         }
 
-        if (BossKeysanity.Is(BOSSKEYSANITY_ANY_DUNGEON) && dungeon->GetBossKey() != NONE) {
+        if (BossKeysanity.Is(rnd::BossKeysanitySetting::BOSSKEYSANITY_ANY_DUNGEON) && dungeon->GetBossKey() != NONE) {
             auto bossKey = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetBossKey();});
             AddElementsToPool(anyDungeonItems, bossKey);
         }
-        else if (BossKeysanity.Is(BOSSKEYSANITY_OVERWORLD) && dungeon->GetBossKey() != NONE) {
+        else if (BossKeysanity.Is(rnd::BossKeysanitySetting::BOSSKEYSANITY_OVERWORLD) && dungeon->GetBossKey() != NONE) {
             auto bossKey = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetBossKey();});
             AddElementsToPool(overworldItems, bossKey);
         }
 
     }
 
-    if (ShuffleRewards.Is(REWARDSHUFFLE_ANY_DUNGEON)) {
+    if (ShuffleRewards.Is(rnd::RewardShuffleSetting::REWARDSHUFFLE_ANY_DUNGEON)) {
         auto rewards = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return ItemTable(i).GetItemCategory() == ItemCategory::Remains;});
         AddElementsToPool(anyDungeonItems, rewards);
     }
-    else if (ShuffleRewards.Is(REWARDSHUFFLE_OVERWORLD)) {
+    else if (ShuffleRewards.Is(rnd::RewardShuffleSetting::REWARDSHUFFLE_OVERWORLD)) {
         auto rewards = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return ItemTable(i).GetItemCategory() == ItemCategory::Remains;});
         AddElementsToPool(overworldItems, rewards);
     }
@@ -558,11 +559,11 @@ static void RandomizeDungeonItems() {
 
     //Randomize maps and compasses after since they're not advancement items
     for (auto dungeon : dungeonList) {
-        if (MapsAndCompasses.Is(MAPSANDCOMPASSES_ANY_DUNGEON)) {
+        if (MapsAndCompasses.Is(rnd::MapsAndCompassesSetting::MAPSANDCOMPASSES_ANY_DUNGEON)) {
             auto mapAndCompassItems = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetMap() || i == dungeon->GetCompass();});
             AssumedFill(mapAndCompassItems, anyDungeonLocations, true);
         }
-        else if (MapsAndCompasses.Is(MAPSANDCOMPASSES_OVERWORLD)) {
+        else if (MapsAndCompasses.Is(rnd::MapsAndCompassesSetting::MAPSANDCOMPASSES_OVERWORLD)) {
             auto mapAndCompassItems = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) {return i == dungeon->GetMap() || i == dungeon->GetCompass();});
             AssumedFill(mapAndCompassItems, overworldLocations, true);
         }
@@ -570,7 +571,7 @@ static void RandomizeDungeonItems() {
 }
 
 static void RandomizeLinksPocket() {
-    if (LinksPocketItem.Is(LINKSPOCKETITEM_ADVANCEMENT)) {
+    if (LinksPocketItem.Is(rnd::LinksPocketSetting::LINKSPOCKETITEM_ADVANCEMENT)) {
         //Get all the advancement items                                                                                                     don't include tokens
         std::vector<ItemKey> advancementItems = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return ItemTable(i).IsAdvancement() && ItemTable(i).GetItemCategory() != ItemCategory::SkulltulaTokens;});
         //select a random one
@@ -580,7 +581,7 @@ static void RandomizeLinksPocket() {
 
         PlaceItemInLocation(LINKS_POCKET, startingItem);
     }
-    else if (LinksPocketItem.Is(LINKSPOCKETITEM_NOTHING)) {
+    else if (LinksPocketItem.Is(rnd::LinksPocketSetting::LINKSPOCKETITEM_NOTHING)) {
         PlaceItemInLocation(LINKS_POCKET, GREEN_RUPEE);
     }
 }
@@ -590,7 +591,7 @@ void VanillaFill() {
     AreaTable_Init();
     GenerateLocationPool();
     GenerateItemPool();
-    GenerateStartingInventory();
+    //GenerateStartingInventory();
     //Place vanilla item in each location
     //RandomizeDungeonRewards();
     for (LocationKey loc : allLocations) {
@@ -603,16 +604,16 @@ void VanillaFill() {
     //    printf("\x1b[7;32HDone");
     //}
     //Finish up
-    CreateItemOverrides();
+    //CreateItemOverrides();
     //CreateEntranceOverrides();
-    CreateAlwaysIncludedMessages();
+    //CreateAlwaysIncludedMessages();
 }
 
 int Fill() {
     int retries = 0;
     while (retries < 5) {
         placementFailure = false;
-        showItemProgress = false;
+        showItemProgress = true;
         playthroughLocations.clear();
         //playthroughEntrances.clear();
         wothLocations.clear();
@@ -620,9 +621,9 @@ int Fill() {
         ItemReset(); //Reset shops incase of shopsanity random
         GenerateLocationPool();
         GenerateItemPool();
-        GenerateStartingInventory();
-        RemoveStartingItemsFromPool();
-        FillExcludedLocations();
+        //GenerateStartingInventory();
+        //RemoveStartingItemsFromPool();
+        //FillExcludedLocations();
         /*
         //Temporarily add shop items to the ItemPool so that entrance randomization
         //can validate the world using deku/hylian shields
@@ -684,7 +685,7 @@ int Fill() {
 
         //Place dungeon rewards
         //RandomizeDungeonRewards();
-
+        /*
         //Place dungeon items restricted to their Own Dungeon
         for (auto dungeon : Dungeon::dungeonList) {
             RandomizeOwnDungeon(dungeon);
@@ -714,6 +715,8 @@ int Fill() {
 
         //Then place Link's Pocket Item if it has to be an advancement item
         RandomizeLinksPocket();
+
+        */
         //Then place the rest of the advancement items
         std::vector<ItemKey> remainingAdvancementItems = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
         AssumedFill(remainingAdvancementItems, allLocations, true);
@@ -727,11 +730,11 @@ int Fill() {
             printf("Done");
             printf("\x1b[9;10HCalculating Playthrough...");
             PareDownPlaythrough();
-            CalculateWotH();
+            //CalculateWotH();
             printf("Done");
-            CreateItemOverrides();
+            //CreateItemOverrides();
            // CreateEntranceOverrides();
-            CreateAlwaysIncludedMessages();
+           // CreateAlwaysIncludedMessages();
             /*if (GossipStoneHints.IsNot(HINTS_NO_HINTS)) {
                 printf("\x1b[10;10HCreating Hints...");
                 CreateAllHints();

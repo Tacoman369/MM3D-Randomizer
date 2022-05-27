@@ -3,7 +3,7 @@
 #include <array>
 #include <string>
 #include <string_view>
-#include "../code/src/spoiler_data.h"
+#include "../code/include/rnd/spoiler_data.h"
 
 using RandomizerHash = std::array<std::string, 5>;
 

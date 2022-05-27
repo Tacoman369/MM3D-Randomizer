@@ -2,6 +2,7 @@
 *   This file is a modified part of Luma3DS
 *   Copyright (C) 2016-2019 Aurora Wright, TuxSH
 *   Modified 2020 Gamestabled
+*   Modified 2021 PhlexPlexico
 *
 *   This program is free software: you can redistribute it and/or modify
 *   it under the terms of the GNU General Public License as published by
@@ -24,11 +25,10 @@
 *         or requiring that modified versions of such material be marked in
 *         reasonable ways as different from the original version.
 */
+#include <3ds/types.h>
+#include <3ds/gfx.h>
 
-#pragma once
 
-#include "3ds/types.h"
-#include "3ds/gfx.h"
 
 #define FB_BOTTOM_VRAM_ADDR         ((void *)0x1F48F000) // cached
 #define FB_BOTTOM_VRAM_PA           0x1848F000
@@ -44,8 +44,7 @@
 #define SPACING_Y 11
 #define SPACING_X 6
 
-#define SPACING_SMALL_Y 9
-#define SPACING_SMALL_X 6
+#define RGB8(r,g,b) (((b)&0xFF)|(((g)&0xFF)<<8)|(((r)&0xFF)<<16))
 
 #define COLOR_TITLE RGB8(0x33, 0x33, 0xFF)
 #define COLOR_WHITE RGB8(0xFF, 0xFF, 0xFF)
@@ -58,12 +57,9 @@
 void Draw_Lock(void);
 void Draw_Unlock(void);
 
-void Draw_DrawRect(u32 posX, u32 posY, u32 width, u32 height, u32 color);
 void Draw_DrawCharacter(u32 posX, u32 posY, u32 color, char character);
 u32 Draw_DrawString(u32 posX, u32 posY, u32 color, const char *string);
-u32 Draw_DrawString_Small(u32 posX, u32 posY, u32 color, const char *string);
 u32 Draw_DrawFormattedString(u32 posX, u32 posY, u32 color, const char *fmt, ...);
-u32 Draw_DrawFormattedString_Small(u32 posX, u32 posY, u32 color, const char *fmt, ...);
 
 void Draw_DrawCharacterTop(u32 posX, u32 posY, u32 color, char character);
 u32 Draw_DrawStringTop(u32 posX, u32 posY, u32 color, const char *string);
@@ -74,3 +70,33 @@ void Draw_ClearFramebuffer(void);
 void Draw_SetupFramebuffer(void);
 void Draw_FlushFramebuffer(void);
 void Draw_FlushFramebufferTop(void);
+
+struct FramebufferAddress {
+    u8* a;
+    u8* b;
+};
+
+struct Framebuffer {
+    bool initialised;
+    u8 active_buffer_idx;
+    u32 display_buffer_ids[2];
+    u8* display_buffers[2];
+    u32 format;
+    u32 physical_width;
+    u32 physical_height;
+    u32 area;
+    u32 field_24;
+    u32 field_28;
+  };
+
+struct Graphics {
+    u32 field_0;
+    bool initialised;
+    FramebufferAddress top1_addr;
+    FramebufferAddress bottom_addr;
+    FramebufferAddress top2_addr;
+    u32 field_20;
+    Framebuffer top1;
+    Framebuffer top2;
+    Framebuffer bottom;
+  };

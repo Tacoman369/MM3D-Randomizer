@@ -1,12 +1,12 @@
 #include "playthrough.hpp"
 
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 #include "fill.hpp"
 #include "location_access.hpp"
 #include "logic.hpp"
 #include "random.hpp"
 #include "spoiler_log.hpp"
-//#include "../code/src/item_override.h"
+#include "../code/include/rnd/item_override.h"
 
 #include <3ds.h>
 #include <unistd.h>
@@ -19,9 +19,9 @@ namespace Playthrough {
       Random_Init(seed);
 
       //overrides.clear();
-      CustomMessages::ClearMessages();
+      //CustomMessages::ClearMessages();
       ItemReset();
-      HintReset();
+      //HintReset();
       Areas::AccessReset();
 
       Settings::UpdateSettings();
@@ -44,17 +44,17 @@ namespace Playthrough {
       Random_Init(finalHash);
 
       Logic::UpdateHelpers();
-
-      if (Settings::Logic.Is(LOGIC_VANILLA)) {
+      
+      if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
         VanillaFill(); //Just place items in their vanilla locations
       }
-      else { //Fill locations with logic
+      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)){ //Fill locations with logic
         int ret = Fill(); 
         if (ret < 0) {
-          return ret;
+            return ret;
         }
       }
-
+      
       GenerateHash();
 
       if (Settings::GenerateSpoilerLog) {

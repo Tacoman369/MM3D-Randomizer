@@ -1,5 +1,5 @@
-debug.o: C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.cpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp \
+debug.o: C:/Users/SKREEE/Desktop/MM3DR-Merge/source/debug.cpp \
+ C:/Users/SKREEE/Desktop/MM3DR-Merge/source/debug.hpp \
  C:/devkitPro/libctru/include/3ds.h \
  C:/devkitPro/libctru/include/3ds/types.h \
  C:/devkitPro/libctru/include/3ds/result.h \
@@ -80,7 +80,7 @@ debug.o: C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.cpp \
  C:/devkitPro/libctru/include/3ds/romfs.h \
  C:/devkitPro/libctru/include/3ds/font.h \
  C:/devkitPro/libctru/include/3ds/gdbhio_dev.h
-C:/Users/SKREEE/Desktop/ZMM3DR/application/source/debug.hpp:
+C:/Users/SKREEE/Desktop/MM3DR-Merge/source/debug.hpp:
 C:/devkitPro/libctru/include/3ds.h:
 C:/devkitPro/libctru/include/3ds/types.h:
 C:/devkitPro/libctru/include/3ds/result.h:

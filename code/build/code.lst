@@ -1,28 +1,717 @@
-         U loader_patch
-00100000 0000011c T Message_GetCustomEntry
-0010011c 00000048 T Message_GetCustomText
-00100164 000001d0 T Settings_ApplyDamageMultiplier
-00100334 00000104 T Hash
-00100438 00000080 T And
-001004b8 000000dc T Bias
-00100594 0000004c T SpoilerData_GetItemLocationString
-001005e0 0000004c T SpoilerData_GetItemNameString
-0010062c 00000084 T GetSpoilerItemLocation
-001006b0 0000001c T SpoilerData_ChestCheck
-001006cc 0000001c T SpoilerData_CollectableCheck
-001006e8 000000a0 T SpoilerData_ItemGetInfCheck
-00100788 000000a0 T SpoilerData_InfTableCheck
-00100828 00000044 T SpoilerData_QuestItemCheck
-0010086c 00000044 T SpoilerData_UpgradeCheck
-001008b0 00000020 T SpoilerData_CowCheck
-001008d0 00000020 T SpoilerData_FishingCheck
-001008f0 00000068 T SpoilerData_ScrubCheck
-00100958 00000070 T SpoilerData_ShopItemCheck
-001009c8 00000044 T SpoilerData_MagicBeansCheck
-00100a0c 000001ec T SpoilerData_GetIsItemLocationCollected
-00100bf8 00000320 R hashIconNames
-00100f18 00000004 D numCustomMessageEntries
-00100f1c 00000004 B ptrCustomMessageEntries
-00100f20 00000074 B gSettingsContext
-00100f94 00000001 B Damage32
-00100f98 0000556c B gSpoilerData
+00100000 N loader_patch
+00100004 a *ABS*0x100004
+00100024 a *ABS*0x100024
+0010676c N patch_MainLoop
+00106770 a *ABS*0x106770
+001166c8 N patch_DecoupleZlZr
+00116718 a *ABS*0x116718
+00121ee8 N patch_DecoupleStartSelect
+001404e8 N patch_FixSurroundSound
+001bde78 N patch_GetCustomText
+001d32e0 N patch_ISGCrouchStabOne
+001dbea4 N patch_ISGCrouchStabTwo
+0021d124 N patch_ChangeDrawItemIndexSecond
+0021d128 a *ABS*0x21d128
+0021d12c a *ABS*0x21d12c
+0022b7bc N patch_RemoveRemainsStateCheck
+0022b7c0 a *ABS*0x22b7c0
+0022b814 a *ABS*0x22b814
+0022f24c N OverrideDrawIndex_patch
+0022f250 a *ABS*0x22f250
+0022f254 a *ABS*0x22f254
+002310fc N OverrideTextID_patch
+00231100 a *ABS*0x231100
+00231104 a *ABS*0x231104
+00231108 N OverrideItemID_patch
+0023110c a *ABS*0x23110c
+00231110 a *ABS*0x231110
+0028e544 N patch_TwinmoldConsistentDamage
+002ac634 N patch_FasterBlockMovement
+002d0c0c N patch_FasterBlockMovementBack
+004b1394 N IncomingGetItemID_patch
+0059ba10 N patch_ReadGamePad
+0059ba14 a *ABS*0x59ba14
+0059ba14 N patch_DisableExistingTrigger
+0059bb60 a *ABS*0x59bb60
+005bb44c N patch_SaveFile_init
+005c19e4 N patch_ItemCloseOnSelect
+0061cd8c 00000060 T loader_main
+0061cdec 00000068 T getCurrentProcessHandle
+0061ce54 T hook_into_loader
+0061ce68 T svcOpenProcess
+0061ce7c T svcGetProcessId
+0061ce90 T svcBreak
+0061ce98 T svcControlProcessMemory
+007d0000 T __text_start
+007d0000 T hook_MainLoop
+007d0014 t .rActiveItemRow_addr
+007d0018 t .rActiveItemGraphicId
+007d001c T hook_SaveFile_Init
+007d0030 T hook_RemainsCheckValue
+007d0040 t noIgnoreValues
+007d0044 T hook_OverrideDrawIndex
+007d0058 t noOverrideGraphicId
+007d0060 T hook_OverrideDrawIndexSecond
+007d0074 t noOverrideGraphicIdSecond
+007d0080 T hook_OverrideTextID
+007d0094 t noOverrideTextID
+007d009c T hook_OverrideItemID
+007d00c0 t noOverrideItemID
+007d00c8 T hook_IncomingGetItemID
+007d00e4 T hook_readGamePad
+007d0100 0000002c T GetCurrentPadState()
+007d012c 00000080 T Input_Update()
+007d01ac 0000006c T buttonCheck(unsigned long)
+007d0218 000001c4 T Input_WaitWithTimeout(unsigned long, unsigned long)
+007d03dc 0000001c T Input_Wait()
+007d03f8 0000000c W std::numeric_limits<unsigned long>::max()
+007d0404 0000003c T rnd::Init(rnd::Context&)
+007d0440 000000b4 T calc
+007d04f4 000001bc T readPadInput
+007d06b0 00000038 W rnd::Flags<game::pad::Button, void>::IsSet(game::pad::Button) const
+007d06e8 00000024 W BitField<18u, 1u, unsigned long>::operator unsigned long() const
+007d070c 00000034 W void rnd::util::Write<unsigned char, game::ui::Screen>(game::ui::Screen*, unsigned int, unsigned char const&)
+007d0740 00000034 W rnd::Flags<game::pad::Button, void>::Clear(game::pad::Button)
+007d0774 00000028 W BitField<18u, 1u, unsigned long>::Value() const
+007d079c 0000001c W BitField<18u, 1u, unsigned long>::GetMask()
+007d07b8 0000005c W BitField<18u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007d0814 00000010 T rnd::GetContext()
+007d0824 0000005c T rnd::util::Print(char const*, ...)
+007d0880 00000048 t _out_buffer(char, void*, unsigned int, unsigned int)
+007d08c8 00000024 t _out_null(char, void*, unsigned int, unsigned int)
+007d08ec 00000050 t _out_fct(char, void*, unsigned int, unsigned int)
+007d093c 00000074 t _strnlen_s(char const*, unsigned int)
+007d09b0 0000003c t _is_digit(char)
+007d09ec 00000084 t _atoi(char const**)
+007d0a70 0000012c t _out_rev(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, char const*, unsigned int, unsigned int, unsigned int)
+007d0b9c 000002fc t _ntoa_format(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, char*, unsigned int, bool, bool, unsigned int, unsigned int, unsigned int)
+007d0e98 00000200 t _ntoa_long(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, unsigned long, bool, bool, unsigned int, unsigned int, unsigned int)
+007d1098 0000074c t _ftoa(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, double, unsigned int, unsigned int, unsigned int)
+007d17e8 000005bc t _etoa(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, double, unsigned int, unsigned int, unsigned int)
+007d1da4 00000d44 t _vsnprintf(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, char const*, std::__va_list)
+007d2ae8 00000054 T sprintf_
+007d2b3c 00000058 T snprintf_
+007d2b94 00000048 T vsnprintf_
+007d2bdc 00000068 T fctprintf
+007d2c44 00000018 W rnd::util::GetAddr(unsigned int)
+007d2c5c 00000044 T game::act::Actor::Free()
+007d2ca0 00000024 W auto rnd::util::GetPointer<game::act::ActorOverlayInfo* ()>(unsigned int)
+007d2cc4 00000024 T game::act::GetActorOverlayInfoTable()
+007d2ce8 00000034 W rnd::Flags<game::act::Actor::Flag, void>::Clear(game::act::Actor::Flag)
+007d2d1c 00000024 W auto rnd::util::GetPointer<unsigned long (game::ActorResource::ActorResources*, int)>(unsigned int)
+007d2d40 0000003c T game::ActorResource::find(game::ActorResource::ActorResources*, int)
+007d2d7c 00000024 W auto rnd::util::GetPointer<unsigned long (game::ActorResource::ActorResources*, unsigned long)>(unsigned int)
+007d2da0 0000003c T game::ActorResource::loadActorResource(game::ActorResource::ActorResources*, unsigned long)
+007d2ddc 00000024 W auto rnd::util::GetPointer<void (game::ActorResource::ActorResource*)>(unsigned int)
+007d2e00 00000030 T game::ActorResource::freeActorResource(game::ActorResource::ActorResource*)
+007d2e30 00000024 W auto rnd::util::GetPointer<void (game::as::ActorUtil*, unsigned long, float)>(unsigned int)
+007d2e54 00000040 T game::as::ActorUtil::PlayAnim(unsigned long, float)
+007d2e94 00000040 T game::as::ActorUtil::PlayAnimFull(unsigned long, float)
+007d2ed4 00000024 W auto rnd::util::GetPointer<int (game::as::ActorUtil*, unsigned long)>(unsigned int)
+007d2ef8 0000003c T game::as::ActorUtil::GetAnimDuration(unsigned long)
+007d2f34 00000024 W auto rnd::util::GetPointer<unsigned long (game::Camera*, game::CameraMode, unsigned long)>(unsigned int)
+007d2f58 00000048 T game::Camera::ChangeMode(game::CameraMode, unsigned long)
+007d2fa0 00000024 W auto rnd::util::GetPointer<game::CommonData>(unsigned int)
+007d2fc4 0000001c T game::GetCommonData()
+007d2fe0 0000003c W game::ActorLists::GetList(game::act::Type)
+007d301c 000000b8 T game::GlobalContext::FindActorWithId(game::act::Id, game::act::Type) const
+007d30d4 00000034 T game::GlobalContext::GetPlayerActor() const
+007d3108 00000024 W auto rnd::util::GetPointer<game::act::Actor* (game::ActorLists*, game::act::Actor*, game::GlobalContext*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)>(unsigned int)
+007d312c 000000a0 T game::GlobalContext::SpawnActor(game::act::Actor*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)
+007d31cc 00000024 W auto rnd::util::GetPointer<game::act::Actor* (game::ActorLists*, game::GlobalContext*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)>(unsigned int)
+007d31f0 000000a4 T game::GlobalContext::SpawnActor(game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)
+007d3294 0000005c T game::GlobalContext::ChangeActorType(game::act::Actor&, game::act::Type)
+007d32f0 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*, int, game::act::Actor*)>(unsigned int)
+007d3314 00000044 T game::GlobalContext::ShowMessage(unsigned short, game::act::Actor*)
+007d3358 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Actor*, int)>(unsigned int)
+007d337c 00000058 T game::GlobalContext::Talk(game::act::Actor*, int)
+007d33d4 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Actor const&)>(unsigned int)
+007d33f8 00000038 T game::GlobalContext::EmitLastDamageSound(game::act::Actor const&)
+007d3430 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*)>(unsigned int)
+007d3454 00000030 T game::GlobalContext::VoidPlayer()
+007d3484 00000030 W std::array<game::ActorList, 12u>::operator[](unsigned int)
+007d34b4 00000030 W std::array<game::ActorList, 12u>::operator[](unsigned int) const
+007d34e4 00000018 W std::array<game::ActorList, 12u>::size() const
+007d34fc 00000034 W std::__array_traits<game::ActorList, 12u>::_S_ref(game::ActorList const (&) [12], unsigned int)
+007d3530 0000003c W game::ItemIsBottled(game::ItemId)
+007d356c 0000003c W game::ItemIsGear(game::ItemId)
+007d35a8 0000003c W game::ItemIsMask(game::ItemId)
+007d35e4 0000003c W game::ItemIsTransformationMask(game::ItemId)
+007d3620 0000003c W game::ItemIsNonTransformationMask(game::ItemId)
+007d365c 0000002c W game::ItemIsRegular(game::ItemId)
+007d3688 0000005c T game::GetActionForItem(game::ItemId)
+007d36e4 00000030 W std::array<game::ItemId, 24u>::operator[](unsigned int) const
+007d3714 00000048 T game::HasOcarina()
+007d375c 00000054 t game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}::operator()(game::ItemId) const
+007d37b0 00000058 T game::HasBottle(game::ItemId)
+007d3808 00000040 T game::RemoveBottle(unsigned long)
+007d3848 0000016c T game::GiveBottle(unsigned long, game::ItemId)
+007d39b4 00000024 W auto rnd::util::GetPointer<int (game::GlobalContext*, game::act::Player*)>(unsigned int)
+007d39d8 00000084 T game::GiveItemWithEffect(unsigned long)
+007d3a5c 0000003c t game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}::operator()(game::ItemId) const
+007d3a98 00000058 T game::HasItem(game::ItemId)
+007d3af0 00000048 T game::RemoveItem(game::ItemId)
+007d3b38 00000024 W auto rnd::util::GetPointer<int (game::GlobalContext*, game::ItemId)>(unsigned int)
+007d3b5c 0000007c T game::GiveItem(game::ItemId)
+007d3bd8 0000007c T game::GiveMask(game::ItemId)
+007d3c54 0000003c t game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}::operator()(game::ItemId) const
+007d3c90 00000058 T game::HasMask(game::ItemId)
+007d3ce8 00000040 T game::RemoveMask(unsigned long)
+007d3d28 0000017c T game::CanUseItemUnsafe(game::ItemId)
+007d3ea4 00000070 t game::IsBossRoomScene(game::GlobalContext*)
+007d3f14 00000024 W auto rnd::util::GetPointer<int (game::GlobalContext*)>(unsigned int)
+007d3f38 00000030 W std::array<std::array<bool, 114u>, 5u>::operator[](unsigned int) const
+007d3f68 00000030 W std::array<bool, 114u>::operator[](unsigned int) const
+007d3f98 00000728 T game::CanUseItem(game::ItemId)
+007d46c0 00000018 W unsigned int std::size<game::Action, 84u>(game::Action const (&) [84u])
+007d46d8 00000024 W std::__array_traits<game::ItemId, 24u>::_S_ref(game::ItemId const (&) [24], unsigned int)
+007d46fc 00000024 W std::array<game::ItemId, 7u>::begin() const
+007d4720 00000028 W std::array<game::ItemId, 7u>::end() const
+007d4748 0000003c t bool std::any_of<game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4784 00000030 W std::array<game::ItemId, 7u>::operator[](unsigned int)
+007d47b4 00000024 W std::array<game::ItemId, 24u>::begin() const
+007d47d8 00000028 W std::array<game::ItemId, 24u>::end() const
+007d4800 0000003c t bool std::any_of<game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d483c 00000030 W std::array<game::ItemId, 24u>::operator[](unsigned int)
+007d486c 0000003c t bool std::any_of<game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d48a8 000000a4 W bool rnd::util::IsAnyOf<game::SceneId, game::SceneId, game::SceneId, game::SceneId, game::SceneId, game::SceneId>(game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&)
+007d494c 00000038 W rnd::Flags<game::act::Player::Flag1, void>::IsSet(game::act::Player::Flag1) const
+007d4984 00000038 W rnd::Flags<game::act::Player::Flag3, void>::IsSet(game::act::Player::Flag3) const
+007d49bc 0000003c W std::__array_traits<std::array<bool, 114u>, 5u>::_S_ref(std::array<bool, 114u> const (&) [5], unsigned int)
+007d49f8 00000018 W std::array<bool, 114u>::size() const
+007d4a10 00000024 W std::__array_traits<bool, 114u>::_S_ref(bool const (&) [114], unsigned int)
+007d4a34 00000074 W bool rnd::util::IsAnyOf<game::ItemId, game::ItemId, game::ItemId, game::ItemId>(game::ItemId const&, game::ItemId const&, game::ItemId const&, game::ItemId const&)
+007d4aa8 00000018 W std::__array_traits<game::ItemId, 7u>::_S_ptr(game::ItemId const (&) [7])
+007d4ac0 00000028 W std::array<game::ItemId, 7u>::data() const
+007d4ae8 00000048 t bool std::none_of<game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4b30 00000024 W std::__array_traits<game::ItemId, 7u>::_S_ref(game::ItemId const (&) [7], unsigned int)
+007d4b54 00000018 W std::__array_traits<game::ItemId, 24u>::_S_ptr(game::ItemId const (&) [24])
+007d4b6c 00000028 W std::array<game::ItemId, 24u>::data() const
+007d4b94 00000048 t bool std::none_of<game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d4bdc 00000048 t bool std::none_of<game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d4c24 00000040 t game::ItemId const* std::find_if<game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4c64 00000040 t game::ItemId const* std::find_if<game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d4ca4 00000040 t game::ItemId const* std::find_if<game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>(game::ItemId const*, game::ItemId const*, game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d4ce4 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}> __gnu_cxx::__ops::__pred_iter<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>(game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4d20 00000048 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>)
+007d4d68 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}> __gnu_cxx::__ops::__pred_iter<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>(game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d4da4 00000048 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>)
+007d4dec 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}> __gnu_cxx::__ops::__pred_iter<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>(game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d4e28 00000048 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>)
+007d4e70 00000018 t std::remove_reference<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}&>::type&& std::move<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}&>(game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}&)
+007d4e88 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4e88 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1})
+007d4ec4 00000014 W std::iterator_traits<game::ItemId const*>::iterator_category std::__iterator_category<game::ItemId const*>(game::ItemId const* const&)
+007d4ed8 000001d8 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>, std::random_access_iterator_tag)
+007d50b0 00000018 t std::remove_reference<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}&>::type&& std::move<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}&>(game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}&)
+007d50c8 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d50c8 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasItem(game::ItemId)::{lambda(game::ItemId)#1})
+007d5104 000001d8 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>, std::random_access_iterator_tag)
+007d52dc 00000018 t std::remove_reference<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}&>::type&& std::move<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}&>(game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}&)
+007d52f4 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d52f4 0000003c t __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>::_Iter_pred(game::HasMask(game::ItemId)::{lambda(game::ItemId)#1})
+007d5330 000001d8 t game::ItemId const* std::__find_if<game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}> >(game::ItemId const*, game::ItemId const*, __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>, std::random_access_iterator_tag)
+007d5508 00000038 t bool __gnu_cxx::__ops::_Iter_pred<game::HasBottle(game::ItemId)::{lambda(game::ItemId)#1}>::operator()<game::ItemId const*>(game::ItemId const*)
+007d5540 00000038 t bool __gnu_cxx::__ops::_Iter_pred<game::HasItem(game::ItemId)::{lambda(game::ItemId)#1}>::operator()<game::ItemId const*>(game::ItemId const*)
+007d5578 00000038 t bool __gnu_cxx::__ops::_Iter_pred<game::HasMask(game::ItemId)::{lambda(game::ItemId)#1}>::operator()<game::ItemId const*>(game::ItemId const*)
+007d55b0 00000024 W auto rnd::util::GetPointer<game::MessageMgr& ()>(unsigned int)
+007d55d4 00000024 T game::MessageMgr::Instance()
+007d55f8 0000003c t game::MessageData::Get(unsigned long, game::Message*) const::{lambda(unsigned int)#1}::operator()(unsigned int) const
+007d5634 0000002c t game::MessageData::Get(unsigned long, game::Message*) const::{lambda(unsigned int)#2}::operator()(unsigned int) const
+007d5660 00000024 W auto rnd::util::GetPointer<game::MessageReader* (game::Language)>(unsigned int)
+007d5684 000005c8 T game::MessageData::Get(unsigned long, game::Message*) const
+007d5c4c 00000024 W auto rnd::util::GetPointer<void ()>(unsigned int)
+007d5c70 00000020 T game::PlayMessagePassSound()
+007d5c90 00000020 T game::PlayMessageCancelSound()
+007d5cb0 00000034 T GetMessageFromId
+007d5ce4 00000038 W rnd::BitSet<32u, unsigned long, game::Language>::GetWord(game::Language) const
+007d5d1c 00000054 W rnd::BitSet<32u, unsigned long, game::Language>::IsSet(game::Language) const
+007d5d70 00000030 W std::array<unsigned long, 1u>::operator[](unsigned int) const
+007d5da0 00000028 W std::__array_traits<unsigned long, 1u>::_S_ref(unsigned long const (&) [1], unsigned int)
+007d5dc8 00000024 W auto rnd::util::GetPointer<void (game::ObjectBank::ObjectBankArchive*, unsigned long, game::ResArchiveHeader*, int, char)>(unsigned int)
+007d5dec 00000050 T game::ObjectBank::init(game::ObjectBank::ObjectBankArchive*, unsigned long, game::ResArchiveHeader*, int, char)
+007d5e3c 00000024 W auto rnd::util::GetPointer<void* (game::ObjectBank::ObjectBankArchive*, unsigned long, unsigned long)>(unsigned int)
+007d5e60 00000044 T game::ObjectBank::getCmbFile(game::ObjectBank::ObjectBankArchive*, unsigned long, unsigned long)
+007d5ea4 00000024 W auto rnd::util::GetPointer<void (game::ObjectBank::ObjectBankArchive*)>(unsigned int)
+007d5ec8 00000030 T game::ObjectBank::free(game::ObjectBank::ObjectBankArchive*)
+007d5ef8 00000024 W auto rnd::util::GetPointer<game::pad::ControllerMgr>(unsigned int)
+007d5f1c 0000001c T game::pad::GetControllerMgr()
+007d5f38 00000024 W auto rnd::util::GetPointer<game::act::FormParam>(unsigned int)
+007d5f5c 00000048 T game::act::GetFormParam(game::act::FormParamIndex)
+007d5fa4 00000054 T game::act::FixSpeedIssues()
+007d5ff8 00000024 W auto rnd::util::GetPointer<bool (game::ItemId)>(unsigned int)
+007d601c 000001dc T game::act::Player::GetArrowInfo(game::GlobalContext*) const
+007d61f8 00000094 T game::act::Player::SetTalkActor(unsigned char, game::act::Actor*)
+007d628c 00000024 W auto rnd::util::GetPointer<bool (game::GlobalContext*, int, int, bool)>(unsigned int)
+007d62b0 0000005c T game::act::PlayerUpdateMagicCost(game::GlobalContext*, int, int, game::act::AllowExistingMagicUsage)
+007d630c 00000024 W auto rnd::util::GetPointer<bool>(unsigned int)
+007d6330 0000002c t game::sound::GetStreamMgr()
+007d635c 00000024 W auto rnd::util::GetPointer<bool (game::sound::EffectId)>(unsigned int)
+007d6380 00000034 T game::sound::PlayEffect(game::sound::EffectId)
+007d63b4 00000024 W auto rnd::util::GetPointer<bool (z3dVec3f const&, game::sound::EffectId)>(unsigned int)
+007d63d8 0000003c T game::sound::PlayEffect(z3dVec3f const&, game::sound::EffectId)
+007d6414 00000034 T game::sound::PlayEffect(game::act::Actor const&, game::sound::EffectId)
+007d6448 00000024 W auto rnd::util::GetPointer<game::sound::StreamId (game::sound::StreamMgr&, game::sound::StreamPlayer)>(unsigned int)
+007d646c 00000040 T game::sound::GetCurrentStreamId(game::sound::StreamPlayer)
+007d64ac 00000024 W auto rnd::util::GetPointer<bool (game::sound::StreamMgr&, game::sound::StreamId, game::sound::StreamPlayer, unsigned long)>(unsigned int)
+007d64d0 00000044 T game::sound::PlayStream(game::sound::StreamId, game::sound::StreamPlayer)
+007d6514 00000024 W auto rnd::util::GetPointer<void (game::sound::StreamMgr&, game::sound::StreamPlayer, int, int)>(unsigned int)
+007d6538 00000044 T game::sound::ControlStream(game::sound::StreamPlayer, int, int)
+007d657c 00000024 W auto rnd::util::GetPointer<void (int)>(unsigned int)
+007d65a0 00000030 T game::sound::ControlEnv(int)
+007d65d0 00000024 W auto rnd::util::GetPointer<game::sound::StreamMgr>(unsigned int)
+007d65f4 00000024 W auto rnd::util::GetPointer<void (game::sound::StreamMgr*)>(unsigned int)
+007d6618 00000058 t game::sound::StreamMgr& rnd::util::GetInstance<game::sound::StreamMgr>(unsigned int, unsigned int, unsigned int)
+007d6670 0000004c t void rnd::util::InitIfNeeded<game::sound::StreamMgr>(game::sound::StreamMgr*, bool*, void (*)(game::sound::StreamMgr*))
+007d66bc 00000024 W auto rnd::util::GetPointer<game::StaticContext>(unsigned int)
+007d66e0 0000001c T game::GetStaticContext()
+007d66fc 00000024 W auto rnd::util::GetPointer<game::ui::ScreenContext>(unsigned int)
+007d6720 0000001c T game::ui::GetScreenContext()
+007d673c 00000024 W auto rnd::util::GetPointer<game::ui::Screen*>(unsigned int)
+007d6760 0000010c T game::ui::GetScreen(game::ui::ScreenType)
+007d686c 0000002c W rnd::Flags<game::PauseFlag, void>::operator=(game::PauseFlag)
+007d6898 000001ac T game::ui::OpenScreen(game::ui::ScreenType)
+007d6a44 00000570 T CustomModel_EditTitleScreenLogo(void*)
+007d6fb4 00000034 T rnd::IceTrap_Push()
+007d6fe8 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Player*, int, short, char, int)>(unsigned int)
+007d700c 000000e0 T rnd::IceTrap_Give()
+007d70ec 00000024 T rnd::IceTrap_IsPending()
+007d7110 0000005c W bool rnd::Flags<game::act::Player::Flag1, void>::IsOneSet<game::act::Player::Flag1, game::act::Player::Flag1>(game::act::Player::Flag1, game::act::Player::Flag1) const
+007d716c 0000000c W std::numeric_limits<unsigned char>::max()
+007d7178 00000010 W std::numeric_limits<unsigned short>::max()
+007d7188 0000000c W std::numeric_limits<unsigned int>::max()
+007d7194 00000024 T rnd::ItemEffect_None(game::CommonData*, short, short)
+007d71b8 00000064 T rnd::ItemEffect_FullHeal(game::CommonData*, short, short)
+007d721c 0000010c T rnd::ItemEffect_GiveGiantsWallet(game::CommonData*, short, short)
+007d7328 00000024 W BitField<0u, 4u, game::SwordType>::operator game::SwordType() const
+007d734c 000000fc T rnd::ItemEffect_GiveKokiriSword(game::CommonData*, short, short)
+007d7448 00000110 T rnd::ItemEffect_GiveRazorSword(game::CommonData*, short, short)
+007d7558 000000c8 T rnd::ItemEffect_GiveGildedSword(game::CommonData*, short, short)
+007d7620 000000a8 T rnd::ItemEffect_GiveBottle(game::CommonData*, short, short)
+007d76c8 00000030 T rnd::ItemEffect_GiveDefense(game::CommonData*, short, short)
+007d76f8 000000d8 T rnd::ItemEffect_GiveSmallKey(game::CommonData*, short, short)
+007d77d0 00000034 T rnd::ItemEffect_GiveGreatSpin(game::CommonData*, short, short)
+007d7804 00000030 W std::array<game::ItemId, 5u>::operator[](unsigned int)
+007d7834 000000d8 T rnd::ItemEffect_GiveDoubleMagic(game::CommonData*, short, short)
+007d790c 00000030 T rnd::ItemEffect_GiveOcarina(game::CommonData*, short, short)
+007d793c 0000006c T rnd::ItemEffect_GiveDoubleDefense(game::CommonData*, short, short)
+007d79a8 0000002c T rnd::ItemEffect_IceTrap(game::CommonData*, short, short)
+007d79d4 00000938 T rnd::ItemEffect_GiveSong(game::CommonData*, short, short)
+007d830c 00000138 T rnd::ItemEffect_PlaceMagicArrowsInInventory(game::CommonData*, short, short)
+007d8444 00000024 W auto rnd::util::GetPointer<void (unsigned char, unsigned char)>(unsigned int)
+007d8468 00000030 W std::array<unsigned char, 17u>::operator[](unsigned int)
+007d8498 00000324 T rnd::ItemEffect_GiveUpgrade(game::CommonData*, short, short)
+007d87bc 0000005c T rnd::ItemEffect_BeanPack(game::CommonData*, short, short)
+007d8818 0000006c T rnd::ItemEffect_FillWalletUpgrade(game::CommonData*, short, short)
+007d8884 00000330 T rnd::ItemEffect_GiveRemains(game::CommonData*, short, short)
+007d8bb4 00000688 T rnd::ItemEffect_GiveDungeonItem(game::CommonData*, short, short)
+007d923c 0000007c T rnd::ItemEffect_GiveMagic(game::CommonData*, short, short)
+007d92b8 00000024 W BitField<0u, 16u, int>::operator int() const
+007d92dc 00000024 W BitField<16u, 16u, int>::operator int() const
+007d9300 000001ec T rnd::ItemEffect_GiveSkulltula(game::CommonData*, short, short)
+007d94ec 00000024 W auto rnd::util::GetPointer<void (game::GlobalContext*, int)>(unsigned int)
+007d9510 0000035c T rnd::ItemEffect_GiveMask(game::CommonData*, short, short)
+007d986c 00000028 W BitField<0u, 4u, game::SwordType>::Value() const
+007d9894 00000024 W std::__array_traits<game::ItemId, 5u>::_S_ref(game::ItemId const (&) [5], unsigned int)
+007d98b8 00000024 W std::__array_traits<unsigned char, 17u>::_S_ref(unsigned char const (&) [17], unsigned int)
+007d98dc 00000028 W BitField<0u, 16u, int>::Value() const
+007d9904 00000028 W BitField<16u, 16u, int>::Value() const
+007d992c 0000001c W BitField<12u, 2u, unsigned long>::GetMask()
+007d9948 0000001c W BitField<0u, 4u, game::SwordType>::GetMask()
+007d9964 00000044 W BitField<0u, 4u, game::SwordType>::Value(std::integral_constant<bool, false>) const
+007d99a8 0000001c W BitField<6u, 1u, unsigned long>::GetMask()
+007d99c4 0000001c W BitField<24u, 1u, unsigned long>::GetMask()
+007d99e0 0000001c W BitField<7u, 1u, unsigned long>::GetMask()
+007d99fc 0000001c W BitField<8u, 1u, unsigned long>::GetMask()
+007d9a18 0000001c W BitField<9u, 1u, unsigned long>::GetMask()
+007d9a34 0000001c W BitField<10u, 1u, unsigned long>::GetMask()
+007d9a50 0000001c W BitField<12u, 1u, unsigned long>::GetMask()
+007d9a6c 0000001c W BitField<13u, 1u, unsigned long>::GetMask()
+007d9a88 0000001c W BitField<14u, 1u, unsigned long>::GetMask()
+007d9aa4 0000001c W BitField<15u, 1u, unsigned long>::GetMask()
+007d9ac0 0000001c W BitField<16u, 1u, unsigned long>::GetMask()
+007d9adc 00000018 W BitField<0u, 1u, unsigned long>::GetMask()
+007d9af4 0000001c W BitField<1u, 1u, unsigned long>::GetMask()
+007d9b10 0000001c W BitField<2u, 1u, unsigned long>::GetMask()
+007d9b2c 0000001c W BitField<3u, 1u, unsigned long>::GetMask()
+007d9b48 0000001c W BitField<0u, 1u, unsigned char>::GetMask()
+007d9b64 00000024 W BitField<1u, 1u, unsigned char>::GetMask()
+007d9b88 00000024 W BitField<2u, 1u, unsigned char>::GetMask()
+007d9bac 00000018 W std::integral_constant<unsigned int, 16u>::operator unsigned int() const
+007d9bc4 00000074 W BitField<0u, 16u, int>::Value(std::integral_constant<bool, true>) const
+007d9c38 00000018 W BitField<0u, 16u, int>::GetMask()
+007d9c50 00000078 W BitField<16u, 16u, int>::Value(std::integral_constant<bool, true>) const
+007d9cc8 0000001c W BitField<16u, 16u, int>::GetMask()
+007d9ce4 0000007c T rnd::ItemOverride_Init()
+007d9d60 000001ac t rnd::ItemOverride_GetSearchKey(game::act::Actor*, unsigned char, unsigned char)
+007d9f0c 00000088 T rnd::ItemOverride_Lookup(game::act::Actor*, unsigned char, unsigned char)
+007d9f94 000000f0 T rnd::ItemOverride_LookupByKey(rnd::ItemOverride_Key)
+007da084 00000128 t rnd::ItemOverride_Activate(rnd::ItemOverride)
+007da1ac 00000080 t rnd::ItemOverride_Clear()
+007da22c 00000094 t rnd::ItemOverride_PushPendingOverride(rnd::ItemOverride)
+007da2c0 00000024 T rnd::ItemOverride_IsAPendingOverride()
+007da2e4 00000064 T rnd::ItemOverride_PushDelayedOverride(unsigned char)
+007da348 00000050 t rnd::ItemOverride_PopPendingOverride()
+007da398 00000014 t rnd::ItemOverride_AfterKeyReceived(rnd::ItemOverride_Key)
+007da3ac 0000004c t rnd::ItemOverride_PopIceTrap()
+007da3f8 00000268 t rnd::ItemOverride_PlayerIsReady()
+007da660 000000c4 t rnd::ItemOverride_TryPendingItem()
+007da724 00000040 T rnd::ItemOverride_AfterItemReceived()
+007da764 0000004c T rnd::ItemOverride_Update()
+007da7b0 00000008 T rnd::ItemOverride_EditDrawGetItemBeforeModelSpawn()
+007da7b8 00000058 T rnd::ItemOverride_PushDungeonReward(unsigned char)
+007da810 00000008 T rnd::ItemOverride_CheckStartingItem()
+007da818 000000b0 T ItemOverride_GetItemTextAndItemID
+007da8c8 00000178 T ItemOverride_GetItem
+007daa40 00000060 T rnd::ItemTable_GetItemRow(unsigned short)
+007daaa0 0000002c T rnd::ItemTable_GetItemRowFromIndex(unsigned char)
+007daacc 00000018 T rnd::ItemTable_SetBombchusChestType(unsigned char)
+007daae4 00000094 T rnd::ItemTable_ResolveUpgrades(unsigned short)
+007dab78 00000040 T rnd::ItemTable_CallEffect(rnd::ItemRow*)
+007dabb8 0000001c T rnd::ItemUpgrade_None(game::SaveData*, rnd::GetItemID)
+007dabd4 00000058 T rnd::ItemUpgrade_BombBag(game::SaveData*, rnd::GetItemID)
+007dac2c 00000058 T rnd::ItemUpgrade_Quiver(game::SaveData*, rnd::GetItemID)
+007dac84 00000058 T rnd::ItemUpgrade_Wallet(game::SaveData*, rnd::GetItemID)
+007dacdc 000000e8 T rnd::ItemUpgrade_Magic(game::SaveData*, rnd::GetItemID)
+007dadc4 00000078 T rnd::ItemUpgrade_Sword(game::SaveData*, rnd::GetItemID)
+007dae3c 00000024 W BitField<0u, 3u, game::Quiver>::operator game::Quiver() const
+007dae60 00000044 T rnd::ItemUpgrade_ArrowsToRupee(game::SaveData*, rnd::GetItemID)
+007daea4 00000024 W BitField<3u, 3u, game::BombBag>::operator game::BombBag() const
+007daec8 00000044 T rnd::ItemUpgrade_BombsToRupee(game::SaveData*, rnd::GetItemID)
+007daf0c 00000024 W BitField<12u, 2u, unsigned long>::operator unsigned long() const
+007daf30 00000028 W BitField<0u, 3u, game::Quiver>::Value() const
+007daf58 00000028 W BitField<3u, 3u, game::BombBag>::Value() const
+007daf80 00000028 W BitField<12u, 2u, unsigned long>::Value() const
+007dafa8 00000018 W BitField<0u, 3u, game::Quiver>::GetMask()
+007dafc0 00000058 W BitField<0u, 3u, game::Quiver>::Value(std::integral_constant<bool, false>) const
+007db018 0000001c W BitField<3u, 3u, game::BombBag>::GetMask()
+007db034 0000005c W BitField<3u, 3u, game::BombBag>::Value(std::integral_constant<bool, false>) const
+007db090 0000005c W BitField<12u, 2u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007db0ec 00000024 W auto rnd::util::GetPointer<unsigned long ()>(unsigned int)
+007db110 000000c8 T rnd::RS_SetDurability()
+007db1d8 0000001c T rnd::rHeap_Init()
+007db1f4 0000006c T rnd::rHeap_Alloc(unsigned long)
+007db260 00000200 T SaveFile_Init
+007db460 0000006c t rnd::SaveFile_GiveStartingBottle(rnd::StartingBottleSetting, unsigned char)
+007db4cc 00000024 W BitField<0u, 1u, unsigned long>::operator unsigned long() const
+007db4f0 00000024 W BitField<1u, 1u, unsigned long>::operator unsigned long() const
+007db514 00000024 W BitField<2u, 1u, unsigned long>::operator unsigned long() const
+007db538 00000024 W BitField<3u, 1u, unsigned long>::operator unsigned long() const
+007db55c 00000110 T rnd::SaveFile_GetRemainsCount()
+007db66c 000011c4 T rnd::SaveFile_SetStartingInventory()
+007dc830 000000ac T rnd::SaveFile_ResetItemSlotsIfMatchesID(unsigned char)
+007dc8dc 00000028 W BitField<0u, 1u, unsigned long>::Value() const
+007dc904 00000028 W BitField<1u, 1u, unsigned long>::Value() const
+007dc92c 00000028 W BitField<2u, 1u, unsigned long>::Value() const
+007dc954 00000028 W BitField<3u, 1u, unsigned long>::Value() const
+007dc97c 00000058 W BitField<0u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007dc9d4 0000005c W BitField<1u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007dca30 0000005c W BitField<2u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007dca8c 0000005c W BitField<3u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+007dcae8 0000001c W BitField<20u, 3u, unsigned long>::GetMask()
+007dcb04 0000001c W BitField<17u, 3u, unsigned long>::GetMask()
+007dcb20 00000180 T rnd::Settings_ApplyDamageMultiplier(game::GlobalContext*, long)
+007dcca0 00000048 T rnd::Settings_SetFullHealthRestore(unsigned char)
+007dcce8 00000018 T rnd::NoHealFromHealthUpgrades()
+007dcd00 00000018 T rnd::NoHealFromBombchuBowlingPrize()
+007dcd18 00000018 T rnd::FairyReviveHealAmount()
+007dcd30 00000018 T rnd::FairyUseHealAmount()
+007dcd48 00000104 T rnd::Hash(unsigned long)
+007dce4c 00000080 T rnd::And(unsigned long, unsigned char, unsigned char)
+007dcecc 000000dc T rnd::Bias(unsigned long)
+007dcfa8 00000018 T rnd::EnMag_rInit(EnMag*, game::GlobalContext*)
+007dcfc0 000000b0 T __aeabi_idiv
+007dd070 00000050 t __divmodsi4
+007dd0c0 00000050 T __aeabi_idivmod
+007dd110 00000184 T __aeabi_uidiv
+007dd294 00000054 t __udivmodsi4
+007dd2e8 00000050 T __aeabi_uidivmod
+007dd338 000007b0 t __udivmoddi4
+007ddae8 00000138 t __divdi3
+007ddc20 00000078 t __divmoddi4
+007ddc98 0000004c T __aeabi_ldivmod
+007ddce4 T svcCustomBackdoor
+007ddcec T svcConvertVAToPA
+007ddcf4 T svcFlushDataCacheRange
+007ddcfc T svcFlushEntireDataCache
+007ddd04 T svcInvalidateInstructionCacheRange
+007ddd0c T svcInvalidateEntireInstructionCache
+007ddd14 T svcMapProcessMemoryEx
+007ddd1c T svcUnmapProcessMemoryEx
+007ddd24 T svcControlMemoryEx
+007ddd44 T svcControlService
+007ddd4c T svcCopyHandle
+007ddd60 T svcTranslateHandle
+007ddd74 T svcControlMemory
+007ddd94 T svcQueryMemory
+007dddc4 T svcExitProcess
+007dddcc T svcGetProcessAffinityMask
+007dddd4 T svcSetProcessAffinityMask
+007ddddc T svcGetProcessIdealProcessor
+007dddf0 T svcSetProcessIdealProcessor
+007dddf8 T svcCreateThread
+007dde18 T svcExitThread
+007dde20 T svcSleepThread
+007dde28 T svcGetThreadPriority
+007dde3c T svcSetThreadPriority
+007dde44 T svcGetThreadAffinityMask
+007dde4c T svcSetThreadAffinityMask
+007dde54 T svcGetThreadIdealProcessor
+007dde68 T svcSetThreadIdealProcessor
+007dde70 T svcGetProcessorID
+007dde78 T svcRun
+007dde9c T svcCreateMutex
+007ddeb0 T svcReleaseMutex
+007ddeb8 T svcCreateSemaphore
+007ddecc T svcReleaseSemaphore
+007ddee0 T svcCreateEvent
+007ddef4 T svcSignalEvent
+007ddefc T svcClearEvent
+007ddf04 T svcCreateTimer
+007ddf18 T svcSetTimer
+007ddf30 T svcCancelTimer
+007ddf38 T svcClearTimer
+007ddf40 T svcCreateMemoryBlock
+007ddf58 T svcMapMemoryBlock
+007ddf60 T svcUnmapMemoryBlock
+007ddf68 T svcCreateAddressArbiter
+007ddf7c T svcArbitrateAddress
+007ddf94 T svcCloseHandle
+007ddf9c T svcWaitSynchronization
+007ddfa4 T svcWaitSynchronizationN
+007ddfcc T svcDuplicateHandle
+007ddfe0 T svcGetSystemTick
+007ddfe8 T svcGetHandleInfo
+007de000 T svcGetSystemInfo
+007de018 T svcGetProcessInfo
+007de030 T svcGetThreadInfo
+007de048 T svcConnectToPort
+007de05c T svcSendSyncRequest
+007de064 T svcOpenThread
+007de078 T svcGetProcessIdOfThread
+007de08c T svcGetThreadId
+007de0a0 T svcGetResourceLimit
+007de0b4 T svcGetResourceLimitLimitValues
+007de0bc T svcGetResourceLimitCurrentValues
+007de0c4 T svcOutputDebugString
+007de0cc T svcCreatePort
+007de0ec T svcCreateSessionToPort
+007de100 T svcCreateSession
+007de120 T svcAcceptSession
+007de138 T svcReplyAndReceive
+007de150 T svcBindInterrupt
+007de158 T svcUnbindInterrupt
+007de160 T svcInvalidateProcessDataCache
+007de168 T svcStoreProcessDataCache
+007de170 T svcFlushProcessDataCache
+007de178 T svcStartInterProcessDma
+007de198 T svcStopDma
+007de1a0 T svcGetDmaState
+007de1b4 T svcSetGpuProt
+007de1bc T svcSetWifiEnabled
+007de1c4 T svcDebugActiveProcess
+007de1d8 T svcBreakDebugProcess
+007de1e0 T svcTerminateDebugProcess
+007de1e8 T svcGetProcessDebugEvent
+007de1f0 T svcContinueDebugEvent
+007de1f8 T svcGetProcessList
+007de20c T svcGetThreadList
+007de220 T svcGetDebugThreadContext
+007de228 T svcSetDebugThreadContext
+007de230 T svcQueryDebugProcessMemory
+007de254 T svcReadProcessMemory
+007de25c T svcWriteProcessMemory
+007de264 T svcSetHardwareBreakPoint
+007de26c T svcGetDebugThreadParam
+007de28c T svcMapProcessMemory
+007de294 T svcUnmapProcessMemory
+007de29c T svcCreateCodeSet
+007de2b8 T svcCreateProcess
+007de2d0 T svcTerminateProcess
+007de2d8 T svcSetProcessResourceLimits
+007de2e0 T svcCreateResourceLimit
+007de2f4 T svcSetResourceLimitValues
+007de2fc T svcBackdoor
+007de304 T svcKernelSetState
+007de30c T svcQueryProcessMemory
+007de330 00000001 t __pstl::execution::v1::seq
+007de334 00000001 t __pstl::execution::v1::par
+007de338 00000001 t __pstl::execution::v1::par_unseq
+007de33c 00000001 t __pstl::execution::v1::unseq
+007de340 00000018 t game::MaskSlots
+007de358 00000060 t game::MaskSlotsOrdered
+007de3b8 00000004 t game::NumCameraModes
+007de3bc 00000004 t game::NumLanguages
+007de3c0 00000001 t __pstl::execution::v1::seq
+007de3c4 00000001 t __pstl::execution::v1::par
+007de3c8 00000001 t __pstl::execution::v1::par_unseq
+007de3cc 00000001 t __pstl::execution::v1::unseq
+007de3d0 00000018 t game::MaskSlots
+007de3e8 00000060 t game::MaskSlotsOrdered
+007de448 00000004 t game::NumCameraModes
+007de450 00000050 t _ftoa(void (*)(char, void*, unsigned int, unsigned int), char*, unsigned int, unsigned int, double, unsigned int, unsigned int, unsigned int)::pow10
+007de4b8 00000001 t __pstl::execution::v1::seq
+007de4bc 00000001 t __pstl::execution::v1::par
+007de4c0 00000001 t __pstl::execution::v1::par_unseq
+007de4c4 00000001 t __pstl::execution::v1::unseq
+007de4c8 00000001 t __pstl::execution::v1::seq
+007de4cc 00000001 t __pstl::execution::v1::par
+007de4d0 00000001 t __pstl::execution::v1::par_unseq
+007de4d4 00000001 t __pstl::execution::v1::unseq
+007de4d8 00000001 t __pstl::execution::v1::seq
+007de4dc 00000001 t __pstl::execution::v1::par
+007de4e0 00000001 t __pstl::execution::v1::par_unseq
+007de4e4 00000001 t __pstl::execution::v1::unseq
+007de4e8 00000001 t __pstl::execution::v1::seq
+007de4ec 00000001 t __pstl::execution::v1::par
+007de4f0 00000001 t __pstl::execution::v1::par_unseq
+007de4f4 00000001 t __pstl::execution::v1::unseq
+007de4f8 00000004 t game::NumCameraModes
+007de4fc 00000001 t __pstl::execution::v1::seq
+007de500 00000001 t __pstl::execution::v1::par
+007de504 00000001 t __pstl::execution::v1::par_unseq
+007de508 00000001 t __pstl::execution::v1::unseq
+007de50c 00000018 t game::MaskSlots
+007de524 00000060 t game::MaskSlotsOrdered
+007de584 00000004 t game::NumCameraModes
+007de588 00000001 t __pstl::execution::v1::seq
+007de58c 00000001 t __pstl::execution::v1::par
+007de590 00000001 t __pstl::execution::v1::par_unseq
+007de594 00000001 t __pstl::execution::v1::unseq
+007de598 00000004 t game::NumCameraModes
+007de59c 00000018 t game::MaskSlots
+007de5b4 00000060 t game::MaskSlotsOrdered
+007de614 00000018 t game::MaskSlots
+007de62c 00000060 t game::MaskSlotsOrdered
+007de68c 00000001 t __pstl::execution::v1::seq
+007de690 00000001 t __pstl::execution::v1::par
+007de694 00000001 t __pstl::execution::v1::par_unseq
+007de698 00000001 t __pstl::execution::v1::unseq
+007de69c 00000004 t game::NumCameraModes
+007de6a0 00000054 t game::GetActionForItem(game::ItemId)::table
+007de6f4 0000023a t game::ItemUsabilityTable
+007de930 00000001 t __pstl::execution::v1::seq
+007de934 00000001 t __pstl::execution::v1::par
+007de938 00000001 t __pstl::execution::v1::par_unseq
+007de93c 00000001 t __pstl::execution::v1::unseq
+007de940 00000004 t game::NumLanguages
+007de988 00000001 t __pstl::execution::v1::seq
+007de98c 00000001 t __pstl::execution::v1::par
+007de990 00000001 t __pstl::execution::v1::par_unseq
+007de994 00000001 t __pstl::execution::v1::unseq
+007de998 00000001 t __pstl::execution::v1::seq
+007de99c 00000001 t __pstl::execution::v1::par
+007de9a0 00000001 t __pstl::execution::v1::par_unseq
+007de9a4 00000001 t __pstl::execution::v1::unseq
+007de9a8 00000001 t __pstl::execution::v1::seq
+007de9ac 00000001 t __pstl::execution::v1::par
+007de9b0 00000001 t __pstl::execution::v1::par_unseq
+007de9b4 00000001 t __pstl::execution::v1::unseq
+007de9b8 00000004 t game::NumCameraModes
+007de9bc 00000018 t game::MaskSlots
+007de9d4 00000060 t game::MaskSlotsOrdered
+007dea34 00000001 t __pstl::execution::v1::seq
+007dea38 00000001 t __pstl::execution::v1::par
+007dea3c 00000001 t __pstl::execution::v1::par_unseq
+007dea40 00000001 t __pstl::execution::v1::unseq
+007dea44 00000001 t __pstl::execution::v1::seq
+007dea48 00000001 t __pstl::execution::v1::par
+007dea4c 00000001 t __pstl::execution::v1::par_unseq
+007dea50 00000001 t __pstl::execution::v1::unseq
+007dea54 00000001 t __pstl::execution::v1::seq
+007dea58 00000001 t __pstl::execution::v1::par
+007dea5c 00000001 t __pstl::execution::v1::par_unseq
+007dea60 00000001 t __pstl::execution::v1::unseq
+007dea64 00000004 t game::NumCameraModes
+007dea68 00000001 t __pstl::execution::v1::seq
+007dea6c 00000001 t __pstl::execution::v1::par
+007dea70 00000001 t __pstl::execution::v1::par_unseq
+007dea74 00000001 t __pstl::execution::v1::unseq
+007dea78 00000018 t game::MaskSlots
+007dea90 00000060 t game::MaskSlotsOrdered
+007deaf0 00000004 t game::NumCameraModes
+007deaf4 00000001 t __pstl::execution::v1::seq
+007deaf8 00000001 t __pstl::execution::v1::par
+007deafc 00000001 t __pstl::execution::v1::par_unseq
+007deb00 00000001 t __pstl::execution::v1::unseq
+007deb04 00000018 t game::MaskSlots
+007deb1c 00000060 t game::MaskSlotsOrdered
+007deb7c 00000004 t game::NumCameraModes
+007deb80 00000001 t __pstl::execution::v1::seq
+007deb84 00000001 t __pstl::execution::v1::par
+007deb88 00000001 t __pstl::execution::v1::par_unseq
+007deb8c 00000001 t __pstl::execution::v1::unseq
+007deb90 00000018 t game::MaskSlots
+007deba8 00000060 t game::MaskSlotsOrdered
+007dec08 00000004 t game::NumCameraModes
+007dec0c 00000001 t __pstl::execution::v1::seq
+007dec10 00000001 t __pstl::execution::v1::par
+007dec14 00000001 t __pstl::execution::v1::par_unseq
+007dec18 00000001 t __pstl::execution::v1::unseq
+007dec1c 00000018 t game::MaskSlots
+007dec34 00000060 t game::MaskSlotsOrdered
+007dec94 00000004 t game::NumCameraModes
+007dec98 00000001 t __pstl::execution::v1::seq
+007dec9c 00000001 t __pstl::execution::v1::par
+007deca0 00000001 t __pstl::execution::v1::par_unseq
+007deca4 00000001 t __pstl::execution::v1::unseq
+007deca8 00000018 t game::MaskSlots
+007decc0 00000060 t game::MaskSlotsOrdered
+007ded20 00000004 t game::NumCameraModes
+007ded24 00000001 t __pstl::execution::v1::seq
+007ded28 00000001 t __pstl::execution::v1::par
+007ded2c 00000001 t __pstl::execution::v1::par_unseq
+007ded30 00000001 t __pstl::execution::v1::unseq
+007ded34 00000018 t game::MaskSlots
+007ded4c 00000060 t game::MaskSlotsOrdered
+007dedac 00000004 t game::NumCameraModes
+007dedb0 00000001 t __pstl::execution::v1::seq
+007dedb4 00000001 t __pstl::execution::v1::par
+007dedb8 00000001 t __pstl::execution::v1::par_unseq
+007dedbc 00000001 t __pstl::execution::v1::unseq
+007dedc0 00000001 t __pstl::execution::v1::seq
+007dedc4 00000001 t __pstl::execution::v1::par
+007dedc8 00000001 t __pstl::execution::v1::par_unseq
+007dedcc 00000001 t __pstl::execution::v1::unseq
+007dedd0 00000018 t game::MaskSlots
+007dede8 00000060 t game::MaskSlotsOrdered
+007dee48 00000004 t game::NumCameraModes
+007dee4c 00000001 t __pstl::execution::v1::seq
+007dee50 00000001 t __pstl::execution::v1::par
+007dee54 00000001 t __pstl::execution::v1::par_unseq
+007dee58 00000001 t __pstl::execution::v1::unseq
+007dee5c 00000018 t game::MaskSlots
+007dee74 00000060 t game::MaskSlotsOrdered
+007deed4 00000004 t game::NumCameraModes
+007deed8 0000060e T rnd::hashIconNames
+007df4e8 00000001 t __pstl::execution::v1::seq
+007df4ec 00000001 t __pstl::execution::v1::par
+007df4f0 00000001 t __pstl::execution::v1::par_unseq
+007df4f4 00000001 t __pstl::execution::v1::unseq
+007df4f8 00000004 t game::NumCameraModes
+007df4fc 0000000c t rnd::GetContext()::s_context
+007df508 00000004 T game::numCustomMessageEntries
+007df50c 00001760 T rItemTable
+007e0c6c 00000010 T rInputCtx
+007e0c7c 00000004 T game::ptrCustomMessageEntries
+007e0c80 00000014 T game::customIceMessage
+007e0c94 00000014 T game::customSwordMessage
+007e0ca8 00000001 t rnd::gPendingFreezes
+007e0cac 00000004 t rnd::rItemOverrides_Count
+007e0cb0 00001400 T rItemOverrides
+007e20b0 00000004 t rnd::rDummyActor
+007e20b4 00000018 t rnd::rPendingOverrideQueue
+007e20cc 00000008 t rnd::rActiveItemOverride
+007e20d4 00000004 T rActiveItemRow
+007e20d8 00000004 T rActiveItemGraphicId
+007e20dc 00000004 T rnd::rActiveItemActionId
+007e20e0 00000004 T rnd::rActiveItemTextId
+007e20e4 00000004 T rnd::rActiveItemObjectId
+007e20e8 00000004 T rnd::rActiveItemFastChest
+007e20ec 00000001 t rnd::rSatisfiedPendingFrames
+007e20f0 00000208 T rnd::rHeap
+007e22f8 00000004 T rnd::rHeap_Next
+007e22fc 00000064 T gSettingsContext
+007e2360 00000001 T rnd::Damage32
+007e2361 T __text_end
+007e2361 T rCustomMessages

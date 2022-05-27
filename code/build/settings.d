@@ -1,22 +1,60 @@
 settings.o: \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/src/settings.c \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/src/settings.h \
- c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h \
- c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h \
- c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h \
- c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h \
- c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/hid.h \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/input.h \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/z3D/z3D.h \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/hid.h
-C:/Users/SKREEE/Desktop/ZMM3DR/application/code/src/settings.h:
-c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3d.h:
-c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dactor.h:
-c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dvec.h:
-c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Dcutscene.h:
-c:\users\skreee\desktop\zmm3dr\application\code\include\z3d\z3Ditem.h:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/hid.h:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/input.h:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/z3D/z3D.h:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/code/include/hid.h:
+ C:/Users/SKREEE/Desktop/MM3DR-Merge/code/source/rnd/settings.cpp \
+ C:/Users/SKREEE/Desktop/MM3DR-Merge/code/include/rnd/settings.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\advanced_context.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\common_data.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\utils.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\items.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\player.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\flags.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\actor.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\bitfield.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\sound.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\as.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\context.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\actorresource.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\objectbankarchive.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\resarchiveheader.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\camera.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\pad.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\scene.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\states\state.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\pad.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\game\ui\screens\screen.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h \
+ c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h
+C:/Users/SKREEE/Desktop/MM3DR-Merge/code/include/rnd/settings.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\advanced_context.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\common_data.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\utils.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\items.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\player.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\flags.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\actor.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\bitfield.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\sound.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\as.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\context.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\actorresource.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\objectbankarchive.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\resarchiveheader.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\camera.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\pad.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\scene.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\states\state.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\pad.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\game\ui\screens\screen.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\common\types.h:
+c:\users\skreee\desktop\mm3dr-merge\code\include\z3d\z3dvec.h:

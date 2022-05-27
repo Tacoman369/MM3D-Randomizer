@@ -55,6 +55,34 @@ string_view startWithMaxRupeesDesc    = "**OPTION CURRENTLY WIP**\n"            
 ------------------------------*/                                                           //
 string_view dungeonRandomize          = "Randomize all Dungeon Settings";                  //
 /*------------------------------                                                           //
+|    SHUFFLE DUNGEON ENTRANCES |                                                           //
+------------------------------*/                                                           //
+string_view shuffleDungeonEntrancesDesc = "**OPTION CURRENTLY WIP**\n"                     //
+                                        "Shuffles Dungeon Entrances amongst themselves";   //
+/*------------------------------                                                           //
+|      BOMBCHUS IN LOGIC       |                                                           //
+------------------------------*/                                                           //
+string_view bombchuInLogicDesc          = "**OPTION CURRENTLY WIP**\n"                     //
+                                        "Adds Bombchus into logic (You may need to use \n" //
+                                        "bombchus instead of bombs to reach locations.";   //
+/*------------------------------                                                           //
+|      ITEM DROP SETTINGS      |                                                           //
+------------------------------*/                                                           //
+string_view ammoDropDesc              = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Enables or disables ammo drops";                  //
+string_view heartDropDesc             = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Enables or disables heart drops";                 //
+/*------------------------------                                                           //
+|    SHUFFLE CHESTS            |                                                           //
+------------------------------*/                                                           //
+string_view shuffleChestItemsVanilla  = "Sets Chest Items to Vanilla Locations"            //
+                                        "Does not include Captain's Hat, Giants Mask or"   //
+                                        "the two chests on the Moon";                      //
+string_view shuffleChestItemsRandom   = "Adds Chest Items to the pool to be randomized"    //
+                                        "Does not include Captain's Hat, Giants Mask or "  //
+                                        "the two chests on the Moon";                      //
+                                                                                           //
+/*------------------------------                                                           //
 |      MAPS AND COMPASSES      |                                                           //
 ------------------------------*/                                                           //
 string_view mapCompassStartWith       = "**OPTION CURRENTLY WIP**\n"                       //
@@ -179,6 +207,55 @@ string_view kokiriSwordDesc           = "**OPTION CURRENTLY WIP**\n"            
                                         "This will leave you quite vulnerable without any\n"
                                         "way to attack until an item is found";            //
                                                                                            //
+/*------------------------------                                                           //
+| SHUFFLE GREAT FAIRY REWARDS  |                                                           //
+------------------------------*/                                                           //
+string_view shuffleGFVanilla          = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Great Fairy Rewards will be Vanilla";             //
+string_view shuffleGFSelf             = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Great Fairy Rewards will be shuffled among \n"    //
+                                        "other Great Fairy Locations";                     //
+string_view shuffleGFAnywhere         = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Great Fairy Rewards can be anywhere";             //
+/*------------------------------                                                           //
+|       SHUFFLE MERCHANTS      |                                                           //
+------------------------------*/                                                           //
+string_view shuffleMerchantsDesc      = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Shuffles Deku Scrub Merchant Items into the Pool";//
+/*------------------------------                                                           //
+|       SKIP EPONA RACE        |                                                           //
+------------------------------*/                                                           //
+string_view skipEponaRaceDesc         = "*OPTION CURRENTLY WIP**\n"                        //
+                                        "Skips the race to keep Epona";                    //
+/*------------------------------                                                           //
+|    RAZOR SWORD DURABILITY    |                                                           //
+------------------------------*/                                                           //
+string_view rsDurabilityVanilla       = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Keeps the Razor Sword's Durability vanilla";      //
+string_view rsDurabilityInf           = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Makes the Razor Sword never break";               //
+/*------------------------------                                                           //
+|         TRIAL SKIPS          |                                                           //
+------------------------------*/                                                           //
+string_view odolwaTrialSkipDesc       = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Skips the Odolwa Trial on the Moon";              //
+string_view gohtTrialSkipDesc         = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Skips the Gyorg Trial on the Moon";               //
+string_view gyorgTrialSkipDesc        = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Skips the Gyorg Trial on the Moon";               //
+string_view twinmoldTrialSkipDesc     = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Skips the Twinmold Trial on the Moon";            //
+/*------------------------------                                                           //
+|   PROGRESSIVE GILDED SWORD   |                                                           //
+------------------------------*/                                                           //
+string_view progressiveGildedSwordDesc = "**OPTION CURRENTLY WIP**\n"                      //
+                                        "Sets the Gilded Sword to progressive or not";     //
+/*------------------------------                                                           //
+|        STARTING SPIN         |                                                           //
+------------------------------*/                                                           //
+string_view startingSpinDesc          = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "Sets the spin attack to be upgraded or not \n"    //
+                                        "setting to vanilla adds the upgrade to the pool"; //
 /*------------------------------                                                           //
 |         SONG SHUFFLE         |                                                           //
 ------------------------------*/                                                           //
@@ -409,6 +486,8 @@ string_view shopsRandom               = "**OPTION CURRENTLY WIP**\n"            
 ------------------------------*/                                                           //
 string_view tokensOff                 = "**OPTION CURRENTLY WIP**\n"                       //
                                         "GS locations will not be shuffled.";              //
+string_view tokensDungeon             = "**OPTION CURRENTLY WIP**\n"                       //
+                                        "GS tokens will appear only in dungeons";          //
 string_view tokensOverworld           = "**OPTION CURRENTLY WIP**\n"                       //
                                         "This only shuffles the GS locations that are\n"   //
                                         "outside of dungeons.";                            //

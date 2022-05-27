@@ -69,6 +69,7 @@ enum class Category {
     cSTStray,
     cDekuScrub,
     cFairyFountain,
+    cChest,
 };
 
 enum class OptionCategory {

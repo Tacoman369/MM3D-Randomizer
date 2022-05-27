@@ -15,6 +15,7 @@ namespace Logic {
 	extern bool MagicBeanPack;
 	extern bool LensOfTruth;
 	extern bool Bow;
+	extern bool HerosBow;
 	extern bool FireArrows;
 	extern bool IceArrows;
 	extern bool LightArrows;
@@ -144,6 +145,11 @@ namespace Logic {
 	//Skulltula Counts
 	extern u8 SwampSkulltulaTokens;
 	extern u8 OceanSkulltulaTokens;
+	//Stray Fairies
+	extern u8 WoodfallStrayFairies;
+	extern u8 SnowheadStrayFairies;
+	extern u8 GBTStrayFairies;
+	extern u8 StoneTowerStrayFairies;
 	//Drops & Bottle Contents Access
 	extern bool DekuNutDrop;
 	extern bool NutPot;
@@ -267,6 +273,10 @@ namespace Logic {
 	extern u8 AddedProgressiveWallets;
 	extern u8 SwampTokensInPool;
 	extern u8 OceanTokensInPool;
+	extern u8 WFStraysInPool;
+	extern u8 SHStraysInPool;
+	extern u8 STStraysInPool;
+	extern u8 PlacedMasks;
 
 	enum class CanUseItem {
 		Kokiri_Sword,

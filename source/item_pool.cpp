@@ -21,7 +21,7 @@ const std::array<ItemKey, 4> dungeonRewards = {
 	GYORGS_REMAINS,
 	TWINMOLDS_REMAINS,
 };
-const std::array<ItemKey, 16> JunkPoolItems = {
+const std::array<ItemKey, 17> JunkPoolItems = {
 	BOMBS_5,
 	BOMBS_10,
 	BOMBS_20,
@@ -35,6 +35,7 @@ const std::array<ItemKey, 16> JunkPoolItems = {
 	BLUE_RUPEE,
 	RED_RUPEE,
 	PURPLE_RUPEE,
+	SILVER_RUPEE,
 	HUGE_RUPEE,
 	DEKU_NUTS_10,
 	ICE_TRAP,
@@ -570,8 +571,88 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
+const std::array<ItemKey, 21> chestItems = {
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	LENS_OF_TRUTH,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	PIECE_OF_HEART,
+	//RED_RUPEE,
+	BOMBCHU_5,
+	PIECE_OF_HEART,
+	//PURPLE_RUPEE,
+	BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	BOMBCHU_5,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	BOMBCHU_10,
+	MAGIC_BEAN,
+	PIECE_OF_HEART,
+	PIECE_OF_HEART,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	BOMBCHU_5,
+	PIECE_OF_HEART,
+	//RED_RUPEE,
+	PIECE_OF_HEART,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	BOMBCHU_5,
+	//PURPLE_RUPEE,
+	HEROS_BOW,
+	FIRE_ARROWS,
+	ICE_ARROWS,
+	LIGHT_ARROWS,
+	HOOKSHOT,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//RED_RUPEE,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	MIRROR_SHIELD,
+	//PURPLE_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	PIECE_OF_HEART
+};
+//additional chest items
+//GIANTS_MASK, //Might need to separate later due to being a mask
 
+//PROGRESSIVE_BOW,
 
+//CAPTAINS_HAT, //Might need to separate later for masks as its both
+//Moon Chests - not included for now
+//ARROWS_30,
+//BOMBCHU_10,
 void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count /*= 1*/) {
 	pool.insert(pool.end(), count, item);
 }
@@ -590,10 +671,10 @@ static void AddRandomBottle(std::vector<ItemKey>& bottlePool) {
 }
 
 ItemKey GetJunkItem() {
-	if (IceTrapValue.Is(ICETRAPS_MAYHEM) || IceTrapValue.Is(ICETRAPS_ONSLAUGHT)) {
+	if (IceTrapValue.Is(rnd::IceTrapSetting::ICETRAPS_MAYHEM) || IceTrapValue.Is(rnd::IceTrapSetting::ICETRAPS_ONSLAUGHT)) {
 		return ICE_TRAP;
 	}
-	else if (IceTrapValue.Is(ICETRAPS_EXTRA)) {
+	else if (IceTrapValue.Is(rnd::IceTrapSetting::ICETRAPS_EXTRA)) {
 		return RandomElement(JunkPoolItems);
 	}
 	//Ice Trap is the last item in JunkPoolItems, so subtract 1 to never hit that index
@@ -641,22 +722,44 @@ static void PlaceVanillaDekuScrubItems() {
 };
 
 static void PlaceVanillaMapsAndCompasses() {
-	for (auto dungeon : dungeonList) {
-		dungeon->PlaceVanillaMap();
-		dungeon->PlaceVanillaCompass();
-	}
+	//for (auto dungeon : dungeonList) {
+	//	dungeon->PlaceVanillaMap();
+	//	dungeon->PlaceVanillaCompass();
+	//}
+	PlaceItemInLocation(WOODFALL_TEMPLE_COMPASS_CHEST, WOODFALL_TEMPLE_COMPASS);
+	PlaceItemInLocation(WOODFALL_TEMPLE_MAP_CHEST, WOODFALL_TEMPLE_MAP);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_MAP_CHEST, SNOWHEAD_TEMPLE_MAP);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_COMPASS_CHEST, SNOWHEAD_TEMPLE_COMPASS);
+	PlaceItemInLocation(GBT_MAP_CHEST, GBT_MAP);
+	PlaceItemInLocation(GBT_COMPASS_CHEST, GBT_COMPASS);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_MAP_CHEST, STONE_TOWER_TEMPLE_MAP);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_COMPASS_CHEST, STONE_TOWER_TEMPLE_COMPASS);
+
 };
 
 static void PlaceVanillaSmallKeys() {
-	for (auto dungeon : dungeonList) {
-		dungeon->PlaceVanillaSmallKeys();
-	}
+	//for (auto dungeon : dungeonList) {
+	//	dungeon->PlaceVanillaSmallKeys();
+	//}
+	PlaceItemInLocation(WOODFALL_TEMPLE_SMALL_KEY_CHEST, WOODFALL_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY1);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY2);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY3);
+	PlaceItemInLocation(GBT_SMALL_KEY_CHEST, GBT_SMALL_KEY);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY1);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY2);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY3);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY4);
 };
 
 static void PlaceVanillaBossKeys() {
-	for (auto dungeon : dungeonList) {
-		dungeon->PlaceVanillaBossKey();
-	}
+	//for (auto dungeon : dungeonList) {
+	//	dungeon->PlaceVanillaBossKey();
+	//}
+	PlaceItemInLocation(WOODFALL_TEMPLE_BOSS_KEY_CHEST, WOODFALL_TEMPLE_BOSS_KEY);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_BOSS_KEY_CHEST, SNOWHEAD_TEMPLE_BOSS_KEY);
+	PlaceItemInLocation(GBT_BOSS_KEY_CHEST, GBT_BOSS_KEY);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, STONE_TOWER_TEMPLE_BOSS_KEY);
 };
 
 static void PlaceVanillaCowMilk() {
@@ -669,6 +772,83 @@ static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW2, MILK);
 	PlaceItemInLocation(BENEATH_THE_WELL_COW, MILK);
 };
+
+static void PlaceVanillaChestItems() {
+	PlaceItemInLocation(DEKU_PALACE_BEAN_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(BOMBERS_HIDEOUT_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(E_CLOCK_TOWN_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(GORON_VILLAGE_LENS_OF_TRUTH_CHEST, LENS_OF_TRUTH);
+	PlaceItemInLocation(LENS_CAVE_RED_RUPEE, RED_RUPEE);
+	PlaceItemInLocation(LENS_CAVE_PURPLE_RUPEE, PURPLE_RUPEE);
+	PlaceItemInLocation(GBC_OCEAN_SPIDER_CHEST, PIECE_OF_HEART);
+	PlaceItemInLocation(GBC_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(IKANA_CANYON_SECRET_SHRINE_GROTTO, BOMBCHU_5);
+	PlaceItemInLocation(IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST, PIECE_OF_HEART);
+	//PlaceItemInLocation(IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, CAPTAINS_HAT);
+	PlaceItemInLocation(IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS, PURPLE_RUPEE);
+	PlaceItemInLocation(IKANA_GRAVEYARD_GROTTO, BOMBCHU_5);
+	PlaceItemInLocation(MOUNTAIN_WATERFALL_CHEST, RED_RUPEE);
+	PlaceItemInLocation(MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(ROAD_TO_SNOWHEAD_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(PINNACLE_ROCK_UPPER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PINNACLE_ROCK_LOWER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(ROAD_TO_IKANA_PILLAR_CHEST, RED_RUPEE);
+	PlaceItemInLocation(ROAD_TO_IKANA_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(PATH_TO_SWAMP_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(DOGGY_RACETRACK_ROOF_CHEST, PURPLE_RUPEE);
+	PlaceItemInLocation(S_CLOCK_TOWN_STRAW_ROOF_CHEST, RED_RUPEE);
+	PlaceItemInLocation(S_CLOCK_TOWN_FINAL_DAY_CHEST, PURPLE_RUPEE);
+	PlaceItemInLocation(SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO, PURPLE_RUPEE);
+	PlaceItemInLocation(STOCKPOTINN_STAFF_ROOM_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(STOCKPOTINN_GUEST_ROOM_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(STONE_TOWER_INVERTED_RIGHT_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(STONE_TOWER_INVERTED_CENTER_CHEST, BOMBCHU_10);
+	PlaceItemInLocation(STONE_TOWER_INVERTED_LEFT_CHEST, MAGIC_BEAN);
+	PlaceItemInLocation(TERMINA_FIELD_PEAHAT_GROTTO, PIECE_OF_HEART);
+	PlaceItemInLocation(TERMINA_FIELD_DODONGO_GROTTO, PIECE_OF_HEART);
+	PlaceItemInLocation(TERMINA_FIELD_PILLAR_GROTTO, BOMBCHU_5);
+	PlaceItemInLocation(TERMINA_FIELD_GRASS_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(TERMINA_FIELD_UNDERWATER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(TERMINA_FIELD_GRASS_CHEST, RED_RUPEE);
+	PlaceItemInLocation(TERMINA_FIELD_STUMP_CHEST, RED_RUPEE);
+	PlaceItemInLocation(HOT_SPRING_WATER_GROTTO, RED_RUPEE);
+	PlaceItemInLocation(TWIN_ISLANDS_GORON_RACETRACK_GROTTO, BOMBCHU_5);
+	PlaceItemInLocation(TWIN_ISLANDS_UNDERWATER_RAMP_CHEST, PIECE_OF_HEART);
+	PlaceItemInLocation(TWIN_ISLANDS_CAVE_CHEST, RED_RUPEE);
+	PlaceItemInLocation(WOODFALL_BRIDGE_CHEST, PIECE_OF_HEART);
+	PlaceItemInLocation(WOODFALL_BEHIND_OWL_CHEST, BLUE_RUPEE);
+	PlaceItemInLocation(ENTRANCE_TO_WOODFALL_CHEST, RED_RUPEE);
+	PlaceItemInLocation(ZORA_CAPE_LEDGE_NO_TREE, RED_RUPEE);
+	PlaceItemInLocation(ZORA_CAPE_LEDGE_WITH_TREE, RED_RUPEE);
+	PlaceItemInLocation(ZORA_CAPE_GROTTO, BOMBCHU_5);
+	PlaceItemInLocation(ZORA_CAPE_UNDERWATER_CHEST, PURPLE_RUPEE);
+	PlaceItemInLocation(WOODFALL_TEMPLE_HEROS_BOW_CHEST, HEROS_BOW);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST, FIRE_ARROWS);
+	PlaceItemInLocation(GBT_ICE_ARROW_CHEST, ICE_ARROWS);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST, LIGHT_ARROWS);
+	//PlaceItemInLocation(STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, GIANTS_MASK);
+	PlaceItemInLocation(PF_INTERIOR_HOOKSHOT_CHEST, HOOKSHOT);
+	PlaceItemInLocation(PF_INT_LOWER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_INT_UPPER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_INT_TANK_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_INT_GUARD_ROOM_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(PF_CAGE_ROOM_SHALLOW_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_CAGE_ROOM_DEEP_CHEST, BLUE_RUPEE);
+	PlaceItemInLocation(PF_MAZE_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_EXTERIOR_LOG_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_EXTERIOR_SAND_CHEST, RED_RUPEE);
+	PlaceItemInLocation(PF_EXTERIOR_CORNER_CHEST, RED_RUPEE);
+	PlaceItemInLocation(BENEATH_THE_WELL_MIRROR_SHIELD_CHEST, MIRROR_SHIELD);
+	PlaceItemInLocation(WELL_LEFT_PATH_CHEST, PURPLE_RUPEE);
+	PlaceItemInLocation(WELL_RIGHT_PATH_CHEST, PURPLE_RUPEE);
+	PlaceItemInLocation(SECRET_SHRINE_DINOLFOS_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(SECRET_SHRINE_WIZZROBE_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(SECRET_SHRINE_WART_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(SECRET_SHRINE_GARO_CHEST, SILVER_RUPEE);
+	PlaceItemInLocation(SECRET_SHRINE_FINAL_CHEST, PIECE_OF_HEART);
+	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+};
 static void SetScarceItemPool() {
 	//todo
 };
@@ -679,7 +859,15 @@ static void SetMinimalItemPool(){
 void GenerateItemPool() {
 
 	ItemPool.clear();
-
+	
+	if (Settings::ShuffleChests.Is(rnd::ShuffleChestsSetting::SHUFFLECHESTS_VANILLA)) {
+		PlaceVanillaChestItems();
+		PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+	}
+		AddItemsToPool(ItemPool, chestItems);
+		PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+	
+	/*
 	//Initialize ice trap models to always major items
 	IceTrapModels = {
 	  GI_SHIELD_MIRROR,
@@ -746,7 +934,8 @@ void GenerateItemPool() {
 	}
 	else {
 		PlaceItemInLocation(DEKU_PALACE_BEAN_DADDY, MAGIC_BEAN);
-	}
+	} 
+	*/
 	//TOKEN SANITY
 	/*
 	if (Tokensanity.Is(TOKENSANITY_OFF)) {
@@ -829,6 +1018,7 @@ void GenerateItemPool() {
 	}
 
 	*/
+    /*
 	if (ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
 
 		//Plentiful small keys
@@ -852,6 +1042,7 @@ void GenerateItemPool() {
 		}
 
 	}
+	*/
 	/*
 	if (Settings::Scrubsanity.IsNot(SCRUBSANITY.OFF)) {
 		AddItemsToPool(ItemPool, dekuScrubItems);
@@ -866,12 +1057,12 @@ void GenerateItemPool() {
 		}
 	}
 	else {*/
-		PlaceVanillaDekuScrubItems();
+		//PlaceVanillaDekuScrubItems();
 	//}
 	
-	AddItemsToPool(ItemPool, alwaysItems);
-	AddItemsToPool(ItemPool, dungeonRewards);
-
+	//AddItemsToPool(ItemPool, alwaysItems);
+	//AddItemsToPool(ItemPool, dungeonRewards);
+/*
 	//Add 7 total bottles
 	u8 bottleCount = 7;
 	std::vector<ItemKey> bottles;
@@ -880,7 +1071,7 @@ void GenerateItemPool() {
 	for (u8 i = 0; i < bottleCount; i++) {
 		AddRandomBottle(bottles);
 	}
-
+	*/
 	//add extra songs only if song shuffle is anywhere
 	//AddItemsToPool(ItemPool, songList);
 	//if (ShuffleSongs.Is(SONGSHUFFLE_ANYWHERE) && ItemPoolValue.Is(ITEMPOOL_PLENTIFUL)) {
@@ -893,7 +1084,7 @@ void GenerateItemPool() {
 	// pool until removal because the filling algorithm needs to know all of the
 	// advancement items that haven't been placed yet for placing higher priority
 	// items like stones/medallions.
-
+/*
 	if (MapsAndCompasses.Is(MAPSANDCOMPASSES_VANILLA)) {
 		PlaceVanillaMapsAndCompasses();
 	}
@@ -961,9 +1152,10 @@ void GenerateItemPool() {
 	else if (RemoveDoubleDefense) {
 		ReplaceMaxItem(DOUBLE_DEFENSE, 0);
 	}
-
+	*/
 	//this feels ugly and there's probably a better way, but
    //it replaces random junk with pending junk.
+
 	bool junkSet;
 	for (ItemKey pendingJunk : PendingJunkPool) {
 		junkSet = false;

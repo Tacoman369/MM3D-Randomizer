@@ -9,25 +9,27 @@
 #include "settings.hpp"
 #include "region.hpp"
 #include "item_category.hpp"
+#include "../code/include/rnd/item_override.h"
 
-union ItemOverride_Value;
 using namespace std;
+using namespace rnd;
+
+//union ItemOverride_Value;
+
 class Item {
 public:
     Item() = default;
-    Item(bool advancement_, int startAdd_, int startIndex_, Text name_, string locationName_, Region region_, HintKey hintKey_,
-        int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_);
-    
+    Item(bool advancement_, int startAdd_, bool* logicVar_, Text name_, string locationName_, Region region_, HintKey hintKey_, u32 getItemId_, ItemCategory itemCat_, LocationCategory locCat_);
+    Item(bool advancement_, int startAdd_, u8* logicVar_, Text name_, string locationName_, Region region_, HintKey hintKey_, u32 getItemId_, ItemCategory itemCat_, LocationCategory locCat_);
     ~Item();
 
     void ApplyEffect();
     void UndoEffect();
 
+    union ItemOverride_Value Value() const;
+
     int GetStartAdd() const {
         return startAdd;
-    }
-    int GetStartIndex() const {
-        return startIndex;
     }
     bool IsAdvancement() const {
         return advancement;
@@ -47,8 +49,8 @@ public:
     const HintText& GetHint() const {
         return Hint(hintKey);
     }
-    int GetItemIndex() const {
-        return getItemIndex;
+    u32 GetItemId() const {
+        return (u32)getItemId;
     }
     const ItemCategory GetItemCategory() const {
         return itemCat;
@@ -75,36 +77,36 @@ public:
         return IsAdvancement();
     }
     bool IsBottleItem() const {
-        return getItemIndex == 0x5A || //Empty Bottle1
-            getItemIndex == 0x64 || //Empty Bottle 2
-            getItemIndex == 0x60 || //Bottle with Milk
-            getItemIndex == 0x59 || //Red Potion
-            getItemIndex == 0x6A || //Gold Dust
-            getItemIndex == 0x6F || //Chateau Romani
-            getItemIndex == 0x08 || //Deku Princess
-            getItemIndex == 0x0D || //Fairy
-            getItemIndex == 0x03 || //Bugs
-            getItemIndex == 0x0B || //Poe
-            getItemIndex == 0x0C || //Big Poe
-            getItemIndex == 0x04 || //Spring Water
-            getItemIndex == 0x06 || //Hot Spring Water
-            getItemIndex == 0x07 || //Zora Egg
-            getItemIndex == 0x0A;   //Mushroom
+        return getItemId == (u32)GetItemID::GI_BOTTLE_EMPTY || //Empty Bottle1
+            getItemId == (u32)GetItemID::GI_BOTTLE_EMPTY || //Empty Bottle 2
+            getItemId == (u32)GetItemID::GI_BOTTLE_MILK || //Bottle with Milk
+            getItemId == (u32)GetItemID::GI_BOTTLE_POTION_RED || //Red Potion
+            getItemId == (u32)GetItemID::GI_BOTTLE_GOLD_DUST || //Gold Dust
+            getItemId == (u32)GetItemID::GI_BOTTLE_CHATEAU_ROMANI || //Chateau Romani
+            getItemId == (u32)GetItemID::GI_DEKU_PRINCESS_FAIRY || //Deku Princess
+            getItemId == (u32)GetItemID::GI_FAIRY || //Fairy
+            getItemId == (u32)GetItemID::GI_BOTTLE_BUG || //Bugs
+            getItemId == (u32)GetItemID::GI_BOTTLE_POE_TEXT || //Poe
+            getItemId == (u32)GetItemID::GI_BOTTLE_BIG_POE || //Big Poe
+            getItemId == (u32)GetItemID::GI_BOTTLE_SPRING_WATER || //Spring Water
+            getItemId == (u32)GetItemID::GI_BOTTLE_HOT_SPRING_WATER || //Hot Spring Water
+            getItemId == (u32)GetItemID::GI_BOTTLE_ZORA_EGG || //Zora Egg
+            getItemId == (u32)GetItemID::GI_BOTTLE_MAGIC_MUSHROOM;   //Mushroom
 
     } 
 
-
-  //  Item(int startAdd_, int startIndex_, Text name_, Text locationName_, Region region_, HintKey hintKey_, int getItemIndex_, ItemCategory itemCat_, LocationCategory locCat_ );
+  //  Item(bool advancement_, int startAdd_, bool* logicVar_, Text name_, string locationName_, Region region_, HintKey hintKey_, int getItemId_, ItemCategory itemCat_, LocationCategory locCat_);
+  //  Item(bool advancement_, int startAdd_, u8* logicVar_, Text name_, string locationName_, Region region_, HintKey hintKey, int getItemId_, ItemCategory itemCat_, LocationCategory locCat_);
 
 private:
-    bool advancement;
+    bool advancement;  
     int startAdd;
-    int startIndex;
+    std::variant<bool*, u8*> logicVar;
     Text name;
     string locationName;
     Region region;
     HintKey hintKey;
-    int getItemIndex;
+    u32 getItemId;
     ItemCategory itemCat;
     LocationCategory locCat;
     bool playthrough = false;

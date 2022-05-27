@@ -9,6 +9,7 @@
 
 using namespace Settings;
 using namespace Dungeon;
+using namespace rnd;
 
 std::vector<ItemKey> StartingInventory;
 u8 AdditionalHeartContainers;
@@ -20,7 +21,7 @@ static void AddItemToInventory(ItemKey item, size_t count = 1) {
 void GenerateStartingInventory() {
   StartingInventory.clear();
   
-  if (MapsAndCompasses.Is(MAPSANDCOMPASSES_START_WITH)) {
+  if (MapsAndCompasses.Is((u8)MapsAndCompassesSetting::MAPSANDCOMPASSES_START_WITH)) {
     for (auto* dungeon : dungeonList) {
       if (dungeon->GetMap() != NONE) {
         AddItemToInventory(dungeon->GetMap());
@@ -32,13 +33,13 @@ void GenerateStartingInventory() {
     }
   }
   
-  if (Keysanity.Is(KEYSANITY_START_WITH)) {
+  if (Keysanity.Is((u8)KeysanitySetting::KEYSANITY_START_WITH)) {
     for (auto* dungeon : dungeonList) {
       if (dungeon->GetSmallKeyCount() > 0) {
         AddItemToInventory(dungeon->GetSmallKey(), dungeon->GetSmallKeyCount());
       }
     }
-  } else if (Keysanity.Is(KEYSANITY_VANILLA)) {
+  } else if (Keysanity.Is((u8)KeysanitySetting::KEYSANITY_VANILLA)) {
     // Logic cannot handle vanilla key layout in some dungeons
     // this is because vanilla expects the dungeon major item to be
     // locked behind the keys, which is not always true in rando.

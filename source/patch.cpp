@@ -1,11 +1,12 @@
 #include "patch.hpp"
 
 #include "cosmetics.hpp"
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 //#include "music.hpp"
 //#include "shops.hpp"
 #include "spoiler_log.hpp"
 //#include "entrance.hpp"
+#include "item_location.hpp"
 
 #include <array>
 #include <cstring>
@@ -87,11 +88,11 @@ bool WritePatch(u32 patchOffset, s32 patchSize, char* patchDataPtr, Handle& code
   #endif
   return true;
 }
-
+/*
 void WriteFloatToBuffer(std::vector<char>& buffer, float f, size_t offset) {
   memcpy(buffer.data() + offset, &f, sizeof(float));
 }
-
+*/
 bool WriteAllPatches() {
   Result res = 0;
   FS_Archive sdmcArchive = 0;
@@ -128,7 +129,7 @@ bool WriteAllPatches() {
   /*------------------------ -
   |       basecode.ips      |
   --------------------------*/
-
+  
   // Delete code.ips if it exists
   FSUSER_DeleteFile(sdmcArchive, fsMakePath(PATH_ASCII, "/luma/titles/0004000000125500/code.ips"));
 
@@ -158,23 +159,23 @@ bool WriteAllPatches() {
       CitraPrint(std::to_string(totalRW));
     #endif
   }
-
+  
   /*------------------------ -
   |      rItemOverrides     |
   --------------------------*/
   /*
   u32 patchOffset = V_TO_P(RITEMOVERRIDES_ADDR);
- // s32 patchSize = sizeof(ItemOverride) * overrides.size();
- // ItemOverride ovrPatchData[overrides.size()] = {};
+  s32 patchSize = sizeof(ItemOverride) * overrides.size();
+  ItemOverride ovrPatchData[overrides.size()] = {};
   //generate override data
   size_t i = 0;
   for (const auto& override : overrides) {
     ovrPatchData[i] = override;
     i++;
   }
- // if (!WritePatch(patchOffset, patchSize, (char*)ovrPatchData, code, bytesWritten, totalRW, buf)) {
- //   return false;
- // }
+   if (!WritePatch(patchOffset, patchSize, (char*)ovrPatchData, code, bytesWritten, totalRW, buf)) {
+   return false;
+  }
   */
   /*------------------------ -
   |    rEntranceOverrides   |
@@ -196,21 +197,21 @@ bool WriteAllPatches() {
   /*-------------------------
   |     gSettingsContext    |
   --------------------------*/
-  /*
-  patchOffset = V_TO_P(GSETTINGSCONTEXT_ADDR);
-  patchSize = sizeof(SettingsContext);
+  
+  u32 patchOffset = V_TO_P(GSETTINGSCONTEXT_ADDR);
+  u32 patchSize = sizeof(SettingsContext);
   //get the settings context
   SettingsContext ctx = Settings::FillContext();
   if (!WritePatch(patchOffset, patchSize, (char*)(&ctx), code, bytesWritten, totalRW, buf)) {
     return false;
   }
-  */
+  
   /*------------------------ -
   |       gSpoilerData      |
   --------------------------*/
   /*
-  patchOffset = V_TO_P(GSPOILERDATA_ADDR);
-  patchSize = sizeof(SpoilerData);
+  u32 patchOffset = V_TO_P(GSPOILERDATA_ADDR);
+  s32 patchSize = sizeof(SpoilerData);
   //Get the spoiler data
   SpoilerData spoilerData = GetSpoilerData();
   if (!WritePatch(patchOffset, patchSize, (char*)(&spoilerData), code, bytesWritten, totalRW, buf)) {
@@ -290,7 +291,7 @@ bool WriteAllPatches() {
   /*--------------------------------
   |     rCustomMessageEntries      |
   ---------------------------------*/
-
+  /*
   std::pair<const char*, u32> messageDataInfo = CustomMessages::RawMessageData();
   std::pair<const char*, u32> messageEntriesInfo = CustomMessages::RawMessageEntryData();
 
@@ -307,7 +308,7 @@ bool WriteAllPatches() {
   if (!WritePatch(messageEntriesOffset, messageEntriesSize, (char*)messageEntriesInfo.first, code, bytesWritten, totalRW, buf)) {
     return false;
   }
-  /*
+  
   // Write ptrCustomMessageEntries to patch
   patchOffset = V_TO_P(PTRCUSTOMMESSAGEENTRIES_ADDR);
   patchSize = 4;
@@ -364,7 +365,7 @@ bool WriteAllPatches() {
   |       custom assets      |
   --------------------------*/
 
-  Cosmetics::Color_RGB childTunicColor  = Cosmetics::HexStrToColorRGB(Settings::finalChildTunicColor);
+  //Cosmetics::Color_RGB childTunicColor  = Cosmetics::HexStrToColorRGB(Settings::finalChildTunicColor);
   
 
   // Delete assets if it exists
@@ -389,11 +390,11 @@ bool WriteAllPatches() {
     fread(buffer.data(), 1, buffer.size(), file.get());
 
     // edit assets as needed
-    const size_t childTunicOffsetInZAR = 0x1E7FC;
+    //const size_t childTunicOffsetInZAR = 0x1E7FC;
 
-    WriteFloatToBuffer(buffer, childTunicColor.r, childTunicOffsetInZAR + 0x70);
-    WriteFloatToBuffer(buffer, childTunicColor.g, childTunicOffsetInZAR + 0x88);
-    WriteFloatToBuffer(buffer, childTunicColor.b, childTunicOffsetInZAR + 0xA0);
+    //WriteFloatToBuffer(buffer, childTunicColor.r, childTunicOffsetInZAR + 0x70);
+    //WriteFloatToBuffer(buffer, childTunicColor.g, childTunicOffsetInZAR + 0x88);
+    //WriteFloatToBuffer(buffer, childTunicColor.b, childTunicOffsetInZAR + 0xA0);
 
     // Write the assets to final destination
     if (!R_SUCCEEDED(res = FSFILE_Write(assetsOut, &bytesWritten, 0, buffer.data(), buffer.size(), FS_WRITE_FLUSH))) {

@@ -19,11 +19,11 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-
+using namespace rnd;
 namespace {
   std::string placementtxt;
 
-  constexpr std::array<std::string_view, 32> hashIcons = {
+  constexpr std::array<std::string_view, 29> hashIcons = {
       "Deku Stick",
       "Deku Nut",
       "Bow",
@@ -44,7 +44,7 @@ namespace {
       "Mirror Shield",
       "Fire Arrow",
       "Ice Arrow",
-      "Ligh Arrow",
+      "Light Arrow",
       "Swamp Token",
       "Seahorse",
       "Gibdo Mask",
@@ -52,7 +52,7 @@ namespace {
       "Boss Key",
       "Compass",
       "Map",
-      "Big Magic",
+      "Big Magic"
   };
 }
 
@@ -316,7 +316,7 @@ static void WriteExcludedLocations(tinyxml2::XMLDocument& spoilerLog) {
   auto parentNode = spoilerLog.NewElement("excluded-locations");
 
   for (const auto& location : Settings::excludeLocationsOptions) {
-    if (location->GetSelectedOptionIndex() == INCLUDE) {
+    if (location->GetSelectedOptionIndex() == (u8)ExcludeLocationSetting::INCLUDE) {
       continue;
     }
 
@@ -338,7 +338,7 @@ static void WriteStartingInventory(tinyxml2::XMLDocument& spoilerLog) {
   for (size_t i = 3; i < Settings::startingInventoryOptions.size(); ++i) {
     const auto setting = Settings::startingInventoryOptions[i];
     //Ignore no starting bottles and the Choose/All On toggles
-    if (setting->GetSelectedOptionIndex() == STARTINGBOTTLE_NONE || setting->GetSelectedOptionText() == "Choose" || setting->GetSelectedOptionText() == "All On") {
+    if (setting->GetSelectedOptionIndex() == (u8)StartingBottleSetting::STARTINGBOTTLE_NONE || setting->GetSelectedOptionText() == "Choose" || setting->GetSelectedOptionText() == "All On") {
       continue;
     }
 
@@ -422,7 +422,7 @@ static void WriteWayOfTheHeroLocation(tinyxml2::XMLDocument& spoilerLog) {
 
 // Writes the hints to the spoiler log, if they are enabled.
 static void WriteHints(tinyxml2::XMLDocument& spoilerLog) {
-  if (Settings::GossipStoneHints.Is(HINTS_NO_HINTS)) {
+  if (Settings::GossipStoneHints.Is((u8)GossipStoneHintsSetting::HINTS_NO_HINTS)) {
     return;
   }
 

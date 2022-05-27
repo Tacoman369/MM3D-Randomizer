@@ -1,6 +1,6 @@
 #include "hints.hpp"
 
-#include "custom_messages.hpp"
+//#include "custom_messages.hpp"
 #include "item_location.hpp"
 #include "item_pool.hpp"
 #include "location_access.hpp"
@@ -12,7 +12,7 @@
 //#include "trial.hpp"
 //#include "entrance.hpp"
 
-using namespace CustomMessages;
+//using namespace CustomMessages;
 using namespace Logic;
 using namespace Settings;
 //using namespace Trial;
@@ -203,7 +203,7 @@ static void CreateLocationHint(const std::vector<LocationKey>& possibleHintLocat
   PlacementLog_Msg(finalHint.english);
   PlacementLog_Msg("\n\n");
 
-  AddHint(finalHint, gossipStone, {QM_GREEN, QM_RED});
+  //AddHint(finalHint, gossipStone, {QM_GREEN, QM_RED});
 }
 
 static void CreateWothHint(u8* remainingDungeonWothHints) {
@@ -257,7 +257,7 @@ static void CreateWothHint(u8* remainingDungeonWothHints) {
   PlacementLog_Msg("\tMessage: ");
   PlacementLog_Msg(finalWothHint.english);
   PlacementLog_Msg("\n\n");
-  AddHint(finalWothHint, gossipStone, {QM_LBLUE});
+  //AddHint(finalWothHint, gossipStone, {QM_LBLUE});
 }
 
 static void CreateBarrenHint(u8* remainingDungeonBarrenHints, std::vector<LocationKey>& barrenLocations) {
@@ -303,7 +303,7 @@ static void CreateBarrenHint(u8* remainingDungeonBarrenHints, std::vector<Locati
   PlacementLog_Msg("\tMessage: ");
   PlacementLog_Msg(finalBarrenHint.english);
   PlacementLog_Msg("\n\n");
-  AddHint(finalBarrenHint, gossipStone, {QM_PINK});
+  //AddHint(finalBarrenHint, gossipStone, {QM_PINK});
 
   //get rid of all other locations in this same barren region
   barrenLocations = FilterFromPool(barrenLocations, [hintedLocation](LocationKey loc){
@@ -349,14 +349,14 @@ static void CreateRandomLocationHint(const bool goodItem = false) {
     PlacementLog_Msg("\tMessage: ");
     PlacementLog_Msg(finalHint.english);
     PlacementLog_Msg("\n\n");
-    AddHint(finalHint, gossipStone, {QM_GREEN, QM_RED});
+    //AddHint(finalHint, gossipStone, {QM_GREEN, QM_RED});
   } else {
     Text locationText = GetHintRegion(Location(hintedLocation)->GetParentRegionKey())->GetHint().GetText();
     Text finalHint = Hint(PREFIX).GetText()+"#"+itemText+"# "+Hint(CAN_BE_FOUND_AT).GetText()+" #"+locationText+"#.";
     PlacementLog_Msg("\tMessage: ");
     PlacementLog_Msg(finalHint.english);
     PlacementLog_Msg("\n\n");
-    AddHint(finalHint, gossipStone, {QM_RED, QM_GREEN});
+    //AddHint(finalHint, gossipStone, {QM_RED, QM_GREEN});
   }
 }
 
@@ -380,7 +380,7 @@ static void CreateJunkHint() {
   PlacementLog_Msg(hint.english);
   PlacementLog_Msg("\n\n");
 
-  AddHint(hint, gossipStone, {QM_PINK});
+  //AddHint(hint, gossipStone, {QM_PINK});
 }
 
 static std::vector<LocationKey> CalculateBarrenRegions() {
@@ -521,7 +521,7 @@ void CreateAllHints() {
   //If any gossip stones failed to have a hint placed on them for some reason, place a junk hint as a failsafe.
   for (LocationKey gossipStone : FilterFromPool(gossipStoneLocations, [](const LocationKey loc){return Location(loc)->GetPlacedItemKey() == NONE;})) {
     const HintText junkHint = RandomElement(GetHintCategory(HintCategory::Junk));
-    AddHint(junkHint.GetText(), gossipStone, {QM_PINK});
+    //AddHint(junkHint.GetText(), gossipStone, {QM_PINK});
   }
 
   //Getting gossip stone locations temporarily sets one location to not be reachable.

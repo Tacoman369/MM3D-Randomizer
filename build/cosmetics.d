@@ -1,7 +1,6 @@
-cosmetics.o: \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.cpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp \
- C:/Users/SKREEE/Desktop/ZMM3DR/application/source/random.hpp \
+cosmetics.o: C:/Users/SKREEE/Desktop/MM3DR-Merge/source/cosmetics.cpp \
+ C:/Users/SKREEE/Desktop/MM3DR-Merge/source/cosmetics.hpp \
+ C:/Users/SKREEE/Desktop/MM3DR-Merge/source/random.hpp \
  C:/devkitPro/libctru/include/3ds.h \
  C:/devkitPro/libctru/include/3ds/types.h \
  C:/devkitPro/libctru/include/3ds/result.h \
@@ -82,8 +81,8 @@ cosmetics.o: \
  C:/devkitPro/libctru/include/3ds/romfs.h \
  C:/devkitPro/libctru/include/3ds/font.h \
  C:/devkitPro/libctru/include/3ds/gdbhio_dev.h
-C:/Users/SKREEE/Desktop/ZMM3DR/application/source/cosmetics.hpp:
-C:/Users/SKREEE/Desktop/ZMM3DR/application/source/random.hpp:
+C:/Users/SKREEE/Desktop/MM3DR-Merge/source/cosmetics.hpp:
+C:/Users/SKREEE/Desktop/MM3DR-Merge/source/random.hpp:
 C:/devkitPro/libctru/include/3ds.h:
 C:/devkitPro/libctru/include/3ds/types.h:
 C:/devkitPro/libctru/include/3ds/result.h:

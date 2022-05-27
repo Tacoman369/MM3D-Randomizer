@@ -11,13 +11,14 @@
 #include <variant>
 #include <vector>
 
-#include "../code/src/settings.h"
+#include "../code/include/rnd/settings.h"
 #include "category.hpp"
 #include "cosmetics.hpp"
 #include "debug.hpp"
 #include "menu.hpp"
 #include "pool_functions.hpp"
 
+using namespace rnd;
 class Option {
 public:
     static Option Bool(std::string name_, std::vector<std::string> options_, std::vector<std::string_view> optionDescriptions_, OptionCategory category_ = OptionCategory::Setting, u8 defaultOption_ = 0, bool defaultHidden_ = false) {
@@ -252,7 +253,7 @@ class Menu {
 
 namespace Settings {
   void UpdateSettings();
-  SettingsContext FillContext();
+  rnd::SettingsContext FillContext();
   void InitSettings();
   void SetDefaultSettings();
   void RandomizeAllSettings(const bool selectOptions = false);
@@ -322,6 +323,11 @@ namespace Settings {
   extern Option StartingTwinmoldRemains;
   extern Option StartingSwampToken;
   extern Option StartingOceanToken;
+  extern Option StartingStickCapacity;
+  extern Option StartingPowderKeg;
+  extern Option StartingPictographBox;
+  extern Option StartingRazorSword;
+  extern Option StartingGildedSword;
   extern std::vector<Option*> startingInventoryOptions;
 
   //Starting Masks
@@ -353,6 +359,7 @@ namespace Settings {
   extern std::vector<Option*> excludeLocationsOptions;
 
   //Shuffle Dungeon Items
+  extern Option ShuffleChests;
   extern Option RandomizeDungeon;
   extern Option MapsAndCompasses;
   extern Option Keysanity;
@@ -373,14 +380,15 @@ namespace Settings {
   extern Option GossipStoneHints; 
   extern Option ClearerHints;
   extern Option HintDistribution;
- /*extern Option DamageMultiplier;
+  extern Option DamageMultiplier;
   extern Option ChestAnimations;
-  extern Option ChestSize;*/
+  extern Option ChestSize;
   extern Option ChangeOverworldItems;
   extern Option GenerateSpoilerLog;
   extern Option IngameSpoilers;
   extern Option MenuOpeningButton;
   extern Option RandomTrapDmg;
+  extern Option RsDurability;
   extern std::vector<Option*>otherSettingsOptions;
 
   //Gimmicks
@@ -390,6 +398,11 @@ namespace Settings {
   extern Option BlastMaskCooldown;
   extern Option UnderwaterOcarina;
   extern Option FierceDietyAnywhere;
+  extern Option ProgressiveGildedSword;
+  extern Option StartingSpin;
+  extern Option AmmoDrops;
+  extern Option HeartDropRefills;
+  extern Option BombchusInLogic;
   extern std::vector<Option*>gimmickOptions;
 
   //Comfort||Timesaver Options
@@ -403,6 +416,15 @@ namespace Settings {
   extern Option FastArrowSwitch;
   extern Option FastElegyStatues;
   extern Option SkipSongReplays;
+
+  //Trial Skips
+  extern Option OdolwaTrialSkip;
+  extern Option GohtTrialSkip;
+  extern Option GyorgTrialSkip;
+  extern Option TwinmoldTrialSkip;
+
+  //Entrance Randomizer stuff
+  extern Option ShuffleDungeonEntrances;
 
   //Cosmetics
   
@@ -457,6 +479,7 @@ namespace Settings {
   extern std::array<u32, 9> rDungeonRewardOverrides;
 
   extern u8 PlayOption;
+
 }
   
 

@@ -11,9 +11,9 @@
 
 #include <3ds.h>
 
-#include "../code/include/z3D/z3D.h"
-//#include "../code/src/item_override.h"
-#include "../code/src/spoiler_data.h"
+#include "../code/include/z3d/z3Dvec.h"
+#include "../code/include/rnd/item_override.h"
+#include "../code/include/rnd/spoiler_data.h"
 #include "category.hpp"
 #include "item_list.hpp"
 #include "hint_list.hpp"
@@ -99,16 +99,16 @@ public:
     ItemLocation() = default;
     ItemLocation(ItemLocationType type_, std::string name_, HintKey hintKey_, ItemKey vanillaItem_, std::vector<Category> categories_, u16 price_ = 0)
         : type(type_), name(std::move(name_)), hintKey(hintKey_), vanillaItem(vanillaItem_), categories(std::move(categories_)), price(price_) {}
-    /*
-   // ItemOverride_Key Key() const {
-   //     ItemOverride_Key key;
-   //     key.all = 0;
+    
+    ItemOverride_Key Key() const {
+        ItemOverride_Key key;
+        key.all = 0;
 
         //key.scene = scene;
  //       key.type = static_cast<u8>(type); //TODO make sure these match up
         //key.flag = flag;
         return key;
-    }*/
+    }
     SpoilerCollectionCheck GetCollectionCheck() const {
         return collectionCheck;
     }
@@ -141,7 +141,7 @@ public:
     const std::string& GetName() const {
         return name;
     }
-
+    
     const Text& GetPlacedItemName() const {
         return ItemTable(placedItem).GetName();
     }
@@ -367,13 +367,13 @@ private:
     AreaKey parentRegion = NONE;
     bool hasShopsanityPrice = false;
 };
-/*
+
 class ItemOverride_Compare {
 public:
     bool operator()(ItemOverride lhs, ItemOverride rhs) const {
         return lhs.key.all < rhs.key.all;
     }
-};*/
+};
 
 void LocationTable_Init();
 
@@ -386,10 +386,11 @@ extern std::vector<LocationKey> gossipStoneLocations;
 extern std::vector<LocationKey> dungeonRewardLocations;
 extern std::vector<LocationKey> overworldLocations;
 extern std::vector<LocationKey> allLocations;
+extern std::vector<LocationKey> chestLocations;
 extern std::vector<LocationKey> everyPossibleLocation;
 
 //set of overrides to write to the patch
-//extern std::set<ItemOverride, ItemOverride_Compare> overrides;
+extern std::set<ItemOverride, ItemOverride_Compare> overrides;
 
 extern std::vector<std::vector<LocationKey>> playthroughLocations;
 extern std::vector<LocationKey> wothLocations;

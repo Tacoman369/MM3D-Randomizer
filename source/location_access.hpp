@@ -13,7 +13,6 @@ typedef bool (*ConditionFn)();
 class EventAccess {
 public:
 
-
     explicit EventAccess(bool* event_, std::vector<ConditionFn> conditions_met_)
         : event(event_) {
         conditions_met.resize(2);
@@ -23,17 +22,17 @@ public:
     }
 
     bool ConditionsMet() const {
-        if (Settings::Logic.Is(LOGIC_NONE) || Settings::Logic.Is(LOGIC_VANILLA)) {
+        if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
             return true;
-        } else if (Settings::Logic.Is(LOGIC_GLITCHLESS)) {
+        } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)) {
             return conditions_met[0]();
-        } else if (Settings::Logic.Is(LOGIC_GLITCHED)) {
-            if (conditions_met[0]()) {
-                return true;
-            } else if (conditions_met[1] != NULL) {
-                return conditions_met[1]();
-            }
-        }
+        }// else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHED)) {
+         //   if (conditions_met[0]()) {
+         //       return true;
+         //   } else if (conditions_met[1] != NULL) {
+         //       return conditions_met[1]();
+         //   }
+        //}
         return false;
     }
 
@@ -63,17 +62,17 @@ public:
     }
 
     bool GetConditionsMet() const {
-        if (Settings::Logic.Is(LOGIC_NONE) || Settings::Logic.Is(LOGIC_VANILLA)) {
+        if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
             return true;
-        } else if (Settings::Logic.Is(LOGIC_GLITCHLESS)) {
+        } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)) {
             return conditions_met[0]();
-        } else if (Settings::Logic.Is(LOGIC_GLITCHED)) {
-            if (conditions_met[0]()) {
-                return true;
-            } else if (conditions_met[1] != NULL) {
-                return conditions_met[1]();
-            }
-        }
+        } //else if (Settings::Logic.Is(LOGIC_GLITCHED)) {
+            //if (conditions_met[0]()) {
+           //     return true;
+          //  } else if (conditions_met[1] != NULL) {
+         //       return conditions_met[1]();
+        //    }
+        //}
         return false;
     }
 

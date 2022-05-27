@@ -24,6 +24,7 @@ namespace Logic {
 	bool MagicBeanPack = false;
 	bool LensOfTruth = false;
 	bool Bow = false;
+	bool HerosBow = false;
 	bool FireArrows = false;
 	bool IceArrows = false;
 	bool LightArrows = false;
@@ -63,6 +64,7 @@ namespace Logic {
 	bool GreatFairySword = false;
 	bool StoneTowerMagicBean = false;
 	bool SwampScrubMagicBean = false;
+
 	//mask logic
 	bool DekuMask = false;
 	bool GoronMask = false;
@@ -147,6 +149,11 @@ namespace Logic {
 	//Skulltula Counts
 	u8 SwampSkulltulaTokens = 0;
 	u8 OceanSkulltulaTokens = 0;
+	//Stray Fairies
+	u8 WoodfallStrayFairies = 0;
+	u8 SnowheadStrayFairies = 0;
+	u8 GBTStrayFairies = 0;
+	u8 StoneTowerStrayFairies = 0;
 	//Drops & Bottle Contents Access
 	bool DekuNutDrop = false;
 	bool NutPot = false;
@@ -270,6 +277,9 @@ namespace Logic {
 	u8 AddedProgressiveWallets = 0;
 	u8 SwampTokensInPool = 0;
 	u8 OceanTokensInPool = 0;
+	u8 WFStraysInPool = 0;
+	u8 SHStraysInPool = 0;
+	u8 STStraysInPool = 0;
 	u8 PlacedMasks = 0;
 
 	bool CanPlay(bool song) {
@@ -369,7 +379,7 @@ namespace Logic {
 	void UpdateHelpers() {
 		MagicMeter = (ProgressiveMagic >= 1) || MagicPower || ExtendedMagicPower;
 		AnyBombBag = (ProgressiveBombBag >= 1) || BombBag20 || TownBombBag || MountainBombBag;
-		Bow = ProgressiveBow >= 1;
+		Bow = ProgressiveBow >= 1 || HerosBow;
 		Scarecrow = Hookshot && CanPlay(ScarecrowSong);
 
 		//Drop Access
@@ -2113,6 +2123,7 @@ namespace Logic {
 		MagicBean = false;
 		MagicBeanPack = false;
 		LensOfTruth = false;
+		HerosBow = false;
 		Bow = false;
 		FireArrows = false;
 		IceArrows = false;

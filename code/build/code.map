@@ -1,4 +1,351 @@
 
+Discarded input sections
+
+ .group         0x0000000000000000        0x8 main.o
+ .group         0x0000000000000000        0x8 main.o
+ .group         0x0000000000000000        0xc main.o
+ .group         0x0000000000000000        0x8 main.o
+ .group         0x0000000000000000        0x8 main.o
+ .group         0x0000000000000000        0xc main.o
+ .group         0x0000000000000000        0xc main.o
+ .group         0x0000000000000000        0xc main.o
+ .group         0x0000000000000000        0x8 actor.o
+ .group         0x0000000000000000        0xc actor.o
+ .group         0x0000000000000000        0x8 actor.o
+ .group         0x0000000000000000        0x8 actorresource.o
+ .group         0x0000000000000000        0xc actorresource.o
+ .group         0x0000000000000000        0xc actorresource.o
+ .group         0x0000000000000000        0xc actorresource.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 actorresource.o
+ .group         0x0000000000000000        0x8 as.o
+ .group         0x0000000000000000        0xc as.o
+ .group         0x0000000000000000        0xc as.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 as.o
+ .group         0x0000000000000000        0x8 camera.o
+ .group         0x0000000000000000        0xc camera.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 camera.o
+ .group         0x0000000000000000        0x8 common_data.o
+ .group         0x0000000000000000        0xc common_data.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 common_data.o
+ .group         0x0000000000000000        0x8 context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0xc context.o
+ .group         0x0000000000000000        0x8 context.o
+ .group         0x0000000000000000        0x8 context.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 context.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0x8 items.o
+ .group         0x0000000000000000        0xc items.o
+ .group         0x0000000000000000        0x8 items.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 items.o
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEEEEDaj
+                0x0000000000000000       0x24 items.o
+ .group         0x0000000000000000        0x8 message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0xc message.o
+ .group         0x0000000000000000        0x8 message.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 message.o
+ .group         0x0000000000000000        0x8 objectbankarchive.o
+ .group         0x0000000000000000        0xc objectbankarchive.o
+ .group         0x0000000000000000        0xc objectbankarchive.o
+ .group         0x0000000000000000        0xc objectbankarchive.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 objectbankarchive.o
+ .group         0x0000000000000000        0x8 pad.o
+ .group         0x0000000000000000        0xc pad.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 pad.o
+ .group         0x0000000000000000        0x8 player.o
+ .group         0x0000000000000000        0xc player.o
+ .group         0x0000000000000000        0xc player.o
+ .group         0x0000000000000000        0xc player.o
+ .group         0x0000000000000000        0x8 player.o
+ .group         0x0000000000000000        0x8 player.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 player.o
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag1EvE5IsSetES4_
+                0x0000000000000000       0x38 player.o
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag3EvE5IsSetES4_
+                0x0000000000000000       0x38 player.o
+ .group         0x0000000000000000        0x8 sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .group         0x0000000000000000        0xc sound.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 sound.o
+ .group         0x0000000000000000        0x8 static_context.o
+ .group         0x0000000000000000        0xc static_context.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 static_context.o
+ .group         0x0000000000000000        0x8 ui.o
+ .group         0x0000000000000000        0xc ui.o
+ .group         0x0000000000000000        0xc ui.o
+ .group         0x0000000000000000        0x8 ui.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 ui.o
+ .group         0x0000000000000000        0x8 icetrap.o
+ .group         0x0000000000000000        0xc icetrap.o
+ .group         0x0000000000000000        0x8 icetrap.o
+ .group         0x0000000000000000        0xc icetrap.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 icetrap.o
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag1EvE5IsSetES4_
+                0x0000000000000000       0x38 icetrap.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0x8 item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .group         0x0000000000000000        0xc item_effect.o
+ .text._ZNSt14numeric_limitsImE3maxEv
+                0x0000000000000000        0xc item_effect.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 item_effect.o
+ .text._ZNSt5arrayIN4game6ItemIdELj7EEixEj
+                0x0000000000000000       0x30 item_effect.o
+ .text._ZNSt5arrayIN4game6ItemIdELj24EEixEj
+                0x0000000000000000       0x30 item_effect.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj7EE6_S_refERA7_KS1_j
+                0x0000000000000000       0x24 item_effect.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj24EE6_S_refERA24_KS1_j
+                0x0000000000000000       0x24 item_effect.o
+ .group         0x0000000000000000        0x8 item_override.o
+ .group         0x0000000000000000        0xc item_override.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 item_override.o
+ .text._ZN3rnd4util10GetPointerIFiPN4game13GlobalContextENS2_6ItemIdEEEEDaj
+                0x0000000000000000       0x24 item_override.o
+ .group         0x0000000000000000        0x8 item_upgrade.o
+ .group         0x0000000000000000        0x8 item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0x8 item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .group         0x0000000000000000        0xc item_upgrade.o
+ .text._ZNSt14numeric_limitsItE3maxEv
+                0x0000000000000000       0x10 item_upgrade.o
+ .text._ZNSt14numeric_limitsImE3maxEv
+                0x0000000000000000        0xc item_upgrade.o
+ .text._ZNSt5arrayIN4game6ItemIdELj5EEixEj
+                0x0000000000000000       0x30 item_upgrade.o
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEEcvS1_Ev
+                0x0000000000000000       0x24 item_upgrade.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj5EE6_S_refERA5_KS1_j
+                0x0000000000000000       0x24 item_upgrade.o
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEE5ValueEv
+                0x0000000000000000       0x28 item_upgrade.o
+ .text._ZN8BitFieldILj12ELj2EmE7GetMaskEv
+                0x0000000000000000       0x1c item_upgrade.o
+ .text._ZN8BitFieldILj0ELj4EN4game9SwordTypeEE7GetMaskEv
+                0x0000000000000000       0x1c item_upgrade.o
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEE5ValueESt17integral_constantIbLb0EE
+                0x0000000000000000       0x44 item_upgrade.o
+ .group         0x0000000000000000        0x8 razor_sword.o
+ .group         0x0000000000000000        0xc razor_sword.o
+ .text._ZN3rnd4util7GetAddrEj
+                0x0000000000000000       0x18 razor_sword.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0x8 savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .group         0x0000000000000000        0xc savefile.o
+ .text._ZNSt14numeric_limitsIhE3maxEv
+                0x0000000000000000        0xc savefile.o
+ .text._ZNSt14numeric_limitsItE3maxEv
+                0x0000000000000000       0x10 savefile.o
+ .text._ZNSt14numeric_limitsImE3maxEv
+                0x0000000000000000        0xc savefile.o
+ .text._ZNK8BitFieldILj12ELj2EmEcvmEv
+                0x0000000000000000       0x24 savefile.o
+ .text._ZNSt5arrayIN4game6ItemIdELj7EEixEj
+                0x0000000000000000       0x30 savefile.o
+ .text._ZNSt5arrayIN4game6ItemIdELj24EEixEj
+                0x0000000000000000       0x30 savefile.o
+ .text._ZNSt5arrayIhLj17EEixEj
+                0x0000000000000000       0x30 savefile.o
+ .text._ZNSt5arrayIN4game6ItemIdELj5EEixEj
+                0x0000000000000000       0x30 savefile.o
+ .text._ZNK8BitFieldILj12ELj2EmE5ValueEv
+                0x0000000000000000       0x28 savefile.o
+ .text._ZN8BitFieldILj18ELj1EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZN8BitFieldILj13ELj1EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj7EE6_S_refERA7_KS1_j
+                0x0000000000000000       0x24 savefile.o
+ .text._ZN8BitFieldILj0ELj1EmE7GetMaskEv
+                0x0000000000000000       0x18 savefile.o
+ .text._ZN8BitFieldILj1ELj1EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZN8BitFieldILj2ELj1EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZN8BitFieldILj3ELj1EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZN8BitFieldILj2ELj1EhE7GetMaskEv
+                0x0000000000000000       0x24 savefile.o
+ .text._ZN8BitFieldILj1ELj1EhE7GetMaskEv
+                0x0000000000000000       0x24 savefile.o
+ .text._ZN8BitFieldILj0ELj1EhE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj24EE6_S_refERA24_KS1_j
+                0x0000000000000000       0x24 savefile.o
+ .text._ZNSt14__array_traitsIhLj17EE6_S_refERA17_Khj
+                0x0000000000000000       0x24 savefile.o
+ .text._ZN8BitFieldILj3ELj3EN4game7BombBagEE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZN8BitFieldILj0ELj4EN4game9SwordTypeEE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj5EE6_S_refERA5_KS1_j
+                0x0000000000000000       0x24 savefile.o
+ .text._ZN8BitFieldILj12ELj2EmE7GetMaskEv
+                0x0000000000000000       0x1c savefile.o
+ .text._ZNK8BitFieldILj12ELj2EmE5ValueESt17integral_constantIbLb0EE
+                0x0000000000000000       0x5c savefile.o
+
 Memory Configuration
 
 Name             Origin             Length             Attributes
@@ -7,238 +354,2277 @@ Name             Origin             Length             Attributes
 Linker script and memory map
 
 LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/11.1.0\libgcc.a
+LOAD input.o
+LOAD main.o
+LOAD common_context.o
+LOAD debug.o
+LOAD printf.o
+LOAD actor.o
+LOAD actorresource.o
+LOAD as.o
+LOAD camera.o
+LOAD common_data.o
+LOAD context.o
+LOAD items.o
 LOAD message.o
+LOAD objectbankarchive.o
+LOAD pad.o
+LOAD player.o
+LOAD sound.o
+LOAD static_context.o
+LOAD ui.o
+LOAD custom_models.o
+LOAD icetrap.o
+LOAD item_effect.o
+LOAD item_override.o
+LOAD item_table.o
+LOAD item_upgrade.o
+LOAD razor_sword.o
+LOAD rheap.o
+LOAD savefile.o
 LOAD settings.o
-LOAD spoiler_data.o
+LOAD title_screen.o
+LOAD loader.o
+LOAD abi.o
+LOAD csvc.o
+LOAD hooks.o
+LOAD patches.o
+LOAD svc.o
+LOAD svc_loader.o
                 0x0000000000100000                . = 0x100000
 
-.glue_7         0x0000000000100000        0x0
- .glue_7        0x0000000000100000        0x0 linker stubs
-
-.glue_7t        0x0000000000100000        0x0
- .glue_7t       0x0000000000100000        0x0 linker stubs
-
-.vfp11_veneer   0x0000000000100000        0x0
- .vfp11_veneer  0x0000000000100000        0x0 linker stubs
-
-.v4_bx          0x0000000000100000        0x0
- .v4_bx         0x0000000000100000        0x0 linker stubs
-
-.text           0x0000000000100000        0x0
- .text          0x0000000000100000        0x0 message.o
- .text          0x0000000000100000        0x0 settings.o
- .text          0x0000000000100000        0x0 spoiler_data.o
-
-.text.Message_GetCustomEntry
-                0x0000000000100000      0x11c
- .text.Message_GetCustomEntry
-                0x0000000000100000      0x11c message.o
-                0x0000000000100000                Message_GetCustomEntry
-
-.text.Message_GetCustomText
-                0x000000000010011c       0x48
- .text.Message_GetCustomText
-                0x000000000010011c       0x48 message.o
-                0x000000000010011c                Message_GetCustomText
-
-.iplt           0x0000000000100164        0x0
- .iplt          0x0000000000100164        0x0 message.o
-
-.text.Settings_ApplyDamageMultiplier
-                0x0000000000100164      0x1d0
- .text.Settings_ApplyDamageMultiplier
-                0x0000000000100164      0x1d0 settings.o
-                0x0000000000100164                Settings_ApplyDamageMultiplier
-
-.text.Hash      0x0000000000100334      0x104
- .text.Hash     0x0000000000100334      0x104 settings.o
-                0x0000000000100334                Hash
-
-.text.And       0x0000000000100438       0x80
- .text.And      0x0000000000100438       0x80 settings.o
-                0x0000000000100438                And
-
-.text.Bias      0x00000000001004b8       0xdc
- .text.Bias     0x00000000001004b8       0xdc settings.o
-                0x00000000001004b8                Bias
-
-.text.SpoilerData_GetItemLocationString
-                0x0000000000100594       0x4c
- .text.SpoilerData_GetItemLocationString
-                0x0000000000100594       0x4c spoiler_data.o
-                0x0000000000100594                SpoilerData_GetItemLocationString
-
-.text.SpoilerData_GetItemNameString
-                0x00000000001005e0       0x4c
- .text.SpoilerData_GetItemNameString
-                0x00000000001005e0       0x4c spoiler_data.o
-                0x00000000001005e0                SpoilerData_GetItemNameString
-
-.text.GetSpoilerItemLocation
-                0x000000000010062c       0x84
- .text.GetSpoilerItemLocation
-                0x000000000010062c       0x84 spoiler_data.o
-                0x000000000010062c                GetSpoilerItemLocation
-
-.text.SpoilerData_ChestCheck
-                0x00000000001006b0       0x1c
- .text.SpoilerData_ChestCheck
-                0x00000000001006b0       0x1c spoiler_data.o
-                0x00000000001006b0                SpoilerData_ChestCheck
-
-.text.SpoilerData_CollectableCheck
-                0x00000000001006cc       0x1c
- .text.SpoilerData_CollectableCheck
-                0x00000000001006cc       0x1c spoiler_data.o
-                0x00000000001006cc                SpoilerData_CollectableCheck
-
-.text.SpoilerData_ItemGetInfCheck
-                0x00000000001006e8       0xa0
- .text.SpoilerData_ItemGetInfCheck
-                0x00000000001006e8       0xa0 spoiler_data.o
-                0x00000000001006e8                SpoilerData_ItemGetInfCheck
-
-.text.SpoilerData_InfTableCheck
-                0x0000000000100788       0xa0
- .text.SpoilerData_InfTableCheck
-                0x0000000000100788       0xa0 spoiler_data.o
-                0x0000000000100788                SpoilerData_InfTableCheck
-
-.text.SpoilerData_QuestItemCheck
-                0x0000000000100828       0x44
- .text.SpoilerData_QuestItemCheck
-                0x0000000000100828       0x44 spoiler_data.o
-                0x0000000000100828                SpoilerData_QuestItemCheck
-
-.text.SpoilerData_UpgradeCheck
-                0x000000000010086c       0x44
- .text.SpoilerData_UpgradeCheck
-                0x000000000010086c       0x44 spoiler_data.o
-                0x000000000010086c                SpoilerData_UpgradeCheck
-
-.text.SpoilerData_CowCheck
-                0x00000000001008b0       0x20
- .text.SpoilerData_CowCheck
-                0x00000000001008b0       0x20 spoiler_data.o
-                0x00000000001008b0                SpoilerData_CowCheck
-
-.text.SpoilerData_FishingCheck
-                0x00000000001008d0       0x20
- .text.SpoilerData_FishingCheck
-                0x00000000001008d0       0x20 spoiler_data.o
-                0x00000000001008d0                SpoilerData_FishingCheck
-
-.text.SpoilerData_ScrubCheck
-                0x00000000001008f0       0x68
- .text.SpoilerData_ScrubCheck
-                0x00000000001008f0       0x68 spoiler_data.o
-                0x00000000001008f0                SpoilerData_ScrubCheck
-
-.text.SpoilerData_ShopItemCheck
-                0x0000000000100958       0x70
- .text.SpoilerData_ShopItemCheck
-                0x0000000000100958       0x70 spoiler_data.o
-                0x0000000000100958                SpoilerData_ShopItemCheck
-
-.text.SpoilerData_MagicBeansCheck
-                0x00000000001009c8       0x44
- .text.SpoilerData_MagicBeansCheck
-                0x00000000001009c8       0x44 spoiler_data.o
-                0x00000000001009c8                SpoilerData_MagicBeansCheck
-
-.text.SpoilerData_GetIsItemLocationCollected
-                0x0000000000100a0c      0x1ec
- .text.SpoilerData_GetIsItemLocationCollected
-                0x0000000000100a0c      0x1ec spoiler_data.o
-                0x0000000000100a0c                SpoilerData_GetIsItemLocationCollected
-
-.rodata         0x0000000000100bf8      0x320
- .rodata        0x0000000000100bf8      0x320 settings.o
-                0x0000000000100bf8                hashIconNames
-
-.rel.dyn        0x0000000000100f18        0x0
- .rel.iplt      0x0000000000100f18        0x0 message.o
-
-.data           0x0000000000100f18        0x4
- .data          0x0000000000100f18        0x4 message.o
-                0x0000000000100f18                numCustomMessageEntries
- .data          0x0000000000100f1c        0x0 settings.o
- .data          0x0000000000100f1c        0x0 spoiler_data.o
-
-.igot.plt       0x0000000000100f1c        0x0
- .igot.plt      0x0000000000100f1c        0x0 message.o
-
-.bss            0x0000000000100f1c     0x55e8
- .bss           0x0000000000100f1c        0x4 message.o
-                0x0000000000100f1c                ptrCustomMessageEntries
- .bss           0x0000000000100f20       0x75 settings.o
-                0x0000000000100f20                gSettingsContext
-                0x0000000000100f94                Damage32
- *fill*         0x0000000000100f95        0x3 
- .bss           0x0000000000100f98     0x556c spoiler_data.o
-                0x0000000000100f98                gSpoilerData
-
-.patch_loader
+.patch_loader   0x0000000000100000        0x4
  *(.patch_loader)
-OUTPUT(C:/Users/SKREEE/Desktop/ZMM3DR/application/code/code.elf elf32-littlearm)
+ .patch_loader  0x0000000000100000        0x4 patches.o
+                0x0000000000100000                loader_patch
+
+.patch_MainLoop
+                0x000000000010676c        0x4
+ *(.patch_MainLoop)
+ .patch_MainLoop
+                0x000000000010676c        0x4 patches.o
+                0x000000000010676c                patch_MainLoop
+
+.patch_DecoupleZlZr
+                0x00000000001166c8        0x4
+ *(.patch_DecoupleZlZr)
+ .patch_DecoupleZlZr
+                0x00000000001166c8        0x4 patches.o
+                0x00000000001166c8                patch_DecoupleZlZr
+
+.patch_DecoupleStartSelect
+                0x0000000000121ee8        0x4
+ *(.patch_DecoupleStartSelect)
+ .patch_DecoupleStartSelect
+                0x0000000000121ee8        0x4 patches.o
+                0x0000000000121ee8                patch_DecoupleStartSelect
+
+.patch_SaveFile_init
+                0x00000000005bb44c        0x4
+ *(.patch_SaveFile_init)
+ .patch_SaveFile_init
+                0x00000000005bb44c        0x4 patches.o
+                0x00000000005bb44c                patch_SaveFile_init
+
+.patch_FixSurroundSound
+                0x00000000001404e8       0x14
+ *(.patch_FixSurroundSound)
+ .patch_FixSurroundSound
+                0x00000000001404e8       0x14 patches.o
+                0x00000000001404e8                patch_FixSurroundSound
+
+.patch_GetCustomText
+                0x00000000001bde78        0x4
+ *(.patch_GetCustomText)
+ .patch_GetCustomText
+                0x00000000001bde78        0x4 patches.o
+                0x00000000001bde78                patch_GetCustomText
+
+.patch_ISGCrouchStabOne
+                0x00000000001d32e0        0xc
+ *(.patch_ISGCrouchStabOne)
+ .patch_ISGCrouchStabOne
+                0x00000000001d32e0        0xc patches.o
+                0x00000000001d32e0                patch_ISGCrouchStabOne
+
+.patch_ISGCrouchStabTwo
+                0x00000000001dbea4        0xc
+ *(.patch_ISGCrouchStabTwo)
+ .patch_ISGCrouchStabTwo
+                0x00000000001dbea4        0xc patches.o
+                0x00000000001dbea4                patch_ISGCrouchStabTwo
+
+.patch_ChangeDrawItemIndexSecond
+                0x000000000021d124        0x4
+ *(.patch_ChangeDrawItemIndexSecond)
+ .patch_ChangeDrawItemIndexSecond
+                0x000000000021d124        0x4 patches.o
+                0x000000000021d124                patch_ChangeDrawItemIndexSecond
+
+.patch_RemoveRemainsStateCheck
+                0x000000000022b7bc        0x4
+ *(.patch_RemoveRemainsStateCheck)
+ .patch_RemoveRemainsStateCheck
+                0x000000000022b7bc        0x4 patches.o
+                0x000000000022b7bc                patch_RemoveRemainsStateCheck
+
+.patch_ChangeDrawItemIndex
+                0x000000000022f24c        0x4
+ *(.patch_ChangeDrawItemIndex)
+ .patch_ChangeDrawItemIndex
+                0x000000000022f24c        0x4 patches.o
+                0x000000000022f24c                OverrideDrawIndex_patch
+
+.patch_OverrideTextID
+                0x00000000002310fc        0x4
+ *(.patch_OverrideTextID)
+ .patch_OverrideTextID
+                0x00000000002310fc        0x4 patches.o
+                0x00000000002310fc                OverrideTextID_patch
+
+.patch_OverrideItemID
+                0x0000000000231108        0x4
+ *(.patch_OverrideItemID)
+ .patch_OverrideItemID
+                0x0000000000231108        0x4 patches.o
+                0x0000000000231108                OverrideItemID_patch
+
+.patch_TwinmoldConsistentDamage
+                0x000000000028e544        0x4
+ *(.patch_TwinmoldConsistentDamage)
+ .patch_TwinmoldConsistentDamage
+                0x000000000028e544        0x4 patches.o
+                0x000000000028e544                patch_TwinmoldConsistentDamage
+
+.patch_FasterBlockMovement
+                0x00000000002ac634        0x4
+ *(.patch_FasterBlockMovement)
+ .patch_FasterBlockMovement
+                0x00000000002ac634        0x4 patches.o
+                0x00000000002ac634                patch_FasterBlockMovement
+
+.patch_FasterBlockMovementBack
+                0x00000000002d0c0c        0x4
+ *(.patch_FasterBlockMovementBack)
+ .patch_FasterBlockMovementBack
+                0x00000000002d0c0c        0x4 patches.o
+                0x00000000002d0c0c                patch_FasterBlockMovementBack
+
+.patch_IncomingGetItemID
+                0x00000000004b1394        0x8
+ *(.patch_IncomingGetItemID)
+ .patch_IncomingGetItemID
+                0x00000000004b1394        0x8 patches.o
+                0x00000000004b1394                IncomingGetItemID_patch
+
+.patch_ReadGamePad
+                0x000000000059ba10        0x4
+ *(.patch_ReadGamePad)
+ .patch_ReadGamePad
+                0x000000000059ba10        0x4 patches.o
+                0x000000000059ba10                patch_ReadGamePad
+
+.patch_DisableExistingTrigger
+                0x000000000059ba14        0x4
+ *(.patch_DisableExistingTrigger)
+ .patch_DisableExistingTrigger
+                0x000000000059ba14        0x4 patches.o
+                0x000000000059ba14                patch_DisableExistingTrigger
+
+.patch_ItemCloseOnSelect
+                0x00000000005c19e4        0x4
+ *(.patch_ItemCloseOnSelect)
+ .patch_ItemCloseOnSelect
+                0x00000000005c19e4        0x4 patches.o
+                0x00000000005c19e4                patch_ItemCloseOnSelect
+                0x000000000061cd8c                . = 0x61cd8c
+
+.loader         0x000000000061cd8c      0x124
+ *(.loader*)
+ .loader        0x000000000061cd8c       0xc8 loader.o
+                0x000000000061cd8c                loader_main
+                0x000000000061cdec                getCurrentProcessHandle
+ .loader        0x000000000061ce54       0x14 hooks.o
+                0x000000000061ce54                hook_into_loader
+ .loader.svcOpenProcess
+                0x000000000061ce68       0x14 svc_loader.o
+                0x000000000061ce68                svcOpenProcess
+ .loader.svcGetProcessId
+                0x000000000061ce7c       0x14 svc_loader.o
+                0x000000000061ce7c                svcGetProcessId
+ .loader.svcBreak
+                0x000000000061ce90        0x8 svc_loader.o
+                0x000000000061ce90                svcBreak
+ .loader.svcControlProcessMemory
+                0x000000000061ce98       0x18 svc_loader.o
+                0x000000000061ce98                svcControlProcessMemory
+
+.eh_frame       0x000000000061ceb0      0x884
+ .eh_frame      0x000000000061ceb0      0x104 csvc.o
+ .eh_frame      0x000000000061cfb4      0x730 svc.o
+                                        0x744 (size before relaxing)
+ .eh_frame      0x000000000061d6e4       0x50 svc_loader.o
+                                         0x64 (size before relaxing)
+                0x00000000007d0000                . = 0x7d0000
+
+.text           0x00000000007d0000    0x12361
+                0x00000000007d0000                __text_start = .
+ *(.text)
+ .text          0x00000000007d0000        0x0 input.o
+ .text          0x00000000007d0000        0x0 main.o
+ .text          0x00000000007d0000        0x0 common_context.o
+ .text          0x00000000007d0000        0x0 debug.o
+ .text          0x00000000007d0000        0x0 printf.o
+ .text          0x00000000007d0000        0x0 actor.o
+ .text          0x00000000007d0000        0x0 actorresource.o
+ .text          0x00000000007d0000        0x0 as.o
+ .text          0x00000000007d0000        0x0 camera.o
+ .text          0x00000000007d0000        0x0 common_data.o
+ .text          0x00000000007d0000        0x0 context.o
+ .text          0x00000000007d0000        0x0 items.o
+ .text          0x00000000007d0000        0x0 message.o
+ .text          0x00000000007d0000        0x0 objectbankarchive.o
+ .text          0x00000000007d0000        0x0 pad.o
+ .text          0x00000000007d0000        0x0 player.o
+ .text          0x00000000007d0000        0x0 sound.o
+ .text          0x00000000007d0000        0x0 static_context.o
+ .text          0x00000000007d0000        0x0 ui.o
+ .text          0x00000000007d0000        0x0 custom_models.o
+ .text          0x00000000007d0000        0x0 icetrap.o
+ .text          0x00000000007d0000        0x0 item_effect.o
+ .text          0x00000000007d0000        0x0 item_override.o
+ .text          0x00000000007d0000        0x0 item_table.o
+ .text          0x00000000007d0000        0x0 item_upgrade.o
+ .text          0x00000000007d0000        0x0 razor_sword.o
+ .text          0x00000000007d0000        0x0 rheap.o
+ .text          0x00000000007d0000        0x0 savefile.o
+ .text          0x00000000007d0000        0x0 settings.o
+ .text          0x00000000007d0000        0x0 title_screen.o
+ .text          0x00000000007d0000        0x0 loader.o
+ .text          0x00000000007d0000        0x0 abi.o
+ .text          0x00000000007d0000        0x0 csvc.o
+ .text          0x00000000007d0000       0xf8 hooks.o
+                0x00000000007d0000                hook_MainLoop
+                0x00000000007d001c                hook_SaveFile_Init
+                0x00000000007d0030                hook_RemainsCheckValue
+                0x00000000007d0044                hook_OverrideDrawIndex
+                0x00000000007d0060                hook_OverrideDrawIndexSecond
+                0x00000000007d0080                hook_OverrideTextID
+                0x00000000007d009c                hook_OverrideItemID
+                0x00000000007d00c8                hook_IncomingGetItemID
+                0x00000000007d00e4                hook_readGamePad
+ .text          0x00000000007d00f8        0x0 patches.o
+ *fill*         0x00000000007d00f8        0x8 
+ .text          0x00000000007d0100        0x0 svc.o
+ .text          0x00000000007d0100        0x0 svc_loader.o
+ *(.text.*)
+ .text._Z18GetCurrentPadStatev
+                0x00000000007d0100       0x2c input.o
+                0x00000000007d0100                GetCurrentPadState()
+ .text._Z12Input_Updatev
+                0x00000000007d012c       0x80 input.o
+                0x00000000007d012c                Input_Update()
+ .text._Z11buttonCheckm
+                0x00000000007d01ac       0x6c input.o
+                0x00000000007d01ac                buttonCheck(unsigned long)
+ .text._Z21Input_WaitWithTimeoutmm
+                0x00000000007d0218      0x1c4 input.o
+                0x00000000007d0218                Input_WaitWithTimeout(unsigned long, unsigned long)
+ .text._Z10Input_Waitv
+                0x00000000007d03dc       0x1c input.o
+                0x00000000007d03dc                Input_Wait()
+ .text._ZNSt14numeric_limitsImE3maxEv
+                0x00000000007d03f8        0xc main.o
+                0x00000000007d03f8                std::numeric_limits<unsigned long>::max()
+ .text._ZN3rnd4InitERNS_7ContextE
+                0x00000000007d0404       0x3c main.o
+                0x00000000007d0404                rnd::Init(rnd::Context&)
+ .text.calc     0x00000000007d0440       0xb4 main.o
+                0x00000000007d0440                calc
+ .text.readPadInput
+                0x00000000007d04f4      0x1bc main.o
+                0x00000000007d04f4                readPadInput
+ .text._ZNK3rnd5FlagsIN4game3pad6ButtonEvE5IsSetES3_
+                0x00000000007d06b0       0x38 main.o
+                0x00000000007d06b0                rnd::Flags<game::pad::Button, void>::IsSet(game::pad::Button) const
+ .text._ZNK8BitFieldILj18ELj1EmEcvmEv
+                0x00000000007d06e8       0x24 main.o
+                0x00000000007d06e8                BitField<18u, 1u, unsigned long>::operator unsigned long() const
+ .text._ZN3rnd4util5WriteIhN4game2ui6ScreenEEEvPT0_jRKT_
+                0x00000000007d070c       0x34 main.o
+                0x00000000007d070c                void rnd::util::Write<unsigned char, game::ui::Screen>(game::ui::Screen*, unsigned int, unsigned char const&)
+ .text._ZN3rnd5FlagsIN4game3pad6ButtonEvE5ClearES3_
+                0x00000000007d0740       0x34 main.o
+                0x00000000007d0740                rnd::Flags<game::pad::Button, void>::Clear(game::pad::Button)
+ .text._ZNK8BitFieldILj18ELj1EmE5ValueEv
+                0x00000000007d0774       0x28 main.o
+                0x00000000007d0774                BitField<18u, 1u, unsigned long>::Value() const
+ .text._ZN8BitFieldILj18ELj1EmE7GetMaskEv
+                0x00000000007d079c       0x1c main.o
+                0x00000000007d079c                BitField<18u, 1u, unsigned long>::GetMask()
+ .text._ZNK8BitFieldILj18ELj1EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007d07b8       0x5c main.o
+                0x00000000007d07b8                BitField<18u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZN3rnd10GetContextEv
+                0x00000000007d0814       0x10 common_context.o
+                0x00000000007d0814                rnd::GetContext()
+ .text._ZN3rnd4util5PrintEPKcz
+                0x00000000007d0824       0x5c debug.o
+                0x00000000007d0824                rnd::util::Print(char const*, ...)
+ .text._ZL11_out_buffercPvjj
+                0x00000000007d0880       0x48 printf.o
+ .text._ZL9_out_nullcPvjj
+                0x00000000007d08c8       0x24 printf.o
+ .text._ZL8_out_fctcPvjj
+                0x00000000007d08ec       0x50 printf.o
+ .text._ZL10_strnlen_sPKcj
+                0x00000000007d093c       0x74 printf.o
+ .text._ZL9_is_digitc
+                0x00000000007d09b0       0x3c printf.o
+ .text._ZL5_atoiPPKc
+                0x00000000007d09ec       0x84 printf.o
+ .text._ZL8_out_revPFvcPvjjEPcjjPKcjjj
+                0x00000000007d0a70      0x12c printf.o
+ .text._ZL12_ntoa_formatPFvcPvjjEPcjjS2_jbbjjj
+                0x00000000007d0b9c      0x2fc printf.o
+ .text._ZL10_ntoa_longPFvcPvjjEPcjjmbbjjj
+                0x00000000007d0e98      0x200 printf.o
+ .text._ZL5_ftoaPFvcPvjjEPcjjdjjj
+                0x00000000007d1098      0x74c printf.o
+ *fill*         0x00000000007d17e4        0x4 
+ .text._ZL5_etoaPFvcPvjjEPcjjdjjj
+                0x00000000007d17e8      0x5bc printf.o
+ .text._ZL10_vsnprintfPFvcPvjjEPcjPKcSt9__va_list
+                0x00000000007d1da4      0xd44 printf.o
+ .text.sprintf_
+                0x00000000007d2ae8       0x54 printf.o
+                0x00000000007d2ae8                sprintf_
+ .text.snprintf_
+                0x00000000007d2b3c       0x58 printf.o
+                0x00000000007d2b3c                snprintf_
+ .text.vsnprintf_
+                0x00000000007d2b94       0x48 printf.o
+                0x00000000007d2b94                vsnprintf_
+ .text.fctprintf
+                0x00000000007d2bdc       0x68 printf.o
+                0x00000000007d2bdc                fctprintf
+ .text._ZN3rnd4util7GetAddrEj
+                0x00000000007d2c44       0x18 actor.o
+                0x00000000007d2c44                rnd::util::GetAddr(unsigned int)
+ .text._ZN4game3act5Actor4FreeEv
+                0x00000000007d2c5c       0x44 actor.o
+                0x00000000007d2c5c                game::act::Actor::Free()
+ .text._ZN3rnd4util10GetPointerIFPN4game3act16ActorOverlayInfoEvEEEDaj
+                0x00000000007d2ca0       0x24 actor.o
+                0x00000000007d2ca0                auto rnd::util::GetPointer<game::act::ActorOverlayInfo* ()>(unsigned int)
+ .text._ZN4game3act24GetActorOverlayInfoTableEv
+                0x00000000007d2cc4       0x24 actor.o
+                0x00000000007d2cc4                game::act::GetActorOverlayInfoTable()
+ .text._ZN3rnd5FlagsIN4game3act5Actor4FlagEvE5ClearES4_
+                0x00000000007d2ce8       0x34 actor.o
+                0x00000000007d2ce8                rnd::Flags<game::act::Actor::Flag, void>::Clear(game::act::Actor::Flag)
+ .text._ZN3rnd4util10GetPointerIFmPN4game13ActorResource14ActorResourcesEiEEEDaj
+                0x00000000007d2d1c       0x24 actorresource.o
+                0x00000000007d2d1c                auto rnd::util::GetPointer<unsigned long (game::ActorResource::ActorResources*, int)>(unsigned int)
+ .text._ZN4game13ActorResource4findEPNS0_14ActorResourcesEi
+                0x00000000007d2d40       0x3c actorresource.o
+                0x00000000007d2d40                game::ActorResource::find(game::ActorResource::ActorResources*, int)
+ .text._ZN3rnd4util10GetPointerIFmPN4game13ActorResource14ActorResourcesEmEEEDaj
+                0x00000000007d2d7c       0x24 actorresource.o
+                0x00000000007d2d7c                auto rnd::util::GetPointer<unsigned long (game::ActorResource::ActorResources*, unsigned long)>(unsigned int)
+ .text._ZN4game13ActorResource17loadActorResourceEPNS0_14ActorResourcesEm
+                0x00000000007d2da0       0x3c actorresource.o
+                0x00000000007d2da0                game::ActorResource::loadActorResource(game::ActorResource::ActorResources*, unsigned long)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13ActorResource13ActorResourceEEEEDaj
+                0x00000000007d2ddc       0x24 actorresource.o
+                0x00000000007d2ddc                auto rnd::util::GetPointer<void (game::ActorResource::ActorResource*)>(unsigned int)
+ .text._ZN4game13ActorResource17freeActorResourceEPNS0_13ActorResourceE
+                0x00000000007d2e00       0x30 actorresource.o
+                0x00000000007d2e00                game::ActorResource::freeActorResource(game::ActorResource::ActorResource*)
+ .text._ZN3rnd4util10GetPointerIFvPN4game2as9ActorUtilEmfEEEDaj
+                0x00000000007d2e30       0x24 as.o
+                0x00000000007d2e30                auto rnd::util::GetPointer<void (game::as::ActorUtil*, unsigned long, float)>(unsigned int)
+ .text._ZN4game2as9ActorUtil8PlayAnimEmf
+                0x00000000007d2e54       0x40 as.o
+                0x00000000007d2e54                game::as::ActorUtil::PlayAnim(unsigned long, float)
+ .text._ZN4game2as9ActorUtil12PlayAnimFullEmf
+                0x00000000007d2e94       0x40 as.o
+                0x00000000007d2e94                game::as::ActorUtil::PlayAnimFull(unsigned long, float)
+ .text._ZN3rnd4util10GetPointerIFiPN4game2as9ActorUtilEmEEEDaj
+                0x00000000007d2ed4       0x24 as.o
+                0x00000000007d2ed4                auto rnd::util::GetPointer<int (game::as::ActorUtil*, unsigned long)>(unsigned int)
+ .text._ZN4game2as9ActorUtil15GetAnimDurationEm
+                0x00000000007d2ef8       0x3c as.o
+                0x00000000007d2ef8                game::as::ActorUtil::GetAnimDuration(unsigned long)
+ .text._ZN3rnd4util10GetPointerIFmPN4game6CameraENS2_10CameraModeEmEEEDaj
+                0x00000000007d2f34       0x24 camera.o
+                0x00000000007d2f34                auto rnd::util::GetPointer<unsigned long (game::Camera*, game::CameraMode, unsigned long)>(unsigned int)
+ .text._ZN4game6Camera10ChangeModeENS_10CameraModeEm
+                0x00000000007d2f58       0x48 camera.o
+                0x00000000007d2f58                game::Camera::ChangeMode(game::CameraMode, unsigned long)
+ .text._ZN3rnd4util10GetPointerIN4game10CommonDataEEEDaj
+                0x00000000007d2fa0       0x24 common_data.o
+                0x00000000007d2fa0                auto rnd::util::GetPointer<game::CommonData>(unsigned int)
+ .text._ZN4game13GetCommonDataEv
+                0x00000000007d2fc4       0x1c common_data.o
+                0x00000000007d2fc4                game::GetCommonData()
+ .text._ZN4game10ActorLists7GetListENS_3act4TypeE
+                0x00000000007d2fe0       0x3c context.o
+                0x00000000007d2fe0                game::ActorLists::GetList(game::act::Type)
+ .text._ZNK4game13GlobalContext15FindActorWithIdENS_3act2IdENS1_4TypeE
+                0x00000000007d301c       0xb8 context.o
+                0x00000000007d301c                game::GlobalContext::FindActorWithId(game::act::Id, game::act::Type) const
+ .text._ZNK4game13GlobalContext14GetPlayerActorEv
+                0x00000000007d30d4       0x34 context.o
+                0x00000000007d30d4                game::GlobalContext::GetPlayerActor() const
+ .text._ZN3rnd4util10GetPointerIFPN4game3act5ActorEPNS2_10ActorListsES5_PNS2_13GlobalContextENS3_2IdEtttt8z3dVec3fEEEDaj
+                0x00000000007d3108       0x24 context.o
+                0x00000000007d3108                auto rnd::util::GetPointer<game::act::Actor* (game::ActorLists*, game::act::Actor*, game::GlobalContext*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)>(unsigned int)
+ .text._ZN4game13GlobalContext10SpawnActorEPNS_3act5ActorENS1_2IdEtttt8z3dVec3f
+                0x00000000007d312c       0xa0 context.o
+                0x00000000007d312c                game::GlobalContext::SpawnActor(game::act::Actor*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)
+ .text._ZN3rnd4util10GetPointerIFPN4game3act5ActorEPNS2_10ActorListsEPNS2_13GlobalContextENS3_2IdEtttt8z3dVec3fEEEDaj
+                0x00000000007d31cc       0x24 context.o
+                0x00000000007d31cc                auto rnd::util::GetPointer<game::act::Actor* (game::ActorLists*, game::GlobalContext*, game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)>(unsigned int)
+ .text._ZN4game13GlobalContext10SpawnActorENS_3act2IdEtttt8z3dVec3f
+                0x00000000007d31f0       0xa4 context.o
+                0x00000000007d31f0                game::GlobalContext::SpawnActor(game::act::Id, unsigned short, unsigned short, unsigned short, unsigned short, z3dVec3f)
+ .text._ZN4game13GlobalContext15ChangeActorTypeERNS_3act5ActorENS1_4TypeE
+                0x00000000007d3294       0x5c context.o
+                0x00000000007d3294                game::GlobalContext::ChangeActorType(game::act::Actor&, game::act::Type)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEiPNS2_3act5ActorEEEEDaj
+                0x00000000007d32f0       0x24 context.o
+                0x00000000007d32f0                auto rnd::util::GetPointer<void (game::GlobalContext*, int, game::act::Actor*)>(unsigned int)
+ .text._ZN4game13GlobalContext11ShowMessageEtPNS_3act5ActorE
+                0x00000000007d3314       0x44 context.o
+                0x00000000007d3314                game::GlobalContext::ShowMessage(unsigned short, game::act::Actor*)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEPNS2_3act5ActorEiEEEDaj
+                0x00000000007d3358       0x24 context.o
+                0x00000000007d3358                auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Actor*, int)>(unsigned int)
+ .text._ZN4game13GlobalContext4TalkEPNS_3act5ActorEi
+                0x00000000007d337c       0x58 context.o
+                0x00000000007d337c                game::GlobalContext::Talk(game::act::Actor*, int)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextERKNS2_3act5ActorEEEEDaj
+                0x00000000007d33d4       0x24 context.o
+                0x00000000007d33d4                auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Actor const&)>(unsigned int)
+ .text._ZN4game13GlobalContext19EmitLastDamageSoundERKNS_3act5ActorE
+                0x00000000007d33f8       0x38 context.o
+                0x00000000007d33f8                game::GlobalContext::EmitLastDamageSound(game::act::Actor const&)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEEEEDaj
+                0x00000000007d3430       0x24 context.o
+                0x00000000007d3430                auto rnd::util::GetPointer<void (game::GlobalContext*)>(unsigned int)
+ .text._ZN4game13GlobalContext10VoidPlayerEv
+                0x00000000007d3454       0x30 context.o
+                0x00000000007d3454                game::GlobalContext::VoidPlayer()
+ .text._ZNSt5arrayIN4game9ActorListELj12EEixEj
+                0x00000000007d3484       0x30 context.o
+                0x00000000007d3484                std::array<game::ActorList, 12u>::operator[](unsigned int)
+ .text._ZNKSt5arrayIN4game9ActorListELj12EEixEj
+                0x00000000007d34b4       0x30 context.o
+                0x00000000007d34b4                std::array<game::ActorList, 12u>::operator[](unsigned int) const
+ .text._ZNKSt5arrayIN4game9ActorListELj12EE4sizeEv
+                0x00000000007d34e4       0x18 context.o
+                0x00000000007d34e4                std::array<game::ActorList, 12u>::size() const
+ .text._ZNSt14__array_traitsIN4game9ActorListELj12EE6_S_refERA12_KS1_j
+                0x00000000007d34fc       0x34 context.o
+                0x00000000007d34fc                std::__array_traits<game::ActorList, 12u>::_S_ref(game::ActorList const (&) [12], unsigned int)
+ .text._ZN4game13ItemIsBottledENS_6ItemIdE
+                0x00000000007d3530       0x3c items.o
+                0x00000000007d3530                game::ItemIsBottled(game::ItemId)
+ .text._ZN4game10ItemIsGearENS_6ItemIdE
+                0x00000000007d356c       0x3c items.o
+                0x00000000007d356c                game::ItemIsGear(game::ItemId)
+ .text._ZN4game10ItemIsMaskENS_6ItemIdE
+                0x00000000007d35a8       0x3c items.o
+                0x00000000007d35a8                game::ItemIsMask(game::ItemId)
+ .text._ZN4game24ItemIsTransformationMaskENS_6ItemIdE
+                0x00000000007d35e4       0x3c items.o
+                0x00000000007d35e4                game::ItemIsTransformationMask(game::ItemId)
+ .text._ZN4game27ItemIsNonTransformationMaskENS_6ItemIdE
+                0x00000000007d3620       0x3c items.o
+                0x00000000007d3620                game::ItemIsNonTransformationMask(game::ItemId)
+ .text._ZN4game13ItemIsRegularENS_6ItemIdE
+                0x00000000007d365c       0x2c items.o
+                0x00000000007d365c                game::ItemIsRegular(game::ItemId)
+ .text._ZN4game16GetActionForItemENS_6ItemIdE
+                0x00000000007d3688       0x5c items.o
+                0x00000000007d3688                game::GetActionForItem(game::ItemId)
+ .text._ZNKSt5arrayIN4game6ItemIdELj24EEixEj
+                0x00000000007d36e4       0x30 items.o
+                0x00000000007d36e4                std::array<game::ItemId, 24u>::operator[](unsigned int) const
+ .text._ZN4game10HasOcarinaEv
+                0x00000000007d3714       0x48 items.o
+                0x00000000007d3714                game::HasOcarina()
+ .text._ZZN4game9HasBottleENS_6ItemIdEENKUlS0_E_clES0_
+                0x00000000007d375c       0x54 items.o
+ .text._ZN4game9HasBottleENS_6ItemIdE
+                0x00000000007d37b0       0x58 items.o
+                0x00000000007d37b0                game::HasBottle(game::ItemId)
+ .text._ZN4game12RemoveBottleEm
+                0x00000000007d3808       0x40 items.o
+                0x00000000007d3808                game::RemoveBottle(unsigned long)
+ .text._ZN4game10GiveBottleEmNS_6ItemIdE
+                0x00000000007d3848      0x16c items.o
+                0x00000000007d3848                game::GiveBottle(unsigned long, game::ItemId)
+ .text._ZN3rnd4util10GetPointerIFiPN4game13GlobalContextEPNS2_3act6PlayerEEEEDaj
+                0x00000000007d39b4       0x24 items.o
+                0x00000000007d39b4                auto rnd::util::GetPointer<int (game::GlobalContext*, game::act::Player*)>(unsigned int)
+ .text._ZN4game18GiveItemWithEffectEm
+                0x00000000007d39d8       0x84 items.o
+                0x00000000007d39d8                game::GiveItemWithEffect(unsigned long)
+ .text._ZZN4game7HasItemENS_6ItemIdEENKUlS0_E_clES0_
+                0x00000000007d3a5c       0x3c items.o
+ .text._ZN4game7HasItemENS_6ItemIdE
+                0x00000000007d3a98       0x58 items.o
+                0x00000000007d3a98                game::HasItem(game::ItemId)
+ .text._ZN4game10RemoveItemENS_6ItemIdE
+                0x00000000007d3af0       0x48 items.o
+                0x00000000007d3af0                game::RemoveItem(game::ItemId)
+ .text._ZN3rnd4util10GetPointerIFiPN4game13GlobalContextENS2_6ItemIdEEEEDaj
+                0x00000000007d3b38       0x24 items.o
+                0x00000000007d3b38                auto rnd::util::GetPointer<int (game::GlobalContext*, game::ItemId)>(unsigned int)
+ .text._ZN4game8GiveItemENS_6ItemIdE
+                0x00000000007d3b5c       0x7c items.o
+                0x00000000007d3b5c                game::GiveItem(game::ItemId)
+ .text._ZN4game8GiveMaskENS_6ItemIdE
+                0x00000000007d3bd8       0x7c items.o
+                0x00000000007d3bd8                game::GiveMask(game::ItemId)
+ .text._ZZN4game7HasMaskENS_6ItemIdEENKUlS0_E_clES0_
+                0x00000000007d3c54       0x3c items.o
+ .text._ZN4game7HasMaskENS_6ItemIdE
+                0x00000000007d3c90       0x58 items.o
+                0x00000000007d3c90                game::HasMask(game::ItemId)
+ .text._ZN4game10RemoveMaskEm
+                0x00000000007d3ce8       0x40 items.o
+                0x00000000007d3ce8                game::RemoveMask(unsigned long)
+ .text._ZN4game16CanUseItemUnsafeENS_6ItemIdE
+                0x00000000007d3d28      0x17c items.o
+                0x00000000007d3d28                game::CanUseItemUnsafe(game::ItemId)
+ .text._ZN4gameL15IsBossRoomSceneEPNS_13GlobalContextE
+                0x00000000007d3ea4       0x70 items.o
+ .text._ZN3rnd4util10GetPointerIFiPN4game13GlobalContextEEEEDaj
+                0x00000000007d3f14       0x24 items.o
+                0x00000000007d3f14                auto rnd::util::GetPointer<int (game::GlobalContext*)>(unsigned int)
+ .text._ZNKSt5arrayIS_IbLj114EELj5EEixEj
+                0x00000000007d3f38       0x30 items.o
+                0x00000000007d3f38                std::array<std::array<bool, 114u>, 5u>::operator[](unsigned int) const
+ .text._ZNKSt5arrayIbLj114EEixEj
+                0x00000000007d3f68       0x30 items.o
+                0x00000000007d3f68                std::array<bool, 114u>::operator[](unsigned int) const
+ .text._ZN4game10CanUseItemENS_6ItemIdE
+                0x00000000007d3f98      0x728 items.o
+                0x00000000007d3f98                game::CanUseItem(game::ItemId)
+ .text._ZSt4sizeIN4game6ActionELj84EEjRAT0__KT_
+                0x00000000007d46c0       0x18 items.o
+                0x00000000007d46c0                unsigned int std::size<game::Action, 84u>(game::Action const (&) [84u])
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj24EE6_S_refERA24_KS1_j
+                0x00000000007d46d8       0x24 items.o
+                0x00000000007d46d8                std::__array_traits<game::ItemId, 24u>::_S_ref(game::ItemId const (&) [24], unsigned int)
+ .text._ZNKSt5arrayIN4game6ItemIdELj7EE5beginEv
+                0x00000000007d46fc       0x24 items.o
+                0x00000000007d46fc                std::array<game::ItemId, 7u>::begin() const
+ .text._ZNKSt5arrayIN4game6ItemIdELj7EE3endEv
+                0x00000000007d4720       0x28 items.o
+                0x00000000007d4720                std::array<game::ItemId, 7u>::end() const
+ .text._ZSt6any_ofIPKN4game6ItemIdEZNS0_9HasBottleES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d4748       0x3c items.o
+ .text._ZNSt5arrayIN4game6ItemIdELj7EEixEj
+                0x00000000007d4784       0x30 items.o
+                0x00000000007d4784                std::array<game::ItemId, 7u>::operator[](unsigned int)
+ .text._ZNKSt5arrayIN4game6ItemIdELj24EE5beginEv
+                0x00000000007d47b4       0x24 items.o
+                0x00000000007d47b4                std::array<game::ItemId, 24u>::begin() const
+ .text._ZNKSt5arrayIN4game6ItemIdELj24EE3endEv
+                0x00000000007d47d8       0x28 items.o
+                0x00000000007d47d8                std::array<game::ItemId, 24u>::end() const
+ .text._ZSt6any_ofIPKN4game6ItemIdEZNS0_7HasItemES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d4800       0x3c items.o
+ .text._ZNSt5arrayIN4game6ItemIdELj24EEixEj
+                0x00000000007d483c       0x30 items.o
+                0x00000000007d483c                std::array<game::ItemId, 24u>::operator[](unsigned int)
+ .text._ZSt6any_ofIPKN4game6ItemIdEZNS0_7HasMaskES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d486c       0x3c items.o
+ .text._ZN3rnd4util7IsAnyOfIN4game7SceneIdEJS3_S3_S3_S3_S3_EEEbRKT_DpRKT0_
+                0x00000000007d48a8       0xa4 items.o
+                0x00000000007d48a8                bool rnd::util::IsAnyOf<game::SceneId, game::SceneId, game::SceneId, game::SceneId, game::SceneId, game::SceneId>(game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&, game::SceneId const&)
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag1EvE5IsSetES4_
+                0x00000000007d494c       0x38 items.o
+                0x00000000007d494c                rnd::Flags<game::act::Player::Flag1, void>::IsSet(game::act::Player::Flag1) const
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag3EvE5IsSetES4_
+                0x00000000007d4984       0x38 items.o
+                0x00000000007d4984                rnd::Flags<game::act::Player::Flag3, void>::IsSet(game::act::Player::Flag3) const
+ .text._ZNSt14__array_traitsISt5arrayIbLj114EELj5EE6_S_refERA5_KS1_j
+                0x00000000007d49bc       0x3c items.o
+                0x00000000007d49bc                std::__array_traits<std::array<bool, 114u>, 5u>::_S_ref(std::array<bool, 114u> const (&) [5], unsigned int)
+ .text._ZNKSt5arrayIbLj114EE4sizeEv
+                0x00000000007d49f8       0x18 items.o
+                0x00000000007d49f8                std::array<bool, 114u>::size() const
+ .text._ZNSt14__array_traitsIbLj114EE6_S_refERA114_Kbj
+                0x00000000007d4a10       0x24 items.o
+                0x00000000007d4a10                std::__array_traits<bool, 114u>::_S_ref(bool const (&) [114], unsigned int)
+ .text._ZN3rnd4util7IsAnyOfIN4game6ItemIdEJS3_S3_S3_EEEbRKT_DpRKT0_
+                0x00000000007d4a34       0x74 items.o
+                0x00000000007d4a34                bool rnd::util::IsAnyOf<game::ItemId, game::ItemId, game::ItemId, game::ItemId>(game::ItemId const&, game::ItemId const&, game::ItemId const&, game::ItemId const&)
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj7EE6_S_ptrERA7_KS1_
+                0x00000000007d4aa8       0x18 items.o
+                0x00000000007d4aa8                std::__array_traits<game::ItemId, 7u>::_S_ptr(game::ItemId const (&) [7])
+ .text._ZNKSt5arrayIN4game6ItemIdELj7EE4dataEv
+                0x00000000007d4ac0       0x28 items.o
+                0x00000000007d4ac0                std::array<game::ItemId, 7u>::data() const
+ .text._ZSt7none_ofIPKN4game6ItemIdEZNS0_9HasBottleES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d4ae8       0x48 items.o
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj7EE6_S_refERA7_KS1_j
+                0x00000000007d4b30       0x24 items.o
+                0x00000000007d4b30                std::__array_traits<game::ItemId, 7u>::_S_ref(game::ItemId const (&) [7], unsigned int)
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj24EE6_S_ptrERA24_KS1_
+                0x00000000007d4b54       0x18 items.o
+                0x00000000007d4b54                std::__array_traits<game::ItemId, 24u>::_S_ptr(game::ItemId const (&) [24])
+ .text._ZNKSt5arrayIN4game6ItemIdELj24EE4dataEv
+                0x00000000007d4b6c       0x28 items.o
+                0x00000000007d4b6c                std::array<game::ItemId, 24u>::data() const
+ .text._ZSt7none_ofIPKN4game6ItemIdEZNS0_7HasItemES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d4b94       0x48 items.o
+ .text._ZSt7none_ofIPKN4game6ItemIdEZNS0_7HasMaskES1_EUlS1_E_EbT_S5_T0_
+                0x00000000007d4bdc       0x48 items.o
+ .text._ZSt7find_ifIPKN4game6ItemIdEZNS0_9HasBottleES1_EUlS1_E_ET_S5_S5_T0_
+                0x00000000007d4c24       0x40 items.o
+ .text._ZSt7find_ifIPKN4game6ItemIdEZNS0_7HasItemES1_EUlS1_E_ET_S5_S5_T0_
+                0x00000000007d4c64       0x40 items.o
+ .text._ZSt7find_ifIPKN4game6ItemIdEZNS0_7HasMaskES1_EUlS1_E_ET_S5_S5_T0_
+                0x00000000007d4ca4       0x40 items.o
+ .text._ZN9__gnu_cxx5__ops11__pred_iterIZN4game9HasBottleENS2_6ItemIdEEUlS3_E_EENS0_10_Iter_predIT_EES6_
+                0x00000000007d4ce4       0x3c items.o
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_9HasBottleES1_EUlS1_E_EEET_S9_S9_T0_
+                0x00000000007d4d20       0x48 items.o
+ .text._ZN9__gnu_cxx5__ops11__pred_iterIZN4game7HasItemENS2_6ItemIdEEUlS3_E_EENS0_10_Iter_predIT_EES6_
+                0x00000000007d4d68       0x3c items.o
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_7HasItemES1_EUlS1_E_EEET_S9_S9_T0_
+                0x00000000007d4da4       0x48 items.o
+ .text._ZN9__gnu_cxx5__ops11__pred_iterIZN4game7HasMaskENS2_6ItemIdEEUlS3_E_EENS0_10_Iter_predIT_EES6_
+                0x00000000007d4dec       0x3c items.o
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_7HasMaskES1_EUlS1_E_EEET_S9_S9_T0_
+                0x00000000007d4e28       0x48 items.o
+ .text._ZSt4moveIRZN4game9HasBottleENS0_6ItemIdEEUlS1_E_EONSt16remove_referenceIT_E4typeEOS5_
+                0x00000000007d4e70       0x18 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game9HasBottleENS2_6ItemIdEEUlS3_E_EC2ES4_
+                0x00000000007d4e88       0x3c items.o
+ .text._ZSt19__iterator_categoryIPKN4game6ItemIdEENSt15iterator_traitsIT_E17iterator_categoryERKS5_
+                0x00000000007d4ec4       0x14 items.o
+                0x00000000007d4ec4                std::iterator_traits<game::ItemId const*>::iterator_category std::__iterator_category<game::ItemId const*>(game::ItemId const* const&)
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_9HasBottleES1_EUlS1_E_EEET_S9_S9_T0_St26random_access_iterator_tag
+                0x00000000007d4ed8      0x1d8 items.o
+ .text._ZSt4moveIRZN4game7HasItemENS0_6ItemIdEEUlS1_E_EONSt16remove_referenceIT_E4typeEOS5_
+                0x00000000007d50b0       0x18 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game7HasItemENS2_6ItemIdEEUlS3_E_EC2ES4_
+                0x00000000007d50c8       0x3c items.o
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_7HasItemES1_EUlS1_E_EEET_S9_S9_T0_St26random_access_iterator_tag
+                0x00000000007d5104      0x1d8 items.o
+ .text._ZSt4moveIRZN4game7HasMaskENS0_6ItemIdEEUlS1_E_EONSt16remove_referenceIT_E4typeEOS5_
+                0x00000000007d52dc       0x18 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game7HasMaskENS2_6ItemIdEEUlS3_E_EC2ES4_
+                0x00000000007d52f4       0x3c items.o
+ .text._ZSt9__find_ifIPKN4game6ItemIdEN9__gnu_cxx5__ops10_Iter_predIZNS0_7HasMaskES1_EUlS1_E_EEET_S9_S9_T0_St26random_access_iterator_tag
+                0x00000000007d5330      0x1d8 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game9HasBottleENS2_6ItemIdEEUlS3_E_EclIPKS3_EEbT_
+                0x00000000007d5508       0x38 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game7HasItemENS2_6ItemIdEEUlS3_E_EclIPKS3_EEbT_
+                0x00000000007d5540       0x38 items.o
+ .text._ZN9__gnu_cxx5__ops10_Iter_predIZN4game7HasMaskENS2_6ItemIdEEUlS3_E_EclIPKS3_EEbT_
+                0x00000000007d5578       0x38 items.o
+ .text._ZN3rnd4util10GetPointerIFRN4game10MessageMgrEvEEEDaj
+                0x00000000007d55b0       0x24 message.o
+                0x00000000007d55b0                auto rnd::util::GetPointer<game::MessageMgr& ()>(unsigned int)
+ .text._ZN4game10MessageMgr8InstanceEv
+                0x00000000007d55d4       0x24 message.o
+                0x00000000007d55d4                game::MessageMgr::Instance()
+ .text._ZZNK4game11MessageData3GetEmPNS_7MessageEENKUljE_clEj
+                0x00000000007d55f8       0x3c message.o
+ .text._ZZNK4game11MessageData3GetEmPNS_7MessageEENKUljE0_clEj
+                0x00000000007d5634       0x2c message.o
+ .text._ZN3rnd4util10GetPointerIFPN4game13MessageReaderENS2_8LanguageEEEEDaj
+                0x00000000007d5660       0x24 message.o
+                0x00000000007d5660                auto rnd::util::GetPointer<game::MessageReader* (game::Language)>(unsigned int)
+ .text._ZNK4game11MessageData3GetEmPNS_7MessageE
+                0x00000000007d5684      0x5c8 message.o
+                0x00000000007d5684                game::MessageData::Get(unsigned long, game::Message*) const
+ .text._ZN3rnd4util10GetPointerIFvvEEEDaj
+                0x00000000007d5c4c       0x24 message.o
+                0x00000000007d5c4c                auto rnd::util::GetPointer<void ()>(unsigned int)
+ .text._ZN4game20PlayMessagePassSoundEv
+                0x00000000007d5c70       0x20 message.o
+                0x00000000007d5c70                game::PlayMessagePassSound()
+ .text._ZN4game22PlayMessageCancelSoundEv
+                0x00000000007d5c90       0x20 message.o
+                0x00000000007d5c90                game::PlayMessageCancelSound()
+ .text.GetMessageFromId
+                0x00000000007d5cb0       0x34 message.o
+                0x00000000007d5cb0                GetMessageFromId
+ .text._ZNK3rnd6BitSetILj32EmN4game8LanguageEE7GetWordES2_
+                0x00000000007d5ce4       0x38 message.o
+                0x00000000007d5ce4                rnd::BitSet<32u, unsigned long, game::Language>::GetWord(game::Language) const
+ .text._ZNK3rnd6BitSetILj32EmN4game8LanguageEE5IsSetES2_
+                0x00000000007d5d1c       0x54 message.o
+                0x00000000007d5d1c                rnd::BitSet<32u, unsigned long, game::Language>::IsSet(game::Language) const
+ .text._ZNKSt5arrayImLj1EEixEj
+                0x00000000007d5d70       0x30 message.o
+                0x00000000007d5d70                std::array<unsigned long, 1u>::operator[](unsigned int) const
+ .text._ZNSt14__array_traitsImLj1EE6_S_refERA1_Kmj
+                0x00000000007d5da0       0x28 message.o
+                0x00000000007d5da0                std::__array_traits<unsigned long, 1u>::_S_ref(unsigned long const (&) [1], unsigned int)
+ .text._ZN3rnd4util10GetPointerIFvPN4game10ObjectBank17ObjectBankArchiveEmPNS2_16ResArchiveHeaderEicEEEDaj
+                0x00000000007d5dc8       0x24 objectbankarchive.o
+                0x00000000007d5dc8                auto rnd::util::GetPointer<void (game::ObjectBank::ObjectBankArchive*, unsigned long, game::ResArchiveHeader*, int, char)>(unsigned int)
+ .text._ZN4game10ObjectBank4initEPNS0_17ObjectBankArchiveEmPNS_16ResArchiveHeaderEic
+                0x00000000007d5dec       0x50 objectbankarchive.o
+                0x00000000007d5dec                game::ObjectBank::init(game::ObjectBank::ObjectBankArchive*, unsigned long, game::ResArchiveHeader*, int, char)
+ .text._ZN3rnd4util10GetPointerIFPvPN4game10ObjectBank17ObjectBankArchiveEmmEEEDaj
+                0x00000000007d5e3c       0x24 objectbankarchive.o
+                0x00000000007d5e3c                auto rnd::util::GetPointer<void* (game::ObjectBank::ObjectBankArchive*, unsigned long, unsigned long)>(unsigned int)
+ .text._ZN4game10ObjectBank10getCmbFileEPNS0_17ObjectBankArchiveEmm
+                0x00000000007d5e60       0x44 objectbankarchive.o
+                0x00000000007d5e60                game::ObjectBank::getCmbFile(game::ObjectBank::ObjectBankArchive*, unsigned long, unsigned long)
+ .text._ZN3rnd4util10GetPointerIFvPN4game10ObjectBank17ObjectBankArchiveEEEEDaj
+                0x00000000007d5ea4       0x24 objectbankarchive.o
+                0x00000000007d5ea4                auto rnd::util::GetPointer<void (game::ObjectBank::ObjectBankArchive*)>(unsigned int)
+ .text._ZN4game10ObjectBank4freeEPNS0_17ObjectBankArchiveE
+                0x00000000007d5ec8       0x30 objectbankarchive.o
+                0x00000000007d5ec8                game::ObjectBank::free(game::ObjectBank::ObjectBankArchive*)
+ .text._ZN3rnd4util10GetPointerIN4game3pad13ControllerMgrEEEDaj
+                0x00000000007d5ef8       0x24 pad.o
+                0x00000000007d5ef8                auto rnd::util::GetPointer<game::pad::ControllerMgr>(unsigned int)
+ .text._ZN4game3pad16GetControllerMgrEv
+                0x00000000007d5f1c       0x1c pad.o
+                0x00000000007d5f1c                game::pad::GetControllerMgr()
+ .text._ZN3rnd4util10GetPointerIN4game3act9FormParamEEEDaj
+                0x00000000007d5f38       0x24 player.o
+                0x00000000007d5f38                auto rnd::util::GetPointer<game::act::FormParam>(unsigned int)
+ .text._ZN4game3act12GetFormParamENS0_14FormParamIndexE
+                0x00000000007d5f5c       0x48 player.o
+                0x00000000007d5f5c                game::act::GetFormParam(game::act::FormParamIndex)
+ .text._ZN4game3act14FixSpeedIssuesEv
+                0x00000000007d5fa4       0x54 player.o
+                0x00000000007d5fa4                game::act::FixSpeedIssues()
+ .text._ZN3rnd4util10GetPointerIFbN4game6ItemIdEEEEDaj
+                0x00000000007d5ff8       0x24 player.o
+                0x00000000007d5ff8                auto rnd::util::GetPointer<bool (game::ItemId)>(unsigned int)
+ .text._ZNK4game3act6Player12GetArrowInfoEPNS_13GlobalContextE
+                0x00000000007d601c      0x1dc player.o
+                0x00000000007d601c                game::act::Player::GetArrowInfo(game::GlobalContext*) const
+ .text._ZN4game3act6Player12SetTalkActorEhPNS0_5ActorE
+                0x00000000007d61f8       0x94 player.o
+                0x00000000007d61f8                game::act::Player::SetTalkActor(unsigned char, game::act::Actor*)
+ .text._ZN3rnd4util10GetPointerIFbPN4game13GlobalContextEiibEEEDaj
+                0x00000000007d628c       0x24 player.o
+                0x00000000007d628c                auto rnd::util::GetPointer<bool (game::GlobalContext*, int, int, bool)>(unsigned int)
+ .text._ZN4game3act21PlayerUpdateMagicCostEPNS_13GlobalContextEiiNS0_23AllowExistingMagicUsageE
+                0x00000000007d62b0       0x5c player.o
+                0x00000000007d62b0                game::act::PlayerUpdateMagicCost(game::GlobalContext*, int, int, game::act::AllowExistingMagicUsage)
+ .text._ZN3rnd4util10GetPointerIbEEDaj
+                0x00000000007d630c       0x24 sound.o
+                0x00000000007d630c                auto rnd::util::GetPointer<bool>(unsigned int)
+ .text._ZN4game5soundL12GetStreamMgrEv
+                0x00000000007d6330       0x2c sound.o
+ .text._ZN3rnd4util10GetPointerIFbN4game5sound8EffectIdEEEEDaj
+                0x00000000007d635c       0x24 sound.o
+                0x00000000007d635c                auto rnd::util::GetPointer<bool (game::sound::EffectId)>(unsigned int)
+ .text._ZN4game5sound10PlayEffectENS0_8EffectIdE
+                0x00000000007d6380       0x34 sound.o
+                0x00000000007d6380                game::sound::PlayEffect(game::sound::EffectId)
+ .text._ZN3rnd4util10GetPointerIFbRK8z3dVec3fN4game5sound8EffectIdEEEEDaj
+                0x00000000007d63b4       0x24 sound.o
+                0x00000000007d63b4                auto rnd::util::GetPointer<bool (z3dVec3f const&, game::sound::EffectId)>(unsigned int)
+ .text._ZN4game5sound10PlayEffectERK8z3dVec3fNS0_8EffectIdE
+                0x00000000007d63d8       0x3c sound.o
+                0x00000000007d63d8                game::sound::PlayEffect(z3dVec3f const&, game::sound::EffectId)
+ .text._ZN4game5sound10PlayEffectERKNS_3act5ActorENS0_8EffectIdE
+                0x00000000007d6414       0x34 sound.o
+                0x00000000007d6414                game::sound::PlayEffect(game::act::Actor const&, game::sound::EffectId)
+ .text._ZN3rnd4util10GetPointerIFN4game5sound8StreamIdERNS3_9StreamMgrENS3_12StreamPlayerEEEEDaj
+                0x00000000007d6448       0x24 sound.o
+                0x00000000007d6448                auto rnd::util::GetPointer<game::sound::StreamId (game::sound::StreamMgr&, game::sound::StreamPlayer)>(unsigned int)
+ .text._ZN4game5sound18GetCurrentStreamIdENS0_12StreamPlayerE
+                0x00000000007d646c       0x40 sound.o
+                0x00000000007d646c                game::sound::GetCurrentStreamId(game::sound::StreamPlayer)
+ .text._ZN3rnd4util10GetPointerIFbRN4game5sound9StreamMgrENS3_8StreamIdENS3_12StreamPlayerEmEEEDaj
+                0x00000000007d64ac       0x24 sound.o
+                0x00000000007d64ac                auto rnd::util::GetPointer<bool (game::sound::StreamMgr&, game::sound::StreamId, game::sound::StreamPlayer, unsigned long)>(unsigned int)
+ .text._ZN4game5sound10PlayStreamENS0_8StreamIdENS0_12StreamPlayerE
+                0x00000000007d64d0       0x44 sound.o
+                0x00000000007d64d0                game::sound::PlayStream(game::sound::StreamId, game::sound::StreamPlayer)
+ .text._ZN3rnd4util10GetPointerIFvRN4game5sound9StreamMgrENS3_12StreamPlayerEiiEEEDaj
+                0x00000000007d6514       0x24 sound.o
+                0x00000000007d6514                auto rnd::util::GetPointer<void (game::sound::StreamMgr&, game::sound::StreamPlayer, int, int)>(unsigned int)
+ .text._ZN4game5sound13ControlStreamENS0_12StreamPlayerEii
+                0x00000000007d6538       0x44 sound.o
+                0x00000000007d6538                game::sound::ControlStream(game::sound::StreamPlayer, int, int)
+ .text._ZN3rnd4util10GetPointerIFviEEEDaj
+                0x00000000007d657c       0x24 sound.o
+                0x00000000007d657c                auto rnd::util::GetPointer<void (int)>(unsigned int)
+ .text._ZN4game5sound10ControlEnvEi
+                0x00000000007d65a0       0x30 sound.o
+                0x00000000007d65a0                game::sound::ControlEnv(int)
+ .text._ZN3rnd4util10GetPointerIN4game5sound9StreamMgrEEEDaj
+                0x00000000007d65d0       0x24 sound.o
+                0x00000000007d65d0                auto rnd::util::GetPointer<game::sound::StreamMgr>(unsigned int)
+ .text._ZN3rnd4util10GetPointerIFvPN4game5sound9StreamMgrEEEEDaj
+                0x00000000007d65f4       0x24 sound.o
+                0x00000000007d65f4                auto rnd::util::GetPointer<void (game::sound::StreamMgr*)>(unsigned int)
+ .text._ZN3rnd4utilL11GetInstanceIN4game5sound9StreamMgrEEERT_jjj
+                0x00000000007d6618       0x58 sound.o
+ .text._ZN3rnd4utilL12InitIfNeededIN4game5sound9StreamMgrEEEvPT_PbPFvS6_E
+                0x00000000007d6670       0x4c sound.o
+ .text._ZN3rnd4util10GetPointerIN4game13StaticContextEEEDaj
+                0x00000000007d66bc       0x24 static_context.o
+                0x00000000007d66bc                auto rnd::util::GetPointer<game::StaticContext>(unsigned int)
+ .text._ZN4game16GetStaticContextEv
+                0x00000000007d66e0       0x1c static_context.o
+                0x00000000007d66e0                game::GetStaticContext()
+ .text._ZN3rnd4util10GetPointerIN4game2ui13ScreenContextEEEDaj
+                0x00000000007d66fc       0x24 ui.o
+                0x00000000007d66fc                auto rnd::util::GetPointer<game::ui::ScreenContext>(unsigned int)
+ .text._ZN4game2ui16GetScreenContextEv
+                0x00000000007d6720       0x1c ui.o
+                0x00000000007d6720                game::ui::GetScreenContext()
+ .text._ZN3rnd4util10GetPointerIPN4game2ui6ScreenEEEDaj
+                0x00000000007d673c       0x24 ui.o
+                0x00000000007d673c                auto rnd::util::GetPointer<game::ui::Screen*>(unsigned int)
+ .text._ZN4game2ui9GetScreenENS0_10ScreenTypeE
+                0x00000000007d6760      0x10c ui.o
+                0x00000000007d6760                game::ui::GetScreen(game::ui::ScreenType)
+ .text._ZN3rnd5FlagsIN4game9PauseFlagEvEaSES2_
+                0x00000000007d686c       0x2c ui.o
+                0x00000000007d686c                rnd::Flags<game::PauseFlag, void>::operator=(game::PauseFlag)
+ .text._ZN4game2ui10OpenScreenENS0_10ScreenTypeE
+                0x00000000007d6898      0x1ac ui.o
+                0x00000000007d6898                game::ui::OpenScreen(game::ui::ScreenType)
+ .text._Z31CustomModel_EditTitleScreenLogoPv
+                0x00000000007d6a44      0x570 custom_models.o
+                0x00000000007d6a44                CustomModel_EditTitleScreenLogo(void*)
+ .text._ZN3rnd12IceTrap_PushEv
+                0x00000000007d6fb4       0x34 icetrap.o
+                0x00000000007d6fb4                rnd::IceTrap_Push()
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEPNS2_3act6PlayerEisciEEEDaj
+                0x00000000007d6fe8       0x24 icetrap.o
+                0x00000000007d6fe8                auto rnd::util::GetPointer<void (game::GlobalContext*, game::act::Player*, int, short, char, int)>(unsigned int)
+ .text._ZN3rnd12IceTrap_GiveEv
+                0x00000000007d700c       0xe0 icetrap.o
+                0x00000000007d700c                rnd::IceTrap_Give()
+ .text._ZN3rnd17IceTrap_IsPendingEv
+                0x00000000007d70ec       0x24 icetrap.o
+                0x00000000007d70ec                rnd::IceTrap_IsPending()
+ .text._ZNK3rnd5FlagsIN4game3act6Player5Flag1EvE8IsOneSetIJS4_S4_EEEbDpT_
+                0x00000000007d7110       0x5c icetrap.o
+                0x00000000007d7110                bool rnd::Flags<game::act::Player::Flag1, void>::IsOneSet<game::act::Player::Flag1, game::act::Player::Flag1>(game::act::Player::Flag1, game::act::Player::Flag1) const
+ .text._ZNSt14numeric_limitsIhE3maxEv
+                0x00000000007d716c        0xc item_effect.o
+                0x00000000007d716c                std::numeric_limits<unsigned char>::max()
+ .text._ZNSt14numeric_limitsItE3maxEv
+                0x00000000007d7178       0x10 item_effect.o
+                0x00000000007d7178                std::numeric_limits<unsigned short>::max()
+ .text._ZNSt14numeric_limitsIjE3maxEv
+                0x00000000007d7188        0xc item_effect.o
+                0x00000000007d7188                std::numeric_limits<unsigned int>::max()
+ .text._ZN3rnd15ItemEffect_NoneEPN4game10CommonDataEss
+                0x00000000007d7194       0x24 item_effect.o
+                0x00000000007d7194                rnd::ItemEffect_None(game::CommonData*, short, short)
+ .text._ZN3rnd19ItemEffect_FullHealEPN4game10CommonDataEss
+                0x00000000007d71b8       0x64 item_effect.o
+                0x00000000007d71b8                rnd::ItemEffect_FullHeal(game::CommonData*, short, short)
+ .text._ZN3rnd27ItemEffect_GiveGiantsWalletEPN4game10CommonDataEss
+                0x00000000007d721c      0x10c item_effect.o
+                0x00000000007d721c                rnd::ItemEffect_GiveGiantsWallet(game::CommonData*, short, short)
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEEcvS1_Ev
+                0x00000000007d7328       0x24 item_effect.o
+                0x00000000007d7328                BitField<0u, 4u, game::SwordType>::operator game::SwordType() const
+ .text._ZN3rnd26ItemEffect_GiveKokiriSwordEPN4game10CommonDataEss
+                0x00000000007d734c       0xfc item_effect.o
+                0x00000000007d734c                rnd::ItemEffect_GiveKokiriSword(game::CommonData*, short, short)
+ .text._ZN3rnd25ItemEffect_GiveRazorSwordEPN4game10CommonDataEss
+                0x00000000007d7448      0x110 item_effect.o
+                0x00000000007d7448                rnd::ItemEffect_GiveRazorSword(game::CommonData*, short, short)
+ .text._ZN3rnd26ItemEffect_GiveGildedSwordEPN4game10CommonDataEss
+                0x00000000007d7558       0xc8 item_effect.o
+                0x00000000007d7558                rnd::ItemEffect_GiveGildedSword(game::CommonData*, short, short)
+ .text._ZN3rnd21ItemEffect_GiveBottleEPN4game10CommonDataEss
+                0x00000000007d7620       0xa8 item_effect.o
+                0x00000000007d7620                rnd::ItemEffect_GiveBottle(game::CommonData*, short, short)
+ .text._ZN3rnd22ItemEffect_GiveDefenseEPN4game10CommonDataEss
+                0x00000000007d76c8       0x30 item_effect.o
+                0x00000000007d76c8                rnd::ItemEffect_GiveDefense(game::CommonData*, short, short)
+ .text._ZN3rnd23ItemEffect_GiveSmallKeyEPN4game10CommonDataEss
+                0x00000000007d76f8       0xd8 item_effect.o
+                0x00000000007d76f8                rnd::ItemEffect_GiveSmallKey(game::CommonData*, short, short)
+ .text._ZN3rnd24ItemEffect_GiveGreatSpinEPN4game10CommonDataEss
+                0x00000000007d77d0       0x34 item_effect.o
+                0x00000000007d77d0                rnd::ItemEffect_GiveGreatSpin(game::CommonData*, short, short)
+ .text._ZNSt5arrayIN4game6ItemIdELj5EEixEj
+                0x00000000007d7804       0x30 item_effect.o
+                0x00000000007d7804                std::array<game::ItemId, 5u>::operator[](unsigned int)
+ .text._ZN3rnd26ItemEffect_GiveDoubleMagicEPN4game10CommonDataEss
+                0x00000000007d7834       0xd8 item_effect.o
+                0x00000000007d7834                rnd::ItemEffect_GiveDoubleMagic(game::CommonData*, short, short)
+ .text._ZN3rnd22ItemEffect_GiveOcarinaEPN4game10CommonDataEss
+                0x00000000007d790c       0x30 item_effect.o
+                0x00000000007d790c                rnd::ItemEffect_GiveOcarina(game::CommonData*, short, short)
+ .text._ZN3rnd28ItemEffect_GiveDoubleDefenseEPN4game10CommonDataEss
+                0x00000000007d793c       0x6c item_effect.o
+                0x00000000007d793c                rnd::ItemEffect_GiveDoubleDefense(game::CommonData*, short, short)
+ .text._ZN3rnd18ItemEffect_IceTrapEPN4game10CommonDataEss
+                0x00000000007d79a8       0x2c item_effect.o
+                0x00000000007d79a8                rnd::ItemEffect_IceTrap(game::CommonData*, short, short)
+ .text._ZN3rnd19ItemEffect_GiveSongEPN4game10CommonDataEss
+                0x00000000007d79d4      0x938 item_effect.o
+                0x00000000007d79d4                rnd::ItemEffect_GiveSong(game::CommonData*, short, short)
+ .text._ZN3rnd38ItemEffect_PlaceMagicArrowsInInventoryEPN4game10CommonDataEss
+                0x00000000007d830c      0x138 item_effect.o
+                0x00000000007d830c                rnd::ItemEffect_PlaceMagicArrowsInInventory(game::CommonData*, short, short)
+ .text._ZN3rnd4util10GetPointerIFvhhEEEDaj
+                0x00000000007d8444       0x24 item_effect.o
+                0x00000000007d8444                auto rnd::util::GetPointer<void (unsigned char, unsigned char)>(unsigned int)
+ .text._ZNSt5arrayIhLj17EEixEj
+                0x00000000007d8468       0x30 item_effect.o
+                0x00000000007d8468                std::array<unsigned char, 17u>::operator[](unsigned int)
+ .text._ZN3rnd22ItemEffect_GiveUpgradeEPN4game10CommonDataEss
+                0x00000000007d8498      0x324 item_effect.o
+                0x00000000007d8498                rnd::ItemEffect_GiveUpgrade(game::CommonData*, short, short)
+ .text._ZN3rnd19ItemEffect_BeanPackEPN4game10CommonDataEss
+                0x00000000007d87bc       0x5c item_effect.o
+                0x00000000007d87bc                rnd::ItemEffect_BeanPack(game::CommonData*, short, short)
+ .text._ZN3rnd28ItemEffect_FillWalletUpgradeEPN4game10CommonDataEss
+                0x00000000007d8818       0x6c item_effect.o
+                0x00000000007d8818                rnd::ItemEffect_FillWalletUpgrade(game::CommonData*, short, short)
+ .text._ZN3rnd22ItemEffect_GiveRemainsEPN4game10CommonDataEss
+                0x00000000007d8884      0x330 item_effect.o
+                0x00000000007d8884                rnd::ItemEffect_GiveRemains(game::CommonData*, short, short)
+ .text._ZN3rnd26ItemEffect_GiveDungeonItemEPN4game10CommonDataEss
+                0x00000000007d8bb4      0x688 item_effect.o
+                0x00000000007d8bb4                rnd::ItemEffect_GiveDungeonItem(game::CommonData*, short, short)
+ .text._ZN3rnd20ItemEffect_GiveMagicEPN4game10CommonDataEss
+                0x00000000007d923c       0x7c item_effect.o
+                0x00000000007d923c                rnd::ItemEffect_GiveMagic(game::CommonData*, short, short)
+ .text._ZNK8BitFieldILj0ELj16EiEcviEv
+                0x00000000007d92b8       0x24 item_effect.o
+                0x00000000007d92b8                BitField<0u, 16u, int>::operator int() const
+ .text._ZNK8BitFieldILj16ELj16EiEcviEv
+                0x00000000007d92dc       0x24 item_effect.o
+                0x00000000007d92dc                BitField<16u, 16u, int>::operator int() const
+ .text._ZN3rnd24ItemEffect_GiveSkulltulaEPN4game10CommonDataEss
+                0x00000000007d9300      0x1ec item_effect.o
+                0x00000000007d9300                rnd::ItemEffect_GiveSkulltula(game::CommonData*, short, short)
+ .text._ZN3rnd4util10GetPointerIFvPN4game13GlobalContextEiEEEDaj
+                0x00000000007d94ec       0x24 item_effect.o
+                0x00000000007d94ec                auto rnd::util::GetPointer<void (game::GlobalContext*, int)>(unsigned int)
+ .text._ZN3rnd19ItemEffect_GiveMaskEPN4game10CommonDataEss
+                0x00000000007d9510      0x35c item_effect.o
+                0x00000000007d9510                rnd::ItemEffect_GiveMask(game::CommonData*, short, short)
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEE5ValueEv
+                0x00000000007d986c       0x28 item_effect.o
+                0x00000000007d986c                BitField<0u, 4u, game::SwordType>::Value() const
+ .text._ZNSt14__array_traitsIN4game6ItemIdELj5EE6_S_refERA5_KS1_j
+                0x00000000007d9894       0x24 item_effect.o
+                0x00000000007d9894                std::__array_traits<game::ItemId, 5u>::_S_ref(game::ItemId const (&) [5], unsigned int)
+ .text._ZNSt14__array_traitsIhLj17EE6_S_refERA17_Khj
+                0x00000000007d98b8       0x24 item_effect.o
+                0x00000000007d98b8                std::__array_traits<unsigned char, 17u>::_S_ref(unsigned char const (&) [17], unsigned int)
+ .text._ZNK8BitFieldILj0ELj16EiE5ValueEv
+                0x00000000007d98dc       0x28 item_effect.o
+                0x00000000007d98dc                BitField<0u, 16u, int>::Value() const
+ .text._ZNK8BitFieldILj16ELj16EiE5ValueEv
+                0x00000000007d9904       0x28 item_effect.o
+                0x00000000007d9904                BitField<16u, 16u, int>::Value() const
+ .text._ZN8BitFieldILj12ELj2EmE7GetMaskEv
+                0x00000000007d992c       0x1c item_effect.o
+                0x00000000007d992c                BitField<12u, 2u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj0ELj4EN4game9SwordTypeEE7GetMaskEv
+                0x00000000007d9948       0x1c item_effect.o
+                0x00000000007d9948                BitField<0u, 4u, game::SwordType>::GetMask()
+ .text._ZNK8BitFieldILj0ELj4EN4game9SwordTypeEE5ValueESt17integral_constantIbLb0EE
+                0x00000000007d9964       0x44 item_effect.o
+                0x00000000007d9964                BitField<0u, 4u, game::SwordType>::Value(std::integral_constant<bool, false>) const
+ .text._ZN8BitFieldILj6ELj1EmE7GetMaskEv
+                0x00000000007d99a8       0x1c item_effect.o
+                0x00000000007d99a8                BitField<6u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj24ELj1EmE7GetMaskEv
+                0x00000000007d99c4       0x1c item_effect.o
+                0x00000000007d99c4                BitField<24u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj7ELj1EmE7GetMaskEv
+                0x00000000007d99e0       0x1c item_effect.o
+                0x00000000007d99e0                BitField<7u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj8ELj1EmE7GetMaskEv
+                0x00000000007d99fc       0x1c item_effect.o
+                0x00000000007d99fc                BitField<8u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj9ELj1EmE7GetMaskEv
+                0x00000000007d9a18       0x1c item_effect.o
+                0x00000000007d9a18                BitField<9u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj10ELj1EmE7GetMaskEv
+                0x00000000007d9a34       0x1c item_effect.o
+                0x00000000007d9a34                BitField<10u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj12ELj1EmE7GetMaskEv
+                0x00000000007d9a50       0x1c item_effect.o
+                0x00000000007d9a50                BitField<12u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj13ELj1EmE7GetMaskEv
+                0x00000000007d9a6c       0x1c item_effect.o
+                0x00000000007d9a6c                BitField<13u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj14ELj1EmE7GetMaskEv
+                0x00000000007d9a88       0x1c item_effect.o
+                0x00000000007d9a88                BitField<14u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj15ELj1EmE7GetMaskEv
+                0x00000000007d9aa4       0x1c item_effect.o
+                0x00000000007d9aa4                BitField<15u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj16ELj1EmE7GetMaskEv
+                0x00000000007d9ac0       0x1c item_effect.o
+                0x00000000007d9ac0                BitField<16u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj0ELj1EmE7GetMaskEv
+                0x00000000007d9adc       0x18 item_effect.o
+                0x00000000007d9adc                BitField<0u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj1ELj1EmE7GetMaskEv
+                0x00000000007d9af4       0x1c item_effect.o
+                0x00000000007d9af4                BitField<1u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj2ELj1EmE7GetMaskEv
+                0x00000000007d9b10       0x1c item_effect.o
+                0x00000000007d9b10                BitField<2u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj3ELj1EmE7GetMaskEv
+                0x00000000007d9b2c       0x1c item_effect.o
+                0x00000000007d9b2c                BitField<3u, 1u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj0ELj1EhE7GetMaskEv
+                0x00000000007d9b48       0x1c item_effect.o
+                0x00000000007d9b48                BitField<0u, 1u, unsigned char>::GetMask()
+ .text._ZN8BitFieldILj1ELj1EhE7GetMaskEv
+                0x00000000007d9b64       0x24 item_effect.o
+                0x00000000007d9b64                BitField<1u, 1u, unsigned char>::GetMask()
+ .text._ZN8BitFieldILj2ELj1EhE7GetMaskEv
+                0x00000000007d9b88       0x24 item_effect.o
+                0x00000000007d9b88                BitField<2u, 1u, unsigned char>::GetMask()
+ .text._ZNKSt17integral_constantIjLj16EEcvjEv
+                0x00000000007d9bac       0x18 item_effect.o
+                0x00000000007d9bac                std::integral_constant<unsigned int, 16u>::operator unsigned int() const
+ .text._ZNK8BitFieldILj0ELj16EiE5ValueESt17integral_constantIbLb1EE
+                0x00000000007d9bc4       0x74 item_effect.o
+                0x00000000007d9bc4                BitField<0u, 16u, int>::Value(std::integral_constant<bool, true>) const
+ .text._ZN8BitFieldILj0ELj16EiE7GetMaskEv
+                0x00000000007d9c38       0x18 item_effect.o
+                0x00000000007d9c38                BitField<0u, 16u, int>::GetMask()
+ .text._ZNK8BitFieldILj16ELj16EiE5ValueESt17integral_constantIbLb1EE
+                0x00000000007d9c50       0x78 item_effect.o
+                0x00000000007d9c50                BitField<16u, 16u, int>::Value(std::integral_constant<bool, true>) const
+ .text._ZN8BitFieldILj16ELj16EiE7GetMaskEv
+                0x00000000007d9cc8       0x1c item_effect.o
+                0x00000000007d9cc8                BitField<16u, 16u, int>::GetMask()
+ .text._ZN3rnd17ItemOverride_InitEv
+                0x00000000007d9ce4       0x7c item_override.o
+                0x00000000007d9ce4                rnd::ItemOverride_Init()
+ .text._ZN3rndL25ItemOverride_GetSearchKeyEPN4game3act5ActorEhh
+                0x00000000007d9d60      0x1ac item_override.o
+ .text._ZN3rnd19ItemOverride_LookupEPN4game3act5ActorEhh
+                0x00000000007d9f0c       0x88 item_override.o
+                0x00000000007d9f0c                rnd::ItemOverride_Lookup(game::act::Actor*, unsigned char, unsigned char)
+ .text._ZN3rnd24ItemOverride_LookupByKeyENS_16ItemOverride_KeyE
+                0x00000000007d9f94       0xf0 item_override.o
+                0x00000000007d9f94                rnd::ItemOverride_LookupByKey(rnd::ItemOverride_Key)
+ .text._ZN3rndL21ItemOverride_ActivateENS_12ItemOverrideE
+                0x00000000007da084      0x128 item_override.o
+ .text._ZN3rndL18ItemOverride_ClearEv
+                0x00000000007da1ac       0x80 item_override.o
+ .text._ZN3rndL32ItemOverride_PushPendingOverrideENS_12ItemOverrideE
+                0x00000000007da22c       0x94 item_override.o
+ .text._ZN3rnd31ItemOverride_IsAPendingOverrideEv
+                0x00000000007da2c0       0x24 item_override.o
+                0x00000000007da2c0                rnd::ItemOverride_IsAPendingOverride()
+ .text._ZN3rnd32ItemOverride_PushDelayedOverrideEh
+                0x00000000007da2e4       0x64 item_override.o
+                0x00000000007da2e4                rnd::ItemOverride_PushDelayedOverride(unsigned char)
+ .text._ZN3rndL31ItemOverride_PopPendingOverrideEv
+                0x00000000007da348       0x50 item_override.o
+ .text._ZN3rndL29ItemOverride_AfterKeyReceivedENS_16ItemOverride_KeyE
+                0x00000000007da398       0x14 item_override.o
+ .text._ZN3rndL23ItemOverride_PopIceTrapEv
+                0x00000000007da3ac       0x4c item_override.o
+ .text._ZN3rndL26ItemOverride_PlayerIsReadyEv
+                0x00000000007da3f8      0x268 item_override.o
+ .text._ZN3rndL27ItemOverride_TryPendingItemEv
+                0x00000000007da660       0xc4 item_override.o
+ .text._ZN3rnd30ItemOverride_AfterItemReceivedEv
+                0x00000000007da724       0x40 item_override.o
+                0x00000000007da724                rnd::ItemOverride_AfterItemReceived()
+ .text._ZN3rnd19ItemOverride_UpdateEv
+                0x00000000007da764       0x4c item_override.o
+                0x00000000007da764                rnd::ItemOverride_Update()
+ .text._ZN3rnd44ItemOverride_EditDrawGetItemBeforeModelSpawnEv
+                0x00000000007da7b0        0x8 item_override.o
+                0x00000000007da7b0                rnd::ItemOverride_EditDrawGetItemBeforeModelSpawn()
+ .text._ZN3rnd30ItemOverride_PushDungeonRewardEh
+                0x00000000007da7b8       0x58 item_override.o
+                0x00000000007da7b8                rnd::ItemOverride_PushDungeonReward(unsigned char)
+ .text._ZN3rnd30ItemOverride_CheckStartingItemEv
+                0x00000000007da810        0x8 item_override.o
+                0x00000000007da810                rnd::ItemOverride_CheckStartingItem()
+ .text.ItemOverride_GetItemTextAndItemID
+                0x00000000007da818       0xb0 item_override.o
+                0x00000000007da818                ItemOverride_GetItemTextAndItemID
+ .text.ItemOverride_GetItem
+                0x00000000007da8c8      0x178 item_override.o
+                0x00000000007da8c8                ItemOverride_GetItem
+ .text._ZN3rnd20ItemTable_GetItemRowEt
+                0x00000000007daa40       0x60 item_table.o
+                0x00000000007daa40                rnd::ItemTable_GetItemRow(unsigned short)
+ .text._ZN3rnd29ItemTable_GetItemRowFromIndexEh
+                0x00000000007daaa0       0x2c item_table.o
+                0x00000000007daaa0                rnd::ItemTable_GetItemRowFromIndex(unsigned char)
+ .text._ZN3rnd30ItemTable_SetBombchusChestTypeEh
+                0x00000000007daacc       0x18 item_table.o
+                0x00000000007daacc                rnd::ItemTable_SetBombchusChestType(unsigned char)
+ .text._ZN3rnd25ItemTable_ResolveUpgradesEt
+                0x00000000007daae4       0x94 item_table.o
+                0x00000000007daae4                rnd::ItemTable_ResolveUpgrades(unsigned short)
+ .text._ZN3rnd20ItemTable_CallEffectEPNS_7ItemRowE
+                0x00000000007dab78       0x40 item_table.o
+                0x00000000007dab78                rnd::ItemTable_CallEffect(rnd::ItemRow*)
+ .text._ZN3rnd16ItemUpgrade_NoneEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dabb8       0x1c item_upgrade.o
+                0x00000000007dabb8                rnd::ItemUpgrade_None(game::SaveData*, rnd::GetItemID)
+ .text._ZN3rnd19ItemUpgrade_BombBagEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dabd4       0x58 item_upgrade.o
+                0x00000000007dabd4                rnd::ItemUpgrade_BombBag(game::SaveData*, rnd::GetItemID)
+ .text._ZN3rnd18ItemUpgrade_QuiverEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dac2c       0x58 item_upgrade.o
+                0x00000000007dac2c                rnd::ItemUpgrade_Quiver(game::SaveData*, rnd::GetItemID)
+ .text._ZN3rnd18ItemUpgrade_WalletEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dac84       0x58 item_upgrade.o
+                0x00000000007dac84                rnd::ItemUpgrade_Wallet(game::SaveData*, rnd::GetItemID)
+ .text._ZN3rnd17ItemUpgrade_MagicEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dacdc       0xe8 item_upgrade.o
+                0x00000000007dacdc                rnd::ItemUpgrade_Magic(game::SaveData*, rnd::GetItemID)
+ .text._ZN3rnd17ItemUpgrade_SwordEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dadc4       0x78 item_upgrade.o
+                0x00000000007dadc4                rnd::ItemUpgrade_Sword(game::SaveData*, rnd::GetItemID)
+ .text._ZNK8BitFieldILj0ELj3EN4game6QuiverEEcvS1_Ev
+                0x00000000007dae3c       0x24 item_upgrade.o
+                0x00000000007dae3c                BitField<0u, 3u, game::Quiver>::operator game::Quiver() const
+ .text._ZN3rnd25ItemUpgrade_ArrowsToRupeeEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007dae60       0x44 item_upgrade.o
+                0x00000000007dae60                rnd::ItemUpgrade_ArrowsToRupee(game::SaveData*, rnd::GetItemID)
+ .text._ZNK8BitFieldILj3ELj3EN4game7BombBagEEcvS1_Ev
+                0x00000000007daea4       0x24 item_upgrade.o
+                0x00000000007daea4                BitField<3u, 3u, game::BombBag>::operator game::BombBag() const
+ .text._ZN3rnd24ItemUpgrade_BombsToRupeeEPN4game8SaveDataENS_9GetItemIDE
+                0x00000000007daec8       0x44 item_upgrade.o
+                0x00000000007daec8                rnd::ItemUpgrade_BombsToRupee(game::SaveData*, rnd::GetItemID)
+ .text._ZNK8BitFieldILj12ELj2EmEcvmEv
+                0x00000000007daf0c       0x24 item_upgrade.o
+                0x00000000007daf0c                BitField<12u, 2u, unsigned long>::operator unsigned long() const
+ .text._ZNK8BitFieldILj0ELj3EN4game6QuiverEE5ValueEv
+                0x00000000007daf30       0x28 item_upgrade.o
+                0x00000000007daf30                BitField<0u, 3u, game::Quiver>::Value() const
+ .text._ZNK8BitFieldILj3ELj3EN4game7BombBagEE5ValueEv
+                0x00000000007daf58       0x28 item_upgrade.o
+                0x00000000007daf58                BitField<3u, 3u, game::BombBag>::Value() const
+ .text._ZNK8BitFieldILj12ELj2EmE5ValueEv
+                0x00000000007daf80       0x28 item_upgrade.o
+                0x00000000007daf80                BitField<12u, 2u, unsigned long>::Value() const
+ .text._ZN8BitFieldILj0ELj3EN4game6QuiverEE7GetMaskEv
+                0x00000000007dafa8       0x18 item_upgrade.o
+                0x00000000007dafa8                BitField<0u, 3u, game::Quiver>::GetMask()
+ .text._ZNK8BitFieldILj0ELj3EN4game6QuiverEE5ValueESt17integral_constantIbLb0EE
+                0x00000000007dafc0       0x58 item_upgrade.o
+                0x00000000007dafc0                BitField<0u, 3u, game::Quiver>::Value(std::integral_constant<bool, false>) const
+ .text._ZN8BitFieldILj3ELj3EN4game7BombBagEE7GetMaskEv
+                0x00000000007db018       0x1c item_upgrade.o
+                0x00000000007db018                BitField<3u, 3u, game::BombBag>::GetMask()
+ .text._ZNK8BitFieldILj3ELj3EN4game7BombBagEE5ValueESt17integral_constantIbLb0EE
+                0x00000000007db034       0x5c item_upgrade.o
+                0x00000000007db034                BitField<3u, 3u, game::BombBag>::Value(std::integral_constant<bool, false>) const
+ .text._ZNK8BitFieldILj12ELj2EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007db090       0x5c item_upgrade.o
+                0x00000000007db090                BitField<12u, 2u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZN3rnd4util10GetPointerIFmvEEEDaj
+                0x00000000007db0ec       0x24 razor_sword.o
+                0x00000000007db0ec                auto rnd::util::GetPointer<unsigned long ()>(unsigned int)
+ .text._ZN3rnd16RS_SetDurabilityEv
+                0x00000000007db110       0xc8 razor_sword.o
+                0x00000000007db110                rnd::RS_SetDurability()
+ .text._ZN3rnd10rHeap_InitEv
+                0x00000000007db1d8       0x1c rheap.o
+                0x00000000007db1d8                rnd::rHeap_Init()
+ .text._ZN3rnd11rHeap_AllocEm
+                0x00000000007db1f4       0x6c rheap.o
+                0x00000000007db1f4                rnd::rHeap_Alloc(unsigned long)
+ .text.SaveFile_Init
+                0x00000000007db260      0x200 savefile.o
+                0x00000000007db260                SaveFile_Init
+ .text._ZN3rndL27SaveFile_GiveStartingBottleENS_21StartingBottleSettingEh
+                0x00000000007db460       0x6c savefile.o
+ .text._ZNK8BitFieldILj0ELj1EmEcvmEv
+                0x00000000007db4cc       0x24 savefile.o
+                0x00000000007db4cc                BitField<0u, 1u, unsigned long>::operator unsigned long() const
+ .text._ZNK8BitFieldILj1ELj1EmEcvmEv
+                0x00000000007db4f0       0x24 savefile.o
+                0x00000000007db4f0                BitField<1u, 1u, unsigned long>::operator unsigned long() const
+ .text._ZNK8BitFieldILj2ELj1EmEcvmEv
+                0x00000000007db514       0x24 savefile.o
+                0x00000000007db514                BitField<2u, 1u, unsigned long>::operator unsigned long() const
+ .text._ZNK8BitFieldILj3ELj1EmEcvmEv
+                0x00000000007db538       0x24 savefile.o
+                0x00000000007db538                BitField<3u, 1u, unsigned long>::operator unsigned long() const
+ .text._ZN3rnd24SaveFile_GetRemainsCountEv
+                0x00000000007db55c      0x110 savefile.o
+                0x00000000007db55c                rnd::SaveFile_GetRemainsCount()
+ .text._ZN3rnd29SaveFile_SetStartingInventoryEv
+                0x00000000007db66c     0x11c4 savefile.o
+                0x00000000007db66c                rnd::SaveFile_SetStartingInventory()
+ .text._ZN3rnd34SaveFile_ResetItemSlotsIfMatchesIDEh
+                0x00000000007dc830       0xac savefile.o
+                0x00000000007dc830                rnd::SaveFile_ResetItemSlotsIfMatchesID(unsigned char)
+ .text._ZNK8BitFieldILj0ELj1EmE5ValueEv
+                0x00000000007dc8dc       0x28 savefile.o
+                0x00000000007dc8dc                BitField<0u, 1u, unsigned long>::Value() const
+ .text._ZNK8BitFieldILj1ELj1EmE5ValueEv
+                0x00000000007dc904       0x28 savefile.o
+                0x00000000007dc904                BitField<1u, 1u, unsigned long>::Value() const
+ .text._ZNK8BitFieldILj2ELj1EmE5ValueEv
+                0x00000000007dc92c       0x28 savefile.o
+                0x00000000007dc92c                BitField<2u, 1u, unsigned long>::Value() const
+ .text._ZNK8BitFieldILj3ELj1EmE5ValueEv
+                0x00000000007dc954       0x28 savefile.o
+                0x00000000007dc954                BitField<3u, 1u, unsigned long>::Value() const
+ .text._ZNK8BitFieldILj0ELj1EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007dc97c       0x58 savefile.o
+                0x00000000007dc97c                BitField<0u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZNK8BitFieldILj1ELj1EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007dc9d4       0x5c savefile.o
+                0x00000000007dc9d4                BitField<1u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZNK8BitFieldILj2ELj1EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007dca30       0x5c savefile.o
+                0x00000000007dca30                BitField<2u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZNK8BitFieldILj3ELj1EmE5ValueESt17integral_constantIbLb0EE
+                0x00000000007dca8c       0x5c savefile.o
+                0x00000000007dca8c                BitField<3u, 1u, unsigned long>::Value(std::integral_constant<bool, false>) const
+ .text._ZN8BitFieldILj20ELj3EmE7GetMaskEv
+                0x00000000007dcae8       0x1c savefile.o
+                0x00000000007dcae8                BitField<20u, 3u, unsigned long>::GetMask()
+ .text._ZN8BitFieldILj17ELj3EmE7GetMaskEv
+                0x00000000007dcb04       0x1c savefile.o
+                0x00000000007dcb04                BitField<17u, 3u, unsigned long>::GetMask()
+ .text._ZN3rnd30Settings_ApplyDamageMultiplierEPN4game13GlobalContextEl
+                0x00000000007dcb20      0x180 settings.o
+                0x00000000007dcb20                rnd::Settings_ApplyDamageMultiplier(game::GlobalContext*, long)
+ .text._ZN3rnd29Settings_SetFullHealthRestoreEh
+                0x00000000007dcca0       0x48 settings.o
+                0x00000000007dcca0                rnd::Settings_SetFullHealthRestore(unsigned char)
+ .text._ZN3rnd24NoHealFromHealthUpgradesEv
+                0x00000000007dcce8       0x18 settings.o
+                0x00000000007dcce8                rnd::NoHealFromHealthUpgrades()
+ .text._ZN3rnd29NoHealFromBombchuBowlingPrizeEv
+                0x00000000007dcd00       0x18 settings.o
+                0x00000000007dcd00                rnd::NoHealFromBombchuBowlingPrize()
+ .text._ZN3rnd21FairyReviveHealAmountEv
+                0x00000000007dcd18       0x18 settings.o
+                0x00000000007dcd18                rnd::FairyReviveHealAmount()
+ .text._ZN3rnd18FairyUseHealAmountEv
+                0x00000000007dcd30       0x18 settings.o
+                0x00000000007dcd30                rnd::FairyUseHealAmount()
+ .text._ZN3rnd4HashEm
+                0x00000000007dcd48      0x104 settings.o
+                0x00000000007dcd48                rnd::Hash(unsigned long)
+ .text._ZN3rnd3AndEmhh
+                0x00000000007dce4c       0x80 settings.o
+                0x00000000007dce4c                rnd::And(unsigned long, unsigned char, unsigned char)
+ .text._ZN3rnd4BiasEm
+                0x00000000007dcecc       0xdc settings.o
+                0x00000000007dcecc                rnd::Bias(unsigned long)
+ .text._ZN3rnd11EnMag_rInitEP5EnMagPN4game13GlobalContextE
+                0x00000000007dcfa8       0x18 title_screen.o
+                0x00000000007dcfa8                rnd::EnMag_rInit(EnMag*, game::GlobalContext*)
+ .text.__aeabi_idiv
+                0x00000000007dcfc0       0xb0 abi.o
+                0x00000000007dcfc0                __aeabi_idiv
+ .text.__divmodsi4
+                0x00000000007dd070       0x50 abi.o
+ .text.__aeabi_idivmod
+                0x00000000007dd0c0       0x50 abi.o
+                0x00000000007dd0c0                __aeabi_idivmod
+ .text.__aeabi_uidiv
+                0x00000000007dd110      0x184 abi.o
+                0x00000000007dd110                __aeabi_uidiv
+ .text.__udivmodsi4
+                0x00000000007dd294       0x54 abi.o
+ .text.__aeabi_uidivmod
+                0x00000000007dd2e8       0x50 abi.o
+                0x00000000007dd2e8                __aeabi_uidivmod
+ .text.__udivmoddi4
+                0x00000000007dd338      0x7b0 abi.o
+ .text.__divdi3
+                0x00000000007ddae8      0x138 abi.o
+ .text.__divmoddi4
+                0x00000000007ddc20       0x78 abi.o
+ .text.__aeabi_ldivmod
+                0x00000000007ddc98       0x4c abi.o
+                0x00000000007ddc98                __aeabi_ldivmod
+ .text.svcCustomBackdoor
+                0x00000000007ddce4        0x8 csvc.o
+                0x00000000007ddce4                svcCustomBackdoor
+ .text.svcConvertVAToPA
+                0x00000000007ddcec        0x8 csvc.o
+                0x00000000007ddcec                svcConvertVAToPA
+ .text.svcFlushDataCacheRange
+                0x00000000007ddcf4        0x8 csvc.o
+                0x00000000007ddcf4                svcFlushDataCacheRange
+ .text.svcFlushEntireDataCache
+                0x00000000007ddcfc        0x8 csvc.o
+                0x00000000007ddcfc                svcFlushEntireDataCache
+ .text.svcInvalidateInstructionCacheRange
+                0x00000000007ddd04        0x8 csvc.o
+                0x00000000007ddd04                svcInvalidateInstructionCacheRange
+ .text.svcInvalidateEntireInstructionCache
+                0x00000000007ddd0c        0x8 csvc.o
+                0x00000000007ddd0c                svcInvalidateEntireInstructionCache
+ .text.svcMapProcessMemoryEx
+                0x00000000007ddd14        0x8 csvc.o
+                0x00000000007ddd14                svcMapProcessMemoryEx
+ .text.svcUnmapProcessMemoryEx
+                0x00000000007ddd1c        0x8 csvc.o
+                0x00000000007ddd1c                svcUnmapProcessMemoryEx
+ .text.svcControlMemoryEx
+                0x00000000007ddd24       0x20 csvc.o
+                0x00000000007ddd24                svcControlMemoryEx
+ .text.svcControlService
+                0x00000000007ddd44        0x8 csvc.o
+                0x00000000007ddd44                svcControlService
+ .text.svcCopyHandle
+                0x00000000007ddd4c       0x14 csvc.o
+                0x00000000007ddd4c                svcCopyHandle
+ .text.svcTranslateHandle
+                0x00000000007ddd60       0x14 csvc.o
+                0x00000000007ddd60                svcTranslateHandle
+ .text.svcControlMemory
+                0x00000000007ddd74       0x20 svc.o
+                0x00000000007ddd74                svcControlMemory
+ .text.svcQueryMemory
+                0x00000000007ddd94       0x30 svc.o
+                0x00000000007ddd94                svcQueryMemory
+ .text.svcExitProcess
+                0x00000000007dddc4        0x8 svc.o
+                0x00000000007dddc4                svcExitProcess
+ .text.svcGetProcessAffinityMask
+                0x00000000007dddcc        0x8 svc.o
+                0x00000000007dddcc                svcGetProcessAffinityMask
+ .text.svcSetProcessAffinityMask
+                0x00000000007dddd4        0x8 svc.o
+                0x00000000007dddd4                svcSetProcessAffinityMask
+ .text.svcGetProcessIdealProcessor
+                0x00000000007ddddc       0x14 svc.o
+                0x00000000007ddddc                svcGetProcessIdealProcessor
+ .text.svcSetProcessIdealProcessor
+                0x00000000007dddf0        0x8 svc.o
+                0x00000000007dddf0                svcSetProcessIdealProcessor
+ .text.svcCreateThread
+                0x00000000007dddf8       0x20 svc.o
+                0x00000000007dddf8                svcCreateThread
+ .text.svcExitThread
+                0x00000000007dde18        0x8 svc.o
+                0x00000000007dde18                svcExitThread
+ .text.svcSleepThread
+                0x00000000007dde20        0x8 svc.o
+                0x00000000007dde20                svcSleepThread
+ .text.svcGetThreadPriority
+                0x00000000007dde28       0x14 svc.o
+                0x00000000007dde28                svcGetThreadPriority
+ .text.svcSetThreadPriority
+                0x00000000007dde3c        0x8 svc.o
+                0x00000000007dde3c                svcSetThreadPriority
+ .text.svcGetThreadAffinityMask
+                0x00000000007dde44        0x8 svc.o
+                0x00000000007dde44                svcGetThreadAffinityMask
+ .text.svcSetThreadAffinityMask
+                0x00000000007dde4c        0x8 svc.o
+                0x00000000007dde4c                svcSetThreadAffinityMask
+ .text.svcGetThreadIdealProcessor
+                0x00000000007dde54       0x14 svc.o
+                0x00000000007dde54                svcGetThreadIdealProcessor
+ .text.svcSetThreadIdealProcessor
+                0x00000000007dde68        0x8 svc.o
+                0x00000000007dde68                svcSetThreadIdealProcessor
+ .text.svcGetProcessorID
+                0x00000000007dde70        0x8 svc.o
+                0x00000000007dde70                svcGetProcessorID
+ .text.svcRun   0x00000000007dde78       0x24 svc.o
+                0x00000000007dde78                svcRun
+ .text.svcCreateMutex
+                0x00000000007dde9c       0x14 svc.o
+                0x00000000007dde9c                svcCreateMutex
+ .text.svcReleaseMutex
+                0x00000000007ddeb0        0x8 svc.o
+                0x00000000007ddeb0                svcReleaseMutex
+ .text.svcCreateSemaphore
+                0x00000000007ddeb8       0x14 svc.o
+                0x00000000007ddeb8                svcCreateSemaphore
+ .text.svcReleaseSemaphore
+                0x00000000007ddecc       0x14 svc.o
+                0x00000000007ddecc                svcReleaseSemaphore
+ .text.svcCreateEvent
+                0x00000000007ddee0       0x14 svc.o
+                0x00000000007ddee0                svcCreateEvent
+ .text.svcSignalEvent
+                0x00000000007ddef4        0x8 svc.o
+                0x00000000007ddef4                svcSignalEvent
+ .text.svcClearEvent
+                0x00000000007ddefc        0x8 svc.o
+                0x00000000007ddefc                svcClearEvent
+ .text.svcCreateTimer
+                0x00000000007ddf04       0x14 svc.o
+                0x00000000007ddf04                svcCreateTimer
+ .text.svcSetTimer
+                0x00000000007ddf18       0x18 svc.o
+                0x00000000007ddf18                svcSetTimer
+ .text.svcCancelTimer
+                0x00000000007ddf30        0x8 svc.o
+                0x00000000007ddf30                svcCancelTimer
+ .text.svcClearTimer
+                0x00000000007ddf38        0x8 svc.o
+                0x00000000007ddf38                svcClearTimer
+ .text.svcCreateMemoryBlock
+                0x00000000007ddf40       0x18 svc.o
+                0x00000000007ddf40                svcCreateMemoryBlock
+ .text.svcMapMemoryBlock
+                0x00000000007ddf58        0x8 svc.o
+                0x00000000007ddf58                svcMapMemoryBlock
+ .text.svcUnmapMemoryBlock
+                0x00000000007ddf60        0x8 svc.o
+                0x00000000007ddf60                svcUnmapMemoryBlock
+ .text.svcCreateAddressArbiter
+                0x00000000007ddf68       0x14 svc.o
+                0x00000000007ddf68                svcCreateAddressArbiter
+ .text.svcArbitrateAddress
+                0x00000000007ddf7c       0x18 svc.o
+                0x00000000007ddf7c                svcArbitrateAddress
+ .text.svcCloseHandle
+                0x00000000007ddf94        0x8 svc.o
+                0x00000000007ddf94                svcCloseHandle
+ .text.svcWaitSynchronization
+                0x00000000007ddf9c        0x8 svc.o
+                0x00000000007ddf9c                svcWaitSynchronization
+ .text.svcWaitSynchronizationN
+                0x00000000007ddfa4       0x28 svc.o
+                0x00000000007ddfa4                svcWaitSynchronizationN
+ .text.svcDuplicateHandle
+                0x00000000007ddfcc       0x14 svc.o
+                0x00000000007ddfcc                svcDuplicateHandle
+ .text.svcGetSystemTick
+                0x00000000007ddfe0        0x8 svc.o
+                0x00000000007ddfe0                svcGetSystemTick
+ .text.svcGetHandleInfo
+                0x00000000007ddfe8       0x18 svc.o
+                0x00000000007ddfe8                svcGetHandleInfo
+ .text.svcGetSystemInfo
+                0x00000000007de000       0x18 svc.o
+                0x00000000007de000                svcGetSystemInfo
+ .text.svcGetProcessInfo
+                0x00000000007de018       0x18 svc.o
+                0x00000000007de018                svcGetProcessInfo
+ .text.svcGetThreadInfo
+                0x00000000007de030       0x18 svc.o
+                0x00000000007de030                svcGetThreadInfo
+ .text.svcConnectToPort
+                0x00000000007de048       0x14 svc.o
+                0x00000000007de048                svcConnectToPort
+ .text.svcSendSyncRequest
+                0x00000000007de05c        0x8 svc.o
+                0x00000000007de05c                svcSendSyncRequest
+ .text.svcOpenThread
+                0x00000000007de064       0x14 svc.o
+                0x00000000007de064                svcOpenThread
+ .text.svcGetProcessIdOfThread
+                0x00000000007de078       0x14 svc.o
+                0x00000000007de078                svcGetProcessIdOfThread
+ .text.svcGetThreadId
+                0x00000000007de08c       0x14 svc.o
+                0x00000000007de08c                svcGetThreadId
+ .text.svcGetResourceLimit
+                0x00000000007de0a0       0x14 svc.o
+                0x00000000007de0a0                svcGetResourceLimit
+ .text.svcGetResourceLimitLimitValues
+                0x00000000007de0b4        0x8 svc.o
+                0x00000000007de0b4                svcGetResourceLimitLimitValues
+ .text.svcGetResourceLimitCurrentValues
+                0x00000000007de0bc        0x8 svc.o
+                0x00000000007de0bc                svcGetResourceLimitCurrentValues
+ .text.svcOutputDebugString
+                0x00000000007de0c4        0x8 svc.o
+                0x00000000007de0c4                svcOutputDebugString
+ .text.svcCreatePort
+                0x00000000007de0cc       0x20 svc.o
+                0x00000000007de0cc                svcCreatePort
+ .text.svcCreateSessionToPort
+                0x00000000007de0ec       0x14 svc.o
+                0x00000000007de0ec                svcCreateSessionToPort
+ .text.svcCreateSession
+                0x00000000007de100       0x20 svc.o
+                0x00000000007de100                svcCreateSession
+ .text.svcAcceptSession
+                0x00000000007de120       0x18 svc.o
+                0x00000000007de120                svcAcceptSession
+ .text.svcReplyAndReceive
+                0x00000000007de138       0x18 svc.o
+                0x00000000007de138                svcReplyAndReceive
+ .text.svcBindInterrupt
+                0x00000000007de150        0x8 svc.o
+                0x00000000007de150                svcBindInterrupt
+ .text.svcUnbindInterrupt
+                0x00000000007de158        0x8 svc.o
+                0x00000000007de158                svcUnbindInterrupt
+ .text.svcInvalidateProcessDataCache
+                0x00000000007de160        0x8 svc.o
+                0x00000000007de160                svcInvalidateProcessDataCache
+ .text.svcStoreProcessDataCache
+                0x00000000007de168        0x8 svc.o
+                0x00000000007de168                svcStoreProcessDataCache
+ .text.svcFlushProcessDataCache
+                0x00000000007de170        0x8 svc.o
+                0x00000000007de170                svcFlushProcessDataCache
+ .text.svcStartInterProcessDma
+                0x00000000007de178       0x20 svc.o
+                0x00000000007de178                svcStartInterProcessDma
+ .text.svcStopDma
+                0x00000000007de198        0x8 svc.o
+                0x00000000007de198                svcStopDma
+ .text.svcGetDmaState
+                0x00000000007de1a0       0x14 svc.o
+                0x00000000007de1a0                svcGetDmaState
+ .text.svcSetGpuProt
+                0x00000000007de1b4        0x8 svc.o
+                0x00000000007de1b4                svcSetGpuProt
+ .text.svcSetWifiEnabled
+                0x00000000007de1bc        0x8 svc.o
+                0x00000000007de1bc                svcSetWifiEnabled
+ .text.svcDebugActiveProcess
+                0x00000000007de1c4       0x14 svc.o
+                0x00000000007de1c4                svcDebugActiveProcess
+ .text.svcBreakDebugProcess
+                0x00000000007de1d8        0x8 svc.o
+                0x00000000007de1d8                svcBreakDebugProcess
+ .text.svcTerminateDebugProcess
+                0x00000000007de1e0        0x8 svc.o
+                0x00000000007de1e0                svcTerminateDebugProcess
+ .text.svcGetProcessDebugEvent
+                0x00000000007de1e8        0x8 svc.o
+                0x00000000007de1e8                svcGetProcessDebugEvent
+ .text.svcContinueDebugEvent
+                0x00000000007de1f0        0x8 svc.o
+                0x00000000007de1f0                svcContinueDebugEvent
+ .text.svcGetProcessList
+                0x00000000007de1f8       0x14 svc.o
+                0x00000000007de1f8                svcGetProcessList
+ .text.svcGetThreadList
+                0x00000000007de20c       0x14 svc.o
+                0x00000000007de20c                svcGetThreadList
+ .text.svcGetDebugThreadContext
+                0x00000000007de220        0x8 svc.o
+                0x00000000007de220                svcGetDebugThreadContext
+ .text.svcSetDebugThreadContext
+                0x00000000007de228        0x8 svc.o
+                0x00000000007de228                svcSetDebugThreadContext
+ .text.svcQueryDebugProcessMemory
+                0x00000000007de230       0x24 svc.o
+                0x00000000007de230                svcQueryDebugProcessMemory
+ .text.svcReadProcessMemory
+                0x00000000007de254        0x8 svc.o
+                0x00000000007de254                svcReadProcessMemory
+ .text.svcWriteProcessMemory
+                0x00000000007de25c        0x8 svc.o
+                0x00000000007de25c                svcWriteProcessMemory
+ .text.svcSetHardwareBreakPoint
+                0x00000000007de264        0x8 svc.o
+                0x00000000007de264                svcSetHardwareBreakPoint
+ .text.svcGetDebugThreadParam
+                0x00000000007de26c       0x20 svc.o
+                0x00000000007de26c                svcGetDebugThreadParam
+ .text.svcMapProcessMemory
+                0x00000000007de28c        0x8 svc.o
+                0x00000000007de28c                svcMapProcessMemory
+ .text.svcUnmapProcessMemory
+                0x00000000007de294        0x8 svc.o
+                0x00000000007de294                svcUnmapProcessMemory
+ .text.svcCreateCodeSet
+                0x00000000007de29c       0x1c svc.o
+                0x00000000007de29c                svcCreateCodeSet
+ .text.svcCreateProcess
+                0x00000000007de2b8       0x18 svc.o
+                0x00000000007de2b8                svcCreateProcess
+ .text.svcTerminateProcess
+                0x00000000007de2d0        0x8 svc.o
+                0x00000000007de2d0                svcTerminateProcess
+ .text.svcSetProcessResourceLimits
+                0x00000000007de2d8        0x8 svc.o
+                0x00000000007de2d8                svcSetProcessResourceLimits
+ .text.svcCreateResourceLimit
+                0x00000000007de2e0       0x14 svc.o
+                0x00000000007de2e0                svcCreateResourceLimit
+ .text.svcSetResourceLimitValues
+                0x00000000007de2f4        0x8 svc.o
+                0x00000000007de2f4                svcSetResourceLimitValues
+ .text.svcBackdoor
+                0x00000000007de2fc        0x8 svc.o
+                0x00000000007de2fc                svcBackdoor
+ .text.svcKernelSetState
+                0x00000000007de304        0x8 svc.o
+                0x00000000007de304                svcKernelSetState
+ .text.svcQueryProcessMemory
+                0x00000000007de30c       0x24 svc.o
+                0x00000000007de30c                svcQueryProcessMemory
+ *(.rodata)
+ .rodata        0x00000000007de330       0x90 main.o
+ .rodata        0x00000000007de3c0       0x8c debug.o
+ *fill*         0x00000000007de44c        0x4 
+ .rodata        0x00000000007de450       0x68 printf.o
+ .rodata        0x00000000007de4b8        0xd actor.o
+ *fill*         0x00000000007de4c5        0x3 
+ .rodata        0x00000000007de4c8        0xd actorresource.o
+ *fill*         0x00000000007de4d5        0x3 
+ .rodata        0x00000000007de4d8        0xd as.o
+ *fill*         0x00000000007de4e5        0x3 
+ .rodata        0x00000000007de4e8       0x14 camera.o
+ .rodata        0x00000000007de4fc       0x8c common_data.o
+ .rodata        0x00000000007de588       0x8c context.o
+ .rodata        0x00000000007de614      0x31a items.o
+ *fill*         0x00000000007de92e        0x2 
+ .rodata        0x00000000007de930       0x55 message.o
+ *fill*         0x00000000007de985        0x3 
+ .rodata        0x00000000007de988        0xd objectbankarchive.o
+ *fill*         0x00000000007de995        0x3 
+ .rodata        0x00000000007de998        0xd pad.o
+ *fill*         0x00000000007de9a5        0x3 
+ .rodata        0x00000000007de9a8       0x8c player.o
+ .rodata        0x00000000007dea34        0xd sound.o
+ *fill*         0x00000000007dea41        0x3 
+ .rodata        0x00000000007dea44        0xd static_context.o
+ *fill*         0x00000000007dea51        0x3 
+ .rodata        0x00000000007dea54       0x14 ui.o
+ .rodata        0x00000000007dea68       0x8c icetrap.o
+ .rodata        0x00000000007deaf4       0x8c item_effect.o
+ .rodata        0x00000000007deb80       0x8c item_override.o
+ .rodata        0x00000000007dec0c       0x8c item_table.o
+ .rodata        0x00000000007dec98       0x8c item_upgrade.o
+ .rodata        0x00000000007ded24       0x8c razor_sword.o
+ .rodata        0x00000000007dedb0        0xd rheap.o
+ *fill*         0x00000000007dedbd        0x3 
+ .rodata        0x00000000007dedc0       0x8c savefile.o
+ .rodata        0x00000000007dee4c      0x69a settings.o
+                0x00000000007deed8                rnd::hashIconNames
+ *fill*         0x00000000007df4e6        0x2 
+ .rodata        0x00000000007df4e8       0x14 title_screen.o
+ *(.data)
+ .data          0x00000000007df4fc        0x0 input.o
+ .data          0x00000000007df4fc        0x0 main.o
+ .data          0x00000000007df4fc        0xc common_context.o
+ .data          0x00000000007df508        0x0 debug.o
+ .data          0x00000000007df508        0x0 printf.o
+ .data          0x00000000007df508        0x0 actor.o
+ .data          0x00000000007df508        0x0 actorresource.o
+ .data          0x00000000007df508        0x0 as.o
+ .data          0x00000000007df508        0x0 camera.o
+ .data          0x00000000007df508        0x0 common_data.o
+ .data          0x00000000007df508        0x0 context.o
+ .data          0x00000000007df508        0x0 items.o
+ .data          0x00000000007df508        0x4 message.o
+                0x00000000007df508                game::numCustomMessageEntries
+ .data          0x00000000007df50c        0x0 objectbankarchive.o
+ .data          0x00000000007df50c        0x0 pad.o
+ .data          0x00000000007df50c        0x0 player.o
+ .data          0x00000000007df50c        0x0 sound.o
+ .data          0x00000000007df50c        0x0 static_context.o
+ .data          0x00000000007df50c        0x0 ui.o
+ .data          0x00000000007df50c        0x0 custom_models.o
+ .data          0x00000000007df50c        0x0 icetrap.o
+ .data          0x00000000007df50c        0x0 item_effect.o
+ .data          0x00000000007df50c        0x0 item_override.o
+ .data          0x00000000007df50c     0x1760 item_table.o
+                0x00000000007df50c                rItemTable
+ .data          0x00000000007e0c6c        0x0 item_upgrade.o
+ .data          0x00000000007e0c6c        0x0 razor_sword.o
+ .data          0x00000000007e0c6c        0x0 rheap.o
+ .data          0x00000000007e0c6c        0x0 savefile.o
+ .data          0x00000000007e0c6c        0x0 settings.o
+ .data          0x00000000007e0c6c        0x0 title_screen.o
+ .data          0x00000000007e0c6c        0x0 loader.o
+ .data          0x00000000007e0c6c        0x0 abi.o
+ .data          0x00000000007e0c6c        0x0 csvc.o
+ .data          0x00000000007e0c6c        0x0 hooks.o
+ .data          0x00000000007e0c6c        0x0 patches.o
+ .data          0x00000000007e0c6c        0x0 svc.o
+ .data          0x00000000007e0c6c        0x0 svc_loader.o
+ *(.bss)
+ .bss           0x00000000007e0c6c       0x10 input.o
+                0x00000000007e0c6c                rInputCtx
+ .bss           0x00000000007e0c7c        0x0 main.o
+ .bss           0x00000000007e0c7c        0x0 common_context.o
+ .bss           0x00000000007e0c7c        0x0 debug.o
+ .bss           0x00000000007e0c7c        0x0 printf.o
+ .bss           0x00000000007e0c7c        0x0 actor.o
+ .bss           0x00000000007e0c7c        0x0 actorresource.o
+ .bss           0x00000000007e0c7c        0x0 as.o
+ .bss           0x00000000007e0c7c        0x0 camera.o
+ .bss           0x00000000007e0c7c        0x0 common_data.o
+ .bss           0x00000000007e0c7c        0x0 context.o
+ .bss           0x00000000007e0c7c        0x0 items.o
+ .bss           0x00000000007e0c7c       0x2c message.o
+                0x00000000007e0c7c                game::ptrCustomMessageEntries
+                0x00000000007e0c80                game::customIceMessage
+                0x00000000007e0c94                game::customSwordMessage
+ .bss           0x00000000007e0ca8        0x0 objectbankarchive.o
+ .bss           0x00000000007e0ca8        0x0 pad.o
+ .bss           0x00000000007e0ca8        0x0 player.o
+ .bss           0x00000000007e0ca8        0x0 sound.o
+ .bss           0x00000000007e0ca8        0x0 static_context.o
+ .bss           0x00000000007e0ca8        0x0 ui.o
+ .bss           0x00000000007e0ca8        0x0 custom_models.o
+ .bss           0x00000000007e0ca8        0x1 icetrap.o
+ .bss           0x00000000007e0ca9        0x0 item_effect.o
+ *fill*         0x00000000007e0ca9        0x3 
+ .bss           0x00000000007e0cac     0x1441 item_override.o
+                0x00000000007e0cb0                rItemOverrides
+                0x00000000007e20d4                rActiveItemRow
+                0x00000000007e20d8                rActiveItemGraphicId
+                0x00000000007e20dc                rnd::rActiveItemActionId
+                0x00000000007e20e0                rnd::rActiveItemTextId
+                0x00000000007e20e4                rnd::rActiveItemObjectId
+                0x00000000007e20e8                rnd::rActiveItemFastChest
+ .bss           0x00000000007e20ed        0x0 item_table.o
+ .bss           0x00000000007e20ed        0x0 item_upgrade.o
+ .bss           0x00000000007e20ed        0x0 razor_sword.o
+ *fill*         0x00000000007e20ed        0x3 
+ .bss           0x00000000007e20f0      0x20c rheap.o
+                0x00000000007e20f0                rnd::rHeap
+                0x00000000007e22f8                rnd::rHeap_Next
+ .bss           0x00000000007e22fc        0x0 savefile.o
+ .bss           0x00000000007e22fc       0x65 settings.o
+                0x00000000007e22fc                gSettingsContext
+                0x00000000007e2360                rnd::Damage32
+ .bss           0x00000000007e2361        0x0 title_screen.o
+ .bss           0x00000000007e2361        0x0 loader.o
+ .bss           0x00000000007e2361        0x0 abi.o
+ .bss           0x00000000007e2361        0x0 csvc.o
+ .bss           0x00000000007e2361        0x0 hooks.o
+ .bss           0x00000000007e2361        0x0 patches.o
+ .bss           0x00000000007e2361        0x0 svc.o
+ .bss           0x00000000007e2361        0x0 svc_loader.o
+ *(COMMON)
+                0x00000000007e2361                rCustomMessages = .
+                0x00000000007e2361                __text_end = .
+OUTPUT(C:/Users/SKREEE/Desktop/MM3DR-Merge/code/code.elf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x0000000000000000     0x3d63
- .debug_info    0x0000000000000000      0x296 message.o
- .debug_info    0x0000000000000296     0x245e settings.o
- .debug_info    0x00000000000026f4     0x166f spoiler_data.o
+.glue_7         0x00000000007e2364        0x0
+ .glue_7        0x00000000007e2364        0x0 linker stubs
 
-.debug_abbrev   0x0000000000000000      0x611
- .debug_abbrev  0x0000000000000000      0x14a message.o
- .debug_abbrev  0x000000000000014a      0x2be settings.o
- .debug_abbrev  0x0000000000000408      0x209 spoiler_data.o
+.glue_7t        0x00000000007e2364        0x0
+ .glue_7t       0x00000000007e2364        0x0 linker stubs
 
-.debug_aranges  0x0000000000000000       0xf0
+.vfp11_veneer   0x00000000007e2364        0x0
+ .vfp11_veneer  0x00000000007e2364        0x0 linker stubs
+
+.v4_bx          0x00000000007e2364        0x0
+ .v4_bx         0x00000000007e2364        0x0 linker stubs
+
+.iplt           0x00000000007e2364        0x0
+ .iplt          0x00000000007e2364        0x0 input.o
+
+.igot.plt       0x00000000007e2364        0x0
+ .igot.plt      0x00000000007e2364        0x0 input.o
+
+.rel.dyn        0x00000000007e2364        0x0
+ .rel.iplt      0x00000000007e2364        0x0 input.o
+
+.debug_info     0x0000000000000000   0x17c872
+ .debug_info    0x0000000000000000      0x940 input.o
+ .debug_info    0x0000000000000940    0x1795d main.o
+ .debug_info    0x000000000001829d      0x146 common_context.o
+ .debug_info    0x00000000000183e3     0xd9ce debug.o
+ .debug_info    0x0000000000025db1      0xbb1 printf.o
+ .debug_info    0x0000000000026962     0x7a49 actor.o
+ .debug_info    0x000000000002e3ab     0x12f5 actorresource.o
+ .debug_info    0x000000000002f6a0     0x10a1 as.o
+ .debug_info    0x0000000000030741     0xb574 camera.o
+ .debug_info    0x000000000003bcb5    0x16186 common_data.o
+ .debug_info    0x0000000000051e3b     0xdfa9 context.o
+ .debug_info    0x000000000005fde4    0x18c84 items.o
+ .debug_info    0x0000000000078a68     0x306b message.o
+ .debug_info    0x000000000007bad3     0x128d objectbankarchive.o
+ .debug_info    0x000000000007cd60     0x12d3 pad.o
+ .debug_info    0x000000000007e033    0x16595 player.o
+ .debug_info    0x00000000000945c8     0x854b sound.o
+ .debug_info    0x000000000009cb13     0x9a55 static_context.o
+ .debug_info    0x00000000000a6568    0x16b25 ui.o
+ .debug_info    0x00000000000bd08d       0xc4 custom_models.o
+ .debug_info    0x00000000000bd151    0x13982 icetrap.o
+ .debug_info    0x00000000000d0ad3    0x18798 item_effect.o
+ .debug_info    0x00000000000e926b    0x16ff9 item_override.o
+ .debug_info    0x0000000000100264    0x16e1b item_table.o
+ .debug_info    0x000000000011707f    0x16193 item_upgrade.o
+ .debug_info    0x000000000012d212     0xde2b razor_sword.o
+ .debug_info    0x000000000013b03d     0x79ee rheap.o
+ .debug_info    0x0000000000142a2b    0x17981 savefile.o
+ .debug_info    0x000000000015a3ac    0x168be settings.o
+ .debug_info    0x0000000000170c6a     0xb4ed title_screen.o
+ .debug_info    0x000000000017c157      0x158 loader.o
+ .debug_info    0x000000000017c2af      0x535 abi.o
+ .debug_info    0x000000000017c7e4       0x23 csvc.o
+ .debug_info    0x000000000017c807       0x25 hooks.o
+ .debug_info    0x000000000017c82c       0x23 svc.o
+ .debug_info    0x000000000017c84f       0x23 svc_loader.o
+
+.debug_abbrev   0x0000000000000000     0xc54c
+ .debug_abbrev  0x0000000000000000      0x29b input.o
+ .debug_abbrev  0x000000000000029b      0x9a7 main.o
+ .debug_abbrev  0x0000000000000c42       0xd9 common_context.o
+ .debug_abbrev  0x0000000000000d1b      0x782 debug.o
+ .debug_abbrev  0x000000000000149d      0x259 printf.o
+ .debug_abbrev  0x00000000000016f6      0x5c9 actor.o
+ .debug_abbrev  0x0000000000001cbf      0x34b actorresource.o
+ .debug_abbrev  0x000000000000200a      0x37f as.o
+ .debug_abbrev  0x0000000000002389      0x681 camera.o
+ .debug_abbrev  0x0000000000002a0a      0x818 common_data.o
+ .debug_abbrev  0x0000000000003222      0x7f5 context.o
+ .debug_abbrev  0x0000000000003a17      0xa70 items.o
+ .debug_abbrev  0x0000000000004487      0x6bc message.o
+ .debug_abbrev  0x0000000000004b43      0x336 objectbankarchive.o
+ .debug_abbrev  0x0000000000004e79      0x483 pad.o
+ .debug_abbrev  0x00000000000052fc      0x891 player.o
+ .debug_abbrev  0x0000000000005b8d      0x5fd sound.o
+ .debug_abbrev  0x000000000000618a      0x34c static_context.o
+ .debug_abbrev  0x00000000000064d6      0x7a3 ui.o
+ .debug_abbrev  0x0000000000006c79       0x7c custom_models.o
+ .debug_abbrev  0x0000000000006cf5      0x861 icetrap.o
+ .debug_abbrev  0x0000000000007556      0xa4f item_effect.o
+ .debug_abbrev  0x0000000000007fa5      0xa0b item_override.o
+ .debug_abbrev  0x00000000000089b0      0x8a8 item_table.o
+ .debug_abbrev  0x0000000000009258      0x8a1 item_upgrade.o
+ .debug_abbrev  0x0000000000009af9      0x7ce razor_sword.o
+ .debug_abbrev  0x000000000000a2c7      0x5ac rheap.o
+ .debug_abbrev  0x000000000000a873      0x9fb savefile.o
+ .debug_abbrev  0x000000000000b26e      0x8e3 settings.o
+ .debug_abbrev  0x000000000000bb51      0x6a1 title_screen.o
+ .debug_abbrev  0x000000000000c1f2       0xe6 loader.o
+ .debug_abbrev  0x000000000000c2d8      0x22a abi.o
+ .debug_abbrev  0x000000000000c502       0x12 csvc.o
+ .debug_abbrev  0x000000000000c514       0x14 hooks.o
+ .debug_abbrev  0x000000000000c528       0x12 svc.o
+ .debug_abbrev  0x000000000000c53a       0x12 svc_loader.o
+
+.debug_aranges  0x0000000000000000     0x1448
  .debug_aranges
-                0x0000000000000000       0x28 message.o
+                0x0000000000000000       0x40 input.o
  .debug_aranges
-                0x0000000000000028       0x38 settings.o
+                0x0000000000000040       0x70 main.o
  .debug_aranges
-                0x0000000000000060       0x90 spoiler_data.o
+                0x00000000000000b0       0x20 common_context.o
+ .debug_aranges
+                0x00000000000000d0       0x20 debug.o
+ .debug_aranges
+                0x00000000000000f0       0x98 printf.o
+ .debug_aranges
+                0x0000000000000188       0x40 actor.o
+ .debug_aranges
+                0x00000000000001c8       0x50 actorresource.o
+ .debug_aranges
+                0x0000000000000218       0x48 as.o
+ .debug_aranges
+                0x0000000000000260       0x30 camera.o
+ .debug_aranges
+                0x0000000000000290       0x30 common_data.o
+ .debug_aranges
+                0x00000000000002c0       0xc0 context.o
+ .debug_aranges
+                0x0000000000000380      0x298 items.o
+ .debug_aranges
+                0x0000000000000618       0x90 message.o
+ .debug_aranges
+                0x00000000000006a8       0x50 objectbankarchive.o
+ .debug_aranges
+                0x00000000000006f8       0x30 pad.o
+ .debug_aranges
+                0x0000000000000728       0x70 player.o
+ .debug_aranges
+                0x0000000000000798       0xb8 sound.o
+ .debug_aranges
+                0x0000000000000850       0x30 static_context.o
+ .debug_aranges
+                0x0000000000000880       0x50 ui.o
+ .debug_aranges
+                0x00000000000008d0       0x20 custom_models.o
+ .debug_aranges
+                0x00000000000008f0       0x50 icetrap.o
+ .debug_aranges
+                0x0000000000000940      0x250 item_effect.o
+ .debug_aranges
+                0x0000000000000b90       0xd0 item_override.o
+ .debug_aranges
+                0x0000000000000c60       0x40 item_table.o
+ .debug_aranges
+                0x0000000000000ca0       0xf8 item_upgrade.o
+ .debug_aranges
+                0x0000000000000d98       0x30 razor_sword.o
+ .debug_aranges
+                0x0000000000000dc8       0x28 rheap.o
+ .debug_aranges
+                0x0000000000000df0      0x180 savefile.o
+ .debug_aranges
+                0x0000000000000f70       0x60 settings.o
+ .debug_aranges
+                0x0000000000000fd0       0x20 title_screen.o
+ .debug_aranges
+                0x0000000000000ff0       0x28 loader.o
+ .debug_aranges
+                0x0000000000001018       0x68 abi.o
+ .debug_aranges
+                0x0000000000001080       0x78 csvc.o
+ .debug_aranges
+                0x00000000000010f8       0x20 hooks.o
+ .debug_aranges
+                0x0000000000001118      0x2f8 svc.o
+ .debug_aranges
+                0x0000000000001410       0x38 svc_loader.o
 
 .debug_rnglists
-                0x0000000000000000       0xae
+                0x0000000000000000      0xecd
  .debug_rnglists
-                0x0000000000000000       0x1a message.o
+                0x0000000000000000       0x3b input.o
  .debug_rnglists
-                0x000000000000001a       0x29 settings.o
+                0x000000000000003b       0x51 main.o
  .debug_rnglists
-                0x0000000000000043       0x6b spoiler_data.o
+                0x000000000000008c       0x13 common_context.o
+ .debug_rnglists
+                0x000000000000009f       0x13 debug.o
+ .debug_rnglists
+                0x00000000000000b2       0x74 printf.o
+ .debug_rnglists
+                0x0000000000000126       0x2b actor.o
+ .debug_rnglists
+                0x0000000000000151       0x37 actorresource.o
+ .debug_rnglists
+                0x0000000000000188       0x31 as.o
+ .debug_rnglists
+                0x00000000000001b9       0x1f camera.o
+ .debug_rnglists
+                0x00000000000001d8       0x1f common_data.o
+ .debug_rnglists
+                0x00000000000001f7       0x8e context.o
+ .debug_rnglists
+                0x0000000000000285      0x1f5 items.o
+ .debug_rnglists
+                0x000000000000047a       0x68 message.o
+ .debug_rnglists
+                0x00000000000004e2       0x37 objectbankarchive.o
+ .debug_rnglists
+                0x0000000000000519       0x1f pad.o
+ .debug_rnglists
+                0x0000000000000538       0x51 player.o
+ .debug_rnglists
+                0x0000000000000589       0x85 sound.o
+ .debug_rnglists
+                0x000000000000060e       0x1f static_context.o
+ .debug_rnglists
+                0x000000000000062d       0x39 ui.o
+ .debug_rnglists
+                0x0000000000000666       0x14 custom_models.o
+ .debug_rnglists
+                0x000000000000067a       0x38 icetrap.o
+ .debug_rnglists
+                0x00000000000006b2      0x1c5 item_effect.o
+ .debug_rnglists
+                0x0000000000000877       0xad item_override.o
+ .debug_rnglists
+                0x0000000000000924       0x2c item_table.o
+ .debug_rnglists
+                0x0000000000000950       0xb6 item_upgrade.o
+ .debug_rnglists
+                0x0000000000000a06       0x20 razor_sword.o
+ .debug_rnglists
+                0x0000000000000a26       0x19 rheap.o
+ .debug_rnglists
+                0x0000000000000a3f      0x11f savefile.o
+ .debug_rnglists
+                0x0000000000000b5e       0x47 settings.o
+ .debug_rnglists
+                0x0000000000000ba5       0x13 title_screen.o
+ .debug_rnglists
+                0x0000000000000bb8       0x19 loader.o
+ .debug_rnglists
+                0x0000000000000bd1       0x4d abi.o
+ .debug_rnglists
+                0x0000000000000c1e       0x55 csvc.o
+ .debug_rnglists
+                0x0000000000000c73      0x235 svc.o
+ .debug_rnglists
+                0x0000000000000ea8       0x25 svc_loader.o
 
-.debug_line     0x0000000000000000      0x820
- .debug_line    0x0000000000000000      0x1c3 message.o
- .debug_line    0x00000000000001c3      0x2d2 settings.o
- .debug_line    0x0000000000000495      0x38b spoiler_data.o
+.debug_line     0x0000000000000000     0xf88e
+ .debug_line    0x0000000000000000      0x338 input.o
+ .debug_line    0x0000000000000338      0x887 main.o
+ .debug_line    0x0000000000000bbf      0x195 common_context.o
+ .debug_line    0x0000000000000d54      0x605 debug.o
+ .debug_line    0x0000000000001359      0xc7d printf.o
+ .debug_line    0x0000000000001fd6      0x4f8 actor.o
+ .debug_line    0x00000000000024ce      0x4dc actorresource.o
+ .debug_line    0x00000000000029aa      0x47f as.o
+ .debug_line    0x0000000000002e29      0x5ce camera.o
+ .debug_line    0x00000000000033f7      0x609 common_data.o
+ .debug_line    0x0000000000003a00      0x80e context.o
+ .debug_line    0x000000000000420e     0x1570 items.o
+ .debug_line    0x000000000000577e      0x883 message.o
+ .debug_line    0x0000000000006001      0x4cf objectbankarchive.o
+ .debug_line    0x00000000000064d0      0x4a0 pad.o
+ .debug_line    0x0000000000006970      0x7e2 player.o
+ .debug_line    0x0000000000007152      0x684 sound.o
+ .debug_line    0x00000000000077d6      0x445 static_context.o
+ .debug_line    0x0000000000007c1b      0x769 ui.o
+ .debug_line    0x0000000000008384      0x126 custom_models.o
+ .debug_line    0x00000000000084aa      0x6df icetrap.o
+ .debug_line    0x0000000000008b89     0x1670 item_effect.o
+ .debug_line    0x000000000000a1f9      0xbd9 item_override.o
+ .debug_line    0x000000000000add2      0x6ff item_table.o
+ .debug_line    0x000000000000b4d1      0x9b4 item_upgrade.o
+ .debug_line    0x000000000000be85      0x675 razor_sword.o
+ .debug_line    0x000000000000c4fa      0x4ea rheap.o
+ .debug_line    0x000000000000c9e4     0x1133 savefile.o
+ .debug_line    0x000000000000db17      0x7f4 settings.o
+ .debug_line    0x000000000000e30b      0x5de title_screen.o
+ .debug_line    0x000000000000e8e9       0xa0 loader.o
+ .debug_line    0x000000000000e989      0x5e9 abi.o
+ .debug_line    0x000000000000ef72      0x10b csvc.o
+ .debug_line    0x000000000000f07d       0x86 hooks.o
+ .debug_line    0x000000000000f103      0x707 svc.o
+ .debug_line    0x000000000000f80a       0x84 svc_loader.o
 
-.debug_str      0x0000000000000000     0x1f08
- .debug_str     0x0000000000000000      0x25e message.o
-                                        0x2a8 (size before relaxing)
- .debug_str     0x000000000000025e     0x14d2 settings.o
-                                       0x16cd (size before relaxing)
- .debug_str     0x0000000000001730      0x7d8 spoiler_data.o
-                                       0x1555 (size before relaxing)
+.debug_str      0x0000000000000000    0x2efd7
+ .debug_str     0x0000000000000000      0xf45 input.o
+                                       0x1041 (size before relaxing)
+ .debug_str     0x0000000000000f45    0x1df51 main.o
+                                      0x1e852 (size before relaxing)
+ .debug_str     0x000000000001ee96       0x54 common_context.o
+                                        0x25f (size before relaxing)
+ .debug_str     0x000000000001eeea       0x8e debug.o
+                                      0x15336 (size before relaxing)
+ .debug_str     0x000000000001ef78      0x176 printf.o
+                                        0x3c6 (size before relaxing)
+ .debug_str     0x000000000001f0ee      0x110 actor.o
+                                       0xfce6 (size before relaxing)
+ .debug_str     0x000000000001f1fe      0x2e4 actorresource.o
+                                       0x107b (size before relaxing)
+ .debug_str     0x000000000001f4e2      0x127 as.o
+                                        0xdf5 (size before relaxing)
+ .debug_str     0x000000000001f609       0xdd camera.o
+                                      0x134f8 (size before relaxing)
+ .debug_str     0x000000000001f6e6       0x94 common_data.o
+                                      0x1d94c (size before relaxing)
+ .debug_str     0x000000000001f77a      0x4a5 context.o
+                                      0x15781 (size before relaxing)
+ .debug_str     0x000000000001fc1f     0x19b1 items.o
+                                      0x1f371 (size before relaxing)
+ .debug_str     0x00000000000215d0      0xb9f message.o
+                                       0x1f3b (size before relaxing)
+ .debug_str     0x000000000002216f      0x350 objectbankarchive.o
+                                       0x1089 (size before relaxing)
+ .debug_str     0x00000000000224bf       0xf4 pad.o
+                                       0x11b9 (size before relaxing)
+ .debug_str     0x00000000000225b3      0x2ad player.o
+                                      0x1dbb3 (size before relaxing)
+ .debug_str     0x0000000000022860     0x1036 sound.o
+                                      0x10c8b (size before relaxing)
+ .debug_str     0x0000000000023896     0x678d static_context.o
+                                       0x7b4f (size before relaxing)
+ .debug_str     0x000000000002a023      0x11f ui.o
+                                      0x1a690 (size before relaxing)
+ .debug_str     0x000000000002a142       0xa1 custom_models.o
+                                        0x233 (size before relaxing)
+ .debug_str     0x000000000002a1e3      0x1f3 icetrap.o
+                                      0x1b861 (size before relaxing)
+ .debug_str     0x000000000002a3d6     0x1e55 item_effect.o
+                                      0x1fece (size before relaxing)
+ .debug_str     0x000000000002c22b     0x1200 item_override.o
+                                      0x1ecbc (size before relaxing)
+ .debug_str     0x000000000002d42b      0xda8 item_table.o
+                                      0x1f78c (size before relaxing)
+ .debug_str     0x000000000002e1d3       0x7a item_upgrade.o
+                                      0x1eb28 (size before relaxing)
+ .debug_str     0x000000000002e24d      0x112 razor_sword.o
+                                      0x15952 (size before relaxing)
+ .debug_str     0x000000000002e35f       0x79 rheap.o
+                                       0xfc90 (size before relaxing)
+ .debug_str     0x000000000002e3d8      0x57d savefile.o
+                                      0x1f56c (size before relaxing)
+ .debug_str     0x000000000002e955      0x325 settings.o
+                                      0x1e1ba (size before relaxing)
+ .debug_str     0x000000000002ec7a       0x8b title_screen.o
+                                      0x13488 (size before relaxing)
+ .debug_str     0x000000000002ed05      0x14e loader.o
+                                        0x19f (size before relaxing)
+ .debug_str     0x000000000002ee53      0x15a abi.o
+                                        0x25c (size before relaxing)
+ .debug_str     0x000000000002efad       0x15 csvc.o
+                                         0x44 (size before relaxing)
+ .debug_str     0x000000000002efc2        0x8 hooks.o
+                                         0x45 (size before relaxing)
+ .debug_str     0x000000000002efca        0x8 svc.o
+                                         0x43 (size before relaxing)
+ .debug_str     0x000000000002efca        0xd svc_loader.o
+                                         0x4a (size before relaxing)
 
 .comment        0x0000000000000000       0x23
- .comment       0x0000000000000000       0x23 message.o
+ .comment       0x0000000000000000       0x23 input.o
                                          0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x24 main.o
+ .comment       0x0000000000000023       0x24 common_context.o
+ .comment       0x0000000000000023       0x24 debug.o
+ .comment       0x0000000000000023       0x24 printf.o
+ .comment       0x0000000000000023       0x24 actor.o
+ .comment       0x0000000000000023       0x24 actorresource.o
+ .comment       0x0000000000000023       0x24 as.o
+ .comment       0x0000000000000023       0x24 camera.o
+ .comment       0x0000000000000023       0x24 common_data.o
+ .comment       0x0000000000000023       0x24 context.o
+ .comment       0x0000000000000023       0x24 items.o
+ .comment       0x0000000000000023       0x24 message.o
+ .comment       0x0000000000000023       0x24 objectbankarchive.o
+ .comment       0x0000000000000023       0x24 pad.o
+ .comment       0x0000000000000023       0x24 player.o
+ .comment       0x0000000000000023       0x24 sound.o
+ .comment       0x0000000000000023       0x24 static_context.o
+ .comment       0x0000000000000023       0x24 ui.o
+ .comment       0x0000000000000023       0x24 custom_models.o
+ .comment       0x0000000000000023       0x24 icetrap.o
+ .comment       0x0000000000000023       0x24 item_effect.o
+ .comment       0x0000000000000023       0x24 item_override.o
+ .comment       0x0000000000000023       0x24 item_table.o
+ .comment       0x0000000000000023       0x24 item_upgrade.o
+ .comment       0x0000000000000023       0x24 razor_sword.o
+ .comment       0x0000000000000023       0x24 rheap.o
+ .comment       0x0000000000000023       0x24 savefile.o
  .comment       0x0000000000000023       0x24 settings.o
- .comment       0x0000000000000023       0x24 spoiler_data.o
+ .comment       0x0000000000000023       0x24 title_screen.o
+ .comment       0x0000000000000023       0x24 loader.o
+ .comment       0x0000000000000023       0x24 abi.o
 
 .ARM.attributes
-                0x0000000000000000       0x2e
+                0x0000000000000000       0x2c
  .ARM.attributes
-                0x0000000000000000       0x2e message.o
+                0x0000000000000000       0x2e input.o
  .ARM.attributes
-                0x000000000000002e       0x2e settings.o
+                0x000000000000002e       0x2e main.o
  .ARM.attributes
-                0x000000000000005c       0x2e spoiler_data.o
+                0x000000000000005c       0x2e common_context.o
+ .ARM.attributes
+                0x000000000000008a       0x2e debug.o
+ .ARM.attributes
+                0x00000000000000b8       0x2e printf.o
+ .ARM.attributes
+                0x00000000000000e6       0x2e actor.o
+ .ARM.attributes
+                0x0000000000000114       0x2e actorresource.o
+ .ARM.attributes
+                0x0000000000000142       0x2e as.o
+ .ARM.attributes
+                0x0000000000000170       0x2e camera.o
+ .ARM.attributes
+                0x000000000000019e       0x2e common_data.o
+ .ARM.attributes
+                0x00000000000001cc       0x2e context.o
+ .ARM.attributes
+                0x00000000000001fa       0x2e items.o
+ .ARM.attributes
+                0x0000000000000228       0x2e message.o
+ .ARM.attributes
+                0x0000000000000256       0x2e objectbankarchive.o
+ .ARM.attributes
+                0x0000000000000284       0x2e pad.o
+ .ARM.attributes
+                0x00000000000002b2       0x2e player.o
+ .ARM.attributes
+                0x00000000000002e0       0x2e sound.o
+ .ARM.attributes
+                0x000000000000030e       0x2e static_context.o
+ .ARM.attributes
+                0x000000000000033c       0x2e ui.o
+ .ARM.attributes
+                0x000000000000036a       0x2e custom_models.o
+ .ARM.attributes
+                0x0000000000000398       0x2e icetrap.o
+ .ARM.attributes
+                0x00000000000003c6       0x2e item_effect.o
+ .ARM.attributes
+                0x00000000000003f4       0x2e item_override.o
+ .ARM.attributes
+                0x0000000000000422       0x2e item_table.o
+ .ARM.attributes
+                0x0000000000000450       0x2e item_upgrade.o
+ .ARM.attributes
+                0x000000000000047e       0x2e razor_sword.o
+ .ARM.attributes
+                0x00000000000004ac       0x2e rheap.o
+ .ARM.attributes
+                0x00000000000004da       0x2e savefile.o
+ .ARM.attributes
+                0x0000000000000508       0x2e settings.o
+ .ARM.attributes
+                0x0000000000000536       0x2e title_screen.o
+ .ARM.attributes
+                0x0000000000000564       0x2e loader.o
+ .ARM.attributes
+                0x0000000000000592       0x2e abi.o
+ .ARM.attributes
+                0x00000000000005c0       0x1a csvc.o
+ .ARM.attributes
+                0x00000000000005da       0x1a hooks.o
+ .ARM.attributes
+                0x00000000000005f4       0x1a patches.o
+ .ARM.attributes
+                0x000000000000060e       0x1a svc.o
+ .ARM.attributes
+                0x0000000000000628       0x1a svc_loader.o
 
-.debug_frame    0x0000000000000000      0x23c
- .debug_frame   0x0000000000000000       0x48 message.o
- .debug_frame   0x0000000000000048       0x74 settings.o
- .debug_frame   0x00000000000000bc      0x180 spoiler_data.o
+.debug_frame    0x0000000000000000     0x2f74
+ .debug_frame   0x0000000000000000       0x84 input.o
+ .debug_frame   0x0000000000000084      0x12c main.o
+ .debug_frame   0x00000000000001b0       0x20 common_context.o
+ .debug_frame   0x00000000000001d0       0x44 debug.o
+ .debug_frame   0x0000000000000214      0x214 printf.o
+ .debug_frame   0x0000000000000428       0x90 actor.o
+ .debug_frame   0x00000000000004b8       0xd0 actorresource.o
+ .debug_frame   0x0000000000000588       0xb4 as.o
+ .debug_frame   0x000000000000063c       0x60 camera.o
+ .debug_frame   0x000000000000069c       0x5c common_data.o
+ .debug_frame   0x00000000000006f8      0x264 context.o
+ .debug_frame   0x000000000000095c      0x894 items.o
+ .debug_frame   0x00000000000011f0      0x19c message.o
+ .debug_frame   0x000000000000138c       0xd4 objectbankarchive.o
+ .debug_frame   0x0000000000001460       0x5c pad.o
+ .debug_frame   0x00000000000014bc      0x138 player.o
+ .debug_frame   0x00000000000015f4      0x248 sound.o
+ .debug_frame   0x000000000000183c       0x5c static_context.o
+ .debug_frame   0x0000000000001898       0xc8 ui.o
+ .debug_frame   0x0000000000001960       0x28 custom_models.o
+ .debug_frame   0x0000000000001988       0xb8 icetrap.o
+ .debug_frame   0x0000000000001a40      0x760 item_effect.o
+ .debug_frame   0x00000000000021a0      0x244 item_override.o
+ .debug_frame   0x00000000000023e4       0x90 item_table.o
+ .debug_frame   0x0000000000002474      0x300 item_upgrade.o
+ .debug_frame   0x0000000000002774       0x60 razor_sword.o
+ .debug_frame   0x00000000000027d4       0x38 rheap.o
+ .debug_frame   0x000000000000280c      0x4b4 savefile.o
+ .debug_frame   0x0000000000002cc0       0xf0 settings.o
+ .debug_frame   0x0000000000002db0       0x28 title_screen.o
+ .debug_frame   0x0000000000002dd8       0x48 loader.o
+ .debug_frame   0x0000000000002e20      0x154 abi.o
+
+.debug_line_str
+                0x0000000000000000       0x50
+ .debug_line_str
+                0x0000000000000000       0x3b csvc.o
+                                         0x76 (size before relaxing)
+ .debug_line_str
+                0x000000000000003b        0x8 hooks.o
+                                         0x78 (size before relaxing)
+ .debug_line_str
+                0x0000000000000043        0x8 svc.o
+                                         0x74 (size before relaxing)
+ .debug_line_str
+                0x0000000000000043        0xd svc_loader.o
+                                         0x82 (size before relaxing)
