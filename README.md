@@ -17,7 +17,7 @@ This program takes _The Legend of Zelda: Majora's Mask 3D_ and randomizes the lo
 
 The program is based off of the following works:
 - [OoT3D Randomizer](https://github.com/gamestabled/OoT3D_Randomizer) - This app was rewritten using the OoT3DR generator as base code and modified to suit the needs for MM3D.
-- [MM3DR Base Patch](https://github.com/Phlexplexico/mm3dr) - This is where all the ARM patches and base code patches are grabbed from. Decomp is heavily based off of [Project Restoration](github.com/leoetlino/project-restoration/).
+- [MM3DR Base Patch](https://github.com/Phlexplexico/mm3dr) - This is where all the ARM patches and base code patches are grabbed from. Decomp is heavily based off of [Project Restoration](https://github.com/leoetlino/project-restoration/).
 - [MM Rando](https://github.com/ZoeyZolotova/mm-rando) - Base logic rules were taken and updated for MM3D.
 
 Proper logic is used to ensure every seed is possible to complete without the use of glitches and will be safe from the possibility of softlocks with any possible usage of keys in dungeons.
