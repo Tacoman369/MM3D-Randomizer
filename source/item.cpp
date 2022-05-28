@@ -6,7 +6,7 @@
 #include "random.hpp"
 #include "item_pool.hpp"
 #include "settings.hpp"
-#include "../code/include/rnd/item_override.h"
+#include "rnd/item_override.h"
 #include "region.hpp"
 #include "item_category.hpp"
 #include "text.hpp"

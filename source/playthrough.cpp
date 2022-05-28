@@ -6,7 +6,7 @@
 #include "logic.hpp"
 #include "random.hpp"
 #include "spoiler_log.hpp"
-#include "../code/include/rnd/item_override.h"
+#include "rnd/item_override.h"
 
 #include <3ds.h>
 #include <unistd.h>

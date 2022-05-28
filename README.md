@@ -1,15 +1,37 @@
 # MM3D_Randomizer
 
-This is an item randomizer for _The Legend of Zelda: Majora's Mask 3D_ for the Nintendo 3DS.
+This is an item randomizer app for _The Legend of Zelda: Majora's Mask 3D_ for the Nintendo 3DS.
 
+* [General Description](#general-description)
 * [Installation](#installation)
   * [On 3DS Console with Luma3DS](#On-3DS-Console-with-Luma3DS)
   * [On Citra](#On-Citra)
   * [Save Files](#Save-Files)
-* [General Description](#general-description)
   * [Getting Stuck](#getting-stuck)
 * [Building](#building)
 * [Reporting Bugs](#reporting-bugs)
+
+## General Description
+
+This program takes _The Legend of Zelda: Majora's Mask 3D_ and randomizes the locations of the items for a new, more dynamic play experience.
+
+The program is based off of the following works:
+- [OoT3D Randomizer](https://github.com/gamestabled/OoT3D_Randomizer) - This app was rewritten using the OoT3DR generator as base code and modified to suit the needs for MM3D.
+- [MM3DR Base Patch](https://github.com/Phlexplexico/mm3dr) - This is where all the ARM patches and base code patches are grabbed from. Decomp is heavily based off of [Project Restoration](https://github.com/leoetlino/project-restoration/).
+- [MM Rando](https://github.com/ZoeyZolotova/mm-rando) - Base logic rules were taken and updated for MM3D.
+
+Proper logic is used to ensure every seed is possible to complete without the use of glitches and will be safe from the possibility of softlocks with any possible usage of keys in dungeons.
+
+The randomizer will ensure a glitchless path through the seed will exist, but the randomizer will not prevent the use of glitches for those players who enjoy that sort of thing, though we offer no guarantees that all glitches will have identical behavior to the original game. Glitchless can still mean that clever or unintuitive strategies may be required involving the use of things like  the Hookshot or other items that may not have been as important in the original game.
+
+Each major dungeon will earn you a random boss remains once completed. The particular dungeons where these can be found, as well as other relevant dungeon information and the current seed hash can be viewed by pressing SELECT, and using the L or R button to move between pages.
+
+As a service to the player in this very long game, various tedious elements of the game have been removed or sped up, and more convenience tweaks are planned for the future. Some of these changes can be customized when creating your seed.
+
+Please be sure to explore the many customizable settings which are available when using the app! There are many options which can alter the length or difficulty of each playthrough.
+
+Want to discuss the randomizer with others? Join our [Discord server](https://discord.gg/EVvzb6varj)!
+
 
 ## Installation
 
@@ -32,20 +54,6 @@ Use Citra to launch ```MM3D_Randomizer.3dsx```. Navigate the menus to choose the
 ### Save Files
 Right now, save files are shared between any playthroughs you create and the base game. This means that you are responsible for managing your own save files. If you are playing on a 3DS, check out [Checkpoint](https://github.com/FlagBrew/Checkpoint/releases), an easy-to-use homebrew save manager.
 
-## General Description
-
-This program takes _The Legend of Zelda: Majora's Mask 3D_ and randomizes the locations of the items for a new, more dynamic play experience.
-Proper logic is used to ensure every seed is possible to complete without the use of glitches and will be safe from the possibility of softlocks with any possible usage of keys in dungeons.
-
-The randomizer will ensure a glitchless path through the seed will exist, but the randomizer will not prevent the use of glitches for those players who enjoy that sort of thing, though we offer no guarantees that all glitches will have identical behavior to the original game. Glitchless can still mean that clever or unintuitive strategies may be required involving the use of things like  the Hookshot or other items that may not have been as important in the original game.
-
-Each major dungeon will earn you a random boss remains once completed. The particular dungeons where these can be found, as well as other relevant dungeon information and the current seed hash can be viewed by pressing SELECT, and using the L or R button to move between pages.
-
-As a service to the player in this very long game, various tedious elements of the game have been removed or sped up, and more convenience tweaks are planned for the future. Some of these changes can be customized when creating your seed.
-
-Please be sure to explore the many customizable settings which are available when using the app! There are many options which can alter the length or difficulty of each playthrough.
-
-Want to discuss the randomizer with others? Join our [Discord server](https://discord.gg/EVvzb6varj)!
 
 ### Getting Stuck
 
