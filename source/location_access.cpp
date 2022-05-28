@@ -129,7 +129,7 @@ void AreaTable_Init() {
 		LocationAccess(DEKU_PALACE_BEAN_GROTTO, {[] {return PoisonSwampAccess && ((Hookshot && DekuMask) || (WaterForBeans && DekuMask));}}),
 		//LocationAccess(DEKU_PALACE_WEST_GARDEN, {[] {return PoisonSwampAccess && DekuMask;}}),
 		//LocationAccess(DEKU_PALACE_BUTLER_RACE, {[] {return WoodfallClear || (PoisonSwampAccess && DekuMask && DekuPrincess);}}),
-		//LocationAccess(DEKU_PALACE_IMPRISONED_MONKEY, {[] {return PoisonSwampAccess && DekuMask;}}),
+		LocationAccess(DEKU_PALACE_IMPRISONED_MONKEY, {[] {return PoisonSwampAccess && DekuMask;}}),
 		});
 
 	areaTable[E_CLOCK_TOWN] = Area("East Clock Town", "East Clock Town", E_CLOCK_TOWN, {}, {
@@ -149,12 +149,12 @@ void AreaTable_Init() {
 
 	areaTable[GORON_VILLAGE] = Area("Goron Village", "Goron Village", GORON_VILLAGE, {}, {
 		//Locations
-		//LocationAccess(GORON_VILLAGE_POWDER_KEG_CHALLENGE, {[] {return GoronMask && NorthAccess && (SnowheadClear || UseFireArrow);}}),
+		LocationAccess(GORON_VILLAGE_POWDER_KEG_CHALLENGE, {[] {return GoronMask && NorthAccess && (SnowheadClear || UseFireArrow);}}),
 		//LocationAccess(GORON_VILLAGE_BIGGEST_BOMB_BAG_BUY, {[] {return NorthAccess && AnyWallet && (GoronMask || (DekuMask && MoonsTear && LandTitle && SwampTitle));}}),
 		LocationAccess(GORON_VILLAGE_LENS_OF_TRUTH_CHEST, {[] {return NorthAccess;}}),
 		//LocationAccess(GORON_VILLAGE_MOUNTAIN_TITLE_DEED, {[] {return DekuMask && NorthAccess && SwampTitle;}}),
 		//LocationAccess(GORON_VILLAGE_LEDGE, {[] {return DekuMask && NorthAccess && SwampTitle;}}),
-		//LocationAccess(GORON_VILLAGE_GORON_LULLABY, {[] {return NorthAccess && GoronMask;}}),
+		LocationAccess(GORON_VILLAGE_GORON_LULLABY, {[] {return NorthAccess && GoronMask;}}),
 		LocationAccess(LENS_CAVE_RED_RUPEE, {[] {return NorthAccess && LensOfTruth && MagicMeter;}}),
 		LocationAccess(LENS_CAVE_PURPLE_RUPEE, {[] {return NorthAccess && LensOfTruth && MagicMeter && HasExplosives;}}),
 
@@ -167,8 +167,8 @@ void AreaTable_Init() {
 		LocationAccess(GBC_OCEAN_SPIDER_CHEST, {[] {return Arrows && OceanSkulltulas && CaptainsHat;}}),
 		//LocationAccess(GBC_LAB_FISH, {[] {return WestAccess && Fish;}}),
 		//LocationAccess(GBC_LEDGE, {[] {return WestAccess && Hookshot && AnyMagicBean && WaterForBeans;}}),
-		//LocationAccess(GBC_MIKAU, {[] {return SongOfHealing && WestAccess;}}),
-		//LocationAccess(GBC_BABY_ZORAS, {[] {return PiratesFortressAccess && ZoraEgg && ZoraMask && WestAccess && Hookshot;}}),
+		LocationAccess(GBC_MIKAU, {[] {return SongOfHealing && WestAccess;}}),
+		LocationAccess(GBC_BABY_ZORAS, {[] {return PiratesFortressAccess && ZoraEgg && ZoraMask && WestAccess && Hookshot;}}),
 		LocationAccess(GBC_GROTTO, {[] {return WestAccess;}}),
 		//LocationAccess(GBC_FISHERMAN_PHOTO, {[] {return Pictobox && WestAccess && PiratesFortressAccess;}}),
 
@@ -190,7 +190,7 @@ void AreaTable_Init() {
 		//LocationAccess(IKANA_GRAVEYARD_DAMPE_DIGGING, {[] {return CaptainsHat && IkanaGraveyardAccess;}}),
 		LocationAccess(IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST, {[] {return CaptainsHat && IkanaGraveyardAccess && Explosives && AnySword;}}),
 		LocationAccess(IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, {[] {return SonataOfAwakening && IkanaGraveyardAccess&&Fighting;}}),
-		//LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, {[] {return CaptainsHat && IkanaGraveyardAccess && (AnySword || GoronMask || ZoraMask);}}),
+		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, {[] {return CaptainsHat && IkanaGraveyardAccess && (AnySword || GoronMask || ZoraMask);}}),
 		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS, {[] {return CaptainsHat && IkanaGraveyardAccess && (Fighting || DekuMask);}}),
 		LocationAccess(IKANA_GRAVEYARD_GROTTO, {[] {return Explosives && IkanaGraveyardAccess;}}),
 
@@ -208,7 +208,7 @@ void AreaTable_Init() {
 
 	areaTable[MILK_ROAD] = Area("Milk Road", "Milk Road", MILK_ROAD, {}, {
 		//Locations
-		//LocationAccess(MILK_ROAD_GORMAN_RACE, {[] {return EponasSong;}}),
+		LocationAccess(MILK_ROAD_GORMAN_RACE, {[] {return EponasSong;}}),
 
 		});
 
@@ -217,7 +217,7 @@ void AreaTable_Init() {
 		//LocationAccess(MOUNTAIN_VILLAGE_SMITH_DAY_ONE, {[] {return NorthAccess && AnyWallet && ( HotSpringWater || SnowheadClear || UseFireArrow);}}),
 		//LocationAccess(MOUNTAIN_VILLAGE_SMITH_DAY_TWO, {[] {return NorthAccess && GoronRaceBottle && (HotSpringWater || SnowheadClear ||UseFireArrow);}}),
 		//LocationAccess(MOUNTAIN_VILLAGE_FROG_CHOIR, {[] {return NorthAccess && GoronMask && MagicMeter;}}),
-		//LocationAccess(MOUNTAIN_VILLAGE_DARMANI, {[] {return NorthAccess && MagicMeter && LensOfTruth && SongOfHealing;}}),
+		LocationAccess(MOUNTAIN_VILLAGE_DARMANI, {[] {return NorthAccess && MagicMeter && LensOfTruth && SongOfHealing;}}),
 		//LocationAccess(MOUNTAIN_VILLAGE_HUNGRY_GORON, {[] {return NorthAccess && GoronMask && MagicMeter;}}),
 		LocationAccess(MOUNTAIN_WATERFALL_CHEST, {[] {return SnowheadClear && LensOfTruth && MagicMeter;}}),
 		LocationAccess(MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO, {[] {return SnowheadClear;}}),
@@ -226,12 +226,12 @@ void AreaTable_Init() {
 
 	areaTable[N_CLOCK_TOWN] = Area("North Clock Town", "North Clock Town", N_CLOCK_TOWN, {}, {
 		//Locations
-		//LocationAccess(N_CLOCK_TOWN_GREAT_FAIRY_DEKU, {[] {return ClockTownStrayFairy && (ZoraMask || GoronMask || DekuMask);}}),
+		LocationAccess(N_CLOCK_TOWN_GREAT_FAIRY_DEKU, {[] {return ClockTownStrayFairy && (ZoraMask || GoronMask || DekuMask);}}),
 		//LocationAccess(N_CLOCK_TOWN_GREAT_FAIRY_HUMAN, {[] {return ClockTownStrayFairy;}}),
 		//LocationAccess(N_CLOCK_TOWN_KEATON_QUIZ, {[] {return KeatonMask;}}),
 		//LocationAccess(N_CLOCK_TOWN_DEKU_PLAYGROUND_3DAYS, {[] {return DekuMask;}}),
 		//LocationAccess(N_CLOCK_TOWN_TREE, {[] {return true;}}),
-		//LocationAccess(N_CLOCK_TOWN_OLD_LADY, {[] {return Fighting || Arrows;}}),
+		LocationAccess(N_CLOCK_TOWN_OLD_LADY, {[] {return Fighting || Arrows;}}),
 
 		});
 
@@ -273,7 +273,7 @@ void AreaTable_Init() {
 		//LocationAccess(ROMANI_RANCH_DOG_RACE, {[] {return EponaAccess && MaskOfTruth;}}),
 		//LocationAccess(ROMANI_RANCH_GROG, {[] {return BremenMask && EponaAccess;}}),
 		//LocationAccess(ROMANI_RANCH_CREMIA_ESCORT, {[] {return EponaAccess && Arrows;}}),
-		//LocationAccess(ROMANI_RANCH_ROMANIS_GAME, {[] {return EponaAccess && Arrows;}}),
+		LocationAccess(ROMANI_RANCH_ROMANIS_GAME, {[] {return EponaAccess && Arrows;}}),
 		LocationAccess(DOGGY_RACETRACK_ROOF_CHEST, {[] {return Hookshot || (WaterForBeans && AnyMagicBean) || ZoraMask;}}),
 
 		});
@@ -299,12 +299,12 @@ void AreaTable_Init() {
 	areaTable[SOUTHERN_SWAMP] = Area("Southern Swamp", "Southern Swamp", SOUTHERN_SWAMP, {}, {
 		//Locations
 		//LocationAccess(SOUTHERN_SWAMP_KOUME, {[] {return AnyHealingPotion;}}),
-		//LocationAccess(SOUTHERN_SWAMP_KOTAKE, {[] {return true;}}),
+		LocationAccess(SOUTHERN_SWAMP_KOTAKE, {[] {return true;}}),
 		//LocationAccess(SOUTHERN_SWAMP_SCRUB_TRADE, {[] {return LandTitle;}}),
 		//LocationAccess(SOUTHERN_SWAMP_PICTOGRAPH_WINNER, {[] {return Pictobox;}}),
 		//LocationAccess(SOUTHERN_SWAMP_BOAT_ARCHERY, {[] {return WoodfallClear && AnyHealingPotion;}}),
 		//LocationAccess(SOUTHERN_SWAMP_SPIDER_HOUSE_REWARD, {[] {return PoisonSwampAccess && AccessToAllSwampSpiders;}}),
-		//LocationAccess(SOUTHERN_SWAMP_MUSIC_STATUE, {[] {return PoisonSwampAccess;}}),
+		LocationAccess(SOUTHERN_SWAMP_MUSIC_STATUE, {[] {return PoisonSwampAccess;}}),
 		LocationAccess(SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO, {[] {return PoisonSwampAccess && DekuMask;}}),
 		LocationAccess(SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO, {[] {return true;}}),
 		//LocationAccess(SOUTHERN_SWAMP_KOTAKE_MUSHROOM_SALE, {[] {return MaskOfScents && AnyBottle && Mushroom;}}),
@@ -361,7 +361,7 @@ void AreaTable_Init() {
 
 	areaTable[W_CLOCK_TOWN] = Area("West Clock Town", "West Clock Town", W_CLOCK_TOWN, {}, {
 		//Locations
-		//LocationAccess(W_CLOCK_TOWN_BOMB_BAG_BUY, {[] {return true;}}),
+		LocationAccess(W_CLOCK_TOWN_BOMB_BAG_BUY, {[] {return true;}}),
 		//LocationAccess(W_CLOCK_TOWN_BIG_BOMB_BAG_BUY, {[] {return LetterKafei && PendantOfMemories;}}),
 		//LocationAccess(W_CLOCK_TOWN_POSTMANS_GAME, {[] {return BunnyHood;}}),
 		//LocationAccess(W_CLOCK_TOWN_ROSA_SISTERS, {[] {return KamarosMask;}}),
@@ -413,9 +413,9 @@ void AreaTable_Init() {
 		LocationAccess(WOODFALL_TEMPLE_HEROS_BOW_CHEST, {[] {return DekuMask && WoodfallTempleAccess && OneWoodfallKey;}}),
 		//LocationAccess(WOODFALL_TEMPLE_MAP_CHEST, {[] {return WoodfallTempleAccess;}}),
 		//LocationAccess(WOODFALL_TEMPLE_COMPASS_CHEST, {[] {return WoodfallTempleAccess && (Arrows || OneWoodfallKey);}}),
-		//LocationAccess(WOODFALL_TEMPLE_BOSS_KEY_CHEST, {[] {return WoodfallTempleAccess && Arrows && DekuMask;}}),
-		//LocationAccess(WOODFALL_TEMPLE_SMALL_KEY_CHEST, {[] {return WoodfallTempleAccess && (DekuMask || Hookshot);}}),
-		//LocationAccess(ODOLWAS_REMAINS, {[] {return WoodfallTempleAccess && Arrows && BossKeyWoodfallTemple && DekuMask;}}),
+		LocationAccess(WOODFALL_TEMPLE_BOSS_KEY_CHEST, {[] {return WoodfallTempleAccess && Arrows && DekuMask;}}),
+		LocationAccess(WOODFALL_TEMPLE_SMALL_KEY_CHEST, {[] {return WoodfallTempleAccess && (DekuMask || Hookshot);}}),
+		LocationAccess(ODOLWA, {[] {return WoodfallTempleAccess && Arrows && BossKeyWoodfallTemple && DekuMask;}}),
 		//LocationAccess(ODOLWA_HEART_CONTAINER, {[] {return WoodfallTempleAccess && Arrows && BossKeyWoodfallTemple && DekuMask;}}),
 		//StrayFairies
 		/*
@@ -442,11 +442,11 @@ void AreaTable_Init() {
 		LocationAccess(SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST, {[] {return true;}}),
 		//LocationAccess(SNOWHEAD_TEMPLE_MAP_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
 		//LocationAccess(SNOWHEAD_TEMPLE_COMPASS_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
-		//LocationAccess(SNOWHEAD_TEMPLE_BOSS_KEY_CHEST, {[] {return SnowheadTempleAccess && UseFireArrow;}}),
-		//LocationAccess(SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
-		//LocationAccess(SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
-		//LocationAccess(SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
-		//LocationAccess(GOHTS_REMAINS, {[] {return SnowheadTempleAccess && GoronMask && BossKeySnowheadTemple && UseFireArrow && MagicMeter;}}),
+		LocationAccess(SNOWHEAD_TEMPLE_BOSS_KEY_CHEST, {[] {return SnowheadTempleAccess && UseFireArrow;}}),
+		LocationAccess(SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
+		LocationAccess(SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
+		LocationAccess(SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, {[] {return SnowheadTempleAccess && EnterSnowheadTemple;}}),
+		LocationAccess(GOHT, {[] {return SnowheadTempleAccess && GoronMask && BossKeySnowheadTemple && UseFireArrow && MagicMeter;}}),
 		//LocationAccess(GOHT_HEART_CONTAINER, {[] {return SnowheadTempleAccess && GoronMask && BossKeySnowheadTemple && UseFireArrow && MagicMeter;}}),
 		//StrayFairies
 		/*
@@ -473,9 +473,9 @@ void AreaTable_Init() {
 		LocationAccess(GBT_ICE_ARROW_CHEST, {[] {return ZoraMask && Hookshot && GreatBayTempleAccess && OneGreatBayKey;}}),
 		//LocationAccess(GBT_MAP_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
 		//LocationAccess(GBT_COMPASS_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
-		//LocationAccess(GBT_BOSS_KEY_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
-		//LocationAccess(GBT_SMALL_KEY_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
-		//LocationAccess(GYORGS_REMAINS, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot && BossKeyGreatBayTemple && UseIceArrow && UseFireArrow && MagicMeter;}}),
+		LocationAccess(GBT_BOSS_KEY_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
+		LocationAccess(GBT_SMALL_KEY_CHEST, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot;}}),
+		LocationAccess(GYORG, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot && BossKeyGreatBayTemple && UseIceArrow && UseFireArrow && MagicMeter;}}),
 		//LocationAccess(GYORG_HEART_CONTAINER, {[] {return GreatBayTempleAccess && ZoraMask && Hookshot && BossKeyGreatBayTemple && UseIceArrow && UseFireArrow && MagicMeter;}}),
 		//StrayFairies
 		/*
@@ -501,14 +501,14 @@ void AreaTable_Init() {
 		//Locations
 		//LocationAccess(STONE_TOWER_TEMPLE_MAP_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && Explosives &&GoronMask) || (GoronMask && Explosives && UseLightArrow) || (ZoraMask && OneStoneTowerKey && UseLightArrow));}}),
 		//LocationAccess(STONE_TOWER_TEMPLE_COMPASS_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && OneStoneTowerKey && GoronMask && ZoraMask) || UseLightArrow);}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask && OneStoneTowerKey && Hookshot;}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && Explosives && GoronMask) || (GoronMask && Explosives && UseLightArrow) || (ZoraMask && OneStoneTowerKey && UseLightArrow));}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((ZoraMask && UseLightArrow) || (Explosives && OneStoneTowerKey && GoronMask));}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask;}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && Hookshot && OneStoneTowerKey && UseLightArrow && ElegyOfEmptiness;}}),
+		LocationAccess(STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask && OneStoneTowerKey && Hookshot;}}),
+		LocationAccess(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && Explosives && GoronMask) || (GoronMask && Explosives && UseLightArrow) || (ZoraMask && OneStoneTowerKey && UseLightArrow));}}),
+		LocationAccess(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((ZoraMask && UseLightArrow) || (Explosives && OneStoneTowerKey && GoronMask));}}),
+		LocationAccess(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask;}}),
+		LocationAccess(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && Hookshot && OneStoneTowerKey && UseLightArrow && ElegyOfEmptiness;}}),
 		LocationAccess(STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST, {[] {return StoneTowerTempleAcccess;}}),
-		//LocationAccess(STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, {[] {return InvertedStoneTowerTempleAccess && Hookshot && UseLightArrow && BossKeyStoneTowerTemple;}}),
-		//LocationAccess(TWINMOLDS_REMAINS, {[] {return InvertedStoneTowerTempleAccess && Hookshot && UseLightArrow && BossKeyStoneTowerTemple && GiantsMask;}}),
+		LocationAccess(STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, {[] {return InvertedStoneTowerTempleAccess && Hookshot && UseLightArrow && BossKeyStoneTowerTemple;}}),
+		LocationAccess(TWINMOLD, {[] {return InvertedStoneTowerTempleAccess && Hookshot && UseLightArrow && BossKeyStoneTowerTemple && GiantsMask;}}),
 		//LocationAccess(TWINMOLD_HEART_CONTAINER, {[] {return InvertedStoneTowerTempleAccess && Hookshot && UseLightArrow && BossKeyStoneTowerTemple && GiantsMask;}}),
 		//StrayFairies
 		/*
@@ -556,7 +556,7 @@ void AreaTable_Init() {
 	areaTable[IKANA_CASTLE] = Area("Ikana Castle", "Ikana Castle", IKANA_CASTLE, {}, {
 		//Locations
 		//LocationAccess(IKANA_CASTLE_PILLAR, {[] {return IkanaCanyonAccess && DekuMask && UseFireArrow && ((UseLightArrow && LensOfTruth) || (MirrorShield && LensOfTruth));}}),
-		//LocationAccess(IKANA_CASTLE_IKANA_KING, {[] {return IkanaCanyonAccess && MirrorShield && Fighting && UseFireArrow;}}),
+		LocationAccess(IKANA_CASTLE_IKANA_KING, {[] {return IkanaCanyonAccess && MirrorShield && Fighting && UseFireArrow;}}),
 
 		});
 

@@ -381,7 +381,7 @@ namespace Logic {
 		AnyBombBag = (ProgressiveBombBag >= 1) || BombBag20 || TownBombBag || MountainBombBag;
 		Bow = ProgressiveBow >= 1 || HerosBow;
 		Scarecrow = Hookshot && CanPlay(ScarecrowSong);
-
+		HasBottle = AnyBottle;
 		//Drop Access
 		DekuStickDrop = StickPot || DekuBabaSticks;
 		DekuNutDrop = NutPot || NutCrate || DekuBabaNuts;

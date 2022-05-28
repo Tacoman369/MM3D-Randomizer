@@ -99,7 +99,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
                             WOODFALL_TEMPLE_SMALL_KEY_CHEST,
                             ODOLWA_HEART_CONTAINER,
                             WOODFALL_TEMPLE_HEROS_BOW_CHEST,
-                            ODOLWAS_REMAINS,
+                            ODOLWA,
 							//STRAY FAIRY LOCATIONS
 							WF_SF_ENTRANCE_FAIRY,
 							WF_SF_ENTRANCE_PLATFORM,
@@ -127,7 +127,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST,
 							SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST,
 							GOHT_HEART_CONTAINER,
-							SNOWHEAD_TEMPLE_GOHT_REMAINS,
+							GOHT,
 							//STRAY FAIRY LOCATIONS
 							SH_SF_SNOW_ROOM_BUBBLE,
 							SH_SF_CEILING_BUBBLE,
@@ -153,7 +153,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
                             GBT_COMPASS_CHEST,
                             GBT_SMALL_KEY_CHEST,
                             GBT_ICE_ARROW_CHEST,
-                            GBT_GYORGS_REMAINS,
+                            GYORG,
 							GYORG_HEART_CONTAINER,
 							//STRAY FAIRY LOCATIONS
 							GBT_SF_SKULLTULA,
@@ -184,7 +184,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST,
 							STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST,
 							STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST,
-							STONE_TOWER_TEMPLE_TWINMOLDS_REMAINS,
+							TWINMOLD,
 							TWINMOLD_HEART_CONTAINER,
 							//STRAY FAIRY LOCATIONS
 							ST_SF_MIRROR_SUN_BLOCK,

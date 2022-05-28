@@ -571,88 +571,87 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
-const std::array<ItemKey, 21> chestItems = {
-	//RED_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
+const std::array<ItemKey, 71> chestItems = {
+	RED_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
 	LENS_OF_TRUTH,
-	//RED_RUPEE,
-	//PURPLE_RUPEE,
+	RED_RUPEE,
+	PURPLE_RUPEE,
 	PIECE_OF_HEART,
-	//RED_RUPEE,
+	RED_RUPEE,
 	BOMBCHU_5,
 	PIECE_OF_HEART,
-	//PURPLE_RUPEE,
+	PURPLE_RUPEE,
 	BOMBCHU_5,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
 	BOMBCHU_5,
-	//RED_RUPEE,
-	//PURPLE_RUPEE,
-	//RED_RUPEE,
-	//PURPLE_RUPEE,
-	//RED_RUPEE,
-	//PURPLE_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
+	RED_RUPEE,
+	PURPLE_RUPEE,
+	RED_RUPEE,
+	PURPLE_RUPEE,
+	RED_RUPEE,
+	PURPLE_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
 	BOMBCHU_10,
 	MAGIC_BEAN,
 	PIECE_OF_HEART,
 	PIECE_OF_HEART,
-	//BOMBCHU_5,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
+	BOMBCHU_5,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
 	BOMBCHU_5,
 	PIECE_OF_HEART,
-	//RED_RUPEE,
+	RED_RUPEE,
 	PIECE_OF_HEART,
-	//BLUE_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
+	BLUE_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
 	BOMBCHU_5,
-	//PURPLE_RUPEE,
+	PURPLE_RUPEE,
 	HEROS_BOW,
 	FIRE_ARROWS,
 	ICE_ARROWS,
 	LIGHT_ARROWS,
 	HOOKSHOT,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//SILVER_RUPEE,
-	//RED_RUPEE,
-	//BLUE_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
-	//RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	SILVER_RUPEE,
+	RED_RUPEE,
+	BLUE_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
+	RED_RUPEE,
 	MIRROR_SHIELD,
-	//PURPLE_RUPEE,
-	//PURPLE_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
-	//SILVER_RUPEE,
+	PURPLE_RUPEE,
+	PURPLE_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
+	SILVER_RUPEE,
 	PIECE_OF_HEART
 };
 //additional chest items
 //GIANTS_MASK, //Might need to separate later due to being a mask
-
 //PROGRESSIVE_BOW,
-
 //CAPTAINS_HAT, //Might need to separate later for masks as its both
 //Moon Chests - not included for now
 //ARROWS_30,
 //BOMBCHU_10,
+
 void AddItemToPool(std::vector<ItemKey>& pool, ItemKey item, size_t count /*= 1*/) {
 	pool.insert(pool.end(), count, item);
 }
@@ -742,14 +741,14 @@ static void PlaceVanillaSmallKeys() {
 	//	dungeon->PlaceVanillaSmallKeys();
 	//}
 	PlaceItemInLocation(WOODFALL_TEMPLE_SMALL_KEY_CHEST, WOODFALL_TEMPLE_SMALL_KEY);
-	PlaceItemInLocation(SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY1);
-	PlaceItemInLocation(SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY2);
-	PlaceItemInLocation(SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY3);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, SNOWHEAD_TEMPLE_SMALL_KEY);
 	PlaceItemInLocation(GBT_SMALL_KEY_CHEST, GBT_SMALL_KEY);
-	PlaceItemInLocation(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY1);
-	PlaceItemInLocation(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY2);
-	PlaceItemInLocation(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY3);
-	PlaceItemInLocation(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY4);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY);
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, STONE_TOWER_TEMPLE_SMALL_KEY);
 };
 
 static void PlaceVanillaBossKeys() {
@@ -849,6 +848,37 @@ static void PlaceVanillaChestItems() {
 	PlaceItemInLocation(SECRET_SHRINE_FINAL_CHEST, PIECE_OF_HEART);
 	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 };
+//This exists since not all required items to finish the game are included in the randomizer yet
+//Places non randomized but logically required items so that the randomizer can logically place items
+//that are included so far... eventually will go away as more items are included
+static void PlaceVanillaLogicHelpers() {
+	PlaceItemInLocation(SONG_OF_HEALING, SONG_OF_HEALING);
+	PlaceItemInLocation(OCARINA_OF_TIME, OCARINA_OF_TIME);
+	PlaceItemInLocation(DEKU_MASK, DEKU_MASK);
+	PlaceItemInLocation(STARTING_SWORD, KOKIRI_SWORD);
+	PlaceItemInLocation(DEKU_PALACE_IMPRISONED_MONKEY, SONATA_OF_AWAKENING);
+	PlaceItemInLocation(GORON_VILLAGE_POWDER_KEG_CHALLENGE, POWDER_KEG);
+	PlaceItemInLocation(GORON_VILLAGE_GORON_LULLABY, GORONS_LULLABY);
+	PlaceItemInLocation(GBC_MIKAU, ZORA_MASK);
+	PlaceItemInLocation(GBC_BABY_ZORAS, NEW_WAVE_BOSSA_NOVA);
+	PlaceItemInLocation(IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, SONG_OF_STORMS);
+	PlaceItemInLocation(MILK_ROAD_GORMAN_RACE, GAROS_MASK);
+	PlaceItemInLocation(MOUNTAIN_VILLAGE_DARMANI, GORON_MASK);
+	PlaceItemInLocation(N_CLOCK_TOWN_GREAT_FAIRY_DEKU, MAGIC_POWER);
+	PlaceItemInLocation(N_CLOCK_TOWN_OLD_LADY, BLAST_MASK);
+	PlaceItemInLocation(ROMANI_RANCH_ROMANIS_GAME, EPONAS_SONG);
+	PlaceItemInLocation(SOUTHERN_SWAMP_MUSIC_STATUE, SONG_OF_SOARING);
+	PlaceItemInLocation(W_CLOCK_TOWN_BOMB_BAG_BUY, BOMB_BAG);
+	PlaceItemInLocation(IKANA_CASTLE_IKANA_KING, ELEGY_OF_EMPTINESS);
+	PlaceItemInLocation(SOUTHERN_SWAMP_KOTAKE, BOTTLE_WITH_RED_POTION);
+	
+};
+static void PlaceVanillaBossRemains() {
+	PlaceItemInLocation(ODOLWA, ODOLWAS_REMAINS);
+	PlaceItemInLocation(GOHT, GOHTS_REMAINS);
+	PlaceItemInLocation(GYORG, GYORGS_REMAINS);
+	PlaceItemInLocation(TWINMOLD, TWINMOLDS_REMAINS);
+};
 static void SetScarceItemPool() {
 	//todo
 };
@@ -859,13 +889,14 @@ static void SetMinimalItemPool(){
 void GenerateItemPool() {
 
 	ItemPool.clear();
-	
+	AddItemsToPool(ItemPool, chestItems);
+	PlaceVanillaLogicHelpers();
+	PlaceVanillaBossRemains();
+	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+
 	if (Settings::ShuffleChests.Is(rnd::ShuffleChestsSetting::SHUFFLECHESTS_VANILLA)) {
 		PlaceVanillaChestItems();
-		PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 	}
-		AddItemsToPool(ItemPool, chestItems);
-		PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 	
 	/*
 	//Initialize ice trap models to always major items
