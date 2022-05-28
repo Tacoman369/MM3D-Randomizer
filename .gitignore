@@ -23,5 +23,5 @@ oldcode/loader/build
 *.pyc
 *.ips
 *.zar
-source/patch_symbols.hpp
+source/include/patch_symbols.hpp
 .DS_Store
