@@ -177,6 +177,7 @@ $(BUILD):
 	@git submodule update --init
 	$(MAKE) -C mm3dr/code
 	@mv mm3dr/code/basecode.ips $(ROMFS)/basecode.ips
+	@mv mm3dr/source/patch_symbols.hpp $(CURDIR)/source/include/
 	@mkdir -p $@
 
 ifneq ($(GFXBUILD),$(BUILD))
