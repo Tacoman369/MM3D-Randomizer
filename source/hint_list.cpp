@@ -77,6 +77,7 @@ void HintTable_Init() {
 	hintTable[FIERCE_DIETY_MASK] = HintText::Item({ Text{"the wrath of a god", "the wrath of a god", "the wrath of a god"}});
 	hintTable[MASK_OF_TRUTH] = HintText::Item({ Text{"a piercing gaze", "a piercing gaze", "a piercing gaze"}});
 		//SKULLTULA TOKENS
+	hintTable[SWAMP_SKULLTULA_TOKEN] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[SWAMP_SKULLTULA_TOKEN1] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[SWAMP_SKULLTULA_TOKEN2] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[SWAMP_SKULLTULA_TOKEN3] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
@@ -106,6 +107,7 @@ void HintTable_Init() {
 	hintTable[SWAMP_SKULLTULA_TOKEN28] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[SWAMP_SKULLTULA_TOKEN29] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[SWAMP_SKULLTULA_TOKEN30] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
+	hintTable[OCEANSIDE_SKULLTULA_TOKEN] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[OCEANSIDE_SKULLTULA_TOKEN1] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[OCEANSIDE_SKULLTULA_TOKEN2] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 	hintTable[OCEANSIDE_SKULLTULA_TOKEN3] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
@@ -138,6 +140,7 @@ void HintTable_Init() {
 	hintTable[OCEANSIDE_SKULLTULA_TOKEN30] = HintText::Item({ Text{"a golden token", "a golden token", "a golden token"} });
 		//Stray Fairies
 	hintTable[CT_STRAY_FAIRY] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
+	hintTable[WF_STRAY_FAIRY] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
 	hintTable[WF_STRAY_FAIRY1] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
 	hintTable[WF_STRAY_FAIRY2] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
 	hintTable[WF_STRAY_FAIRY3] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
@@ -153,6 +156,7 @@ void HintTable_Init() {
 	hintTable[WF_STRAY_FAIRY13] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
 	hintTable[WF_STRAY_FAIRY14] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
 	hintTable[WF_STRAY_FAIRY15] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost faiy"} });
+	hintTable[SH_STRAY_FAIRY] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[SH_STRAY_FAIRY1] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[SH_STRAY_FAIRY2] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[SH_STRAY_FAIRY3] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
@@ -168,6 +172,7 @@ void HintTable_Init() {
 	hintTable[SH_STRAY_FAIRY13] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[SH_STRAY_FAIRY14] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[SH_STRAY_FAIRY15] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
+	hintTable[GBT_STRAY_FAIRY] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[GBT_STRAY_FAIRY1] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[GBT_STRAY_FAIRY2] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[GBT_STRAY_FAIRY3] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
@@ -183,6 +188,7 @@ void HintTable_Init() {
 	hintTable[GBT_STRAY_FAIRY13] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[GBT_STRAY_FAIRY14] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[GBT_STRAY_FAIRY15] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
+	hintTable[ST_STRAY_FAIRY] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[ST_STRAY_FAIRY1] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[ST_STRAY_FAIRY2] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
 	hintTable[ST_STRAY_FAIRY3] = HintText::Item({ Text{"a lost fairy", "a lost fairy", "a lost fairy"} });
@@ -229,6 +235,7 @@ void HintTable_Init() {
 		//UPGRADABLE ITEMS
 	hintTable[LARGE_QUIVER] = HintText::Item({ Text{"a ranged weapon", "a ranged weapon", "a ranged weapon"}});
 	hintTable[LARGEST_QUIVER] = HintText::Item({ Text{"a ranged weapon", "a ranged weapon", "a ranged weapon"}});
+	hintTable[BOMB_BAG] = HintText::Item({ Text{"a vessel of explosives", "a vessel of explosives", "a vessel of explosives"}});
 	hintTable[BIG_BOMB_BAG] = HintText::Item({ Text{"a vessel of explosives", "a vessel of explosives", "a vessel of explosives"}});
 	hintTable[BIGGEST_BOMB_BAG] = HintText::Item({ Text{"a vessel of explosives", "a vessel of explosives", "a vessel of explosives"}});
 	hintTable[ADULT_WALLET] = HintText::Item({ Text{"a coin purse", "a coin purse", "a coin purse"}});
@@ -249,6 +256,7 @@ void HintTable_Init() {
 	hintTable[ELEGY_OF_EMPTINESS] = HintText::Item({ Text{"empty shells", "empty shells", "empty shells"}});
 	hintTable[OATH_TO_ORDER] = HintText::Item({ Text{"a song of giants", "a song of giants", "a song of giants"}});
 		//PIECES OF HEART
+	hintTable[PIECE_OF_HEART] = HintText::Item({ Text{"a segment of health", "a segment of health", "a segment of health"} });
 	hintTable[PIECE_OF_HEART1] = HintText::Item({ Text{"a segment of health", "a segment of health", "a segment of health"} });
 	hintTable[PIECE_OF_HEART2] = HintText::Item({ Text{"a segment of health", "a segment of health", "a segment of health"} });
 	hintTable[PIECE_OF_HEART3] = HintText::Item({ Text{"a segment of health", "a segment of health", "a segment of health"} });

@@ -194,7 +194,7 @@ static void GeneratePlaythrough() {
 //To reduce searches, some preprocessing is done in playthrough generation to avoid adding obviously unnecessary items
 static void PareDownPlaythrough() {
     std::vector<LocationKey> toAddBackItem;
-    //Start at sphere before Ganon's and count down
+    //Start at sphere before Majora's and count down
     for (int i = playthroughLocations.size() - 2; i >= 0; i--) {
         //Check each item location in sphere
         std::vector<int> erasableIndices;
@@ -242,7 +242,7 @@ static void PareDownPlaythrough() {
 // are just possible items you *can* collect to complete the seed.
 static void CalculateWotH() {
     //First copy locations from the 2-dimensional playthroughLocations into the 1-dimensional wothLocations
-    //size - 1 so Triforce is not counted
+    //size - 1 so Majora's Mask is not counted
     for (size_t i = 0; i < playthroughLocations.size() - 1; i++) {
         for (size_t j = 0; j < playthroughLocations[i].size(); j++) {
             if (Location(playthroughLocations[i][j])->IsHintable()) {
@@ -624,10 +624,10 @@ int Fill() {
         //GenerateStartingInventory();
         //RemoveStartingItemsFromPool();
         //FillExcludedLocations();
-        /*
+        
         //Temporarily add shop items to the ItemPool so that entrance randomization
         //can validate the world using deku/hylian shields
-        AddElementsToPool(ItemPool, GetMinVanillaShopItems(32)); //assume worst case shopsanity 4
+        /*AddElementsToPool(ItemPool, GetMinVanillaShopItems(32)); //assume worst case shopsanity 4
         if (ShuffleEntrances) {
             printf("\x1b[7;10HShuffling Entrances...");
             ShuffleAllEntrances();
@@ -635,10 +635,10 @@ int Fill() {
         }
         //erase temporary shop items
         FilterAndEraseFromPool(ItemPool, [](const ItemKey item) {return ItemTable(item).GetItemType() == ITEMTYPE_SHOP;});
-
+        */
         showItemProgress = true;
         //Place shop items first, since a buy shield is needed to place a dungeon reward on Gohma due to access
-        NonShopItems = {};
+        /*NonShopItems = {};
         if (Shopsanity.Is(SHOPSANITY_OFF)) {
             PlaceVanillaShopItems(); //Place vanilla shop items in vanilla location
         }
@@ -730,7 +730,7 @@ int Fill() {
             printf("Done");
             printf("\x1b[9;10HCalculating Playthrough...");
             PareDownPlaythrough();
-            //CalculateWotH();
+            CalculateWotH();
             printf("Done");
             //CreateItemOverrides();
            // CreateEntranceOverrides();

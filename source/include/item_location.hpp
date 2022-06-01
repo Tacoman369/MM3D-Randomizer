@@ -180,10 +180,10 @@ public:
     }
     
     u16 GetPrice() const {
-        //if (ItemTable(placedItem).GetItemType() == ITEMTYPE_SHOP) {
+        if (ItemTable(placedItem).GetLocationCategory() == LocationCategory::Purchases) {
         return ItemTable(placedItem).GetPrice();
-        //}
-        //return price;
+        }
+        return price;
     }
     /*
     void SetPrice(u16 price_) {

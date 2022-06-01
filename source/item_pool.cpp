@@ -15,11 +15,12 @@ using namespace Dungeon;
 std::vector<ItemKey> ItemPool = {};
 std::vector<ItemKey> PendingJunkPool = {};
 std::vector<u8> IceTrapModels = {};
-const std::array<ItemKey, 4> dungeonRewards = {
+const std::array<ItemKey, 5> dungeonRewards = {
 	ODOLWAS_REMAINS,
 	GOHTS_REMAINS,
 	GYORGS_REMAINS,
 	TWINMOLDS_REMAINS,
+	MAJORAS_MASK,
 };
 const std::array<ItemKey, 17> JunkPoolItems = {
 	BOMBS_5,
@@ -846,7 +847,7 @@ static void PlaceVanillaChestItems() {
 	PlaceItemInLocation(SECRET_SHRINE_WART_CHEST, SILVER_RUPEE);
 	PlaceItemInLocation(SECRET_SHRINE_GARO_CHEST, SILVER_RUPEE);
 	PlaceItemInLocation(SECRET_SHRINE_FINAL_CHEST, PIECE_OF_HEART);
-	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+	//PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 };
 //This exists since not all required items to finish the game are included in the randomizer yet
 //Places non randomized but logically required items so that the randomizer can logically place items
@@ -878,6 +879,7 @@ static void PlaceVanillaBossRemains() {
 	PlaceItemInLocation(GOHT, GOHTS_REMAINS);
 	PlaceItemInLocation(GYORG, GYORGS_REMAINS);
 	PlaceItemInLocation(TWINMOLD, TWINMOLDS_REMAINS);
+	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 };
 static void SetScarceItemPool() {
 	//todo
@@ -889,14 +891,19 @@ static void SetMinimalItemPool(){
 void GenerateItemPool() {
 
 	ItemPool.clear();
-	AddItemsToPool(ItemPool, chestItems);
-	PlaceVanillaLogicHelpers();
-	PlaceVanillaBossRemains();
-	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
-
 	if (Settings::ShuffleChests.Is(rnd::ShuffleChestsSetting::SHUFFLECHESTS_VANILLA)) {
 		PlaceVanillaChestItems();
 	}
+	else if (Settings::ShuffleChests.Is(ShuffleChestsSetting::SHUFFLECHESTS_RANDOM)) {
+		AddItemsToPool(ItemPool, chestItems);
+	}
+	//AddItemsToPool(ItemPool, dungeonRewards);
+	PlaceVanillaLogicHelpers();
+	PlaceVanillaBossRemains();
+	PlaceVanillaBossKeys();
+	PlaceVanillaSmallKeys();
+
+	
 	
 	/*
 	//Initialize ice trap models to always major items

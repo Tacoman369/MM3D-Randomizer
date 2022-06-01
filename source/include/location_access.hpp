@@ -26,13 +26,13 @@ public:
             return true;
         } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)) {
             return conditions_met[0]();
-        }// else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHED)) {
-         //   if (conditions_met[0]()) {
-         //       return true;
-         //   } else if (conditions_met[1] != NULL) {
-         //       return conditions_met[1]();
-         //   }
-        //}
+        } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHED)) {
+            if (conditions_met[0]()) {
+                return true;
+            } else if (conditions_met[1] != NULL) {
+                return conditions_met[1]();
+            }
+        }
         return false;
     }
 
@@ -66,13 +66,13 @@ public:
             return true;
         } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)) {
             return conditions_met[0]();
-        } //else if (Settings::Logic.Is(LOGIC_GLITCHED)) {
-            //if (conditions_met[0]()) {
-           //     return true;
-          //  } else if (conditions_met[1] != NULL) {
-         //       return conditions_met[1]();
-        //    }
-        //}
+        } else if (Settings::Logic.Is(LogicSetting::LOGIC_GLITCHED)) {
+            if (conditions_met[0]()) {
+                return true;
+            } else if (conditions_met[1] != NULL) {
+                return conditions_met[1]();
+            }
+        }
         return false;
     }
 

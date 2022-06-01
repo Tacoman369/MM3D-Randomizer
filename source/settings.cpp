@@ -252,7 +252,7 @@ namespace Settings {
   Option Scrubsanity            = Option::U8("Scrub Shuffle",          {"Off", "Affordable", "Expensive", "Random Prices"},               {scrubsOff, scrubsAffordable, scrubsExpensive, scrubsRandomPrices});
   //Option ShuffleCows            = Option::Bool("Shuffle Cows",           {"Off", "On"},                                                     {shuffleCowsDesc});
   //Option ShuffleOcarinas        = Option::Bool("Shuffle Ocarinas",       {"Off", "On"},                                                     {ocarinasDesc});
-  Option ShuffleChests = Option::Bool("Shuffle Chest Items", {"Vanilla", "Random"}, { shuffleChestItemsVanilla, shuffleChestItemsRandom }, OptionCategory::Setting, (u8)ShuffleChestsSetting::SHUFFLECHESTS_VANILLA);
+  Option ShuffleChests = Option::U8("Shuffle Chest Items", {"Vanilla", "Random"}, { shuffleChestItemsVanilla, shuffleChestItemsRandom }, OptionCategory::Setting, (u8)ShuffleChestsSetting::SHUFFLECHESTS_VANILLA);
   Option ShuffleGFRewards = Option::U8("Shuffle Great Fairy Rewards", { "Vanilla", "Great Fairies", "Anywhere" }, { shuffleGFVanilla, shuffleGFSelf, shuffleGFAnywhere }, OptionCategory::Setting, (u8)GreatFairyRewardShuffleSetting::GFREWARDSHUFFLE_VANILLA);
   Option ShuffleMerchants = Option::Bool("Shuffle Merchants", { "Off", "On" }, { shuffleMerchantsDesc });
 
@@ -1105,14 +1105,15 @@ namespace Settings {
 
     //If vanilla logic, we want to set all settings which unnecessarily modify vanilla behavior to off
     if (Logic.Is((u8)LogicSetting::LOGIC_VANILLA)) {
-      ShuffleRewards.SetSelectedIndex(0);
+      ShuffleChests.SetSelectedIndex(0);
+      //ShuffleRewards.SetSelectedIndex(0);
       //LinksPocketItem.SetSelectedIndex(0);
-      ShuffleSongs.SetSelectedIndex(0);
+      //ShuffleSongs.SetSelectedIndex(0);
       //Scrubsanity.SetSelectedIndex(0);
       //ShuffleCows.SetSelectedIndex(0);
       //ShuffleMagicBeans.SetSelectedIndex(0);
       //Keysanity.SetSelectedIndex(3); //Set small keys to any dungeon
-      GossipStoneHints.SetSelectedIndex(0);
+      //GossipStoneHints.SetSelectedIndex(0);
     }
     /*
     InitMusicRandomizer();

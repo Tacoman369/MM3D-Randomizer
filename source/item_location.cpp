@@ -20,7 +20,7 @@ void LocationTable_Init() {
 	locationTable[OCARINA_OF_TIME]										       = ItemLocation::Base		( "Ocarina of Time",					               HMS_OCARINA_OF_TIME,				    OCARINA_OF_TIME,			{Category::cClockTower}	);
 	locationTable[DEKU_MASK]											       = ItemLocation::Base		( "Deku Mask",						                   HMS_DEKU_MASK,						DEKU_MASK,					{Category::cClockTower} );
 	//locationTable[BOMBERS_NOTEBOOK]										       = ItemLocation::Base		( "Bombers Notebook",				                   HMS_BOMBERS_NOTEBOOK,				BOMBERS_NOTEBOOK,			{Category::cClockTower} );
-	locationTable[STARTING_SWORD]											   = ItemLocation::Base		( "Starting Sword",				                       STARTING_SWORD,					    PROGRESSIVE_SWORD,			{Category::cClockTower} );
+	locationTable[STARTING_SWORD]											   = ItemLocation::Base		( "Starting Sword",				                       KOKIRI_SWORD,					    KOKIRI_SWORD,			{Category::cClockTower} );
 	//locationTable[STARTING_SHIELD]                                             = ItemLocation::Base     ( "Starting Shield",                                   STARTING_SHIELD,                     HEROS_SHIELD,               {Category::cClockTower} );
 	 
 	//Deku Palace
@@ -86,7 +86,7 @@ void LocationTable_Init() {
 	//Ikana Graveyard
 	locationTable[IKANA_GRAVEYARD_DAMPE_DIGGING]							   = ItemLocation::Base 	  ( "Ikana Graveyard Dampe Digging",						IKANA_GRAVEYARD_DAMPE_DIGGING,		EMPTY_BOTTLE2,					{Category::cIkanaGraveyard, Category::cMinigame} );
 	locationTable[IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Iron Knuckle Chest",				IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST,	PIECE_OF_HEART,					{Category::cIkanaGraveyard,Category::cChest } );
-	locationTable[IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Captain Keeta's Chest",				IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST,CAPTAINS_HAT,					{Category::cIkanaGraveyard} );
+	//locationTable[IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Captain Keeta's Chest",				IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST,CAPTAINS_HAT,					{Category::cIkanaGraveyard} );
 	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET]						   = ItemLocation::Base 	  ( "Ikana Graveyard Day 1 Grave Tablet",				IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET,SONG_OF_STORMS,				{Category::cIkanaGraveyard, Category::cSong} );
 	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Day 1 Grave Bats",					IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS,	PURPLE_RUPEE,					{Category::cIkanaGraveyard,Category::cChest } );
 	locationTable[IKANA_GRAVEYARD_GROTTO]									   = ItemLocation::Chest 	  ( "Ikana Graveyard Grotto",							IKANA_GRAVEYARD_GROTTO,				BOMBCHU_5,						{Category::cIkanaGraveyard, Category::cGrotto,Category::cChest } );
@@ -849,6 +849,50 @@ std::vector<LocationKey> chestLocations = {
 	SECRET_SHRINE_FINAL_CHEST,
 	MAJORA,
 };
+std::vector<LocationKey> logicalLocations ={
+	SONG_OF_HEALING, 
+	OCARINA_OF_TIME,
+	DEKU_MASK, //DEKU MASK
+	STARTING_SWORD, //KOKIRI SWORD
+	DEKU_PALACE_IMPRISONED_MONKEY,//SONATA OF AWAKENING
+	GORON_VILLAGE_POWDER_KEG_CHALLENGE,//POWDER KEG
+	GORON_VILLAGE_GORON_LULLABY, //GORON LULLABY
+	GBC_MIKAU, //ZORA MASK
+	GBC_BABY_ZORAS, //NEW EWAVE BOSSA NOVA
+	IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, //SONG OF STORMS
+	MILK_ROAD_GORMAN_RACE, //GARO MASK
+	MOUNTAIN_VILLAGE_DARMANI, //GORON MASK
+	N_CLOCK_TOWN_GREAT_FAIRY_DEKU, //MAGIC METER
+	N_CLOCK_TOWN_OLD_LADY, //BLAST MASK
+	ROMANI_RANCH_ROMANIS_GAME, //EPONAS SONG 
+	SOUTHERN_SWAMP_MUSIC_STATUE, //SONG OF SOARING
+	SOUTHERN_SWAMP_KOTAKE, //BOTTLE WITH RED POTION - BOTTLE
+	W_CLOCK_TOWN_BOMB_BAG_BUY, //BOMB BAG
+	IKANA_CASTLE_IKANA_KING, //ELEGY OF EMPTINESS
+	//WOODFALL TEMPLE
+	WOODFALL_TEMPLE_SMALL_KEY_CHEST,
+	WOODFALL_TEMPLE_BOSS_KEY_CHEST,
+	ODOLWA,
+	//SNOWHEAD TEMPLE
+	SNOWHEAD_TEMPLE_BOSS_KEY_CHEST,
+	SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, //SMALL KEY
+	SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, //SMALL KEY
+	SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, //SMALL KEY
+	GOHT,
+	//GREAT BAY TEMPLE
+	GBT_BOSS_KEY_CHEST,
+	GBT_SMALL_KEY_CHEST,
+	GYORG,
+	//STONE TOWER TEMPLE
+	STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,
+	STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, //SMALL KEY
+	STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, //SMALL KEY
+	STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, //SMALL KEY
+	STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, //SMALL KEY
+	STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, //GIANTS MASK
+	TWINMOLD,
+	
+};
 std::vector<LocationKey> overworldLocations = {
 	//Deku Palace
 	//DEKU_PALACE_BEAN_DADDY,
@@ -1116,6 +1160,7 @@ void GenerateLocationPool() {
   //AddLocation(LINKS_POCKET);
   //AddLocations(overworldLocations);
   AddLocations(chestLocations);
+  AddLocations(logicalLocations);
   /*
   for (auto dungeon : Dungeon::dungeonList) {
     AddLocations(dungeon->GetDungeonLocations());
