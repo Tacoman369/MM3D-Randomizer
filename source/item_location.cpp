@@ -7,7 +7,7 @@
 #include "debug.hpp"
 #include "keys.hpp"
 #include "fill.hpp"
-
+using namespace std;
 //Location definitions
 static std::array<ItemLocation, KEY_ENUM_MAX> locationTable;
 
@@ -113,7 +113,7 @@ void LocationTable_Init() {
 	locationTable[MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO]						   = ItemLocation::Chest	   ( "Mountain Village Spring Water Grotto",				MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO,RED_RUPEE,						{Category::cMountainVillage, Category::cGrotto,Category::cChest } );
 	
 	//N Clock Town
-	locationTable[N_CLOCK_TOWN_GREAT_FAIRY_DEKU]							   = ItemLocation::Base		   ( "N Clock Town Great Fairy (Deku)",					N_CLOCK_TOWN_GREAT_FAIRY_DEKU,		PROGRESSIVE_MAGIC_METER,		{Category::cNorthClockTown, Category::cFairyFountain} );
+	locationTable[N_CLOCK_TOWN_GREAT_FAIRY_DEKU]							   = ItemLocation::Base		   ( "N Clock Town Great Fairy (Deku)",					N_CLOCK_TOWN_GREAT_FAIRY_DEKU,		MAGIC_POWER,		{Category::cNorthClockTown, Category::cFairyFountain} );
 	//locationTable[N_CLOCK_TOWN_BOMBERS_HIDE_SEEK]							   = ItemLocation::Base		   ( "N Clock Town Bombers Hide n Seek",					N_CLOCK_TOWN_BOMBERS_HIDE_SEEK,		BOMBERS_NOTEBOOK,				{Category::cNClockTown} );
 	//locationTable[N_CLOCK_TOWN_KEATON_QUIZ]									   = ItemLocation::Base		   ( "N Clock Town Keaton Quiz",							N_CLOCK_TOWN_KEATON_QUIZ,			PIECE_OF_HEART,					{Category::cNorthClockTown, Category::cMinigame} );
 	//locationTable[N_CLOCK_TOWN_DEKU_PLAYGROUND_3DAYS]						   = ItemLocation::Base		   ( "N Clock Town Deku Playground 3 Days Reward",		N_CLOCK_TOWN_DEKU_PLAYGROUND_3DAYS,	PIECE_OF_HEART,					{Category::cNorthClockTown, Category::cMinigame} );
@@ -219,7 +219,7 @@ void LocationTable_Init() {
 	locationTable[TWIN_ISLANDS_CAVE_CHEST]									   = ItemLocation::Chest	 ( "Twin Islands Cave",									TWIN_ISLANDS_CAVE_CHEST,				RED_RUPEE,				{Category::cTwinIslands,Category::cChest } );
 	
 	//W Clock Town
-	locationTable[W_CLOCK_TOWN_BOMB_BAG_BUY]								   = ItemLocation::Base		( "W Clock Town Bomb Bag Purchase",						W_CLOCK_TOWN_BOMB_BAG_BUY,			PROGRESSIVE_BOMB_BAG,		{Category::cWestClockTown} );
+	locationTable[W_CLOCK_TOWN_BOMB_BAG_BUY]								   = ItemLocation::Base		( "W Clock Town Bomb Bag Purchase",						W_CLOCK_TOWN_BOMB_BAG_BUY,			BOMB_BAG,		{Category::cWestClockTown} );
 	//locationTable[W_CLOCK_TOWN_BIG_BOMB_BAG_BUY]							   = ItemLocation::Base		( "W Clock Town Big Bomb Bag Purchase",					W_CLOCK_TOWN_BIG_BOMB_BAG_BUY,		PROGRESSIVE_BOMB_BAG,		{Category::cWestClockTown} );
 	//locationTable[W_CLOCK_TOWN_POSTMANS_GAME]								   = ItemLocation::Base		( "W Clock Town Postman's Game",							W_CLOCK_TOWN_POSTMANS_GAME,			PIECE_OF_HEART,				{Category::cWestClockTown} );
 	//locationTable[W_CLOCK_TOWN_ROSA_SISTERS]								   = ItemLocation::Base		( "W Clock Town Rosa Sisters",							W_CLOCK_TOWN_ROSA_SISTERS,			PIECE_OF_HEART,				{Category::cWestClockTown} );
@@ -773,7 +773,8 @@ std::vector<LocationKey> dungeonRewardLocations = {
   GOHT,
   GYORG,
   TWINMOLD,
-  LINKS_POCKET,
+  //MAJORA,
+  //LINKS_POCKET,
 };
 std::vector<LocationKey> chestLocations = {
 	DEKU_PALACE_BEAN_GROTTO,
@@ -847,7 +848,6 @@ std::vector<LocationKey> chestLocations = {
 	SECRET_SHRINE_WART_CHEST,
 	SECRET_SHRINE_GARO_CHEST,
 	SECRET_SHRINE_FINAL_CHEST,
-	MAJORA,
 };
 std::vector<LocationKey> logicalLocations ={
 	SONG_OF_HEALING, 
@@ -891,7 +891,7 @@ std::vector<LocationKey> logicalLocations ={
 	STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, //GIANTS MASK
 	TWINMOLD,
-	
+	MAJORA,
 };
 std::vector<LocationKey> overworldLocations = {
 	//Deku Palace
@@ -1133,7 +1133,7 @@ std::vector<LocationKey> allLocations = {};
 std::vector<LocationKey> everyPossibleLocation = {};
 
 //set of overrides to write to the patch
-//std::set<ItemOverride, ItemOverride_Compare> overrides = {};
+std::set<ItemOverride, ItemOverride_Compare> overrides = {};
 
 std::vector<std::vector<LocationKey>> playthroughLocations;
 std::vector<LocationKey> wothLocations;
@@ -1175,7 +1175,7 @@ void PlaceItemInLocation(LocationKey locKey, ItemKey item, bool applyEffectImmed
   PlacementLog_Msg(" placed at ");
   PlacementLog_Msg(loc->GetName());
   PlacementLog_Msg("\n\n");
-
+  
   if (applyEffectImmediately || Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
     ItemTable(item).ApplyEffect();
   }

@@ -572,77 +572,77 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
-const std::array<ItemKey, 71> chestItems = {
-	RED_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
+const std::array<ItemKey, 15> chestItems = {
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
 	LENS_OF_TRUTH,
-	RED_RUPEE,
-	PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
 	PIECE_OF_HEART,
-	RED_RUPEE,
-	BOMBCHU_5,
+	//RED_RUPEE,
+	//BOMBCHU_5,
 	PIECE_OF_HEART,
-	PURPLE_RUPEE,
-	BOMBCHU_5,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	BOMBCHU_10,
+	//PURPLE_RUPEE,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//BOMBCHU_10,
 	MAGIC_BEAN,
 	PIECE_OF_HEART,
 	PIECE_OF_HEART,
-	BOMBCHU_5,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
 	PIECE_OF_HEART,
-	RED_RUPEE,
+	//RED_RUPEE,
 	PIECE_OF_HEART,
-	BLUE_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
-	PURPLE_RUPEE,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
+	//PURPLE_RUPEE,
 	HEROS_BOW,
 	FIRE_ARROWS,
 	ICE_ARROWS,
 	LIGHT_ARROWS,
 	HOOKSHOT,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	SILVER_RUPEE,
-	RED_RUPEE,
-	BLUE_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//RED_RUPEE,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
 	MIRROR_SHIELD,
-	PURPLE_RUPEE,
-	PURPLE_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
+	//PURPLE_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
 	PIECE_OF_HEART
 };
 //additional chest items
@@ -666,9 +666,9 @@ static void AddItemToMainPool(const ItemKey item, size_t count = 1) {
 	ItemPool.insert(ItemPool.end(), count, item);
 }
 
-static void AddRandomBottle(std::vector<ItemKey>& bottlePool) {
+/*static void AddRandomBottle(std::vector<ItemKey>& bottlePool) {
 	AddItemToMainPool(RandomElement(bottlePool, true));
-}
+}*/
 
 ItemKey GetJunkItem() {
 	if (IceTrapValue.Is(rnd::IceTrapSetting::ICETRAPS_MAYHEM) || IceTrapValue.Is(rnd::IceTrapSetting::ICETRAPS_ONSLAUGHT)) {
@@ -691,7 +691,7 @@ static ItemKey GetPendingJunkItem() {
 };
 
 //Replace junk items in the pool with pending junk
-static void ReplaceMaxItem(const ItemKey itemToReplace, int max) {
+/*static void ReplaceMaxItem(const ItemKey itemToReplace, int max) {
 	int itemCount = 0;
 	for (size_t i = 0; i < ItemPool.size(); i++) {
 		if (ItemPool[i] == itemToReplace) {
@@ -701,7 +701,7 @@ static void ReplaceMaxItem(const ItemKey itemToReplace, int max) {
 			itemCount++;
 		}
 	}
-};
+};*/
 
 void PlaceJunkInExcludedLocation(const LocationKey il) {
 	//place a non-advancement item in this location
@@ -715,13 +715,13 @@ void PlaceJunkInExcludedLocation(const LocationKey il) {
 	printf("ERROR: No Junk to Place!!!\n");
 };
 
-static void PlaceVanillaDekuScrubItems() {
+/*static void PlaceVanillaDekuScrubItems() {
 	PlaceItemInLocation(IKANA_CANYON_SCRUB_PURCHASE, BLUE_POTION_REFILL);
 	PlaceItemInLocation(SOUTHERN_SWAMP_SCRUB_PURCHASE, MAGIC_BEAN);
 
-};
+};*/
 
-static void PlaceVanillaMapsAndCompasses() {
+/*static void PlaceVanillaMapsAndCompasses() {
 	//for (auto dungeon : dungeonList) {
 	//	dungeon->PlaceVanillaMap();
 	//	dungeon->PlaceVanillaCompass();
@@ -735,7 +735,7 @@ static void PlaceVanillaMapsAndCompasses() {
 	PlaceItemInLocation(STONE_TOWER_TEMPLE_MAP_CHEST, STONE_TOWER_TEMPLE_MAP);
 	PlaceItemInLocation(STONE_TOWER_TEMPLE_COMPASS_CHEST, STONE_TOWER_TEMPLE_COMPASS);
 
-};
+};*/
 
 static void PlaceVanillaSmallKeys() {
 	//for (auto dungeon : dungeonList) {
@@ -762,7 +762,7 @@ static void PlaceVanillaBossKeys() {
 	PlaceItemInLocation(STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, STONE_TOWER_TEMPLE_BOSS_KEY);
 };
 
-static void PlaceVanillaCowMilk() {
+/*static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(GBC_GROTTO_COW1, MILK);
 	PlaceItemInLocation(GBC_GROTTO_COW2, MILK);
 	PlaceItemInLocation(ROMANI_RANCH_COW_1, MILK);
@@ -771,7 +771,7 @@ static void PlaceVanillaCowMilk() {
 	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW1, MILK);
 	PlaceItemInLocation(TERMINA_FIELD_GROTTO_COW2, MILK);
 	PlaceItemInLocation(BENEATH_THE_WELL_COW, MILK);
-};
+};*/
 
 static void PlaceVanillaChestItems() {
 	PlaceItemInLocation(DEKU_PALACE_BEAN_GROTTO, RED_RUPEE);
@@ -874,7 +874,7 @@ static void PlaceVanillaLogicHelpers() {
 	PlaceItemInLocation(SOUTHERN_SWAMP_KOTAKE, BOTTLE_WITH_RED_POTION);
 	
 };
-static void PlaceVanillaBossRemains() {
+/*static void PlaceVanillaBossRemains() {
 	PlaceItemInLocation(ODOLWA, ODOLWAS_REMAINS);
 	PlaceItemInLocation(GOHT, GOHTS_REMAINS);
 	PlaceItemInLocation(GYORG, GYORGS_REMAINS);
@@ -886,24 +886,23 @@ static void SetScarceItemPool() {
 };
 static void SetMinimalItemPool(){
 	//todo
-};
+};*/
 
 void GenerateItemPool() {
 
 	ItemPool.clear();
+	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
 	if (Settings::ShuffleChests.Is(rnd::ShuffleChestsSetting::SHUFFLECHESTS_VANILLA)) {
 		PlaceVanillaChestItems();
 	}
-	else if (Settings::ShuffleChests.Is(ShuffleChestsSetting::SHUFFLECHESTS_RANDOM)) {
+	else {
 		AddItemsToPool(ItemPool, chestItems);
 	}
 	//AddItemsToPool(ItemPool, dungeonRewards);
 	PlaceVanillaLogicHelpers();
-	PlaceVanillaBossRemains();
-	PlaceVanillaBossKeys();
-	PlaceVanillaSmallKeys();
-
-	
+	//PlaceVanillaBossRemains(); //done in fill.cpp - RandomizeDungeonRewards()
+	PlaceVanillaBossKeys(); //todo Keysanity settings
+	PlaceVanillaSmallKeys(); // for now all vanilla
 	
 	/*
 	//Initialize ice trap models to always major items

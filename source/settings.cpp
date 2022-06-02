@@ -524,6 +524,7 @@ namespace Settings {
     ctx.ammoDrops = (AmmoDrops) ? 1 : 0;
     ctx.heartDropRefill = (HeartDropRefills) ? 1 : 0;
 
+    ctx.shuffleChests = ShuffleChests.Value<u8>();
     ctx.shuffleRewards = ShuffleRewards.Value<u8>();
     ctx.shuffleGreatFairyRewards = ShuffleGFRewards.Value<u8>();
     ctx.linksPocketItem = LinksPocketItem.Value<u8>();
@@ -934,7 +935,7 @@ namespace Settings {
     }
 
     //Only hide the options for now, select them later in UpdateSettings()
-    RandomizeAllSettings();
+    //RandomizeAllSettings();
       
 
     //Force Link's Pocket Item to be a dungeon reward if Shuffle Rewards is end of dungeons
@@ -1083,11 +1084,11 @@ namespace Settings {
   }
 
   //Function to update cosmetics options depending on choices
-  static void UpdateCosmetics() {
+  /*static void UpdateCosmetics() {
 
     ChooseFinalColor(ChildTunicColor, finalChildTunicColor, tunicColors);
     }
-
+  */
   //Function to set flags depending on settings
   void UpdateSettings() {
 
@@ -1104,8 +1105,8 @@ namespace Settings {
 	//UpdateCosmetics();
 
     //If vanilla logic, we want to set all settings which unnecessarily modify vanilla behavior to off
-    if (Logic.Is((u8)LogicSetting::LOGIC_VANILLA)) {
-      ShuffleChests.SetSelectedIndex(0);
+    //if (Logic.Is((u8)LogicSetting::LOGIC_VANILLA)) {
+     // ShuffleChests.SetSelectedIndex(0);
       //ShuffleRewards.SetSelectedIndex(0);
       //LinksPocketItem.SetSelectedIndex(0);
       //ShuffleSongs.SetSelectedIndex(0);
@@ -1114,7 +1115,7 @@ namespace Settings {
       //ShuffleMagicBeans.SetSelectedIndex(0);
       //Keysanity.SetSelectedIndex(3); //Set small keys to any dungeon
       //GossipStoneHints.SetSelectedIndex(0);
-    }
+    //}
     /*
     InitMusicRandomizer();
     if (ShuffleMusic) {

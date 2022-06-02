@@ -155,7 +155,7 @@ static std::vector<LocationKey> GetAccessibleGossipStones(const LocationKey hint
   return accessibleGossipStones;
 }
 
-static void AddHint(Text hint, const LocationKey gossipStone, const std::vector<u8>& colors = {}) {
+/*static void AddHint(Text hint, const LocationKey gossipStone, const std::vector<u8>& colors = {}) {
   //save hints as dummy items for writing to the spoiler log
   //NewItem(gossipStone, Item{hint, ITEMTYPE_EVENT, GI_RUPEE_BLUE_LOSE, false, &noVariable, NONE});
   Location(gossipStone)->SetPlacedItem(gossipStone);
@@ -165,7 +165,7 @@ static void AddHint(Text hint, const LocationKey gossipStone, const std::vector<
   //u32 sariaMessageId = 0xA00 + Location(gossipStone)->GetFlag();
   //CreateMessageFromTextObject(messageId, 0, 2, 3, AddColorsAndFormat(hint, colors));
   //CreateMessageFromTextObject(sariaMessageId, 0, 2, 3, AddColorsAndFormat(hint + EVENT_TRIGGER(), colors));
-}
+}*/
 
 static void CreateLocationHint(const std::vector<LocationKey>& possibleHintLocations) {
   //return if there aren't any hintable locations or gossip stones available
@@ -190,7 +190,7 @@ static void CreateLocationHint(const std::vector<LocationKey>& possibleHintLocat
     return;
   }
 
-  LocationKey gossipStone = RandomElement(accessibleGossipStones);
+  //LocationKey gossipStone = RandomElement(accessibleGossipStones);
   Location(hintedLocation)->SetAsHinted();
 
   //make hint text
@@ -240,7 +240,7 @@ static void CreateWothHint(u8* remainingDungeonWothHints) {
     return;
   }
   Location(hintedLocation)->SetAsHinted();
-  LocationKey gossipStone = RandomElement(gossipStoneLocations);
+  //LocationKey gossipStone = RandomElement(gossipStoneLocations);
 
   //form hint text
   Text locationText;
@@ -287,7 +287,7 @@ static void CreateBarrenHint(u8* remainingDungeonBarrenHints, std::vector<Locati
     return;
   }
   Location(hintedLocation)->SetAsHinted();
-  LocationKey gossipStone = RandomElement(gossipStoneLocations);
+  //LocationKey gossipStone = RandomElement(gossipStoneLocations);
 
   //form hint text
   Text locationText;
@@ -338,7 +338,7 @@ static void CreateRandomLocationHint(const bool goodItem = false) {
     return;
   }
   Location(hintedLocation)->SetAsHinted();
-  LocationKey gossipStone = RandomElement(gossipStoneLocations);
+  //LocationKey gossipStone = RandomElement(gossipStoneLocations);
 
   //form hint text
   Text itemText = Location(hintedLocation)->GetPlacedItem().GetHint().GetText();
@@ -373,7 +373,7 @@ static void CreateJunkHint() {
     PlacementLog_Msg("\tNO GOSSIP STONES TO PLACE HINT\n\n");
     return;
   }
-  LocationKey gossipStone = RandomElement(gossipStones);
+  //LocationKey gossipStone = RandomElement(gossipStones);
   Text hint = junkHint.GetText();
 
   PlacementLog_Msg("\tMessage: ");
@@ -519,10 +519,10 @@ void CreateAllHints() {
   }
 
   //If any gossip stones failed to have a hint placed on them for some reason, place a junk hint as a failsafe.
-  for (LocationKey gossipStone : FilterFromPool(gossipStoneLocations, [](const LocationKey loc){return Location(loc)->GetPlacedItemKey() == NONE;})) {
+  /*for (LocationKey gossipStone : FilterFromPool(gossipStoneLocations, [](const LocationKey loc){return Location(loc)->GetPlacedItemKey() == NONE;})) {
     const HintText junkHint = RandomElement(GetHintCategory(HintCategory::Junk));
     //AddHint(junkHint.GetText(), gossipStone, {QM_PINK});
-  }
+  }*/
 
   //Getting gossip stone locations temporarily sets one location to not be reachable.
   //Call the function one last time to get rid of false positives on locations not

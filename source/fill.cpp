@@ -24,7 +24,7 @@ using namespace Settings;
 
 static bool placementFailure = false;
 
-static void RemoveStartingItemsFromPool() {
+/*static void RemoveStartingItemsFromPool() {
     for (ItemKey startingItem : StartingInventory) {
         for (size_t i = 0; i < ItemPool.size(); i++) {
             if (startingItem == GREAT_FAIRYS_SWORD) {
@@ -46,7 +46,7 @@ static void RemoveStartingItemsFromPool() {
         }
     }
 }
-
+*/
 
 std::vector<LocationKey> GetAllEmptyLocations() {
     return FilterFromPool(allLocations, [](const LocationKey loc) { return Location(loc)->GetPlacedItemKey() == NONE;});
@@ -59,7 +59,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     std::vector<LocationKey> accessibleLocations;
     //Reset all access to begin a new search
         //ApplyStartingInventory();
-    
+    UpdateHelpers();
     Areas::AccessReset();
     LocationReset();
   
@@ -73,6 +73,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     bool updatedEvents = false;
     bool firstIteration = true;
 
+    //If no new items are found and no events are updated, then the next iteration won't provide any new location
     while (newItemLocations.size() > 0 || updatedEvents ||  firstIteration) {
         firstIteration = false;
         updatedEvents = false;
@@ -209,10 +210,10 @@ static void PareDownPlaythrough() {
             //Playthrough is still beatable without this item, therefore it can be removed from playthrough section.
             if (playthroughBeatable) {
                 //Uncomment to print playthrough deletion log in citra
-                 //std::string itemname(ItemTable(copy).GetName().GetEnglish());
-                 //std::string locationname(Location(loc)->GetName());
-                 //std::string removallog = itemname + " at " + locationname + " removed from playthrough";
-                 //CitraPrint(removallog);
+                 std::string itemname(ItemTable(copy).GetName().GetEnglish());
+                 std::string locationname(Location(loc)->GetName());
+                 std::string removallog = itemname + " at " + locationname + " removed from playthrough";
+                 CitraPrint(removallog);
                 playthroughLocations[i].erase(playthroughLocations[i].begin() + j);
                 Location(loc)->SetDelayedItem(copy); //Game is still beatable, don't add back until later
                 toAddBackItem.push_back(loc);
@@ -400,11 +401,23 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
 
 //This function will specifically randomize dungeon rewards for the End of Dungeons
 //setting, or randomize one dungeon reward to Link's Pocket if that setting is on
-/*
+
 static void RandomizeDungeonRewards() {
+std::vector<ItemKey> rewards = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return ItemTable(i).GetItemCategory() == ItemCategory::Remains;});
+        if (Settings::Logic.Is(LogicSetting::LOGIC_VANILLA)) { //Place dungeon rewards in vanilla locations
+            for (LocationKey loc : dungeonRewardLocations) {
+                Location(loc)->PlaceVanillaItem();
+            }
+        }
+        else { //Randomize dungeon rewards with assumed fill -- for now both place vanilla as random dungeon rewards is not implemented yet
+        for (LocationKey loc : dungeonRewardLocations) {
+                Location(loc)->PlaceVanillaItem();
+            }
+            //AssumedFill(rewards, dungeonRewardLocations);
+        }
 
     //quest item bit mask of each stone/medallion for the savefile
-    static constexpr std::array<u32, 9> bitMaskTable = {
+   /* static constexpr std::array<u32, 9> bitMaskTable = {
       0x00040000, //Kokiri Emerald
       0x00080000, //Goron Ruby
       0x00100000, //Zora Sapphire
@@ -451,12 +464,12 @@ static void RandomizeDungeonRewards() {
         PlaceItemInLocation(LINKS_POCKET, startingReward);
         //erase the stone/medallion from the Item Pool
         FilterAndEraseFromPool(ItemPool, [startingReward](const ItemKey i) {return i == startingReward;});
-    }
-}*/
+    }*/
+}
 
 //Fills any locations excluded by the player with junk items so that advancement items
 //can't be placed there.
-static void FillExcludedLocations() {
+/*static void FillExcludedLocations() {
     //Only fill in excluded locations that don't already have something and are forbidden
     std::vector<LocationKey> excludedLocations = FilterFromPool(allLocations, [](const LocationKey loc) {
         return Location(loc)->IsExcluded();
@@ -465,10 +478,10 @@ static void FillExcludedLocations() {
     for (LocationKey loc : excludedLocations) {
         PlaceJunkInExcludedLocation(loc);
     }
-}
+}*/
 
 //Function to handle the Own Dungeon setting
-static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
+/*static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
     std::vector<LocationKey> dungeonLocations = dungeon->GetDungeonLocations();
     std::vector<ItemKey> dungeonItems;
 
@@ -502,7 +515,7 @@ static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
         auto dungeonMapAndCompass = FilterAndEraseFromPool(ItemPool, [dungeon](const ItemKey i) { return i == dungeon->GetMap() || i == dungeon->GetCompass();});
         AssumedFill(dungeonMapAndCompass, dungeonLocations);
     }
-}
+}*/
 
 /*Randomize items restricted to a certain set of locations.
   The fill order of location groups is as follows:
@@ -512,7 +525,7 @@ static void RandomizeOwnDungeon(const Dungeon::DungeonInfo* dungeon) {
   Small Keys, Gerudo Keys, Boss Keys, Ganon's Boss Key, and/or dungeon rewards
   will be randomized together if they have the same setting. Maps and Compasses
   are randomized separately once the dungeon advancement items have all been placed.*/
-static void RandomizeDungeonItems() {
+/*static void RandomizeDungeonItems() {
     using namespace Dungeon;
 
     //Get Any Dungeon and Overworld group locations
@@ -568,8 +581,8 @@ static void RandomizeDungeonItems() {
             AssumedFill(mapAndCompassItems, overworldLocations, true);
         }
     }
-}
-
+}*/
+/*
 static void RandomizeLinksPocket() {
     if (LinksPocketItem.Is(rnd::LinksPocketSetting::LINKSPOCKETITEM_ADVANCEMENT)) {
         //Get all the advancement items                                                                                                     don't include tokens
@@ -584,7 +597,7 @@ static void RandomizeLinksPocket() {
     else if (LinksPocketItem.Is(rnd::LinksPocketSetting::LINKSPOCKETITEM_NOTHING)) {
         PlaceItemInLocation(LINKS_POCKET, GREEN_RUPEE);
     }
-}
+}*/
 
 void VanillaFill() {
     //Perform minimum needed initialization
@@ -593,7 +606,7 @@ void VanillaFill() {
     GenerateItemPool();
     //GenerateStartingInventory();
     //Place vanilla item in each location
-    //RandomizeDungeonRewards();
+    RandomizeDungeonRewards();
     for (LocationKey loc : allLocations) {
         Location(loc)->PlaceVanillaItem();
     }
@@ -604,7 +617,7 @@ void VanillaFill() {
     //    printf("\x1b[7;32HDone");
     //}
     //Finish up
-    //CreateItemOverrides();
+    CreateItemOverrides();
     //CreateEntranceOverrides();
     //CreateAlwaysIncludedMessages();
 }
@@ -613,7 +626,7 @@ int Fill() {
     int retries = 0;
     while (retries < 5) {
         placementFailure = false;
-        showItemProgress = true;
+        showItemProgress = false;
         playthroughLocations.clear();
         //playthroughEntrances.clear();
         wothLocations.clear();
@@ -684,7 +697,7 @@ int Fill() {
         }*/
 
         //Place dungeon rewards
-        //RandomizeDungeonRewards();
+        RandomizeDungeonRewards();
         /*
         //Place dungeon items restricted to their Own Dungeon
         for (auto dungeon : Dungeon::dungeonList) {
@@ -732,7 +745,7 @@ int Fill() {
             PareDownPlaythrough();
             CalculateWotH();
             printf("Done");
-            //CreateItemOverrides();
+            CreateItemOverrides();
            // CreateEntranceOverrides();
            // CreateAlwaysIncludedMessages();
             /*if (GossipStoneHints.IsNot(HINTS_NO_HINTS)) {
