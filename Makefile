@@ -33,7 +33,7 @@ include $(DEVKITARM)/3ds_rules
 #---------------------------------------------------------------------------------
 APP_TITLE   :=  Majoras Mask 3D Randomizer
 APP_AUTHOR  :=  Tacoman369
-APP_DESCRIPTION:= A Randomized Majoras Mask 
+APP_DESCRIPTION:= A Randomized Majora's Mask 
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	source
@@ -193,8 +193,9 @@ endif
 #---------------------------------------------------------------------------------
 clean:
 	@echo Cleaning app and basecode ...
-	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD) $(ROMFS)/basecode.ips
-	$(MAKE) -f mm3dr/code/Makefile clean
+	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD) $(ROMFS)/basecode.ips source/include/patch_symbols.hpp
+	$(MAKE) clean -f mm3dr/code/Makefile
+	@rm -rf mm3dr/code/build
 	
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
