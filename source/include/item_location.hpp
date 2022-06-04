@@ -212,12 +212,15 @@ public:
             [category](auto entry) { return entry == category; });
     }
 
-    bool IsDungeon() const  {return true;
-        //return LocationCategory = Category::cWoodfallTemple;
-            
+    bool IsDungeon() const  {//return true;
+            return( IsCategory(Category::cWoodfallTemple) ||
+                    IsCategory(Category::cSnowheadTemple) ||
+                    IsCategory(Category::cGreatBayTemple) ||
+                    IsCategory(Category::cStoneTowerTemple));
+            /*
             (type != ItemLocationType::OGSToken ||
             type != ItemLocationType::SGSToken
-            );
+            );*/
     }
 
     bool IsOverworld() const {

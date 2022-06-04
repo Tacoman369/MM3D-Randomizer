@@ -720,6 +720,8 @@ namespace Areas {
 	Area* AreaTable(const AreaKey areaKey) {
 		if (areaKey > KEY_ENUM_MAX) {
 			printf("\x1b[1;1HERROR: AREAKEY TOO BIG");
+			//needs error handling eventually
+			return 0;
 		}
 		return &(areaTable[areaKey]);
 	}
