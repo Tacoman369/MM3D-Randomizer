@@ -57,26 +57,89 @@ std::vector<LocationKey> GetAllEmptyLocations() {
 //specifies the pool of locations that we're trying to search for an accessible location in
 std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& allowedLocations, SearchMode mode) {
     std::vector<LocationKey> accessibleLocations;
+    
     //Reset all access to begin a new search
         //ApplyStartingInventory();
     UpdateHelpers();
     Areas::AccessReset();
     LocationReset();
   
-    std::vector<AreaKey> areaPool = { ROOT };
+    std::vector<AreaKey> areaPool = { ROOT,
+    DEKU_PALACE, 
+    E_CLOCK_TOWN, 
+    GORON_VILLAGE, 
+    GREAT_BAY_COAST, 
+    IKANA_CANYON, 
+    IKANA_GRAVEYARD,
+    LAUNDRY_POOL,
+    MILK_ROAD, 
+    MOUNTAIN_VILLAGE, };/*
+    N_CLOCK_TOWN,
+    ROAD_TO_SNOWHEAD,
+    PINNACLE_ROCK,
+    ROAD_TO_IKANA,
+    ROAD_TO_SOUTHERN_SWAMP, 
+    ROMANI_RANCH, 
+    S_CLOCK_TOWN,
+    SNOWHEAD,
+    SOUTHERN_SWAMP,
+    STOCKPOTINN, 
+    STONE_TOWER,
+    TERMINA_FIELD,
+    TWIN_ISLANDS,
+    W_CLOCK_TOWN,
+    WOODFALL,
+    ZORA_CAPE,
+    ZORA_HALL,
+    WOODFALL_TEMPLE, 
+    SNOWHEAD_TEMPLE, 
+    GBT, 
+    STONE_TOWER_TEMPLE, 
+    PIRATE_FORTRESS, 
+    BENEATH_THE_WELL, 
+    IKANA_CASTLE, 
+    SECRET_SHRINE,
+    THE_MOON,
+    SSH,
+    OSH, 
+    };*/
+    /*  Areas it doesnt like
+     */
+    
 
     //Variables for playthrough
-    bool bombchusFound = false;
+    //bool bombchusFound = false;
     std::vector<std::string> buyIgnores;
     //Variables for search
     std::vector<ItemLocation*> newItemLocations;
-    bool updatedEvents = false;
+    //bool updatedEvents = false;
     bool firstIteration = true;
 
+    //for each area in the areaPool
+    
+        for (size_t z=0;z<areaPool.size(); z++) {
+            Area* area2 = AreaTable(areaPool[z]);
+            PlacementLog_Msg("\nAreas found from area array:\n");
+            PlacementLog_Msg(area2->regionName);
+            PlacementLog_Msg("\n");
+            //for each ItemLocation in this area
+            PlacementLog_Msg("\nLocations found from area array:\n");
+            for (size_t y=0;y< area2->locations.size(); y++) {
+                LocationAccess& locPair2 = area2->locations[y];
+                LocationKey loc2 = locPair2.GetLocation();
+                ItemLocation* location2 = Location(loc2);
+                
+                
+                PlacementLog_Msg(location2->GetName());
+                PlacementLog_Msg("\n");
+            
+            }
+        }
+
     //If no new items are found and no events are updated, then the next iteration won't provide any new location
-    while (newItemLocations.size() > 0 || updatedEvents ||  firstIteration) {
+    while (newItemLocations.size() > 0  ||  firstIteration) { //|| updatedEvents - events included in mm3dr yet
         firstIteration = false;
-        updatedEvents = false;
+        //updatedEvents = false;
 
         for (ItemLocation* location : newItemLocations) {
             location->ApplyPlacedItemEffect();
@@ -84,28 +147,28 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
         newItemLocations.clear();
 
         std::vector<LocationKey> itemSphere;
-        std::list<Entrance*> entranceSphere;
-
+        //std::list<Entrance*> entranceSphere;
+        
         for (size_t i = 0; i < areaPool.size(); i++) {
             Area* area = AreaTable(areaPool[i]);
 
-            if (area->UpdateEvents()) {
+            /*if (area->UpdateEvents()) {
                 updatedEvents = true;
-            }
-
-
+            }*/
+            //print all areas found by this function
+            
             //for each ItemLocation in this area
             for (size_t k = 0; k < area->locations.size(); k++) {
                 LocationAccess& locPair = area->locations[k];
                 LocationKey loc = locPair.GetLocation();
                 ItemLocation* location = Location(loc);
-
-                if ((!location->IsAddedToPool())) {   // && (locPair.ConditionsMet())
+            
+                if ((!location->IsAddedToPool())  && (locPair.ConditionsMet())) {   
 
                     location->AddToPool();
-
                     if (location->GetPlacedItemKey() == NONE) {
                         accessibleLocations.push_back(loc); //Empty location, consider for placement
+                        
                     }
                     
                     //Playthrough stuff
@@ -113,9 +176,10 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                     if (mode == SearchMode::GeneratePlaythrough) {
                         //Item is an advancement item, figure out if it should be added to this sphere
                         if (!playthroughBeatable && location->GetPlacedItem().IsAdvancement()) {
+                            
                             //ItemType type = location->GetPlacedItem().GetItemType();
-                            std::string itemName(location->GetPlacedItemName().GetEnglish());
-                            bool bombchus = itemName.find("Bombchu") != std::string::npos; //Is a bombchu location
+                            //std::string itemName(location->GetPlacedItemName().GetEnglish());
+                            //bool bombchus = itemName.find("Bombchu") != std::string::npos; //Is a bombchu location
 
                             //Decide whether to exclude this location
                             //This preprocessing is done to reduce the amount of searches performed in PareDownPlaythrough
@@ -123,10 +187,10 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                             //2) Bombchus after the first (including buy bombchus)
                             bool exclude = true;
                             //Only print first bombchu location found
-                            if (bombchus && !bombchusFound) {
+                            /*if (bombchus && !bombchusFound) {
                                 bombchusFound = true;
                                 exclude = false;
-                            }
+                            }*/
                             
                             //Has not been excluded, add to playthrough
                             if (!exclude) {
@@ -183,6 +247,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
         return true;
         });
     return accessibleLocations;
+    
 }
 
 static void GeneratePlaythrough() {
@@ -346,17 +411,29 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             for (ItemKey unplacedItem : itemsToNotPlace) {
                 ItemTable(unplacedItem).ApplyEffect();
             }
+            //Print allowed locations to view active list at this point
+             PlacementLog_Msg("\nAllowed Locations are: \n"); 
+            for (LocationKey loc : allowedLocations)
+                {                PlacementLog_Msg(Location(loc)->GetName());
+                PlacementLog_Msg("\n");
+                }
 
             //get all accessible locations that are allowed
             const std::vector<LocationKey> accessibleLocations = GetAccessibleLocations(allowedLocations);
-
+            //print accessable locations to see what's accessable 
+            PlacementLog_Msg("\nAccessable Locations are: \n");
+            for (LocationKey loc : accessibleLocations)
+                {                PlacementLog_Msg(Location(loc)->GetName());
+                PlacementLog_Msg("\n");
+                }
             //retry if there are no more locations to place items
             if (accessibleLocations.empty()) {
 
                 PlacementLog_Msg("\nCANNOT PLACE ");
                 PlacementLog_Msg(ItemTable(item).GetName().GetEnglish());
                 PlacementLog_Msg(". TRYING AGAIN...\n");
-
+                DebugPrint("%s: accessable locations according to code %u\n", __func__, accessibleLocations);
+                
                 #ifdef ENABLE_DEBUG
                 PlacementLog_Write();
                 #endif

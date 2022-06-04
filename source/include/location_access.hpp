@@ -76,7 +76,20 @@ public:
         return false;
     }
 
-    bool ConditionsMet() const;
+    bool ConditionsMet() const {
+        if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
+            return true;
+        } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)) {
+            return conditions_met[0]();
+        } else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHED)) {
+            if (conditions_met[0]()) {
+                return true;
+            } else if (conditions_met[1] != NULL) {
+                return conditions_met[1]();
+            }
+        }
+        return false;
+    }
 
     LocationKey GetLocation() const {
         return location;

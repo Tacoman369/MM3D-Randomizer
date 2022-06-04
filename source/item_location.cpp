@@ -84,9 +84,9 @@ void LocationTable_Init() {
 	//locationTable[IKANA_CANYON_SCRUB_PURCHASE]								   = ItemLocation::Base 	  ( "Ikana Canyon Scrub Purchase",						IKANA_CANYON_SCRUB_PURCHASE,		POTION_BLUE_REFILL,				{Category::cIkanaCanyon, Category::cDekuScrub} );
 	
 	//Ikana Graveyard
-	locationTable[IKANA_GRAVEYARD_DAMPE_DIGGING]							   = ItemLocation::Base 	  ( "Ikana Graveyard Dampe Digging",						IKANA_GRAVEYARD_DAMPE_DIGGING,		EMPTY_BOTTLE2,					{Category::cIkanaGraveyard, Category::cMinigame} );
+	//locationTable[IKANA_GRAVEYARD_DAMPE_DIGGING]							   = ItemLocation::Base 	  ( "Ikana Graveyard Dampe Digging",						IKANA_GRAVEYARD_DAMPE_DIGGING,		EMPTY_BOTTLE2,					{Category::cIkanaGraveyard, Category::cMinigame} );
 	locationTable[IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Iron Knuckle Chest",				IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST,	PIECE_OF_HEART,					{Category::cIkanaGraveyard,Category::cChest } );
-	//locationTable[IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Captain Keeta's Chest",				IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST,CAPTAINS_HAT,					{Category::cIkanaGraveyard} );
+	locationTable[IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Captain Keeta's Chest",				IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST,CAPTAINS_HAT,					{Category::cIkanaGraveyard} );
 	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET]						   = ItemLocation::Base 	  ( "Ikana Graveyard Day 1 Grave Tablet",				IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET,SONG_OF_STORMS,				{Category::cIkanaGraveyard, Category::cSong} );
 	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS]						   = ItemLocation::Chest 	  ( "Ikana Graveyard Day 1 Grave Bats",					IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS,	PURPLE_RUPEE,					{Category::cIkanaGraveyard,Category::cChest } );
 	locationTable[IKANA_GRAVEYARD_GROTTO]									   = ItemLocation::Chest 	  ( "Ikana Graveyard Grotto",							IKANA_GRAVEYARD_GROTTO,				BOMBCHU_5,						{Category::cIkanaGraveyard, Category::cGrotto,Category::cChest } );
@@ -335,7 +335,7 @@ void LocationTable_Init() {
 			  --- BOSSES ---
 	  -------------------------------*/
 
-	  //locationTable[LINKS_POCKET]                                                = ItemLocation::Reward   ( "Link's Pocket",                                      LINKS_POCKET,                       DEKU_MASK,                      {} );
+	  locationTable[LINKS_POCKET]                                                = ItemLocation::Base   ( "Link's Pocket",                                      LINKS_POCKET,                       NONE,                      {} );
 	  locationTable[ODOLWA]							   = ItemLocation::Reward	( "Woodfall Temple Odolwa's Remains",					ODOLWAS_REMAINS,	                ODOLWAS_REMAINS,			    {} );
 	  locationTable[GOHT]							   	   = ItemLocation::Reward	( "Snowhead Temple Goht's Remains",						GOHTS_REMAINS,		                GOHTS_REMAINS,				    {} );
 	  locationTable[GYORG]										   = ItemLocation::Reward	( "Great Bay Temple Gyorg's Remains",					GYORGS_REMAINS,					    GYORGS_REMAINS,				    {} );
@@ -1160,7 +1160,7 @@ void GenerateLocationPool() {
   //AddLocation(LINKS_POCKET);
   //AddLocations(overworldLocations);
   AddLocations(chestLocations);
-  AddLocations(logicalLocations);
+  //AddLocations(logicalLocations);
   /*
   for (auto dungeon : Dungeon::dungeonList) {
     AddLocations(dungeon->GetDungeonLocations());

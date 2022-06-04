@@ -20,7 +20,7 @@ namespace Logic {
 	bool HasBottle = true;
 	bool Bombchus = false;
 	bool DekuStick = true;
-	bool MagicBean = true;
+	bool MagicBean = false;
 	bool MagicBeanPack = true;
 	bool LensOfTruth = false;
 	bool Bow = false;
@@ -32,7 +32,7 @@ namespace Logic {
 	bool Pictobox = true;
 	bool PowderKeg = true;
 	bool Seahorse = true;
-	bool DekuPrincess = true;
+	bool DekuPrincess = false;
 	bool BigPoe = true;
 	bool ZoraEgg = true;
 	bool Mushroom = true;
@@ -62,8 +62,8 @@ namespace Logic {
 	bool MagicPower = true;
 	bool ExtendedMagicPower = true;
 	bool GreatFairySword = true;
-	bool StoneTowerMagicBean = true;
-	bool SwampScrubMagicBean = true;
+	bool StoneTowerMagicBean = false;
+	bool SwampScrubMagicBean = false;
 
 	//mask logic
 	bool DekuMask = true;
@@ -127,10 +127,10 @@ namespace Logic {
 	bool EponasSong = true;
 	bool SongOfSoaring = true;
 	//Remains
-	bool OdolwaRemains = true;
-	bool GohtRemains = true;
-	bool GyorgRemains = true;
-	bool TwinmoldRemains = true;
+	bool OdolwaRemains = false;
+	bool GohtRemains = false;
+	bool GyorgRemains = false;
+	bool TwinmoldRemains = false;
 	//Progressive Items
 	u8 ProgressiveBow = 0;
 	u8 ProgressiveMagic = 0;
@@ -142,10 +142,10 @@ namespace Logic {
 	u8 GreatBayTempleKeys = 0;
 	u8 StoneTowerTempleKeys = 0;
 	//Boss Keys
-	bool BossKeyWoodfallTemple = true;
-	bool BossKeySnowheadTemple = true;
-	bool BossKeyGreatBayTemple = true;
-	bool BossKeyStoneTowerTemple = true;
+	bool BossKeyWoodfallTemple = false;
+	bool BossKeySnowheadTemple = false;
+	bool BossKeyGreatBayTemple = false;
+	bool BossKeyStoneTowerTemple = false;
 	//Skulltula Counts
 	u8 SwampSkulltulaTokens = 0;
 	u8 OceanSkulltulaTokens = 0;
@@ -206,7 +206,7 @@ namespace Logic {
 	bool AnyBottle = true;
 	bool AnySword = true;
 	bool AnyBombBag = true;
-	bool AnyMagicBean = true;
+	bool AnyMagicBean = false;
 	bool WaterForBeans = true;
 	bool TwoBottles = true;
 	bool AnyWallet = true;
@@ -227,37 +227,37 @@ namespace Logic {
 	//Locational Helpers
 	bool PoisonSwampAccess = true;
 	bool WoodfallTempleAccess = true;
-	bool NorthAccess = true;
+	bool NorthAccess = false;
 	bool SnowheadTempleAccess = false;
-	bool EponaAccess = true;
-	bool WestAccess = true;
-	bool PiratesFortressAccess = true;
-	bool GreatBayTempleAccess = true;
-	bool EastAccess = true;
-	bool IkanaCanyonAccess = true;
-	bool StoneTowerTempleAcccess = true;
-	bool InvertedStoneTowerTempleAccess = true;
-	bool MoonAccess = true;
-	bool OneWoodfallKey = true;
-	bool OneSnowheadKey = true;
-	bool TwoSnowheadKeys = true;
-	bool OneGreatBayKey = true;
-	bool OneStoneTowerKey = true;
-	bool TwoStoneTowerKeys = true;
-	bool ThreeStoneTowerKeys = true;
-	bool SwampSpiderhouseTreeRoom = true;
-	bool OceanSkulltulas = true;
-	bool IkanaGraveyardAccess = true;
+	bool EponaAccess = false;
+	bool WestAccess = false;
+	bool PiratesFortressAccess = false;
+	bool GreatBayTempleAccess = false;
+	bool EastAccess = false;
+	bool IkanaCanyonAccess = false;
+	bool StoneTowerTempleAcccess = false;
+	bool InvertedStoneTowerTempleAccess = false;
+	bool MoonAccess = false;
+	bool OneWoodfallKey = false;
+	bool OneSnowheadKey = false;
+	bool TwoSnowheadKeys = false;
+	bool OneGreatBayKey = false;
+	bool OneStoneTowerKey = false;
+	bool TwoStoneTowerKeys = false;
+	bool ThreeStoneTowerKeys = false;
+	bool SwampSpiderhouseTreeRoom = false;
+	bool OceanSkulltulas = false;
+	bool IkanaGraveyardAccess = false;
 	bool FightTwinmold = false;
-	bool PinnacleRockAccess = true;
-	bool ExitOceanSpiderHouse = true;
-	bool NightInnAccess = true;
-	bool EnterSnowheadTemple = true;
-	bool GBTReverseWaterDirection = true;
+	bool PinnacleRockAccess = false;
+	bool ExitOceanSpiderHouse = false;
+	bool NightInnAccess = false;
+	bool EnterSnowheadTemple = false;
+	bool GBTReverseWaterDirection = false;
 	bool Fighting = true;
-	bool CrossPoisonWater = true;
-	bool AccessToAllOceanSpiders = true;
-	bool AccessToAllSwampSpiders = true;
+	bool CrossPoisonWater = false;
+	bool AccessToAllOceanSpiders = false;
+	bool AccessToAllSwampSpiders = false;
 	bool ClockTownStrayFairy = true;
 	bool AllWoodfallStrays = true;
 	bool AllSnowheadStrays = true;

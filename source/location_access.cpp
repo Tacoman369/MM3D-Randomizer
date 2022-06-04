@@ -118,7 +118,9 @@ void AreaTable_Init() {
 	areaTable.fill(Area("Invalid Area", "Invalid Area", NONE, {}, {}));
 						//Name, Scene, hint text, events, locations
 	areaTable[ROOT] = Area("Root", "", LINKS_POCKET, {}, { 
-		LocationAccess(LINKS_POCKET, {[] {return true;}}) 
+		LocationAccess(LINKS_POCKET, {[] {return true;}}),
+		//LocationAccess(DEKU_PALACE_BEAN_GROTTO, {[]{ return true;}}),
+		//LocationAccess(DEKU_PALACE_IMPRISONED_MONKEY, {[]{return true;}}),
 		});
 
 	/*--------------------------
@@ -192,7 +194,7 @@ void AreaTable_Init() {
 		LocationAccess(IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, {[] {return SonataOfAwakening && IkanaGraveyardAccess&&Fighting;}}),
 		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, {[] {return CaptainsHat && IkanaGraveyardAccess && (AnySword || GoronMask || ZoraMask);}}),
 		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS, {[] {return CaptainsHat && IkanaGraveyardAccess && (Fighting || DekuMask);}}),
-		LocationAccess(IKANA_GRAVEYARD_GROTTO, {[] {return Explosives && IkanaGraveyardAccess;}}),
+		//LocationAccess(IKANA_GRAVEYARD_GROTTO, {[] {return HasExplosives && IkanaGraveyardAccess;}}),
 
 		});
 
@@ -237,7 +239,7 @@ void AreaTable_Init() {
 
 	areaTable[ROAD_TO_SNOWHEAD] = Area("Road To Snowhead", "Road To Snowhead", ROAD_TO_SNOWHEAD, {}, {
 		//Locations
-		LocationAccess(ROAD_TO_SNOWHEAD_GROTTO, {[] {return NorthAccess && Explosives && GoronMask && MagicMeter;}}),
+		LocationAccess(ROAD_TO_SNOWHEAD_GROTTO, {[] {return NorthAccess && HasExplosives && GoronMask && MagicMeter;}}),
 		//LocationAccess(ROAD_TO_SNOWHEAD_PILLAR, {[] {return NorthAccess && GoronMask && Hookshot && MagicMeter && LensOfTruth;}}),
 
 		});
