@@ -163,7 +163,7 @@ bool WriteAllPatches() {
   /*------------------------ -
   |      rItemOverrides     |
   --------------------------*/
-  /*
+  
   u32 patchOffset = V_TO_P(RITEMOVERRIDES_ADDR);
   s32 patchSize = sizeof(ItemOverride) * overrides.size();
   ItemOverride ovrPatchData[overrides.size()] = {};
@@ -176,7 +176,7 @@ bool WriteAllPatches() {
    if (!WritePatch(patchOffset, patchSize, (char*)ovrPatchData, code, bytesWritten, totalRW, buf)) {
    return false;
   }
-  */
+  
   /*------------------------ -
   |    rEntranceOverrides   |
   --------------------------*/
@@ -198,8 +198,8 @@ bool WriteAllPatches() {
   |     gSettingsContext    |
   --------------------------*/
   
-  u32 patchOffset = V_TO_P(GSETTINGSCONTEXT_ADDR);
-  u32 patchSize = sizeof(SettingsContext);
+   patchOffset = V_TO_P(GSETTINGSCONTEXT_ADDR);
+   patchSize = sizeof(SettingsContext);
   //get the settings context
   SettingsContext ctx = Settings::FillContext();
   if (!WritePatch(patchOffset, patchSize, (char*)(&ctx), code, bytesWritten, totalRW, buf)) {

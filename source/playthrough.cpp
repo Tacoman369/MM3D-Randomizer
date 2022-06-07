@@ -54,7 +54,9 @@ namespace Playthrough {
             return ret;
         }
       }
-      
+      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE)){
+        NoLogicFill();
+      }
       GenerateHash();
 
       if (Settings::GenerateSpoilerLog) {

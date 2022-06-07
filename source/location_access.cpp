@@ -157,8 +157,8 @@ void AreaTable_Init() {
 		//LocationAccess(GORON_VILLAGE_MOUNTAIN_TITLE_DEED, {[] {return DekuMask && NorthAccess && SwampTitle;}}),
 		//LocationAccess(GORON_VILLAGE_LEDGE, {[] {return DekuMask && NorthAccess && SwampTitle;}}),
 		LocationAccess(GORON_VILLAGE_GORON_LULLABY, {[] {return NorthAccess && GoronMask;}}),
-		LocationAccess(LENS_CAVE_RED_RUPEE, {[] {return NorthAccess && LensOfTruth && MagicMeter;}}),
-		LocationAccess(LENS_CAVE_PURPLE_RUPEE, {[] {return NorthAccess && LensOfTruth && MagicMeter && HasExplosives;}}),
+		LocationAccess(LENS_CAVE_RED_RUPEE, {[] {return (NorthAccess && LensOfTruth && MagicMeter);}}),
+		LocationAccess(LENS_CAVE_PURPLE_RUPEE, {[] {return (NorthAccess && LensOfTruth && MagicMeter && HasExplosives);}}),
 
 		});
 
@@ -194,7 +194,7 @@ void AreaTable_Init() {
 		LocationAccess(IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, {[] {return SonataOfAwakening && IkanaGraveyardAccess&&Fighting;}}),
 		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, {[] {return CaptainsHat && IkanaGraveyardAccess && (AnySword || GoronMask || ZoraMask);}}),
 		LocationAccess(IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS, {[] {return CaptainsHat && IkanaGraveyardAccess && (Fighting || DekuMask);}}),
-		//LocationAccess(IKANA_GRAVEYARD_GROTTO, {[] {return HasExplosives && IkanaGraveyardAccess;}}),
+		LocationAccess(IKANA_GRAVEYARD_GROTTO, {[] {return HasExplosives && IkanaGraveyardAccess;}}),
 
 		});
 

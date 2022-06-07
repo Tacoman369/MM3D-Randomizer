@@ -73,7 +73,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     IKANA_GRAVEYARD,
     LAUNDRY_POOL,
     MILK_ROAD, 
-    MOUNTAIN_VILLAGE, };/*
+    MOUNTAIN_VILLAGE, 
     N_CLOCK_TOWN,
     ROAD_TO_SNOWHEAD,
     PINNACLE_ROCK,
@@ -102,7 +102,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     THE_MOON,
     SSH,
     OSH, 
-    };*/
+    };//*/
     /*  Areas it doesnt like
      */
     
@@ -676,7 +676,7 @@ static void RandomizeLinksPocket() {
     }
 }*/
 
-void VanillaFill() {
+int VanillaFill() {
     //Perform minimum needed initialization
     AreaTable_Init();
     GenerateLocationPool();
@@ -697,7 +697,40 @@ void VanillaFill() {
     CreateItemOverrides();
     //CreateEntranceOverrides();
     //CreateAlwaysIncludedMessages();
+    return 1;
 }
+
+int NoLogicFill() {
+    AreaTable_Init(); //Reset the world graph to intialize the proper locations
+    ItemReset(); //Reset shops incase of shopsanity random
+    GenerateLocationPool();
+    GenerateItemPool();
+    RandomizeDungeonRewards();
+    std::vector<ItemKey> remainingPool = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return true;});
+    FastFill(remainingPool, GetAllEmptyLocations(), false);
+    //GeneratePlaythrough();
+    //Successful placement, produced beatable result
+    //if (playthroughBeatable && !placementFailure) {
+    //    printf("Done");
+    //    printf("\x1b[9;10HCalculating Playthrough...");
+    //    PareDownPlaythrough();
+    //    CalculateWotH();
+    //    printf("Done");
+        CreateItemOverrides();
+     // CreateEntranceOverrides();
+     // CreateAlwaysIncludedMessages();
+        /*if (GossipStoneHints.IsNot(HINTS_NO_HINTS)) {
+            printf("\x1b[10;10HCreating Hints...");
+            CreateAllHints();
+            printf("Done");
+        }
+        if (ShuffleMerchants.Is(SHUFFLEMERCHANTS_HINTS)) {
+            CreateMerchantsHints();
+        }*/
+    //}
+        return 1;
+}
+   
 
 int Fill() {
     int retries = 0;

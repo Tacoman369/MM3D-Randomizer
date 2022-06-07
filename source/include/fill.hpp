@@ -13,8 +13,9 @@ enum class SearchMode {
     AllLocationsReachable,
 };
 
-void VanillaFill();
+int VanillaFill();
 int Fill();
+int NoLogicFill();
 
 std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& allowedLocations,
                                                   SearchMode mode = SearchMode::ReachabilitySearch);

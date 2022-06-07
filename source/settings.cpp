@@ -47,7 +47,7 @@ namespace Settings {
   /*MAIN SETTINGS*/
   
   //Mode/Logic Settings
-  Option Logic = Option::U8("Logic", { "Glitchless", "Glitched", "No Logic", "Vanilla" }, { logicGlitchless, logicGlitched, logicNoLogic, logicVanilla });
+  Option Logic = Option::U8("Logic", { "Glitchless", "No Logic", "Vanilla", "Glitched" }, { logicGlitchless, logicNoLogic, logicVanilla, logicGlitched });
   Option LocationsReachable = Option::Bool("All Locations Reachable", { "Off", "On" }, { locationsReachableDesc }, OptionCategory::Setting, 1); //All Locations Reachable On
   std::vector<Option*> logicOptions = {
     &Logic,
@@ -252,7 +252,7 @@ namespace Settings {
   Option Scrubsanity            = Option::U8("Scrub Shuffle",          {"Off", "Affordable", "Expensive", "Random Prices"},               {scrubsOff, scrubsAffordable, scrubsExpensive, scrubsRandomPrices});
   //Option ShuffleCows            = Option::Bool("Shuffle Cows",           {"Off", "On"},                                                     {shuffleCowsDesc});
   //Option ShuffleOcarinas        = Option::Bool("Shuffle Ocarinas",       {"Off", "On"},                                                     {ocarinasDesc});
-  Option ShuffleChests = Option::U8("Shuffle Chest Items", {"Vanilla", "Random"}, { shuffleChestItemsVanilla, shuffleChestItemsRandom }, OptionCategory::Setting, (u8)ShuffleChestsSetting::SHUFFLECHESTS_VANILLA);
+  Option ShuffleChests = Option::Bool("Shuffle Chest Items", {"Vanilla", "Random"}, { shuffleChestItemsVanilla, shuffleChestItemsRandom }, OptionCategory::Toggle, (u8)ShuffleChestsSetting::SHUFFLECHESTS_VANILLA);
   Option ShuffleGFRewards = Option::U8("Shuffle Great Fairy Rewards", { "Vanilla", "Great Fairies", "Anywhere" }, { shuffleGFVanilla, shuffleGFSelf, shuffleGFAnywhere }, OptionCategory::Setting, (u8)GreatFairyRewardShuffleSetting::GFREWARDSHUFFLE_VANILLA);
   Option ShuffleMerchants = Option::Bool("Shuffle Merchants", { "Off", "On" }, { shuffleMerchantsDesc });
 
@@ -524,7 +524,7 @@ namespace Settings {
     ctx.ammoDrops = (AmmoDrops) ? 1 : 0;
     ctx.heartDropRefill = (HeartDropRefills) ? 1 : 0;
 
-    ctx.shuffleChests = ShuffleChests.Value<u8>();
+    ctx.shuffleChests = (ShuffleChests) ? 1 : 0;
     ctx.shuffleRewards = ShuffleRewards.Value<u8>();
     ctx.shuffleGreatFairyRewards = ShuffleGFRewards.Value<u8>();
     ctx.linksPocketItem = LinksPocketItem.Value<u8>();
