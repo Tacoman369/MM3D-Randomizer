@@ -110,7 +110,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							WF_SF_PRE_BOSS_UPPER_LEFT_BUBBLE,
 							WF_SF_PRE_BOSS_PILLAR_BUBBLE,
 							WF_SF_DEKU_BABA,
-							WF_SF_POISON_WATER_BUBBLE,
+							WF_SF_DRAGONFLY_ROOM_BUBBLE,
 							WF_SF_SKULLTULA,
 							WF_SF_DARK_ROOM,
 							WF_SF_JAR_FAIRY,
@@ -180,7 +180,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,
 							STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST,
 							STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST,
-							STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST,
+							STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST,
 							STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST,
 							STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST,
 							STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST,
@@ -267,9 +267,9 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							OSH_SECOND_ROOM_LOWER_POT,
 							OSH_STORAGE_ROOM_CEILING_WEB,
 							OSH_STORAGE_ROOM_BEHIND_CRATE,
-							OSH_STORAGE_ROOM_BEHIND_BOAT,
+							OSH_STORAGE_ROOM_WALL,
 							OSH_STORAGE_ROOM_CRATE,
-							OSH_STORAGE_ROOM_JAR,
+							OSH_STORAGE_ROOM_BARREL,
 							OSH_COLORED_SKULLS_CEILING_EDGE,
 							OSH_COLORED_SKULLS_CHANDELIER_1,
 							OSH_COLORED_SKULLS_CHANDELIER_2,
@@ -293,6 +293,7 @@ std::vector<LocationKey> DungeonInfo::GetEveryLocation() const {
 							PF_INT_LOWER_CHEST,
 							PF_INT_UPPER_CHEST,
 							PF_INT_TANK_CHEST,
+							PF_INT_INVISIBLE_SOLDIER,
                           } );
 
   DungeonInfo BeneathTheWell = DungeonInfo("Beneath The Well", NONE, NONE, NONE, NONE, 0, {

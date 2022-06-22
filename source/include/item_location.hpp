@@ -103,22 +103,21 @@ public:
     ItemOverride_Key Key() const {
         ItemOverride_Key key;
         key.all = 0;
-        ItemOverride_Type type2;
         key.scene = scene;
         //handling type like this to avoid type mismatches 
-        if (type == ItemLocationType::Chest) { type2 = ItemOverride_Type::OVR_CHEST;}
-        else if (type == ItemLocationType::Base) {type2 = ItemOverride_Type::OVR_BASE_ITEM;}
-        else if (type == ItemLocationType::Collectable) {type2 = ItemOverride_Type::OVR_COLLECTABLE;}
-        else if (type == ItemLocationType::OGSToken) { type2 = ItemOverride_Type::OVR_SKULL;}
-        else if (type == ItemLocationType::SGSToken) { type2 = ItemOverride_Type::OVR_SKULL;}
-        else if (type == ItemLocationType::GrottoScrub) {type2 = ItemOverride_Type::OVR_GROTTO_SCRUB;}
-        else if (type == ItemLocationType::Delayed) {type2 = ItemOverride_Type::OVR_DELAYED;}
-        else if (type == ItemLocationType::TempleReward) {type2 = ItemOverride_Type::OVR_TEMPLE;}
+        if (type == ItemLocationType::Chest) { key.type = ItemOverride_Type::OVR_CHEST;}
+        else if (type == ItemLocationType::Base) {key.type = ItemOverride_Type::OVR_BASE_ITEM;}
+        else if (type == ItemLocationType::Collectable) {key.type = ItemOverride_Type::OVR_COLLECTABLE;}
+        else if (type == ItemLocationType::OGSToken) { key.type = ItemOverride_Type::OVR_SKULL;}
+        else if (type == ItemLocationType::SGSToken) { key.type = ItemOverride_Type::OVR_SKULL;}
+        else if (type == ItemLocationType::GrottoScrub) {key.type = ItemOverride_Type::OVR_GROTTO_SCRUB;}
+        else if (type == ItemLocationType::Delayed) {key.type = ItemOverride_Type::OVR_DELAYED;}
+        else if (type == ItemLocationType::TempleReward) {key.type = ItemOverride_Type::OVR_TEMPLE;}
         //TO-DO 
-        //else if (type == ItemLocationType::StrayFairy) {type2 = ItemOverride_Type::OVR_STRAY;}
-        //else if (type == ItemLocationType::HintStone) {type2 = ItemOverride_Type::OVR_HINT;}
-        //else if (type == ItemLocationType::OtherHint) {type2 = ItemOverride_Type::OVR_OTHER_HINT;}
-        key.type = type2; //TODO make sure these match up
+        //else if (type == ItemLocationType::StrayFairy) {key.type = ItemOverride_Type::OVR_STRAY;}
+        //else if (type == ItemLocationType::HintStone) {key.type = ItemOverride_Type::OVR_HINT;}
+        //else if (type == ItemLocationType::OtherHint) {key.type = ItemOverride_Type::OVR_OTHER_HINT;}
+        //key.type = type; //TODO make sure these match up
         //TO-DO Get proper flags
         key.flag = flag;
         return key;

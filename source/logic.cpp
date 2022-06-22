@@ -2131,12 +2131,12 @@ namespace Logic {
 	  Hookshot = false;
 	  Pictobox = true;
 	  PowderKeg = false;
-	  Seahorse = true;
+	  Seahorse = false;
 	  DekuPrincess = false;
-	  BigPoe = true;
+	  BigPoe = false;
 	  ZoraEgg = true;
-	  Mushroom = true;
-	  SpringWater = true;
+	  Mushroom = false;
+	  SpringWater = false;
 	  HotSpringWater = false;
 	  SpinAttack = true;
 	  Epona = false;
@@ -2166,7 +2166,7 @@ namespace Logic {
 	  SwampScrubMagicBean = false;
 
 	//mask logic
-	  DekuMask = false;
+	  DekuMask = true;
 	  GoronMask = false;
 	  ZoraMask = false;
 	  KeatonMask = false;
@@ -2219,7 +2219,7 @@ namespace Logic {
 	  ScarecrowSong = true;
 	  SongOfStorms = false;
 	  SonataOfAwakening = false;
-	  SongOfHealing = false;
+	  SongOfHealing = true;
 	  GoronsLullaby = false;
 	  NewWaveBossaNova = false;
 	  ElegyOfEmptiness = false;

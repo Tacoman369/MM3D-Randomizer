@@ -28,7 +28,7 @@ void LocationTable_Init() {
 	//locationTable[DEKU_PALACE_WEST_GARDEN]									   = ItemLocation::Collectable(0x2B, 0x00, "Deku Palace West Garden",							DEKU_PALACE_WEST_GARDEN,			PIECE_OF_HEART,				{Category::cDekuPalace,Category::cWoodfall} );
 	//locationTable[DEKU_PALACE_BUTLER_RACE]									   = ItemLocation::Base		(0x52, 0x00, "Deku Palace Butler Race",								DEKU_PALACE_BUTLER_RACE,			MASK_OF_SCENTS,				{Category::cDekuPalace,Category::cWoodfall} );
 	locationTable[DEKU_PALACE_IMPRISONED_MONKEY]							   = ItemLocation::Base		(0x3E, 0x00, "Deku Palace Imprisoned Monkey",						DEKU_PALACE_IMPRISONED_MONKEY,		SONATA_OF_AWAKENING,		{Category::cDekuPalace,Category::cSong,Category::cWoodfall} );
-	locationTable[DEKU_PALACE_BEAN_GROTTO]									   = ItemLocation::Chest	(0x07, 0x00, "Deku Palace Bean Grotto Chest",						DEKU_PALACE_BEAN_GROTTO,			RED_RUPEE,					{Category::cDekuPalace,Category::cGrotto,Category::cWoodfall,Category::cChest});
+	locationTable[DEKU_PALACE_BEAN_GROTTO]									   = ItemLocation::Chest	(0x07, 0x1D, "Deku Palace Bean Grotto Chest",						DEKU_PALACE_BEAN_GROTTO,			RED_RUPEE,					{Category::cDekuPalace,Category::cGrotto,Category::cWoodfall,Category::cChest});
 	
 	//East Clock Town
 	//locationTable[E_CLOCK_TOWN_AROMA_IN_BAR]								   = ItemLocation::Base		(0x15, 0x00, "Madame Aroma in the Bar",								E_CLOCK_TOWN_AROMA_IN_BAR,			CHATEAU_ROMANI,				{Category::cEastClockTown} );
@@ -41,7 +41,7 @@ void LocationTable_Init() {
 	//locationTable[E_CLOCK_TOWN_GORMAN]										   = ItemLocation::Base		(0x15, 0x00, "Gorman in the Bar",									E_CLOCK_TOWN_GORMAN,				CIRCUS_LEADERS_MASK,		{Category::cEastClockTown} );
 	//locationTable[E_CLOCK_TOWN_AROMA_IN_OFFICE]								   = ItemLocation::Base		(0x12, 0x00, "Madame Aroma in the Mayor's Office",					E_CLOCK_TOWN_AROMA_IN_OFFICE,		KAFEIS_MASK,				{Category::cEastClockTown} );
 	locationTable[BOMBERS_HIDEOUT_CHEST]						               = ItemLocation::Chest	(0x29, 0x00, "Bombers' Hideout Chest",								BOMBERS_HIDEOUT_CHEST,	SILVER_RUPEE,				{Category::cEastClockTown,Category::cChest } );
-	locationTable[E_CLOCK_TOWN_CHEST]										   = ItemLocation::Chest	(0x6C, 0x00, "East Clock Town Chest",								E_CLOCK_TOWN_CHEST,					SILVER_RUPEE,				{Category::cEastClockTown,Category::cChest } );
+	locationTable[E_CLOCK_TOWN_CHEST]										   = ItemLocation::Chest	(0x6C, 0x0A, "East Clock Town Chest",								E_CLOCK_TOWN_CHEST,					SILVER_RUPEE,				{Category::cEastClockTown,Category::cChest } );
 	//locationTable[E_CLOCK_TOWN_MILK_BAR_CHATEAU]							   = ItemLocation::Base		(0x12, 0x00, "Milk Bar Chateau Buy",								E_CLOCK_TOWN_MILK_BAR_CHATEAU,		CHATEAU_ROMANI,				{Category::cEastClockTown} );
 	//locationTable[E_CLOCK_TOWN_MILK_BAR_MILK]								   = ItemLocation::Base		(0x12, 0x00, "Milk Bar Milk Buy",									E_CLOCK_TOWN_MILK_BAR_MILK,			MILK,						{Category::cEastClockTown} );
 	//locationTable[E_CLOCK_TOWN_GORMAN_QUEST]								   = ItemLocation::Base		(0x12, 0x00, "Gorman's Mystery Milk Quest",							E_CLOCK_TOWN_GORMAN_QUEST,			EMPTY_BOTTLE2,				{Category::cEastClockTown} );
@@ -53,25 +53,25 @@ void LocationTable_Init() {
 	//Goron Village
 	locationTable[GORON_VILLAGE_POWDER_KEG_CHALLENGE]						   = ItemLocation::Base		(0x48, 0x00, "Powder Keg Challenge",								GORON_VILLAGE_POWDER_KEG_CHALLENGE,		POWDER_KEG,				{Category::cGoronVillage} );
 	//locationTable[GORON_VILLAGE_BIGGEST_BOMB_BAG_BUY]						   = ItemLocation::Base		(0x3D, 0x00, "Biggest Bomb Bag Buy",								GORON_VILLAGE_BIGGEST_BOMB_BAG_BUY,		PROGRESSIVE_BOMB_BAG,	{Category::cGoronVillage} );
-	locationTable[GORON_VILLAGE_LENS_OF_TRUTH_CHEST]						   = ItemLocation::Chest	(0x07, 0x00, "Lens of Truth Chest",									GORON_VILLAGE_LENS_OF_TRUTH_CHEST,		LENS_OF_TRUTH,			{Category::cGoronVillage,Category::cChest } );
+	locationTable[GORON_VILLAGE_LENS_OF_TRUTH_CHEST]						   = ItemLocation::Chest	(0x07, 0x09, "Lens of Truth Chest",									GORON_VILLAGE_LENS_OF_TRUTH_CHEST,		LENS_OF_TRUTH,			{Category::cGoronVillage,Category::cChest } );
 	//locationTable[GORON_VILLAGE_MOUNTAIN_TITLE_DEED]						   = ItemLocation::Base		(0x4D, 0x00, "Mountain Title Deed",									GORON_VILLAGE_MOUNTAIN_TITLE_DEED,		MOUNTAIN_TITLE,			{Category::cGoronVillage} );
 	//locationTable[GORON_VILLAGE_LEDGE]								           = ItemLocation::Collectable(0x4D, 0x00, "Goron Village Piece of Heart",						GORON_VILLAGE_LEDGE,			PIECE_OF_HEART,			{Category::cGoronVillage} );
 	locationTable[GORON_VILLAGE_GORON_LULLABY]								   = ItemLocation::Base		(0x32, 0x00, "Goron Lullaby",										GORON_VILLAGE_GORON_LULLABY,				GORONS_LULLABY,		{Category::cGoronVillage, Category::cSong} );
-	locationTable[LENS_CAVE_RED_RUPEE]					                       = ItemLocation::Chest	(0x07, 0x00, "Lens Cave Invisible Chest",							LENS_CAVE_RED_RUPEE,	RED_RUPEE,			{Category::cGoronVillage,Category::cChest } );
-	locationTable[LENS_CAVE_PURPLE_RUPEE]						               = ItemLocation::Chest	(0x07, 0x00, "Lens Cave Rock Chest",								LENS_CAVE_PURPLE_RUPEE,		PURPLE_RUPEE,			{Category::cGoronVillage,Category::cChest } );
+	locationTable[LENS_CAVE_RED_RUPEE]					                       = ItemLocation::Chest	(0x07, 0x03, "Lens Cave Invisible Chest",							LENS_CAVE_RED_RUPEE,	RED_RUPEE,			{Category::cGoronVillage,Category::cChest } );
+	locationTable[LENS_CAVE_PURPLE_RUPEE]						               = ItemLocation::Chest	(0x07, 0x06, "Lens Cave Rock Chest",								LENS_CAVE_PURPLE_RUPEE,		PURPLE_RUPEE,			{Category::cGoronVillage,Category::cChest } );
 
 	//Great Bay Coast
 	//locationTable[GBC_OCEAN_SPIDER_DAY1]									   = ItemLocation::Base		(0x28, 0x00, "Oceanside Spider House Day 1 Reward",					GBC_OCEAN_SPIDER_DAY1,				PROGRESSIVE_WALLET,			{Category::cGreatBayCoast} );
 	//locationTable[GBC_OCEAN_SPIDER_DAY2]									   = ItemLocation::Base		(0x28, 0x00, "Oceanside Spider House Day 2 Reward",					GBC_OCEAN_SPIDER_DAY2,				PURPLE_RUPEE,				{Category::cGreatBayCoast} );
 	//locationTable[GBC_OCEAN_SPIDER_DAY3]									   = ItemLocation::Base		(0x28, 0x00, "Oceanside Spider House Day 3 Reward",					GBC_OCEAN_SPIDER_DAY3,				RED_RUPEE,					{Category::cGreatBayCoast} );
 	//locationTable[GBC_FISHERMAN_GAME]										   = ItemLocation::Base		(0x37, 0x00, "Great Bay Coast Fisherman's Game",					GBC_FISHERMAN_GAME,					PIECE_OF_HEART,				{Category::cGreatBayCoast, Category::cMinigame} );
-	locationTable[GBC_OCEAN_SPIDER_CHEST]									   = ItemLocation::Chest	(0x28, 0x00, "Oceanside Spider House Chest",						GBC_OCEAN_SPIDER_CHEST,				PIECE_OF_HEART,				{Category::cGreatBayCoast,Category::cChest } );
+	locationTable[GBC_OCEAN_SPIDER_CHEST]									   = ItemLocation::Chest	(0x28, 0x14, "Oceanside Spider House Chest",						GBC_OCEAN_SPIDER_CHEST,				PIECE_OF_HEART,				{Category::cGreatBayCoast,Category::cChest } );
 	//locationTable[GBC_LAB_FISH]												   = ItemLocation::Base		(0x2F, 0x00, "Greay Bay Lab Fish",									GBC_LAB_FISH,						PIECE_OF_HEART,				{Category::cGreatBayCoast} );
 	//locationTable[GBC_LEDGE]												   = ItemLocation::Collectable		(0x37, 0x00, "Great Bay Coast Ledge",								GBC_LEDGE,							PIECE_OF_HEART,				{Category::cGreatBayCoast} );
 	locationTable[GBC_MIKAU]												   = ItemLocation::Base		(0x37, 0x00, "Great Bay Coast Mikau",								GBC_MIKAU,							ZORA_MASK,					{Category::cGreatBayCoast, Category::cVanillaMask} );
 	locationTable[GBC_BABY_ZORAS]											   = ItemLocation::Base		(0x2F, 0x00, "Great Bay Coast Baby Zoras",							GBC_BABY_ZORAS,						NEW_WAVE_BOSSA_NOVA,		{Category::cGreatBayCoast, Category::cSong} );
 	//locationTable[GBC_STONE_TOWER_BUY]										   = ItemLocation::Base		(0x37, 0x00, "Great Bay Coast Stone Tower Map Buy",					GBC_STONE_TOWER_BUY,				STONE_TOWER_MAP,			{Category::cGreatBayCoast, Category::cVanillaMap} );
-	locationTable[GBC_GROTTO]												   = ItemLocation::Chest	(0x07, 0x00, "Great Bay Coast Grotto Chest",						GBC_GROTTO,							RED_RUPEE,					{Category::cGreatBayCoast,Category::cGrotto,Category::cChest } );
+	locationTable[GBC_GROTTO]												   = ItemLocation::Chest	(0x07, 0x09, "Great Bay Coast Grotto Chest",						GBC_GROTTO,							RED_RUPEE,					{Category::cGreatBayCoast,Category::cGrotto,Category::cChest } );
 	//locationTable[GBC_FISHERMAN_PHOTO]										   = ItemLocation::Base		(0x3C, 0x00, "Great Bay Coast Fisherman Photo",						GBC_FISHERMAN_PHOTO,				SEAHORSE,					{Category::cGreatBayCoast} );
 	   
 	//Ikana Canyon
@@ -79,17 +79,17 @@ void LocationTable_Init() {
 	//locationTable[IKANA_CANYON_POE_HUT]										   = ItemLocation::Base 	  (0x51, 0x00, "Ikana Canyon Poe Hut",								IKANA_CANYON_POE_HUT,				PIECE_OF_HEART,					{Category::cIkanaCanyon} );
 	//locationTable[IKANA_CANYON_LEDGE]										   = ItemLocation::Collectable(0x13, 0x00, "Ikana Canyon Ledge",								IKANA_CANYON_LEDGE,					PIECE_OF_HEART,					{Category::cIkanaCanyon} );
 	//locationTable[IKANA_CANYON_PAMELAS_FATHER]								   = ItemLocation::Base 	  (0x55, 0x00, "Ikana Canyon Pamela's Father",						IKANA_CANYON_PAMELAS_FATHER,		GIBDOS_MASK,						{Category::cIkanaCanyon} );
-	locationTable[IKANA_CANYON_SECRET_SHRINE_GROTTO]						   = ItemLocation::Chest 	  (0x07, 0x00, "Ikana Canyon Secret Shrine Grotto",					IKANA_CANYON_SECRET_SHRINE_GROTTO,	BOMBCHU_5,						{Category::cIkanaCanyon, Category::cGrotto,Category::cChest } );
+	locationTable[IKANA_CANYON_SECRET_SHRINE_GROTTO]						   = ItemLocation::Chest 	  (0x07, 0x1A, "Ikana Canyon Secret Shrine Grotto",					IKANA_CANYON_SECRET_SHRINE_GROTTO,	BOMBCHU_5,						{Category::cIkanaCanyon, Category::cGrotto,Category::cChest } );
 	//locationTable[IKANA_CANYON_SCRUB_TRADE]									   = ItemLocation::Base 	  (0x13, 0x00, "Ikana Canyon Scrub Trade",							IKANA_CANYON_SCRUB_TRADE,			HUGE_RUPEE,						{Category::cIkanaCanyon, Category::cDekuScrub} );
 	//locationTable[IKANA_CANYON_SCRUB_PURCHASE]								   = ItemLocation::Base 	  (0x13, 0x00, "Ikana Canyon Scrub Purchase",						IKANA_CANYON_SCRUB_PURCHASE,		POTION_BLUE_REFILL,				{Category::cIkanaCanyon, Category::cDekuScrub} );
 	
 	//Ikana Graveyard
 	//locationTable[IKANA_GRAVEYARD_DAMPE_DIGGING]							   = ItemLocation::Base 	  (0x30, 0x00, "Ikana Graveyard Dampe Digging",						IKANA_GRAVEYARD_DAMPE_DIGGING,		EMPTY_BOTTLE2,					{Category::cIkanaGraveyard, Category::cMinigame} );
-	locationTable[IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST]						   = ItemLocation::Chest 	  (0x0C, 0x00, "Ikana Graveyard Iron Knuckle Chest",				IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST,	PIECE_OF_HEART,					{Category::cIkanaGraveyard,Category::cChest } );
+	locationTable[IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST]						   = ItemLocation::Chest 	  (0x0C, 0x1C, "Ikana Graveyard Iron Knuckle Chest",				IKANA_GRAVEYARD_IRON_KNUCKLE_CHEST,	PIECE_OF_HEART,					{Category::cIkanaGraveyard,Category::cChest } );
 	locationTable[IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST]						   = ItemLocation::Chest 	  (0x0C, 0x00, "Ikana Graveyard Captain Keeta's Chest",				IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST,CAPTAINS_HAT,					{Category::cIkanaGraveyard} );
 	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET]						   = ItemLocation::Base 	  (0x0C, 0x00, "Ikana Graveyard Day 1 Grave Tablet",				IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET,SONG_OF_STORMS,				{Category::cIkanaGraveyard, Category::cSong} );
-	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS]						   = ItemLocation::Chest 	  (0x0C, 0x00, "Ikana Graveyard Day 1 Grave Bats",					IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS,	PURPLE_RUPEE,					{Category::cIkanaGraveyard,Category::cChest } );
-	locationTable[IKANA_GRAVEYARD_GROTTO]									   = ItemLocation::Chest 	  (0x07, 0x00, "Ikana Graveyard Grotto",							IKANA_GRAVEYARD_GROTTO,				BOMBCHU_5,						{Category::cIkanaGraveyard, Category::cGrotto,Category::cChest } );
+	locationTable[IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS]						   = ItemLocation::Chest 	  (0x0C, 0x03, "Ikana Graveyard Day 1 Grave Bats",					IKANA_GRAVEYARD_DAY_ONE_GRAVE_BATS,	PURPLE_RUPEE,					{Category::cIkanaGraveyard,Category::cChest } );
+	locationTable[IKANA_GRAVEYARD_GROTTO]									   = ItemLocation::Chest 	  (0x07, 0x1E, "Ikana Graveyard Grotto",							IKANA_GRAVEYARD_GROTTO,				BOMBCHU_5,						{Category::cIkanaGraveyard, Category::cGrotto,Category::cChest } );
 	
 	//Laundry Pool
 	//locationTable[LAUNDRY_POOL_KAFEI]										   = ItemLocation::Base		  (0x70, 0x00, "Laundry Pool Kafei",								LAUNDRY_POOL_KAFEI,					PENDANT_MEMORIES,		     	{Category::cLaundryPool} );
@@ -110,7 +110,7 @@ void LocationTable_Init() {
 	locationTable[MOUNTAIN_VILLAGE_DARMANI]									   = ItemLocation::Base		   (0x4E, 0x00, "Mountain Village Darmani",							MOUNTAIN_VILLAGE_DARMANI,			GORON_MASK,						{Category::cMountainVillage, Category::cVanillaMask} );
 	//locationTable[MOUNTAIN_VILLAGE_HUNGRY_GORON]							   = ItemLocation::Base		   (0x5A, 0x00, "Mountain Village Hungry Goron",					MOUNTAIN_VILLAGE_HUNGRY_GORON,		DON_GEROS_MASK,					{Category::cMountainVillage}); 
 	locationTable[MOUNTAIN_WATERFALL_CHEST]							           = ItemLocation::Chest	   (0x5A, 0x00, "Mountain Village Waterfall Chest",					MOUNTAIN_WATERFALL_CHEST,	    RED_RUPEE,						{Category::cMountainVillage,Category::cChest } );
-	locationTable[MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO]						   = ItemLocation::Chest	   (0x07, 0x00, "Mountain Village Spring Water Grotto",				MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO,RED_RUPEE,						{Category::cMountainVillage, Category::cGrotto,Category::cChest } );
+	locationTable[MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO]						   = ItemLocation::Chest	   (0x07, 0x1B, "Mountain Village Spring Water Grotto",				MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO,RED_RUPEE,						{Category::cMountainVillage, Category::cGrotto,Category::cChest } );
 	
 	//N Clock Town
 	locationTable[N_CLOCK_TOWN_GREAT_FAIRY_DEKU]							   = ItemLocation::Base		   (0x26, 0x00, "N Clock Town Great Fairy (Deku)",					N_CLOCK_TOWN_GREAT_FAIRY_DEKU,		MAGIC_POWER,		{Category::cNorthClockTown, Category::cFairyFountain} );
@@ -125,17 +125,16 @@ void LocationTable_Init() {
 	
 	//Path to Snowhead
 	//locationTable[ROAD_TO_SNOWHEAD_PILLAR]									   = ItemLocation::Collectable (0x5B, 0x00, "Road to Snowhead Pillar",							ROAD_TO_SNOWHEAD_PILLAR,			PIECE_OF_HEART,					{Category::cPathToSnowhead} );
-	locationTable[ROAD_TO_SNOWHEAD_GROTTO]									   = ItemLocation::Chest 	   (0x07, 0x00, "Road to Snowhead Grotto",							ROAD_TO_SNOWHEAD_GROTTO,			RED_RUPEE,						{Category::cPathToSnowhead,Category::cGrotto,Category::cChest } );
+	locationTable[ROAD_TO_SNOWHEAD_GROTTO]									   = ItemLocation::Chest 	   (0x07, 0x05, "Road to Snowhead Grotto",							ROAD_TO_SNOWHEAD_GROTTO,			RED_RUPEE,						{Category::cPathToSnowhead,Category::cGrotto,Category::cChest } );
 	
 	//Pinnacle Rock
 	//locationTable[PINNACLE_ROCK_SEAHORSES]									   = ItemLocation::Base		   (0x25, 0x00, "Pinnacle Rock Seahorses",							PINNACLE_ROCK_SEAHORSES,			PIECE_OF_HEART,					{Category::cPinnacleRock} );
-	locationTable[PINNACLE_ROCK_UPPER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x00, "Pinnacle Rock Upper Chest",						PINNACLE_ROCK_UPPER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
-	locationTable[PINNACLE_ROCK_LOWER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x00, "Pinnacle Rock Lower Chest",						PINNACLE_ROCK_LOWER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
+	locationTable[PINNACLE_ROCK_UPPER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x1A, "Pinnacle Rock Upper Chest",						PINNACLE_ROCK_UPPER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
+	locationTable[PINNACLE_ROCK_LOWER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x19, "Pinnacle Rock Lower Chest",						PINNACLE_ROCK_LOWER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
 	
 	//Road to Ikana
-	//locationTable[ROAD_TO_IKANA_INVISIBLE_SOLDIER]							   = ItemLocation::Base	   (0x53, 0x00, "Road to Ikana Invisible Soldier",						ROAD_TO_IKANA_INVISIBLE_SOLDIER,		STONE_MASK,				{Category::cRoadToIkana} );
-	locationTable[ROAD_TO_IKANA_PILLAR_CHEST]								   = ItemLocation::Chest   (0x53, 0x00, "Road to Ikana Pillar Chest",							ROAD_TO_IKANA_PILLAR_CHEST,				RED_RUPEE,				{Category::cRoadToIkana,Category::cChest } );
-	locationTable[ROAD_TO_IKANA_GROTTO]										   = ItemLocation::Chest	   (0x07, 0x00, "Road to Ikana Grotto",									ROAD_TO_IKANA_GROTTO,					BOMBCHU_5,				{Category::cRoadToIkana,Category::cGrotto} );
+	locationTable[ROAD_TO_IKANA_PILLAR_CHEST]								   = ItemLocation::Chest   (0x53, 0x18, "Road to Ikana Pillar Chest",							ROAD_TO_IKANA_PILLAR_CHEST,				RED_RUPEE,				{Category::cRoadToIkana,Category::cChest } );
+	locationTable[ROAD_TO_IKANA_GROTTO]										   = ItemLocation::Chest	   (0x07, 0x16, "Road to Ikana Grotto",									ROAD_TO_IKANA_GROTTO,					BOMBCHU_5,				{Category::cRoadToIkana,Category::cGrotto} );
 	
 	//Road to Southern Swamp
 	//locationTable[ROAD_TO_SS_ARCHERY_1]										   = ItemLocation::Base	   (0x24, 0x00, "Road to Southern Swamp Archery 1",						ROAD_TO_SS_ARCHERY_1,					PROGRESSIVE_BOW,		{Category::cRoadToSouthernSwamp,Category::cMinigame} );
@@ -143,7 +142,7 @@ void LocationTable_Init() {
 	//locationTable[ROAD_TO_SS_TREE]											   = ItemLocation::Collectable(0x40, 0x00, "Road to Southern Swamp Tree",						ROAD_TO_SS_TREE,						PIECE_OF_HEART,			{Category::cRoadToSouthernSwamp} );
 	//locationTable[ROAD_TO_SS_WOODFALL_MAP_BUY]								   = ItemLocation::Base	   (0x40, 0x00, "Road to Southern Swamp Woodfall Map Purchase",			ROAD_TO_SS_WOODFALL_MAP_BUY,			WOODFALL_MAP,			{Category::cRoadToSouthernSwamp,Category::cVanillaMap} );
 	//locationTable[ROAD_TO_SS_SNOWHEAD_MAP_BUY]								   = ItemLocation::Base	   (0x40, 0x00, "Road to Southern Swamp Snowhead Map Purchase",			ROAD_TO_SS_SNOWHEAD_MAP_BUY,			SNOWHEAD_MAP,			{Category::cRoadToSouthernSwamp,Category::cVanillaMap} );
-	locationTable[PATH_TO_SWAMP_GROTTO]										   = ItemLocation::Chest	   (0x07, 0x00, "Road to Southern Swamp Grotto",						PATH_TO_SWAMP_GROTTO,						RED_RUPEE,			{Category::cRoadToSouthernSwamp,Category::cGrotto, Category::cChest} );
+	locationTable[PATH_TO_SWAMP_GROTTO]										   = ItemLocation::Chest	   (0x07, 0x1E, "Road to Southern Swamp Grotto",						PATH_TO_SWAMP_GROTTO,						RED_RUPEE,			{Category::cRoadToSouthernSwamp,Category::cGrotto, Category::cChest} );
 	
 	//Romani Ranch
 	//locationTable[ROMANI_RANCH_ALIEN_DEFENSE]								   = ItemLocation::Base		(0x35, 0x00, "Romani Ranch Alien Defense",							ROMANI_RANCH_ALIEN_DEFENSE,				BOTTLE_WITH_MILK,		{Category::cRomaniRanch} );
@@ -151,14 +150,14 @@ void LocationTable_Init() {
 	//locationTable[ROMANI_RANCH_GROG]										   = ItemLocation::Base		(0x42, 0x00, "Romani Ranch Grog",									ROMANI_RANCH_GROG,						BUNNY_HOOD,				{Category::cRomaniRanch} );
 	//locationTable[ROMANI_RANCH_CREMIA_ESCORT]								   = ItemLocation::Base		(0x35, 0x00, "Romani Ranch Cremia Escort",							ROMANI_RANCH_CREMIA_ESCORT,				ROMANIS_MASK,			{Category::cRomaniRanch} );
 	locationTable[ROMANI_RANCH_ROMANIS_GAME]								   = ItemLocation::Base		(0x35, 0x00, "Romani Ranch Romani's Game",							ROMANI_RANCH_ROMANIS_GAME,				EPONAS_SONG,			{Category::cRomaniRanch,Category::cSong} );
-	locationTable[DOGGY_RACETRACK_ROOF_CHEST]					               = ItemLocation::Chest	(0x41, 0x00, "Romani Ranch Doggy Racetrack Roof Chest",				DOGGY_RACETRACK_ROOF_CHEST,        PURPLE_RUPEE,			{Category::cRomaniRanch,Category::cChest } );
+	locationTable[DOGGY_RACETRACK_ROOF_CHEST]					               = ItemLocation::Chest	(0x41, 0x04, "Romani Ranch Doggy Racetrack Roof Chest",				DOGGY_RACETRACK_ROOF_CHEST,        PURPLE_RUPEE,			{Category::cRomaniRanch,Category::cChest } );
 	
 	//S Clock Town
 	//locationTable[S_CLOCK_TOWN_SCRUB_TRADE]									   = ItemLocation::Base		(0x6F, 0x00, "S Clock Town Scrub Trade",							S_CLOCK_TOWN_SCRUB_TRADE,				LAND_TITLE,				{Category::cSouthClockTown,Category::cDekuScrub} );
 	//locationTable[S_CLOCK_TOWN_POSTBOX]										   = ItemLocation::Base		(0x6F, 0x00, "S Clock Town Postbox",								S_CLOCK_TOWN_POSTBOX,					PIECE_OF_HEART,			{Category::cSouthClockTown} );
 	//locationTable[S_CLOCK_TOWN_CLOCK_TOWER_ENTRANCE]						   = ItemLocation::Collectable(0x6F, 0x00, "S Clock Town Clock Tower Entrance",					S_CLOCK_TOWN_CLOCK_TOWER_ENTRANCE,		PIECE_OF_HEART,			{Category::cSouthClockTown} );
-	locationTable[S_CLOCK_TOWN_STRAW_ROOF_CHEST]							   = ItemLocation::Chest	(0x6F, 0x00, "S Clock Town Straw Roof Chest",						S_CLOCK_TOWN_STRAW_ROOF_CHEST,			RED_RUPEE,				{Category::cSouthClockTown,Category::cChest } );
-	locationTable[S_CLOCK_TOWN_FINAL_DAY_CHEST]								   = ItemLocation::Chest	(0x6F, 0x00, "S Clock Town Final Day Chest",						S_CLOCK_TOWN_FINAL_DAY_CHEST,			PURPLE_RUPEE,			{Category::cSouthClockTown,Category::cChest } );
+	locationTable[S_CLOCK_TOWN_STRAW_ROOF_CHEST]							   = ItemLocation::Chest	(0x6F, 0x18, "S Clock Town Straw Roof Chest",						S_CLOCK_TOWN_STRAW_ROOF_CHEST,			RED_RUPEE,				{Category::cSouthClockTown,Category::cChest } );
+	locationTable[S_CLOCK_TOWN_FINAL_DAY_CHEST]								   = ItemLocation::Chest	(0x6F, 0x01, "S Clock Town Final Day Chest",						S_CLOCK_TOWN_FINAL_DAY_CHEST,			PURPLE_RUPEE,			{Category::cSouthClockTown,Category::cChest } );
 	//locationTable[S_CLOCK_TOWN_BANK_REWARD_1]								   = ItemLocation::Base		(0x6F, 0x00, "S Clock Town Bank Reward 1",							S_CLOCK_TOWN_BANK_REWARD_1,				PROGRESSIVE_WALLET,		{Category::cSouthClockTown} );
 	//locationTable[S_CLOCK_TOWN_BANK_REWARD_2]								   = ItemLocation::Base		(0x6F, 0x00, "S Clock Town Bank Reward 2",							S_CLOCK_TOWN_BANK_REWARD_2,				BLUE_RUPEE,				{Category::cSouthClockTown} );
 	//locationTable[S_CLOCK_TOWN_BANK_REWARD_3]								   = ItemLocation::Base		(0x6F, 0x00, "S Clock Town Bank Reward 3",							S_CLOCK_TOWN_BANK_REWARD_3,				PIECE_OF_HEART,			{Category::cSouthClockTown} );
@@ -175,8 +174,8 @@ void LocationTable_Init() {
 	//locationTable[SWAMP_TOURIST_CENTER_ROOF]								   = ItemLocation::Collectable (0x45, 0x00, "Southern Swamp Tourist Center Roof",					SWAMP_TOURIST_CENTER_ROOF,		PIECE_OF_HEART,			{Category::cSouthernSwamp} );
 	//locationTable[SOUTHERN_SWAMP_SPIDER_HOUSE_REWARD]						   = ItemLocation::Base (0x27, 0x00, "Southern Swamp Spider House Reward",							SOUTHERN_SWAMP_SPIDER_HOUSE_REWARD,	MASK_OF_TRUTH,			{Category::cSouthernSwamp} );
 	locationTable[SOUTHERN_SWAMP_MUSIC_STATUE]								   = ItemLocation::Base (0x45, 0x00, "Southern Swamp Music Statue",									SOUTHERN_SWAMP_MUSIC_STATUE,		SONG_OF_SOARING,		{Category::cSouthernSwamp, Category::cSong} );
-	locationTable[SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO]					   = ItemLocation::Chest (0x07, 0x00, "Southern Swamp Near Spider House Grotto",					SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO,RED_RUPEE,			{Category::cSouthernSwamp,Category::cGrotto,Category::cChest } );
-	locationTable[SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO]						   = ItemLocation::Chest (0x07, 0x00, "Southern Swamp Mystery Woods Grotto",						SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO,PURPLE_RUPEE,			{Category::cSouthernSwamp, Category::cGrotto,Category::cChest } );
+	locationTable[SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO]					   = ItemLocation::Chest (0x07, 0x1D, "Southern Swamp Near Spider House Grotto",					SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO,RED_RUPEE,			{Category::cSouthernSwamp,Category::cGrotto,Category::cChest } );
+	locationTable[SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO]						   = ItemLocation::Chest (0x07, 0x1C, "Southern Swamp Mystery Woods Grotto",						SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO,PURPLE_RUPEE,			{Category::cSouthernSwamp, Category::cGrotto,Category::cChest } );
 	//locationTable[SOUTHERN_SWAMP_KOTAKE_MUSHROOM_SALE]						   = ItemLocation::Base (0x0A, 0x00, "Southern Swamp Kotake Mushroom Sale",							SOUTHERN_SWAMP_KOTAKE_MUSHROOM_SALE,RED_RUPEE,				{Category::cSouthernSwamp} );
 	//locationTable[SOUTHERN_SWAMP_PICTOGRAPH_STANDARD]					 	   = ItemLocation::Base (0x0A, 0x00, "Southern Swamp Pictograph Standard",							SOUTHERN_SWAMP_PICTOGRAPH_STANDARD,	BLUE_RUPEE,				{Category::cSouthernSwamp, Category::cMinigame} );
 	//locationTable[SOUTHERN_SWAMP_PICTOGRAPH_GOOD]							   = ItemLocation::Base (0x0A, 0x00, "Southern Swamp Pictograph Good",								SOUTHERN_SWAMP_PICTOGRAPH_GOOD,		RED_RUPEE,				{Category::cSouthernSwamp,Category::cMinigame} );
@@ -189,34 +188,34 @@ void LocationTable_Init() {
 	//locationTable[STOCKPOTINN_GRANDMA_SHORT_STORY]							   = ItemLocation::Base		(0x61, 0x00, "Stock Pot Inn Grandma Short Story",					STOCKPOTINN_GRANDMA_SHORT_STORY,		PIECE_OF_HEART,			{Category::cStockPotInn} );
 	//locationTable[STOCKPOTINN_GRANDMA_LONG_STORY]							   = ItemLocation::Base		(0x61, 0x00, "Stock Pot Inn Grandma Long Story",					STOCKPOTINN_GRANDMA_LONG_STORY,			PIECE_OF_HEART,			{Category::cStockPotInn} );
 	//locationTable[STOCKPOTINN_ANJU_AND_KAFEI]								   = ItemLocation::Base		(0x61, 0x00, "Stock Pot Inn Anju And Kafei",						STOCKPOTINN_ANJU_AND_KAFEI,				COUPLES_MASK,			{Category::cStockPotInn} );
-	locationTable[STOCKPOTINN_STAFF_ROOM_CHEST]				   			 	   = ItemLocation::Chest	(0x61, 0x00, "Stock Pot Inn Staff Room Chest",						STOCKPOTINN_STAFF_ROOM_CHEST,			SILVER_RUPEE,			{Category::cStockPotInn,Category::cChest } );
+	locationTable[STOCKPOTINN_STAFF_ROOM_CHEST]				   			 	   = ItemLocation::Chest	(0x61, 0x01, "Stock Pot Inn Staff Room Chest",						STOCKPOTINN_STAFF_ROOM_CHEST,			SILVER_RUPEE,			{Category::cStockPotInn,Category::cChest } );
 	locationTable[STOCKPOTINN_GUEST_ROOM_CHEST]								   = ItemLocation::Chest	(0x61, 0x00, "Stock Pot Inn Guest Room Chest",						STOCKPOTINN_GUEST_ROOM_CHEST,			SILVER_RUPEE,			{Category::cStockPotInn,Category::cChest } );
 	
 	//Stone Tower
-	locationTable[STONE_TOWER_INVERTED_RIGHT_CHEST]							   = ItemLocation::Chest	(0x18, 0x00, "Inverted Stone Tower Right Chest",					STONE_TOWER_INVERTED_RIGHT_CHEST,		SILVER_RUPEE,			{Category::cStoneTower,Category::cChest } );
-	locationTable[STONE_TOWER_INVERTED_CENTER_CHEST]						   = ItemLocation::Chest	(0x18, 0x00, "Inverted Stone Tower Center Chest",					STONE_TOWER_INVERTED_CENTER_CHEST,		BOMBCHU_10,				{Category::cStoneTower,Category::cChest } );
-	locationTable[STONE_TOWER_INVERTED_LEFT_CHEST]							   = ItemLocation::Chest	(0x18, 0x00, "Inverted Stone Tower Left Chest",						STONE_TOWER_INVERTED_LEFT_CHEST,		MAGIC_BEAN,				{Category::cStoneTower,Category::cChest } );
+	locationTable[STONE_TOWER_INVERTED_RIGHT_CHEST]							   = ItemLocation::Chest	(0x18, 0x1D, "Inverted Stone Tower Right Chest",					STONE_TOWER_INVERTED_RIGHT_CHEST,		SILVER_RUPEE,			{Category::cStoneTower,Category::cChest } );
+	locationTable[STONE_TOWER_INVERTED_CENTER_CHEST]						   = ItemLocation::Chest	(0x18, 0x1E, "Inverted Stone Tower Center Chest",					STONE_TOWER_INVERTED_CENTER_CHEST,		BOMBCHU_10,				{Category::cStoneTower,Category::cChest } );
+	locationTable[STONE_TOWER_INVERTED_LEFT_CHEST]							   = ItemLocation::Chest	(0x18, 0x1F, "Inverted Stone Tower Left Chest",						STONE_TOWER_INVERTED_LEFT_CHEST,		MAGIC_BEAN,				{Category::cStoneTower,Category::cChest } );
 	
 	//Termina Field
 	//locationTable[TERMINA_FIELD_MOONS_TEAR]									   = ItemLocation::Collectable(0x2D, 0x00, "Termina Field Moon's Tear",							TERMINA_FIELD_MOONS_TEAR,			MOONS_TEAR,					{Category::cTerminaField} );
 	//locationTable[TERMINA_FIELD_GOSSIP_STONES]								   = ItemLocation::Base		(0x07, 0x00, "Termina Field Gossip Stones",							TERMINA_FIELD_GOSSIP_STONES,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto} );
 	//locationTable[TERMINA_FIELD_BUSINESS_SCRUB]								   = ItemLocation::Base		(0x07, 0x00, "Termina Field Business Scrub",						TERMINA_FIELD_BUSINESS_SCRUB,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto,Category::cDekuScrub} );
 	locationTable[TERMINA_FIELD_PEAHAT_GROTTO]								   = ItemLocation::Chest	(0x07, 0x00, "Termina Field Peahat Grotto",							TERMINA_FIELD_PEAHAT_GROTTO,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto,Category::cChest } );
-	locationTable[TERMINA_FIELD_DODONGO_GROTTO]								   = ItemLocation::Chest 	(0x07, 0x00, "Termina Field Dodongo Grotto",						TERMINA_FIELD_DODONGO_GROTTO,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto,Category::cChest } );
+	locationTable[TERMINA_FIELD_DODONGO_GROTTO]								   = ItemLocation::Chest 	(0x07, 0x1C, "Termina Field Dodongo Grotto",						TERMINA_FIELD_DODONGO_GROTTO,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto,Category::cChest } );
 	//locationTable[TERMINA_FIELD_BIO_BABA_GROTTO]							   = ItemLocation::Collectable(0x07, 0x00, "Termina Field Bio Baba Grotto",						TERMINA_FIELD_BIO_BABA_GROTTO,		PIECE_OF_HEART,				{Category::cTerminaField,Category::cGrotto} );
 	//locationTable[TERMINA_FIELD_KAMARO]										   = ItemLocation::Base		(0x2D, 0x00, "Termina Field Kamaro",								TERMINA_FIELD_KAMARO,				KAMAROS_MASK,				{Category::cTerminaField} );
-	locationTable[TERMINA_FIELD_PILLAR_GROTTO]								   = ItemLocation::Chest	(0x07, 0x00, "Termina Field Pillar Grotto",							TERMINA_FIELD_PILLAR_GROTTO,		BOMBCHU_5,					{Category::cTerminaField,Category::cGrotto,Category::cChest } );
+	locationTable[TERMINA_FIELD_PILLAR_GROTTO]								   = ItemLocation::Chest	(0x07, 0x1A, "Termina Field Pillar Grotto",							TERMINA_FIELD_PILLAR_GROTTO,		BOMBCHU_5,					{Category::cTerminaField,Category::cGrotto,Category::cChest } );
 	locationTable[TERMINA_FIELD_GRASS_GROTTO]								   = ItemLocation::Chest	(0x07, 0x00, "Termina Field Grass Grotto",							TERMINA_FIELD_GRASS_GROTTO,			RED_RUPEE,					{Category::cTerminaField,Category::cGrotto,Category::cChest } );
-	locationTable[TERMINA_FIELD_UNDERWATER_CHEST]							   = ItemLocation::Chest	(0x2D, 0x00, "Termina Field Underwater Chest",						TERMINA_FIELD_UNDERWATER_CHEST,		RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
-	locationTable[TERMINA_FIELD_GRASS_CHEST]								   = ItemLocation::Chest	(0x2D, 0x00, "Termina Field Grass Chest",							TERMINA_FIELD_GRASS_CHEST,			RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
-	locationTable[TERMINA_FIELD_STUMP_CHEST]								   = ItemLocation::Chest	(0x2D, 0x00, "Termina Field Stump Chest",							TERMINA_FIELD_STUMP_CHEST,			RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
+	locationTable[TERMINA_FIELD_UNDERWATER_CHEST]							   = ItemLocation::Chest	(0x2D, 0x18, "Termina Field Underwater Chest",						TERMINA_FIELD_UNDERWATER_CHEST,		RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
+	locationTable[TERMINA_FIELD_GRASS_CHEST]								   = ItemLocation::Chest	(0x2D, 0x19, "Termina Field Grass Chest",							TERMINA_FIELD_GRASS_CHEST,			RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
+	locationTable[TERMINA_FIELD_STUMP_CHEST]								   = ItemLocation::Chest	(0x2D, 0x1A, "Termina Field Stump Chest",							TERMINA_FIELD_STUMP_CHEST,			RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
 	
 	//Twin Islands
-	locationTable[HOT_SPRING_WATER_GROTTO]						               = ItemLocation::Chest	 (0x07, 0x00, "Twin Islands Hot Spring Water Grotto",				HOT_SPRING_WATER_GROTTO,	            RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
+	locationTable[HOT_SPRING_WATER_GROTTO]						               = ItemLocation::Chest	 (0x07, 0x1A, "Twin Islands Hot Spring Water Grotto",				HOT_SPRING_WATER_GROTTO,	            RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
 	//locationTable[TWIN_ISLANDS_GORON_RACE]									   = ItemLocation::Base		 (0x6B, 0x00, "Twin Islands Goron Race",							TWIN_ISLANDS_GORON_RACE,				GOLD_DUST,				{Category::cTwinIslands} );
-	locationTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO]						   = ItemLocation::Chest	 (0x07, 0x00, "Twin Islands Goron Racetrack Grotto",				TWIN_ISLANDS_GORON_RACETRACK_GROTTO,	BOMBCHU_5,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
-	locationTable[TWIN_ISLANDS_UNDERWATER_RAMP_CHEST]						   = ItemLocation::Chest	 (0x5E, 0x00, "Twin Islands Underwater Ramp",						TWIN_ISLANDS_UNDERWATER_RAMP_CHEST,		PIECE_OF_HEART,			{Category::cTwinIslands,Category::cChest } );
-	locationTable[TWIN_ISLANDS_CAVE_CHEST]									   = ItemLocation::Chest	 (0x5E, 0x00, "Twin Islands Cave",									TWIN_ISLANDS_CAVE_CHEST,				RED_RUPEE,				{Category::cTwinIslands,Category::cChest } );
+	locationTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO]						   = ItemLocation::Chest	 (0x07, 0x19, "Twin Islands Goron Racetrack Grotto",				TWIN_ISLANDS_GORON_RACETRACK_GROTTO,	BOMBCHU_5,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
+	locationTable[TWIN_ISLANDS_UNDERWATER_RAMP_CHEST]						   = ItemLocation::Chest	 (0x5E, 0x1A, "Twin Islands Underwater Ramp",						TWIN_ISLANDS_UNDERWATER_RAMP_CHEST,		PIECE_OF_HEART,			{Category::cTwinIslands,Category::cChest } );
+	locationTable[TWIN_ISLANDS_CAVE_CHEST]									   = ItemLocation::Chest	 (0x5E, 0x18, "Twin Islands Cave",									TWIN_ISLANDS_CAVE_CHEST,				RED_RUPEE,				{Category::cTwinIslands,Category::cChest } );
 	
 	//W Clock Town
 	locationTable[W_CLOCK_TOWN_BOMB_BAG_BUY]								   = ItemLocation::Base		(0x0D, 0x00, "W Clock Town Bomb Bag Purchase",						W_CLOCK_TOWN_BOMB_BAG_BUY,			BOMB_BAG,		{Category::cWestClockTown} );
@@ -228,9 +227,9 @@ void LocationTable_Init() {
 	//locationTable[W_CLOCK_TOWN_LOTTERY]										   = ItemLocation::Base		(0x39, 0x00, "W Clock Town Lottery",								W_CLOCK_TOWN_LOTTERY,				PURPLE_RUPEE,				{Category::cWestClockTown} );
 	
 	//Woodfall
-	locationTable[WOODFALL_BRIDGE_CHEST]									   = ItemLocation::Chest	(0x46, 0x00, "Woodfall Bridge Chest",								WOODFALL_BRIDGE_CHEST,				PIECE_OF_HEART,				{Category::cWoodfall,Category::cChest } );
-	locationTable[WOODFALL_BEHIND_OWL_CHEST]								   = ItemLocation::Chest	(0x46, 0x00, "Woodfall Behind Owl Chest",							WOODFALL_BEHIND_OWL_CHEST,			BLUE_RUPEE,					{Category::cWoodfall,Category::cChest } );
-	locationTable[ENTRANCE_TO_WOODFALL_CHEST]						           = ItemLocation::Chest	(0x46, 0x00, "Woodfall Entrance to Woodfall Chest",					ENTRANCE_TO_WOODFALL_CHEST,      RED_RUPEE,					{Category::cWoodfall,Category::cChest } );
+	locationTable[WOODFALL_BRIDGE_CHEST]									   = ItemLocation::Chest	(0x46, 0x15, "Woodfall Bridge Chest",								WOODFALL_BRIDGE_CHEST,				PIECE_OF_HEART,				{Category::cWoodfall,Category::cChest } );
+	locationTable[WOODFALL_BEHIND_OWL_CHEST]								   = ItemLocation::Chest	(0x46, 0x18, "Woodfall Behind Owl Chest",							WOODFALL_BEHIND_OWL_CHEST,			BLUE_RUPEE,					{Category::cWoodfall,Category::cChest } );
+	locationTable[ENTRANCE_TO_WOODFALL_CHEST]						           = ItemLocation::Chest	(0x46, 0x12, "Woodfall Entrance to Woodfall Chest",					ENTRANCE_TO_WOODFALL_CHEST,      RED_RUPEE,					{Category::cWoodfall,Category::cChest } );
 	//locationTable[WOODFALL_GREAT_FAIRY]										   = ItemLocation::Base		(0x26, 0x00, "Woodfall Great Fairy",								WOODFALL_GREAT_FAIRY,				SPIN_ATTACK,				{Category::cWoodfall, Category::cFairyFountain} );
 	
 	//Zora Cape
@@ -238,9 +237,9 @@ void LocationTable_Init() {
 	//locationTable[ZORA_CAPE_BEAVER_RACE_1]									   = ItemLocation::Base		(0x4A, 0x00, "Zora Cape Beaver Race 1",									ZORA_CAPE_BEAVER_RACE_1,			EMPTY_BOTTLE1,				{Category::cZoraCape,Category::cMinigame} );
 	//locationTable[ZORA_CAPE_BEAVER_RACE_2]									   = ItemLocation::Base		(0x4A, 0x00, "Zora Cape Beaver Race 2",									ZORA_CAPE_BEAVER_RACE_2,			PIECE_OF_HEART,				{Category::cZoraCape,Category::cMinigame} );
 	//locationTable[ZORA_CAPE_LIKE_LIKE]										   = ItemLocation::Base		(0x38, 0x00, "Zora Cape Like Like",										ZORA_CAPE_LIKE_LIKE,				PIECE_OF_HEART,				{Category::cZoraCape} );
-	locationTable[ZORA_CAPE_LEDGE_NO_TREE]									   = ItemLocation::Chest	(0x38, 0x00, "Zora Cape Ledge Without Tree",							ZORA_CAPE_LEDGE_NO_TREE,			RED_RUPEE,					{Category::cZoraCape,Category::cChest } );
-	locationTable[ZORA_CAPE_LEDGE_WITH_TREE]								   = ItemLocation::Chest	(0x38, 0x00, "Zora Cape Ledge With Tree",								ZORA_CAPE_LEDGE_WITH_TREE,			RED_RUPEE,					{Category::cZoraCape,Category::cChest } );
-	locationTable[ZORA_CAPE_GROTTO]											   = ItemLocation::Chest	(0x07, 0x00, "Zora Cape Grotto",								 		ZORA_CAPE_GROTTO,					BOMBCHU_5,					{Category::cZoraCape,Category::cGrotto,Category::cChest } );
+	locationTable[ZORA_CAPE_LEDGE_NO_TREE]									   = ItemLocation::Chest	(0x38, 0x19, "Zora Cape Ledge Without Tree",							ZORA_CAPE_LEDGE_NO_TREE,			RED_RUPEE,					{Category::cZoraCape,Category::cChest } );
+	locationTable[ZORA_CAPE_LEDGE_WITH_TREE]								   = ItemLocation::Chest	(0x38, 0x1A, "Zora Cape Ledge With Tree",								ZORA_CAPE_LEDGE_WITH_TREE,			RED_RUPEE,					{Category::cZoraCape,Category::cChest } );
+	locationTable[ZORA_CAPE_GROTTO]											   = ItemLocation::Chest	(0x07, 0x15, "Zora Cape Grotto",								 		ZORA_CAPE_GROTTO,					BOMBCHU_5,					{Category::cZoraCape,Category::cGrotto,Category::cChest } );
 	locationTable[ZORA_CAPE_UNDERWATER_CHEST]								   = ItemLocation::Chest	(0x38, 0x00, "Zora Cape Underwater Chest",								ZORA_CAPE_UNDERWATER_CHEST,			PURPLE_RUPEE,				{Category::cZoraCape,Category::cChest } );
 	
 	//Zora Hall
@@ -259,57 +258,58 @@ void LocationTable_Init() {
 	
 
 	//Woodfall Temple
-	locationTable[WOODFALL_TEMPLE_HEROS_BOW_CHEST]							   = ItemLocation::Chest	(0x1B, 0x00, "Woodfall Temple Hero's Bow Chest",					WOODFALL_TEMPLE_HEROS_BOW_CHEST,	HEROS_BOW,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cChest } );
-	//locationTable[WOODFALL_TEMPLE_MAP_CHEST]								   = ItemLocation::Chest	(0x1B, 0x00, "Woodfall Temple Map Chest",							WOODFALL_TEMPLE_MAP_CHEST,			WOODFALL_MAP,				{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaMap} );
-	//locationTable[WOODFALL_TEMPLE_COMPASS_CHEST]							   = ItemLocation::Chest	(0x1B, 0x00, "Woodfall Temple Compass Chest",						WOODFALL_TEMPLE_COMPASS_CHEST,		WOODFALL_TEMPLE_COMPASS,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaCompass} );
-	locationTable[WOODFALL_TEMPLE_BOSS_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x00, "Woodfall Temple Boss Key Chest",						WOODFALL_TEMPLE_BOSS_KEY_CHEST,		WOODFALL_TEMPLE_BOSS_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaBossKey} );
-	locationTable[WOODFALL_TEMPLE_SMALL_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x00, "Woodfall Temple Small Key Chest",						WOODFALL_TEMPLE_SMALL_KEY_CHEST,	WOODFALL_TEMPLE_SMALL_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaSmallKey} );
+	locationTable[WOODFALL_TEMPLE_HEROS_BOW_CHEST]							   = ItemLocation::Chest	(0x1B, 0x1B, "Woodfall Temple Hero's Bow Chest",					WOODFALL_TEMPLE_HEROS_BOW_CHEST,	HEROS_BOW,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cChest } );
+	//locationTable[WOODFALL_TEMPLE_MAP_CHEST]								   = ItemLocation::Chest	(0x1B, 0x1D, "Woodfall Temple Map Chest",							WOODFALL_TEMPLE_MAP_CHEST,			WOODFALL_MAP,				{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaMap} );
+	//locationTable[WOODFALL_TEMPLE_COMPASS_CHEST]							   = ItemLocation::Chest	(0x1B, 0x1C, "Woodfall Temple Compass Chest",						WOODFALL_TEMPLE_COMPASS_CHEST,		WOODFALL_TEMPLE_COMPASS,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaCompass} );
+	locationTable[WOODFALL_TEMPLE_BOSS_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x1E, "Woodfall Temple Boss Key Chest",						WOODFALL_TEMPLE_BOSS_KEY_CHEST,		WOODFALL_TEMPLE_BOSS_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaBossKey} );
+	locationTable[WOODFALL_TEMPLE_SMALL_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x15, "Woodfall Temple Small Key Chest",						WOODFALL_TEMPLE_SMALL_KEY_CHEST,	WOODFALL_TEMPLE_SMALL_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaSmallKey} );
 
 	//Snowhead Temple
-	locationTable[SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Fire Arrow Chest",						SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST,		FIRE_ARROWS,			{Category::cSnowhead, Category::cSnowheadTemple,Category::cChest } );
-	//locationTable[SNOWHEAD_TEMPLE_MAP_CHEST]							   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Map Chest",								SNOWHEAD_TEMPLE_MAP_CHEST,				SNOWHEAD_TEMPLE_MAP,	{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaMap} );
-	//locationTable[SNOWHEAD_TEMPLE_COMPASS_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Compass Chest",							SNOWHEAD_TEMPLE_COMPASS_CHEST,			SNOWHEAD_TEMPLE_COMPASS,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaCompass} );
-	locationTable[SNOWHEAD_TEMPLE_BOSS_KEY_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Boss Key Chest",							SNOWHEAD_TEMPLE_BOSS_KEY_CHEST,			SNOWHEAD_TEMPLE_BOSS_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaBossKey} );
-	locationTable[SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Block Room Chest",						SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
-	locationTable[SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST]					   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Icicle Room Chest",						SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
-	locationTable[SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST]					   	   = ItemLocation::Chest	(0x21, 0x00, "Snowhead Temple Bridge Room Chest",						SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
+	locationTable[SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x1B, "Snowhead Temple Fire Arrow Chest",						SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST,		FIRE_ARROWS,			{Category::cSnowhead, Category::cSnowheadTemple,Category::cChest } );
+	//locationTable[SNOWHEAD_TEMPLE_MAP_CHEST]							   	   = ItemLocation::Chest	(0x21, 0x1D, "Snowhead Temple Map Chest",								SNOWHEAD_TEMPLE_MAP_CHEST,				SNOWHEAD_TEMPLE_MAP,	{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaMap} );
+	//locationTable[SNOWHEAD_TEMPLE_COMPASS_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x1C, "Snowhead Temple Compass Chest",							SNOWHEAD_TEMPLE_COMPASS_CHEST,			SNOWHEAD_TEMPLE_COMPASS,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaCompass} );
+	locationTable[SNOWHEAD_TEMPLE_BOSS_KEY_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x1E, "Snowhead Temple Boss Key Chest",							SNOWHEAD_TEMPLE_BOSS_KEY_CHEST,			SNOWHEAD_TEMPLE_BOSS_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaBossKey} );
+	locationTable[SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x17, "Snowhead Temple Block Room Chest",						SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
+	locationTable[SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST]					   	   = ItemLocation::Chest	(0x21, 0x18, "Snowhead Temple Icicle Room Chest",						SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
+	locationTable[SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST]					   	   = ItemLocation::Chest	(0x21, 0x0D, "Snowhead Temple Bridge Room Chest",						SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST,		SNOWHEAD_TEMPLE_SMALL_KEY,{Category::cSnowhead, Category::cSnowheadTemple, Category::cVanillaSmallKey} );
 	
 	//Great Bay Temple
-	locationTable[GBT_ICE_ARROW_CHEST]										   = ItemLocation::Chest	(0x49, 0x00, "Great Bay Temple Ice Arrow Chest",					GBT_ICE_ARROW_CHEST,				ICE_ARROWS,					{Category::cGreatBayTemple,Category::cChest } );
-	//locationTable[GBT_MAP_CHEST]											   = ItemLocation::Chest	(0x49, 0x00, "Great Bay Temple Map Chest",							GBT_MAP_CHEST,						GBT_MAP,					{Category::cGreatBayTemple, Category::cVanillaMap} );
-	//locationTable[GBT_COMPASS_CHEST]										   = ItemLocation::Chest	(0x49, 0x00, "Great Bay Temple Compass Chest",						GBT_COMPASS_CHEST,					GBT_COMPASS,				{Category::cGreatBayTemple, Category::cVanillaCompass} );
-	locationTable[GBT_BOSS_KEY_CHEST]										   = ItemLocation::Chest	(0x49, 0x00, "Great Bay Temple Boss Key Chest",						GBT_BOSS_KEY_CHEST,					GBT_BOSS_KEY,				{Category::cGreatBayTemple, Category::cVanillaBossKey} );
-	locationTable[GBT_SMALL_KEY_CHEST]										   = ItemLocation::Chest	(0x49, 0x00, "Great Bay Temple Small Key Chest",					GBT_SMALL_KEY_CHEST,				GBT_SMALL_KEY,				{Category::cGreatBayTemple, Category::cVanillaSmallKey} );
+	locationTable[GBT_ICE_ARROW_CHEST]										   = ItemLocation::Chest	(0x49, 0x1B, "Great Bay Temple Ice Arrow Chest",					GBT_ICE_ARROW_CHEST,				ICE_ARROWS,					{Category::cGreatBayTemple,Category::cChest } );
+	//locationTable[GBT_MAP_CHEST]											   = ItemLocation::Chest	(0x49, 0x1D, "Great Bay Temple Map Chest",							GBT_MAP_CHEST,						GBT_MAP,					{Category::cGreatBayTemple, Category::cVanillaMap} );
+	//locationTable[GBT_COMPASS_CHEST]										   = ItemLocation::Chest	(0x49, 0x1C, "Great Bay Temple Compass Chest",						GBT_COMPASS_CHEST,					GBT_COMPASS,				{Category::cGreatBayTemple, Category::cVanillaCompass} );
+	locationTable[GBT_BOSS_KEY_CHEST]										   = ItemLocation::Chest	(0x49, 0x1E, "Great Bay Temple Boss Key Chest",						GBT_BOSS_KEY_CHEST,					GBT_BOSS_KEY,				{Category::cGreatBayTemple, Category::cVanillaBossKey} );
+	locationTable[GBT_SMALL_KEY_CHEST]										   = ItemLocation::Chest	(0x49, 0x15, "Great Bay Temple Small Key Chest",					GBT_SMALL_KEY_CHEST,				GBT_SMALL_KEY,				{Category::cGreatBayTemple, Category::cVanillaSmallKey} );
 	
 	//Stone Tower Temple
-	//locationTable[STONE_TOWER_TEMPLE_MAP_CHEST]								   = ItemLocation::Chest	(0x16, 0x00, "Stone Tower Temple Map Chest",						STONE_TOWER_TEMPLE_MAP_CHEST,			STONE_TOWER_TEMPLE_MAP,	{Category::cStoneTowerTemple, Category::cVanillaMap} );
-	//locationTable[STONE_TOWER_TEMPLE_COMPASS_CHEST]						       = ItemLocation::Chest	(0x16, 0x00, "Stone Tower Temple Compass Chest",					STONE_TOWER_TEMPLE_COMPASS_CHEST,		STONE_TOWER_TEMPLE_COMPASS,{Category::cStoneTowerTemple, Category::cVanillaCompass} );
-	locationTable[STONE_TOWER_TEMPLE_BOSS_KEY_CHEST]						   = ItemLocation::Chest	(0x18, 0x00, "Stone Tower Temple Boss Key Chest",					STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,		STONE_TOWER_TEMPLE_BOSS_KEY,{Category::cStoneTowerTemple, Category::cVanillaBossKey} );
-	locationTable[STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST]						   = ItemLocation::Chest	(0x16, 0x00, "Stone Tower Temple Armos Room Chest",					STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
-	locationTable[STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST]					   = ItemLocation::Chest	(0x16, 0x00, "Stone Tower Temple Eyegore Room Chest",				STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
-	locationTable[STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST]					   = ItemLocation::Chest	(0x18, 0x00, "Stone Tower Temple Updraft Room Chest",				STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
-	locationTable[STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST]				   = ItemLocation::Chest	(0x18, 0x00, "Stone Tower Temple Death Armos Room Chest",			STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST,STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
-	locationTable[STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST]						   = ItemLocation::Chest	(0x16, 0x00, "Stone Tower Temple Light Arrow Chest",				STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST,	LIGHT_ARROWS,				{Category::cStoneTowerTemple,Category::cChest } );
+	//locationTable[STONE_TOWER_TEMPLE_MAP_CHEST]								   = ItemLocation::Chest	(0x16, 0x1D, "Stone Tower Temple Map Chest",						STONE_TOWER_TEMPLE_MAP_CHEST,			STONE_TOWER_TEMPLE_MAP,	{Category::cStoneTowerTemple, Category::cVanillaMap} );
+	//locationTable[STONE_TOWER_TEMPLE_COMPASS_CHEST]						       = ItemLocation::Chest	(0x16, 0x1C, "Stone Tower Temple Compass Chest",					STONE_TOWER_TEMPLE_COMPASS_CHEST,		STONE_TOWER_TEMPLE_COMPASS,{Category::cStoneTowerTemple, Category::cVanillaCompass} );
+	locationTable[STONE_TOWER_TEMPLE_BOSS_KEY_CHEST]						   = ItemLocation::Chest	(0x18, 0x1E, "Stone Tower Temple Boss Key Chest",					STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,		STONE_TOWER_TEMPLE_BOSS_KEY,{Category::cStoneTowerTemple, Category::cVanillaBossKey} );
+	locationTable[STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST]						   = ItemLocation::Chest	(0x16, 0x02, "Stone Tower Temple Armos Room Chest",					STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
+	locationTable[STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST]					   = ItemLocation::Chest	(0x16, 0x01, "Stone Tower Temple Bridge Switch Chest",				STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
+	locationTable[STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST]					   = ItemLocation::Chest	(0x18, 0x04, "Stone Tower Temple Updraft Room Chest",				STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST,	STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
+	locationTable[STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST]				   = ItemLocation::Chest	(0x18, 0x19, "Stone Tower Temple Death Armos Room Chest",			STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST,STONE_TOWER_TEMPLE_SMALL_KEY,{Category::cStoneTowerTemple, Category::cVanillaSmallKey} );
+	locationTable[STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST]						   = ItemLocation::Chest	(0x16, 0x1B, "Stone Tower Temple Light Arrow Chest",				STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST,	LIGHT_ARROWS,				{Category::cStoneTowerTemple,Category::cChest } );
 	locationTable[STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST]						   = ItemLocation::Chest	(0x36, 0x00, "Stone Tower Temple Giant's Mask Chest",				STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST,	GIANTS_MASK,				{Category::cStoneTowerTemple,Category::cChest } );
 	
 	//Pirate Fortress 
-	locationTable[PF_INTERIOR_HOOKSHOT_CHEST]					   = ItemLocation::Chest	   (0x23, 0x00, "Pirate's Fortress Interior Hookshot Chest",		PF_INTERIOR_HOOKSHOT_CHEST,	HOOKSHOT,				{Category::cPiratesFortressInterior,Category::cChest } );
-	locationTable[PF_INT_LOWER_CHEST]					  	   = ItemLocation::Chest	   (0x23, 0x00, "Pirate's Fortress Interior Lower Chest",			PF_INT_LOWER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
-	locationTable[PF_INT_UPPER_CHEST]						   = ItemLocation::Chest	   (0x23, 0x00, "Pirate's Fortress Interior Upper Chest",			PF_INT_UPPER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
-	locationTable[PF_INT_TANK_CHEST]						   = ItemLocation::Chest	   (0x23, 0x00, "Pirate's Fortress Interior Tank Chest",			PF_INT_TANK_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
-	locationTable[PF_INT_GUARD_ROOM_CHEST]				   = ItemLocation::Chest	   (0x23, 0x00, "Pirate's Fortress Interior Guard Room Chest",		PF_INT_GUARD_ROOM_CHEST,	SILVER_RUPEE,			{Category::cPiratesFortressInterior,Category::cChest } );
-	locationTable[PF_CAGE_ROOM_SHALLOW_CHEST]			   = ItemLocation::Chest	   (0x14, 0x00, "Pirate's Fortress Sewer Cage Room Shallow Chest",	PF_CAGE_ROOM_SHALLOW_CHEST,	RED_RUPEE,			{Category::cPiratesFortressSewer,Category::cChest } );
-	locationTable[PF_CAGE_ROOM_DEEP_CHEST]				   = ItemLocation::Chest	   (0x14, 0x00, "Pirate's Fortress Sewer Cage Room Deep Chest",		PF_CAGE_ROOM_DEEP_CHEST,	BLUE_RUPEE,				{Category::cPiratesFortressSewer,Category::cChest } );
-	locationTable[PF_MAZE_CHEST]								   = ItemLocation::Chest	   (0x14, 0x00, "Pirate's Fortress Sewer Maze Chest",				PF_MAZE_CHEST,					RED_RUPEE,				{Category::cPiratesFortressSewer,Category::cChest } );
-	//locationTable[PF_SEWER_CAGE]								   = ItemLocation::Collectable (0x14, 0x00, "Pirate's Fortress Sewer Cage",						PF_SEWER_CAGE,					PIECE_OF_HEART,			{Category::cPiratesFortressSewer,Category::cChest } );
-	locationTable[PF_EXTERIOR_LOG_CHEST]						   = ItemLocation::Chest	   (0x3B, 0x00, "Pirate's Fortress Exterior Log Chest",				PF_EXTERIOR_LOG_CHEST,			RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
-	locationTable[PF_EXTERIOR_SAND_CHEST]						   = ItemLocation::Chest	   (0x3B, 0x00, "Pirate's Fortress Exterior Sand Chest",			PF_EXTERIOR_SAND_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
-	locationTable[PF_EXTERIOR_CORNER_CHEST]					   = ItemLocation::Chest	   (0x3B, 0x00, "Pirate's Fortress Exterior Corner Chest",			PF_EXTERIOR_CORNER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
+	locationTable[PF_INTERIOR_HOOKSHOT_CHEST]					              = ItemLocation::Chest	   (0x23, 0x16, "Pirate's Fortress Interior Hookshot Chest",		PF_INTERIOR_HOOKSHOT_CHEST,	HOOKSHOT,				{Category::cPiratesFortressInterior,Category::cChest } );
+	locationTable[PF_INT_LOWER_CHEST]					  	                  = ItemLocation::Chest	   (0x23, 0x18, "Pirate's Fortress Interior Lower Chest",			PF_INT_LOWER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
+	locationTable[PF_INT_UPPER_CHEST]						                  = ItemLocation::Chest	   (0x23, 0x19, "Pirate's Fortress Interior Upper Chest",			PF_INT_UPPER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
+	locationTable[PF_INT_TANK_CHEST]						                  = ItemLocation::Chest	   (0x23, 0x18, "Pirate's Fortress Interior Tank Chest",			PF_INT_TANK_CHEST,		RED_RUPEE,				{Category::cPiratesFortressInterior,Category::cChest } );
+	locationTable[PF_INT_GUARD_ROOM_CHEST]				                      = ItemLocation::Chest	   (0x23, 0x03, "Pirate's Fortress Interior Guard Room Chest",		PF_INT_GUARD_ROOM_CHEST,	SILVER_RUPEE,			{Category::cPiratesFortressInterior,Category::cChest } );
+	locationTable[PF_CAGE_ROOM_SHALLOW_CHEST]			                      = ItemLocation::Chest	   (0x14, 0x1C, "Pirate's Fortress Sewer Cage Room Shallow Chest",	PF_CAGE_ROOM_SHALLOW_CHEST,	RED_RUPEE,			{Category::cPiratesFortressSewer,Category::cChest } );
+	locationTable[PF_CAGE_ROOM_DEEP_CHEST]				                      = ItemLocation::Chest	   (0x14, 0x16, "Pirate's Fortress Sewer Cage Room Deep Chest",		PF_CAGE_ROOM_DEEP_CHEST,	BLUE_RUPEE,				{Category::cPiratesFortressSewer,Category::cChest } );
+	locationTable[PF_MAZE_CHEST]								              = ItemLocation::Chest	   (0x14, 0x19, "Pirate's Fortress Sewer Maze Chest",				PF_MAZE_CHEST,					RED_RUPEE,				{Category::cPiratesFortressSewer,Category::cChest } );
+	//locationTable[PF_SEWER_CAGE]								              = ItemLocation::Collectable (0x14, 0x00, "Pirate's Fortress Sewer Cage",						PF_SEWER_CAGE,					PIECE_OF_HEART,			{Category::cPiratesFortressSewer,Category::cChest } );
+	locationTable[PF_EXTERIOR_LOG_CHEST]						              = ItemLocation::Chest	   (0x3B, 0x18, "Pirate's Fortress Exterior Log Chest",				PF_EXTERIOR_LOG_CHEST,			RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
+	locationTable[PF_EXTERIOR_SAND_CHEST]						              = ItemLocation::Chest	   (0x3B, 0x19, "Pirate's Fortress Exterior Sand Chest",			PF_EXTERIOR_SAND_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
+	locationTable[PF_EXTERIOR_CORNER_CHEST]					                  = ItemLocation::Chest	   (0x3B, 0x1A, "Pirate's Fortress Exterior Corner Chest",			PF_EXTERIOR_CORNER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
+	//locationTable[PF_INT_INVISIBLE_SOLDIER]							      = ItemLocation::Base	   (0x53, 0x00, "Pirate's Fortress Interior Invisible Soldier",		PF_INT_INVISIBLE_SOLDIER,		STONE_MASK,				{Category::cPiratesFortressInterior, Category::cMask} );
 	
 	//Beneath The Well
-	locationTable[BENEATH_THE_WELL_MIRROR_SHIELD_CHEST]						   = ItemLocation::Chest	(0x4B, 0x00, "Beneath the Well Mirror Shield Chest"	,				BENEATH_THE_WELL_MIRROR_SHIELD_CHEST,	MIRROR_SHIELD,			{Category::cBeneathTheWell,Category::cChest } );
-	locationTable[WELL_LEFT_PATH_CHEST]						  	   = ItemLocation::Chest	(0x4B, 0x00, "Beneath the Well Left Path Chest"	,				   WELL_LEFT_PATH_CHEST,	    PURPLE_RUPEE,			{Category::cBeneathTheWell,Category::cChest } );
-	locationTable[WELL_RIGHT_PATH_CHEST]						   = ItemLocation::Chest	(0x4B, 0x00, "Beneath the Well Right Path Chest",					WELL_RIGHT_PATH_CHEST,   	PURPLE_RUPEE,			{Category::cBeneathTheWell,Category::cChest } );
+	locationTable[BENEATH_THE_WELL_MIRROR_SHIELD_CHEST]						   = ItemLocation::Chest	(0x4B, 0x1B, "Beneath the Well Mirror Shield Chest"	,				BENEATH_THE_WELL_MIRROR_SHIELD_CHEST,	MIRROR_SHIELD,			{Category::cBeneathTheWell,Category::cChest } );
+	locationTable[WELL_LEFT_PATH_CHEST]						  	   = ItemLocation::Chest	(0x4B, 0x02, "Beneath the Well Left Path Chest"	,				   WELL_LEFT_PATH_CHEST,	    PURPLE_RUPEE,			{Category::cBeneathTheWell,Category::cChest } );
+	locationTable[WELL_RIGHT_PATH_CHEST]						   = ItemLocation::Chest	(0x4B, 0x01, "Beneath the Well Right Path Chest",					WELL_RIGHT_PATH_CHEST,   	PURPLE_RUPEE,			{Category::cBeneathTheWell,Category::cChest } );
 	
 	//Ikana Castle
 	//locationTable[IKANA_CASTLE_PILLAR]										   = ItemLocation::Collectable(0x1D, 0x00, "Ikana Castle Pillar",								IKANA_CASTLE_PILLAR,				PIECE_OF_HEART,					{Category::cIkanaCastle} );
@@ -317,10 +317,10 @@ void LocationTable_Init() {
 	
 	//Secret Shrine
 	locationTable[SECRET_SHRINE_DINOLFOS_CHEST]							   	   = ItemLocation::Chest	(0x60, 0x00, "Secret Shrine Dinolfos Chest",						SECRET_SHRINE_DINOLFOS_CHEST,			SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
-	locationTable[SECRET_SHRINE_WIZZROBE_CHEST]							   	   = ItemLocation::Chest	(0x60, 0x00, "Secret Shrine Wizzrobe Chest",						SECRET_SHRINE_WIZZROBE_CHEST,			SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
-	locationTable[SECRET_SHRINE_WART_CHEST]								   	   = ItemLocation::Chest	(0x60, 0x00, "Secret Shrine Wart Chest",							SECRET_SHRINE_WART_CHEST,				SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
-	locationTable[SECRET_SHRINE_GARO_CHEST]								   	   = ItemLocation::Chest	(0x60, 0x00, "Secret Shrine Garo Chest",							SECRET_SHRINE_GARO_CHEST,				SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
-	locationTable[SECRET_SHRINE_FINAL_CHEST]							   	   = ItemLocation::Chest	(0x60, 0x00, "Secret Shrine Final Chest",							SECRET_SHRINE_FINAL_CHEST,				PIECE_OF_HEART,			{Category::cSecretShrine,Category::cChest } );
+	locationTable[SECRET_SHRINE_WIZZROBE_CHEST]							   	   = ItemLocation::Chest	(0x60, 0x01, "Secret Shrine Wizzrobe Chest",						SECRET_SHRINE_WIZZROBE_CHEST,			SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
+	locationTable[SECRET_SHRINE_WART_CHEST]								   	   = ItemLocation::Chest	(0x60, 0x02, "Secret Shrine Wart Chest",							SECRET_SHRINE_WART_CHEST,				SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
+	locationTable[SECRET_SHRINE_GARO_CHEST]								   	   = ItemLocation::Chest	(0x60, 0x03, "Secret Shrine Garo Chest",							SECRET_SHRINE_GARO_CHEST,				SILVER_RUPEE,			{Category::cSecretShrine,Category::cChest } );
+	locationTable[SECRET_SHRINE_FINAL_CHEST]							   	   = ItemLocation::Chest	(0x60, 0x0A, "Secret Shrine Final Chest",							SECRET_SHRINE_FINAL_CHEST,				PIECE_OF_HEART,			{Category::cSecretShrine,Category::cChest } );
 	
 	//The Moon
 	//locationTable[THE_MOON_DEKU_TRIAL_BONUS]								   = ItemLocation::Base		(0x2A, 0x00, "The Moon Deku Trial Bonus",							THE_MOON_DEKU_TRIAL_BONUS,			PIECE_OF_HEART,				{Category::cTheMoon} );
@@ -400,9 +400,9 @@ void LocationTable_Init() {
     locationTable[OSH_SECOND_ROOM_LOWER_POT]								   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Second Room Lower Pot",       OCEANSIDE_SKULLTULA_TOKEN19,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_STORAGE_ROOM_CEILING_WEB]								   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Ceiling Web",    OCEANSIDE_SKULLTULA_TOKEN20,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_STORAGE_ROOM_BEHIND_CRATE]							   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Behind Crate",   OCEANSIDE_SKULLTULA_TOKEN21,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
-    locationTable[OSH_STORAGE_ROOM_BEHIND_BOAT]								   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Behind Boat",    OCEANSIDE_SKULLTULA_TOKEN22,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
+    locationTable[OSH_STORAGE_ROOM_WALL]						      		   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Wall",           OCEANSIDE_SKULLTULA_TOKEN22,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_STORAGE_ROOM_CRATE]									   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Crate",          OCEANSIDE_SKULLTULA_TOKEN23,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
-    locationTable[OSH_STORAGE_ROOM_JAR]										   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Jar",            OCEANSIDE_SKULLTULA_TOKEN24,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
+    locationTable[OSH_STORAGE_ROOM_BARREL]								       = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Storage Room Barrel",         OCEANSIDE_SKULLTULA_TOKEN24,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_COLORED_SKULLS_CEILING_EDGE]							   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Colored Skulls Ceiling Edge", OCEANSIDE_SKULLTULA_TOKEN25,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_COLORED_SKULLS_CHANDELIER_1]							   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Colored Skulls Chandelier 1", OCEANSIDE_SKULLTULA_TOKEN26,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
     locationTable[OSH_COLORED_SKULLS_CHANDELIER_2]							   = ItemLocation::OGSToken	(0x28, 0x00, "Oceanside Spider House Colored Skulls Chandelier 2", OCEANSIDE_SKULLTULA_TOKEN27,	OCEANSIDE_SKULLTULA_TOKEN,	{Category::cGreatBayCoast, Category::cOceanSkulltula} );
@@ -428,7 +428,7 @@ void LocationTable_Init() {
 	locationTable[WF_SF_PRE_BOSS_UPPER_LEFT_BUBBLE]							   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Pre-Boss Upper Right Bubble", WF_STRAY_FAIRY7,	            WF_STRAY_FAIRY7,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray, Category::cVanillaStrayFairy} );
 	locationTable[WF_SF_PRE_BOSS_PILLAR_BUBBLE]								   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Pre-Boss Pillar Bubble",      WF_STRAY_FAIRY8,	        	WF_STRAY_FAIRY8,			    {Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray,  Category::cVanillaStrayFairy} );
 	locationTable[WF_SF_DEKU_BABA]											   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Deku Baba",                   WF_STRAY_FAIRY9,				WF_STRAY_FAIRY9,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray,  Category::cVanillaStrayFairy} );
-	locationTable[WF_SF_POISON_WATER_BUBBLE]								   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Poison Water Bubble",         WF_STRAY_FAIRY10,		     	WF_STRAY_FAIRY10,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray,  Category::cVanillaStrayFairy} );
+	locationTable[WF_SF_DRAGONFLY_ROOM_BUBBLE]								   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Dragonfly Room Bubble",       WF_STRAY_FAIRY10,		     	WF_STRAY_FAIRY10,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray,  Category::cVanillaStrayFairy} );
 	locationTable[WF_SF_SKULLTULA]											   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Skulltula",                   WF_STRAY_FAIRY11,				WF_STRAY_FAIRY11,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray, Category::cVanillaStrayFairy} );
 	locationTable[WF_SF_DARK_ROOM]											   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Dark Room",                   WF_STRAY_FAIRY12,				WF_STRAY_FAIRY12,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray, Category::cVanillaStrayFairy} );
 	locationTable[WF_SF_JAR_FAIRY]											   = ItemLocation::StrayFairy(0x1B, 0x00, "Woodfall Temple Stray Fairy Jar Fairy",                   WF_STRAY_FAIRY13,				WF_STRAY_FAIRY13,				{Category::cWoodfall, Category::cWoodfallTemple, Category::cWFStray, Category::cVanillaStrayFairy} );
@@ -886,7 +886,7 @@ std::vector<LocationKey> logicalLocations ={
 	//STONE TOWER TEMPLE
 	STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,
 	STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, //SMALL KEY
-	STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, //SMALL KEY
+	STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, //GIANTS MASK
@@ -1004,7 +1004,6 @@ std::vector<LocationKey> overworldLocations = {
 	PINNACLE_ROCK_LOWER_CHEST,
 
 	//Road to Ikana
-	ROAD_TO_IKANA_INVISIBLE_SOLDIER,
 	ROAD_TO_IKANA_PILLAR_CHEST,
 	ROAD_TO_IKANA_GROTTO,
 

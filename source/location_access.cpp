@@ -255,7 +255,6 @@ void AreaTable_Init() {
 	areaTable[ROAD_TO_IKANA] = Area("Road To Ikana", "Road To Ikana", ROAD_TO_IKANA, {}, {
 		//Locations
 		LocationAccess(ROAD_TO_IKANA_GROTTO, {[] {return GoronMask;}}),
-		//LocationAccess(ROAD_TO_IKANA_INVISIBLE_SOLDIER, {[] {return LensOfTruth && MagicMeter && AnyHealingPotion && EastAccess;}}),
 		LocationAccess(ROAD_TO_IKANA_PILLAR_CHEST, {[] {return Hookshot;}}),
 
 		});
@@ -505,7 +504,7 @@ void AreaTable_Init() {
 		//LocationAccess(STONE_TOWER_TEMPLE_COMPASS_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && OneStoneTowerKey && GoronMask && ZoraMask) || UseLightArrow);}}),
 		LocationAccess(STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask && OneStoneTowerKey && Hookshot;}}),
 		LocationAccess(STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((MirrorShield && Explosives && GoronMask) || (GoronMask && Explosives && UseLightArrow) || (ZoraMask && OneStoneTowerKey && UseLightArrow));}}),
-		LocationAccess(STONE_TOWER_TEMPLE_EYEGORE_ROOM_CHEST, {[] {return StoneTowerTempleAcccess && ((ZoraMask && UseLightArrow) || (Explosives && OneStoneTowerKey && GoronMask));}}),
+		LocationAccess(STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST, {[] {return StoneTowerTempleAcccess && ((ZoraMask && UseLightArrow) || (Explosives && OneStoneTowerKey && GoronMask));}}),
 		LocationAccess(STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && UseLightArrow && DekuMask;}}),
 		LocationAccess(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, {[] {return InvertedStoneTowerTempleAccess && Hookshot && OneStoneTowerKey && UseLightArrow && ElegyOfEmptiness;}}),
 		LocationAccess(STONE_TOWER_TEMPLE_LIGHT_ARROW_CHEST, {[] {return StoneTowerTempleAcccess;}}),
@@ -545,7 +544,8 @@ void AreaTable_Init() {
 		LocationAccess(PF_EXTERIOR_LOG_CHEST, {[] {return PiratesFortressAccess;}}),
 		LocationAccess(PF_EXTERIOR_SAND_CHEST, {[] {return PiratesFortressAccess;}}),
 		LocationAccess(PF_EXTERIOR_CORNER_CHEST, {[] {return PiratesFortressAccess;}}),
-
+        //LocationAccess(PF_INT_INVISIBLE_SOLDIER, {[] {return LensOfTruth && MagicMeter && AnyHealingPotion && PiratesFortressAccess;}}),
+		
 		});
 
 	areaTable[BENEATH_THE_WELL] = Area("Beneath The Well", "Beneath The Well", BENEATH_THE_WELL, {}, {
