@@ -98,7 +98,7 @@ class ItemLocation {
 public:
     ItemLocation() = default;
     ItemLocation(ItemLocationType type_, u8 scene_, u8 flag_, std::string name_, HintKey hintKey_, ItemKey vanillaItem_, std::vector<Category> categories_, u16 price_ = 0)
-        : type(type_), name(std::move(name_)), hintKey(hintKey_), vanillaItem(vanillaItem_), categories(std::move(categories_)), price(price_) {}
+        : scene(scene_), flag(flag_), type(type_), name(std::move(name_)), hintKey(hintKey_), vanillaItem(vanillaItem_), categories(std::move(categories_)), price(price_) {}
     
     ItemOverride_Key Key() const {
         ItemOverride_Key key;
@@ -364,7 +364,6 @@ public:
 private:
     u8 scene;
     ItemLocationType type;
-    ItemOverride_Type type2;
     u8 flag;
     bool checked = false;
 
