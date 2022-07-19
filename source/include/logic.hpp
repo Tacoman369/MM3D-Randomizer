@@ -2,6 +2,8 @@
 
 #include <3ds.h>
 
+#include "keys.hpp"
+
 namespace Logic {
 
 	extern bool noVariable;
@@ -259,7 +261,7 @@ namespace Logic {
 	extern bool AllGreatBayStrays;
 		extern bool AllStoneTowerStrays;
 		extern bool AnyPaper;
-
+	extern bool AllZoraEggs;
 	//Tricks
 		extern bool DekuStickFighting;
 	extern bool PoisonWaterAsZora;
@@ -278,44 +280,29 @@ namespace Logic {
 	extern u8 STStraysInPool;
 	extern u8 PlacedMasks;
 
-	enum class CanUseItem {
-		Kokiri_Sword,
-		DekuStick,
-		Lens_of_Truth,
-		Bow,
-		Scarecrow,
-		Fire_Arrows,
-		Ice_Arrows,
-		Light_Arrows,
-		Sticks,
-		Pictobox,
-		PowderKeg,
-		DekuMask,
-		GoronMask,
-		ZoraMask,
-		BlastMask,
-		GreatFairyMask,
-		PostmansHat,
-		AllNightMask,
-		BremenMask,
-		DonGerosMask,
-		MaskOfScents,
-		RomanisMask,
-		CircusLeadersMask,
-		KafeisMask,
-		KamarosMask,
-		CouplesMask,
-		GibdosMask,
-		GarosMask,
-		CaptainsHat,
-		GiantsMask,
-		FierceDietyMask,
-		MaskOfTruth,
-	};
+	//new helpers
+	extern bool SHSwitchPress;
+	extern bool ReverseWaterFlow;
+	extern bool RedSwitch;
+	extern bool RedSwitch2;
+	extern bool GreenSwitch;
+	extern bool GreenSwitch2;
+	extern bool GreenValve;
+	extern bool PirateBees;
+	extern bool MusicBoxOn;
+	extern bool IkanaLightSwitch;
+	extern bool IkanaCastleRoofHole;
+	extern bool ArmosRoomLightHole;
+	extern bool InvertedChestSpawn;
+	extern bool EnterSakonHideout;
+
 	void UpdateHelpers();
 	bool CanPlay(bool song);
-	bool CanUse(CanUseItem itemName);
-	bool HasProjectile(CanUseItem itemName);
+	//bool IsMagicArrow(ItemKey item);
+	//bool IsItemOrMask(ItemKey item);
+	//bool HasItem(ItemKey itemName);
+	bool CanUse(ItemKey itemName);
+	bool HasProjectile(ItemKey itemName);
 	bool SmallKeys(u8 dungeonKeyCount, u8 requiredAmount);
 	bool EventsUpdated();
 	void LogicReset();

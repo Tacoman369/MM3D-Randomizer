@@ -363,8 +363,8 @@ public:
 
 private:
     u8 scene;
-    ItemLocationType type;
     u8 flag;
+    ItemLocationType type;
     bool checked = false;
 
     std::string name;

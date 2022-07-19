@@ -11,7 +11,7 @@
 #include "starting_inventory.hpp"
 #include "hints.hpp"
 #include "hint_list.hpp"
-//#include "entrance.hpp"
+#include "entrance.hpp"
 //#include "shops.hpp"
 #include "debug.hpp"
 #include <vector>
@@ -64,44 +64,235 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     Areas::AccessReset();
     LocationReset();
   
-    std::vector<AreaKey> areaPool = { ROOT,
-    DEKU_PALACE, 
-    E_CLOCK_TOWN, 
-    GORON_VILLAGE, 
-    GREAT_BAY_COAST, 
-    IKANA_CANYON, 
-    IKANA_GRAVEYARD,
-    LAUNDRY_POOL,
-    MILK_ROAD, 
-    MOUNTAIN_VILLAGE, 
-    N_CLOCK_TOWN,
-    ROAD_TO_SNOWHEAD,
-    PINNACLE_ROCK,
-    ROAD_TO_IKANA,
-    ROAD_TO_SOUTHERN_SWAMP, 
-    ROMANI_RANCH, 
-    S_CLOCK_TOWN,
-    SNOWHEAD,
-    SOUTHERN_SWAMP,
-    STOCKPOTINN, 
-    STONE_TOWER,
-    TERMINA_FIELD,
-    TWIN_ISLANDS,
-    W_CLOCK_TOWN,
-    WOODFALL,
-    ZORA_CAPE,
-    ZORA_HALL,
-    WOODFALL_TEMPLE, 
-    SNOWHEAD_TEMPLE, 
-    GBT, 
-    STONE_TOWER_TEMPLE, 
-    PIRATE_FORTRESS, 
-    BENEATH_THE_WELL, 
-    IKANA_CASTLE, 
-    SECRET_SHRINE,
-    THE_MOON,
-    SSH,
-    OSH, 
+    std::vector<AreaKey> areaPool = { ROOT };//,
+		/*
+        ROOT_EXITS,
+		N_CLOCK_TOWN,
+		CLOCK_TOWN_FAIRY_FOUNTAIN,
+		CLOCK_TOWN_DEKU_PLAYGROUND,
+		E_CLOCK_TOWN,
+		STOCKPOTINN,
+		STOCKPOTINN_GUEST_ROOM,
+		STOCKPOTINN_STAFF_ROOM,
+		STOCKPOTINN_GRANDMA_ROOM,
+		CLOCK_TOWN_OBSERVATORY,
+		CLOCK_TOWN_BAR,
+		CLOCK_TOWN_HONEY_DARLING,
+		CLOCK_TOWN_TREASURE_CHEST_GAME,
+		CLOCK_TOWN_ARCHERY,
+		CLOCK_TOWN_MAYOR_HOUSE,
+		W_CLOCK_TOWN,
+		CLOCK_TOWN_SWORDSMANS_SCHOOL,
+		CLOCK_TOWN_POSTMAN_HOUSE,
+		CLOCK_TOWN_LOTTERY,
+		CLOCK_TOWN_BOMB_SHOP,
+		CLOCK_TOWN_TRADING_POST,
+		CLOCK_TOWN_CURIOSITY_SHOP,
+		S_CLOCK_TOWN,
+		CLOCK_TOWER,
+		CLOCK_TOWER_ROOF,
+		LAUNDRY_POOL,
+		LAUNDRY_POOL_KAFEI_HIDEOUT,
+		TERMINA_FIELD,
+		TERMINA_FIELD_PEAHAT_GROTTO,
+		TERMINA_FIELD_DODONGO_GROTTO,
+		TERMINA_FIELD_BIO_BABA_GROTTO,
+		TERMINA_FIELD_PILLAR_GROTTO,
+		TERMINA_FIELD_GRASS_GROTTO,
+		TERMINA_FIELD_BUSINESS_SCRUB_GROTTO,
+		TERMINA_FIELD_COW_GROTTO,
+		TERMINA_FIELD_GOSSIP_STONES_GROTTO,
+		ROAD_TO_SOUTHERN_SWAMP,
+		ROAD_TO_SOUTHERN_SWAMP_ARCHERY,
+		ROAD_TO_SWAMP_GROTTO,
+		SOUTHERN_SWAMP,
+		SWAMP_TOURIST_CENTER,
+		SOUTHERN_SWAMP_HAGS_POTION_SHOP,
+		MYSTERY_WOODS,
+		SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO,
+		SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO,
+		SOUTHERN_SWAMP_TOP,
+		DEKU_PALACE,
+		DEKU_PALACE_INTERIOR,
+		DEKU_PALACE_BEAN_GROTTO,
+		DEKU_SHRINE,
+		WOODFALL,
+		WOODFALL_FAIRY_FOUNTAIN,
+		PATH_TO_MOUNTAIN_VILLAGE,
+		MOUNTAIN_VILLAGE,
+		GORON_GRAVEYARD,
+		MOUNTAIN_SMITHY,
+		MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO,
+		TWIN_ISLANDS,
+		GORON_RACETRACK,
+		TWIN_ISLANDS_GORON_RACETRACK_GROTTO,
+		TWIN_ISLANDS_SPRING_WATER_GROTTO,
+		GORON_VILLAGE,
+		GORON_VILLAGE_LENS_CAVE,
+		GORON_VILLAGE_INTERIOR,
+		ROAD_TO_SNOWHEAD,
+		ROAD_TO_SNOWHEAD_GROTTO,
+		SNOWHEAD,
+		SNOWHEAD_FAIRY_FOUNTAIN,
+		MILK_ROAD,
+		GORMAN_TRACK,
+		ROMANI_RANCH,
+		DOGGY_RACETRACK,
+		CUCCO_SHACK,
+		ROMANI_RANCH_HOUSE,
+		GREAT_BAY_COAST,
+		GREAT_BAY_COAST_MARINE_LAB,
+		GREAT_BAY_COAST_GROTTO,
+		FISHERMAN_HUT,
+		PINNACLE_ROCK,
+		ZORA_CAPE,
+		WATERFALL_RAPIDS,
+		GREAT_BAY_FAIRY_FOUNTAIN,
+		ZORA_CAPE_GROTTO,
+		ZORA_HALL,
+		ZORA_HALL_EVANS_ROOM,
+		ZORA_HALL_LULUS_ROOM,
+		ZORA_HALL_JAPAS_ROOM,
+		ZORA_HALL_TIJOS_ROOM,
+		ZORA_HALL_SHOP,
+		ZORA_HALL_BACK_ENTRANCE,
+		ROAD_TO_IKANA,
+		ROAD_TO_IKANA_GROTTO,
+		IKANA_GRAVEYARD,
+		IKANA_GRAVEYARD_GROTTO,
+		IKANA_GRAVEYARD_BELOW_GRAVE1,
+		IKANA_GRAVEYARD_BATS_ROOM,
+		IKANA_GRAVEYARD_TABLET_ROOM,
+		IKANA_GRAVEYARD_BELOW_GRAVE2,
+		IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM,
+		IKANA_GRAVEYARD_BELOW_GRAVE3,
+		DAMPES_HUT,
+		IKANA_CANYON_LOWER,
+		IKANA_CANYON_UPPER,
+		IKANA_CANYON_CAVE,
+		SAKONS_HIDEOUT,
+		MUSIC_BOX_HOUSE,
+		IKANA_CANYON_POE_HUT,
+		IKANA_CANYON_GREAT_FAIRY_FOUNTAIN,
+		IKANA_CANYON_SECRET_SHRINE_GROTTO,
+		STONE_TOWER,
+		INVERTED_STONE_TOWER,
+		WOODFALL_TEMPLE_ENTRANCE,
+		WOODFALL_TEMPLE_MAIN_ROOM,
+		WOODFALL_TEMPLE_UPPER_MAIN_ROOM,
+		WOODFALL_TEMPLE_PLATFORM_ROOM,
+		WOODFALL_TEMPLE_MAP_ROOM,
+		WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM,
+		WOODFALL_TEMPLE_BOSS_KEY_ROOM,
+		WOODFALL_TEMPLE_BOW_ROOM,
+		WOODFALL_TEMPLE_BRIDGE_ROOM,
+		WOODFALL_TEMPLE_COMPASS_ROOM,
+		WOODFALL_TEMPLE_DARK_ROOM,
+		WOODFALL_TEMPLE_DRAGONFLY_ROOM,
+		WOODFALL_TEMPLE_PRE_BOSS_ROOM,
+		WOODFALL_TEMPLE_BOSS_ROOM,
+		WOODFALL_TEMPLE_PRINCESS_ROOM,
+		SNOWHEAD_TEMPLE_ENTRANCE,
+		SNOWHEAD_TEMPLE_BRIDGE_ROOM,
+		SNOWHEAD_TEMPLE_LOWER_MAP_ROOM,
+		SNOWHEAD_TEMPLE_UPPER_MAP_ROOM,
+		SNOWHEAD_TEMPLE_MAIN_ROOM_1F,
+		SNOWHEAD_TEMPLE_BASEMENT,
+		SNOWHEAD_TEMPLE_LOWER_PILLAR_FREEZARDS_ROOM,
+		SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_LOWER,
+		SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_UPPER,
+		SNOWHEAD_TEMPLE_COMPASS_ROOM,
+		SNOWHEAD_TEMPLE_ICICLE_ROOM,
+		SNOWHEAD_TEMPLE_GORON_SWITCH_PUZZLE_ROOM,
+		SNOWHEAD_TEMPLE_MAIN_ROOM_2F,
+		SNOWHEAD_TEMPLE_MINIBOSS_ROOM,
+		SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM,
+		SNOWHEAD_TEMPLE_PILLAR_SWITCH_ROOM,
+		SNOWHEAD_TEMPLE_MAIN_ROOM_3F,
+		SNOWHEAD_TEMPLE_SNOW_ROOM,
+		SNOWHEAD_TEMPLE_MAIN_ROOM_4F,
+		SNOWHEAD_TEMPLE_DINOLFOS_ROOM,
+		SNOWHEAD_TEMPLE_WIZZROBE_ROOM,
+		SNOWHEAD_TEMPLE_BOSS_KEY_ROOM,
+		SNOWHEAD_TEMPLE_BOSS_ROOM,
+		GREAT_BAY_TEMPLE_ENTRANCE,
+		GREAT_BAY_TEMPLE_WATER_CONTROL_ROOM,
+		GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM,
+		GREAT_BAY_TEMPLE_RED_SWITCH_ROOM,
+		GREAT_BAY_TEMPLE_MAP_ROOM,
+		GREAT_BAY_TEMPLE_RED_SWITCH2_ROOM,
+		GREAT_BAY_TEMPLE_BIO_BABA_ROOM,
+		GREAT_BAY_TEMPLE_COMPASS_ROOM,
+		GREAT_BAY_TEMPLE_FROG_MINIBOSS_ROOM,
+		GREAT_BAY_TEMPLE_BOSS_KEY_ROOM,
+		GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM,
+		GREAT_BAY_TEMPLE_MINI_BOSS_ROOM,
+		GREAT_BAY_TEMPLE_GREEN_SWITCH_ROOM,
+		GREAT_BAY_TEMPLE_WATER_WHEEL_ROOM,
+		GREAT_BAY_TEMPLE_SEESAW_ROOM,
+		GREAT_BAY_TEMPLE_PRE_BOSS_ROOM,
+		GREAT_BAY_TEMPLE_BOSS_ROOM,
+		STONE_TOWER_TEMPLE_ENTRANCE,
+		STONE_TOWER_TEMPLE_UPRIGHT_DEATH_ARMOS_ROOM,
+		STONE_TOWER_TEMPLE_ARMOS_ROOM,
+		STONE_TOWER_TEMPLE_WATER_BRIDGE_ROOM,
+		STONE_TOWER_TEMPLE_UPRIGHT_UPDRAFT_ROOM,
+		STONE_TOWER_TEMPLE_SUN_BLOCK_PUZZLE_ROOM,
+		STONE_TOWER_TEMPLE_LAVA_ROOM,
+		STONE_TOWER_TEMPLE_GARO_ROOM,
+		STONE_TOWER_TEMPLE_THIN_BRIDGE_ROOM,
+		STONE_TOWER_TEMPLE_EYEGORE_ROOM,
+		STONE_TOWER_TEMPLE_INVERTED_ENTRANCE,
+		STONE_TOWER_TEMPLE_UPDRAFT_ROOM,
+		STONE_TOWER_TEMPLE_FLIPPING_LAVA_ROOM,
+		STONE_TOWER_TEMPLE_FLIPPING_BLOCK_PUZZLE,
+		STONE_TOWER_TEMPLE_WIZZROBE_ROOM,
+		STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM,
+		STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM,
+		STONE_TOWER_TEMPLE_INVERTED_ENTRANCE_DEATH_ARMOS_LEDGE,
+		STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM,
+		STONE_TOWER_TEMPLE_GOMESS_ROOM,
+		STONE_TOWER_TEMPLE_INVERTED_THIN_BRIDGE_ROOM,
+		STONE_TOWER_TEMPLE_PRE_BOSS_ROOM,
+		STONE_TOWER_TEMPLE_BOSS_ROOM,
+		PIRATE_FORTRESS_EXTERIOR,
+		PIRATE_FORTRESS_MAZE_ROOM,
+		PIRATE_FORTRESS_CAGE_ROOM,
+		PIRATE_FORTRESS_EXTERIOR_TOP,
+		PIRATE_FORTRESS_INTERIOR,
+		PIRATE_FORTRESS_HOOKSHOT_ROOM,
+		PIRATE_FORTRESS_HOOKSHOT_ROOM_TOP,
+		PIRATE_FORTRESS_BARREL_MAZE,
+		PIRATE_FORTRESS_LAVA_ROOM,
+		PIRATE_FORTRESS_GUARD_ROOM,
+		BENEATH_THE_WELL_ENTRANCE,
+		BENEATH_THE_WELL_LEFT_PATH_ROOM,
+		BENEATH_THE_WELL_LEFT_PATH_HOT_WATER_ROOM,
+		BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM,
+		BENEATH_THE_WELL_LEFT_PATH_FAIRY_FOUNTAIN,
+		BENEATH_THE_WELL_LEFT_PATH_CHEST_ROOM,
+		BENEATH_THE_WELL_RIGHT_PATH_ROOM,
+		BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM,
+		BENEATH_THE_WELL_COW_ROOM,
+		BENEATH_THE_WELL_BIG_POE_ROOM,
+		BENEATH_THE_WELL_RIGHT_PATH_LEFT_DOOR_ROOM,
+		BENEATH_THE_WELL_RIGHT_PATH_CHEST_ROOM,
+		BENEATH_THE_WELL_PRE_MIRROR_SHIELD_ROOM,
+		BENEATH_THE_WELL_MIRROR_SHIELD_ROOM,
+		IKANA_CASTLE_EXTERIOR_LOWER,
+		IKANA_CASTLE_ENTRANCE,
+		IKANA_CASTLE_LAVA_BLOCKS_ROOM,
+		IKANA_CASTLE_NO_FLOOR_ROOM,
+		IKANA_CASTLE_LEFT_STAIRWELL,
+		IKANA_CASTLE_EXTERIOR_UPPER_LEFT,
+		IKANA_CASTLE_RIGHT_ROOM,
+		IKANA_CASTLE_WIZZROBE_ROOM,
+		IKANA_CASTLE_EXTERIOR_UPPER_RIGHT,
+		IKANA_CASTLE_THRONE_ROOM,
+		SECRET_SHRINE,
+		THE_MOON,
+		SSH,
+		OSH, 
     };//*/
     /*  Areas it doesnt like
      */
@@ -112,7 +303,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     std::vector<std::string> buyIgnores;
     //Variables for search
     std::vector<ItemLocation*> newItemLocations;
-    //bool updatedEvents = false;
+    bool updatedEvents = false;
     bool firstIteration = true;
 
     //for each area in the areaPool
@@ -128,18 +319,16 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 LocationAccess& locPair2 = area2->locations[y];
                 LocationKey loc2 = locPair2.GetLocation();
                 ItemLocation* location2 = Location(loc2);
-                
-                
                 PlacementLog_Msg(location2->GetName());
                 PlacementLog_Msg("\n");
             
-            }
+            } 
         }
 
     //If no new items are found and no events are updated, then the next iteration won't provide any new location
-    while (newItemLocations.size() > 0  ||  firstIteration) { //|| updatedEvents - events included in mm3dr yet
+    while (newItemLocations.size() > 0  ||  firstIteration || updatedEvents) { // - events not included in mm3dr yet
         firstIteration = false;
-        //updatedEvents = false;
+        updatedEvents = false;
 
         for (ItemLocation* location : newItemLocations) {
             location->ApplyPlacedItemEffect();
@@ -147,15 +336,33 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
         newItemLocations.clear();
 
         std::vector<LocationKey> itemSphere;
-        //std::list<Entrance*> entranceSphere;
+        std::list<Entrance*> entranceSphere;
         
         for (size_t i = 0; i < areaPool.size(); i++) {
             Area* area = AreaTable(areaPool[i]);
 
-            /*if (area->UpdateEvents()) {
+            if (area->UpdateEvents()) {
                 updatedEvents = true;
-            }*/
-            //print all areas found by this function
+            }
+            
+            //for each exit in this area
+            for (auto& exit : area->exits) {
+                //if the exit is accessable and hasn't been added yet, add it to pool
+                Area* exitArea = exit.GetConnectedRegion();
+                if (!exitArea->addedToPool && exit.ConditionsMet()) {
+                    exitArea->addedToPool = true;
+                    areaPool.push_back(exit.GetAreaKey());
+                }
+                //add shuffled entrances to the entrance playthrough
+                if (mode == SearchMode::GeneratePlaythrough && exit.IsShuffled() && !exit.IsAddedToPool() && !noRandomEntrances) {
+                    entranceSphere.push_back(&exit);
+                    exit.AddToPool();
+                    //don't list a coupled entrance from both directions
+                    if (exit.GetReplacement()->GetReverse() != nullptr /*&& not decoupled_entrances*/) {
+                        exit.GetReplacement()->GetReverse()->AddToPool();
+                    }
+                }
+            }
             
             //for each ItemLocation in this area
             for (size_t k = 0; k < area->locations.size(); k++) {
@@ -166,9 +373,11 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 if ((!location->IsAddedToPool())  && (locPair.ConditionsMet())) {   
 
                     location->AddToPool();
+
                     if (location->GetPlacedItemKey() == NONE) {
-                        accessibleLocations.push_back(loc); //Empty location, consider for placement
-                        
+                        accessibleLocations.push_back(loc); //Empty location, consider for placement  
+                    } else { 
+                        newItemLocations.push_back(location); //Add item to cache to be considered in logic next iteration
                     }
                     
                     //Playthrough stuff
@@ -176,9 +385,8 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                     if (mode == SearchMode::GeneratePlaythrough) {
                         //Item is an advancement item, figure out if it should be added to this sphere
                         if (!playthroughBeatable && location->GetPlacedItem().IsAdvancement()) {
-                            
                             //ItemType type = location->GetPlacedItem().GetItemType();
-                            //std::string itemName(location->GetPlacedItemName().GetEnglish());
+                            std::string itemName(location->GetPlacedItemName().GetEnglish());
                             //bool bombchus = itemName.find("Bombchu") != std::string::npos; //Is a bombchu location
 
                             //Decide whether to exclude this location
@@ -219,7 +427,9 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
         if (mode == SearchMode::GeneratePlaythrough && itemSphere.size() > 0) {
             playthroughLocations.push_back(itemSphere);
         }
-        
+        if (mode == SearchMode::GeneratePlaythrough && entranceSphere.size() > 0 && !noRandomEntrances) {
+            playthroughEntrances.push_back(entranceSphere);
+        }
     }
 
     //Check to see if all locations were reached
@@ -404,7 +614,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             itemsToPlace.pop_back();
 
             //assume we have all unplaced items
-            LogicReset();
+            Logic::LogicReset();
             for (ItemKey unplacedItem : itemsToPlace) {
                 ItemTable(unplacedItem).ApplyEffect();
             }
@@ -412,7 +622,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
                 ItemTable(unplacedItem).ApplyEffect();
             }
             //Print allowed locations to view active list at this point
-             PlacementLog_Msg("\nAllowed Locations are: \n"); 
+            PlacementLog_Msg("\nAllowed Locations are: \n"); 
             for (LocationKey loc : allowedLocations)
                 {                PlacementLog_Msg(Location(loc)->GetName());
                 PlacementLog_Msg("\n");
@@ -423,7 +633,8 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             //print accessable locations to see what's accessable 
             PlacementLog_Msg("\nAccessable Locations are: \n");
             for (LocationKey loc : accessibleLocations)
-                {                PlacementLog_Msg(Location(loc)->GetName());
+                {                
+                PlacementLog_Msg(Location(loc)->GetName());
                 PlacementLog_Msg("\n");
                 }
             //retry if there are no more locations to place items
@@ -465,7 +676,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             //If the game is beatable, then we can stop placing items with logic.
             if (!LocationsReachable) {
                 playthroughBeatable = false;
-                LogicReset();
+                Logic::LogicReset();
                 GetAccessibleLocations(allLocations, SearchMode::CheckBeatable);
                 if (playthroughBeatable) {
                     FastFill(itemsToPlace, GetAllEmptyLocations(), true);
@@ -738,7 +949,7 @@ int Fill() {
         placementFailure = false;
         showItemProgress = false;
         playthroughLocations.clear();
-        //playthroughEntrances.clear();
+        playthroughEntrances.clear();
         wothLocations.clear();
         AreaTable_Init(); //Reset the world graph to intialize the proper locations
         ItemReset(); //Reset shops incase of shopsanity random
@@ -873,7 +1084,7 @@ int Fill() {
             GetAccessibleLocations(allLocations, SearchMode::AllLocationsReachable);
             printf("\x1b[9;10HFailed. Retrying... %d", retries + 2);
             Areas::ResetAllLocations();
-            LogicReset();
+            Logic::LogicReset();
         }
         retries++;
     }

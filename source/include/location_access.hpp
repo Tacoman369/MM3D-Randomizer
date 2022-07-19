@@ -76,6 +76,8 @@ public:
         return false;
     }
 
+    bool ConditionsMet() const;
+/*
     bool ConditionsMet() const {
         if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
             return true;
@@ -89,7 +91,7 @@ public:
             }
         }
         return false;
-    }
+    }*/
 
     LocationKey GetLocation() const {
         return location;
@@ -111,7 +113,8 @@ public:
     Area();
     Area(std::string regionName_, std::string scene_, HintKey hintKey_,
          std::vector<EventAccess> events_,
-         std::vector<LocationAccess> locations_);
+         std::vector<LocationAccess> locations_,
+         std::list<Entrance> exits_);
     ~Area();
 
     std::string regionName;
@@ -119,6 +122,7 @@ public:
     HintKey     hintKey;
     std::vector<EventAccess> events;
     std::vector<LocationAccess> locations;
+    std::list<Entrance> exits;
     //^ The above exits are now stored in a list instead of a vector because
     //the entrance randomization algorithm plays around with pointers to these
     //entrances a lot. By putting the entrances in a list, we don't have to
@@ -130,15 +134,15 @@ public:
 
     bool UpdateEvents();
 
-   // void AddExit(AreaKey parentKey, AreaKey newExitKey, ConditionFn condition);
+    void AddExit(AreaKey parentKey, AreaKey newExitKey, ConditionFn condition);
 
-   // void RemoveExit(Entrance* exitToRemove);
+    void RemoveExit(Entrance* exitToRemove);
 
-   // void DisconnectExit(AreaKey exitToDisconnect);
+    void DisconnectExit(AreaKey exitToDisconnect);
 
-  //  void SetAsPrimary(AreaKey exitToBePrimary);
+    void SetAsPrimary(AreaKey exitToBePrimary);
 
-  //  Entrance* GetExit(AreaKey exit);
+    Entrance* GetExit(AreaKey exit);
 
 
     bool HasAccess() const {
