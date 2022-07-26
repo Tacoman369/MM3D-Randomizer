@@ -64,15 +64,37 @@ public:
         return name;
     }
 
-    bool ConditionsMet() const {
-        //Area* parent = AreaTable(parentRegion);
+    bool ConditionsMet(bool allDayTimes = false) const {
+        Area* parent = AreaTable(parentRegion);
         int conditionsMet = 0;
+
+        if (allDayTimes && !parent->AllAccess()){
+            return false;
+        }
+        //conditionsMet = (parent->HasAccess());
         return conditionsMet;
     }
 
     AreaKey GetAreaKey() const {
         return connectedRegion;
     }
+
+    //set the logic to be a specific day and time to see if condition still holds
+    bool CheckConditionAtDayTime(bool& day, bool& time) const {
+        Logic::IsDay1Day = false;
+        Logic::IsDay2Day = false;
+        Logic::IsDay3Day = false;
+        Logic::IsDay1Night = false;
+        Logic::IsDay2Night = false;
+        Logic::IsDay3Night = false;
+
+        time = true;
+        day = true;
+
+        Logic::UpdateHelpers();
+        return GetConditionsMet();
+    }
+    
  //Yes this is the exact same function as above, trust me on this
     AreaKey GetConnectedRegionKey() const {
         return connectedRegion;

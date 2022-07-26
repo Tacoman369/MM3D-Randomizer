@@ -20,6 +20,7 @@
 #include "settings.hpp"
 #include "keys.hpp"
 #include "fill.hpp"
+#include "entrance.hpp"
 
 class Entrance;
 
@@ -198,7 +199,7 @@ public:
         }
         return price;
     }
-    /*
+    
     void SetPrice(u16 price_) {
         //don't override price if the price was set for shopsanity
         if (hasShopsanityPrice) {
@@ -215,7 +216,7 @@ public:
     bool HasShopsanityPrice() const {
         return hasShopsanityPrice;
     }
-    */
+    
     bool IsExcluded() const {
         return excludedOption.Value<bool>();
     }

@@ -289,6 +289,15 @@ namespace Logic {
 	bool ArmosRoomLightHole = false;
 	bool InvertedChestSpawn = false;
 	bool EnterSakonHideout = false;
+	bool AtDay = false;
+	bool AtNight = false;
+	u8 Day =0;
+	bool IsDay1Day = false;
+	bool IsDay2Day = false;
+	bool IsDay3Day = false;
+	bool IsDay1Night = false;
+	bool IsDay2Night = false;
+	bool IsDay3Night = false;
 
 	//placement tracking
 	u8 AddedProgressiveBombBags = 0;
@@ -821,6 +830,15 @@ namespace Logic {
 	InvertedChestSpawn = false;
 	EnterSakonHideout = false;
 
+	AtDay = false;
+	AtNight = false;
+	Day =0;
+	IsDay1Day = false;
+	IsDay2Day = false;
+	IsDay3Day = false;
+	IsDay1Night = false;
+	IsDay2Night = false;
+	IsDay3Night = false;
 	//placement tracking
 	//u8 AddedProgressiveBombBags = 0;
 	//u8 AddedProgressiveMagics = 0;

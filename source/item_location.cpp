@@ -8,6 +8,7 @@
 #include "keys.hpp"
 #include "fill.hpp"
 using namespace std;
+using namespace rnd;
 //Location definitions
 static std::array<ItemLocation, KEY_ENUM_MAX> locationTable;
 
@@ -16,12 +17,12 @@ void LocationTable_Init() {
     //LocationTable                                                             itemlocation::type        scene, flag, name                                   				hint key (hint_list.cpp)               vanilla item             categories                                                     collection check???                                                                                                
     
 	//Happy Mask Salesman - Starting Items
-	locationTable[SONG_OF_HEALING]										       = ItemLocation::Base		(0x63, 0x00, "Song of Healing",					               HMS_SONG_OF_HEALING,				    SONG_OF_HEALING,			{Category::cClockTower}	);
-	locationTable[OCARINA_OF_TIME]										       = ItemLocation::Base		(0x19, 0x00, "Ocarina of Time",					               HMS_OCARINA_OF_TIME,				    OCARINA_OF_TIME,			{Category::cClockTower}	);
-	locationTable[DEKU_MASK]											       = ItemLocation::Base		(0x63, 0x00, "Deku Mask",						                   HMS_DEKU_MASK,						DEKU_MASK,					{Category::cClockTower} );
-	//locationTable[BOMBERS_NOTEBOOK]										       = ItemLocation::Base		(0x6E, 0x00, "Bombers Notebook",				                   HMS_BOMBERS_NOTEBOOK,				BOMBERS_NOTEBOOK,			{Category::cClockTower} );
-	locationTable[STARTING_SWORD]											   = ItemLocation::Base		(0x63, 0x00, "Starting Sword",				                       KOKIRI_SWORD,					    KOKIRI_SWORD,			{Category::cClockTower} );
-	//locationTable[STARTING_SHIELD]                                             = ItemLocation::Base     (0x63, 0x00, "Starting Shield",                                   STARTING_SHIELD,                     HEROS_SHIELD,               {Category::cClockTower} );
+	locationTable[HMS_SONG_OF_HEALING]										       = ItemLocation::Base		(0x63, 0x00, "Song of Healing",					               HMS_SONG_OF_HEALING,				    SONG_OF_HEALING,			{Category::cClockTower}	);
+	locationTable[CLOCK_TOWER_OCARINA_OF_TIME]										       = ItemLocation::Base		(0x19, 0x00, "Ocarina of Time",					               CLOCK_TOWER_OCARINA_OF_TIME,				    OCARINA_OF_TIME,			{Category::cClockTower}	);
+	locationTable[HMS_DEKU_MASK]											       = ItemLocation::Base		(0x63, 0x00, "Deku Mask",						                   HMS_DEKU_MASK,						DEKU_MASK,					{Category::cClockTower} );
+	//locationTable[HMS_BOMBERS_NOTEBOOK]										       = ItemLocation::Base		(0x6E, 0x00, "Bombers Notebook",				                   HMS_BOMBERS_NOTEBOOK,				BOMBERS_NOTEBOOK,			{Category::cClockTower} );
+	locationTable[HMS_STARTING_SWORD]											   = ItemLocation::Base		(0x63, 0x00, "Starting Sword",				                       HMS_STARTING_SWORD,					    KOKIRI_SWORD,			{Category::cClockTower} );
+	//locationTable[HMS_STARTING_SHIELD]                                             = ItemLocation::Base     (0x63, 0x00, "Starting Shield",                                   HMS_STARTING_SHIELD,                     HEROS_SHIELD,               {Category::cClockTower} );
 	 
 	//Deku Palace
 	locationTable[DEKU_PALACE_BEAN_DADDY]									   = ItemLocation::Base		(0x07, 0x00, "Deku Palace Bean Daddy",								DEKU_PALACE_BEAN_DADDY,				MAGIC_BEAN,					{Category::cDekuPalace,Category::cWoodfall} );
@@ -76,7 +77,7 @@ void LocationTable_Init() {
 	   
 	//Ikana Canyon
 	//locationTable[IKANA_CANYON_GREAT_FAIRY]									   = ItemLocation::Base 	  (0x26, 0x00, "Ikana Canyon Great Fairy",							IKANA_CANYON_GREAT_FAIRY,			GREAT_FAIRYS_SWORD,				{Category::cIkanaCanyon} );
-	//locationTable[IKANA_CANYON_POE_HUT]										   = ItemLocation::Base 	  (0x51, 0x00, "Ikana Canyon Poe Hut",								IKANA_CANYON_POE_HUT,				PIECE_OF_HEART,					{Category::cIkanaCanyon} );
+	//locationTable[IKANA_CANYON_POE_HUT_HP]										   = ItemLocation::Base 	  (0x51, 0x00, "Ikana Canyon Poe Hut",								IKANA_CANYON_POE_HUT,				PIECE_OF_HEART,					{Category::cIkanaCanyon} );
 	//locationTable[IKANA_CANYON_LEDGE]										   = ItemLocation::Collectable(0x13, 0x00, "Ikana Canyon Ledge",								IKANA_CANYON_LEDGE,					PIECE_OF_HEART,					{Category::cIkanaCanyon} );
 	locationTable[IKANA_CANYON_PAMELAS_FATHER]								   = ItemLocation::Base 	  (0x55, 0x00, "Ikana Canyon Pamela's Father",						IKANA_CANYON_PAMELAS_FATHER,		GIBDOS_MASK,						{Category::cIkanaCanyon} );
 	locationTable[IKANA_CANYON_SECRET_SHRINE_GROTTO_CHEST]					   = ItemLocation::Chest 	  (0x07, 0x14, "Ikana Canyon Secret Shrine Grotto",					IKANA_CANYON_SECRET_SHRINE_GROTTO,	BOMBCHU_5,						{Category::cIkanaCanyon, Category::cGrotto,Category::cChest } );
@@ -211,9 +212,9 @@ void LocationTable_Init() {
 	locationTable[TERMINA_FIELD_STUMP_CHEST]								   = ItemLocation::Chest	(0x2D, 0x02, "Termina Field Stump Chest",							TERMINA_FIELD_STUMP_CHEST,			RED_RUPEE,					{Category::cTerminaField,Category::cChest } );
 	
 	//Twin Islands
-	locationTable[HOT_SPRING_WATER_GROTTO_CHEST]						               = ItemLocation::Chest	 (0x07, 0x02, "Twin Islands Hot Spring Water Grotto",			HOT_SPRING_WATER_GROTTO,	            RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
-	//locationTable[TWIN_ISLANDS_GORON_RACE]									   = ItemLocation::Base		 (0x6B, 0x00, "Twin Islands Goron Race",							TWIN_ISLANDS_GORON_RACE,				GOLD_DUST,				{Category::cTwinIslands} );
-	locationTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO_CHEST]						   = ItemLocation::Chest	 (0x07, 0x19, "Twin Islands Goron Racetrack Grotto",				TWIN_ISLANDS_GORON_RACETRACK_GROTTO,	BOMBCHU_5,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
+	locationTable[HOT_SPRING_WATER_GROTTO_CHEST]						               = ItemLocation::Chest	 (0x07, 0x02, "Twin Islands Hot Spring Water Grotto",		HOT_SPRING_WATER_GROTTO_CHEST,	            RED_RUPEE,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
+	//locationTable[TWIN_ISLANDS_GORON_RACE]									   = ItemLocation::Base		 (0x6B, 0x00, "Twin Islands Goron Race",						TWIN_ISLANDS_GORON_RACE,				GOLD_DUST,				{Category::cTwinIslands} );
+	locationTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO_CHEST]						   = ItemLocation::Chest	 (0x07, 0x19, "Twin Islands Goron Racetrack Grotto",		TWIN_ISLANDS_GORON_RACETRACK_GROTTO_CHEST,	BOMBCHU_5,				{Category::cTwinIslands, Category::cGrotto,Category::cChest } );
 	locationTable[TWIN_ISLANDS_UNDERWATER_RAMP_CHEST]						   = ItemLocation::Chest	 (0x5E, 0x06, "Twin Islands Underwater Ramp",						TWIN_ISLANDS_UNDERWATER_RAMP_CHEST,		PIECE_OF_HEART,			{Category::cTwinIslands,Category::cChest } );
 	locationTable[TWIN_ISLANDS_CAVE_CHEST]									   = ItemLocation::Chest	 (0x5E, 0x00, "Twin Islands Cave",									TWIN_ISLANDS_CAVE_CHEST,				RED_RUPEE,				{Category::cTwinIslands,Category::cChest } );
 	
@@ -850,10 +851,10 @@ std::vector<LocationKey> chestLocations = {
 	SECRET_SHRINE_FINAL_CHEST,
 };
 std::vector<LocationKey> logicalLocations ={
-	SONG_OF_HEALING, 
-	OCARINA_OF_TIME,
-	DEKU_MASK, //DEKU MASK
-	STARTING_SWORD, //KOKIRI SWORD
+	HMS_SONG_OF_HEALING, 
+	CLOCK_TOWER_OCARINA_OF_TIME,
+	HMS_DEKU_MASK, //DEKU MASK
+	HMS_STARTING_SWORD, //KOKIRI SWORD
 	DEKU_PALACE_IMPRISONED_MONKEY,//SONATA OF AWAKENING
 	GORON_VILLAGE_POWDER_KEG_CHALLENGE,//POWDER KEG
 	GORON_VILLAGE_GORON_LULLABY, //GORON LULLABY
@@ -1082,7 +1083,7 @@ std::vector<LocationKey> overworldLocations = {
 	TERMINA_FIELD_STUMP_CHEST,
 
 	//Twin Islands
-	HOT_SPRING_WATER_GROTTO,
+	TWIN_ISLANDS_SPRING_WATER_GROTTO,
 	TWIN_ISLANDS_GORON_RACE,
 	TWIN_ISLANDS_GORON_RACETRACK_GROTTO,
 	TWIN_ISLANDS_UNDERWATER_RAMP_CHEST,
@@ -1175,7 +1176,7 @@ void PlaceItemInLocation(LocationKey locKey, ItemKey item, bool applyEffectImmed
   PlacementLog_Msg(loc->GetName());
   PlacementLog_Msg("\n\n");
   
-  if (applyEffectImmediately || Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
+  if (applyEffectImmediately || Settings::Logic.Is(LogicSetting::LOGIC_NONE) || Settings::Logic.Is(LogicSetting::LOGIC_VANILLA)) {
     ItemTable(item).ApplyEffect();
   }
 

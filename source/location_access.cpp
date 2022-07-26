@@ -14,10 +14,38 @@
 using namespace Logic;
 using namespace Settings;
 
+bool LocationAccess::CheckConditionAtDay(bool& day, bool& time) const{
+
+	IsDay1Day = false;
+	IsDay1Night =false;
+	IsDay2Day = false;
+	IsDay2Night =false;
+	IsDay3Day = false;
+	IsDay3Night =false;
+	
+	day = true;
+	time = true;
+
+	UpdateHelpers();
+	return GetConditionsMet();
+}
+
 bool LocationAccess::ConditionsMet() const {
-	//Area* parentRegion = AreaTable(Location(location)->GetParentRegionKey());
-	bool conditionsMet = true;
-	return conditionsMet && CanBuy();
+	Area* parentRegion = AreaTable(Location(location)->GetParentRegionKey());
+	bool conditionsMet = false;
+	
+	if(
+	(parentRegion->day1Day && CheckConditionAtDay(IsDay1Day, AtDay)) ||
+	(parentRegion->day2Day && CheckConditionAtDay(IsDay2Day, AtDay)) ||
+	(parentRegion->day3Day && CheckConditionAtDay(IsDay3Day, AtDay)) ||
+	(parentRegion->day1Night && CheckConditionAtDay(IsDay1Night, AtNight)) ||
+	(parentRegion->day2Night && CheckConditionAtDay(IsDay2Night, AtNight)) ||
+	(parentRegion->day3Night && CheckConditionAtDay(IsDay3Night, AtNight)) )
+	{
+		conditionsMet = true;
+	}
+	
+	return conditionsMet;// && CanBuy();
 }
 
 bool LocationAccess::CanBuy() const {
@@ -66,6 +94,28 @@ Area::Area(std::string regionName_, std::string scene_, u32 hintKey_,
 Area::~Area() = default;
 
 bool Area::UpdateEvents() {
+
+	if (timePass) {
+		if(Day1()){
+			day1Day = true;
+			day1Night = true;
+			AreaTable(ROOT)->day1Day = true;
+			AreaTable(ROOT)->day1Night = true;
+		}
+		if(Day2()){
+			day2Day = true;
+			day2Night = true;
+			AreaTable(ROOT)->day2Day = true;
+			AreaTable(ROOT)->day2Night = true;
+		}
+		if(Day3()){
+			day3Day = true;
+			day3Night = true;
+			AreaTable(ROOT)->day3Day = true;
+			AreaTable(ROOT)->day3Night = true;
+		}
+	}
+
 	bool eventsUpdated = false;
 
 	for (EventAccess& event : events)
@@ -73,6 +123,16 @@ bool Area::UpdateEvents() {
 		//if event happened dont check it.
 		if (event.GetEvent()) {
 			continue;
+		}
+		//check condition on all days/nights
+		if((day1Day && event.CheckConditionAtDay(day1Day, AtDay)) ||
+		   (day2Day && event.CheckConditionAtDay(day2Day, AtDay)) ||
+		   (day3Day && event.CheckConditionAtDay(day3Day, AtDay)) ||
+		   (day1Night && event.CheckConditionAtDay(day1Night, AtNight)) ||
+		   (day2Night && event.CheckConditionAtDay(day2Night, AtNight)) ||
+		   (day3Night && event.CheckConditionAtDay(day3Night, AtNight)) ){
+			event.EventOccurred();
+			eventsUpdated=true;
 		}
 	}
 	return eventsUpdated;
@@ -150,11 +210,28 @@ bool Area::CheckAllAccess(const AreaKey exitKey) {
 	if (!AllAccess()) {
 		return false;
 	}
-	else { return true; }
+
+	for(Entrance& exit: exits) {
+		if(exit.GetAreaKey() == exitKey) {
+			return exit.CheckConditionAtDayTime(Logic::IsDay1Day, Logic::AtDay) &&
+			       exit.CheckConditionAtDayTime(Logic::IsDay2Day, Logic::AtDay) &&
+				   exit.CheckConditionAtDayTime(Logic::IsDay2Day, Logic::AtDay) &&
+				   exit.CheckConditionAtDayTime(Logic::IsDay1Night, Logic::AtNight) &&
+			       exit.CheckConditionAtDayTime(Logic::IsDay2Night, Logic::AtNight) &&
+				   exit.CheckConditionAtDayTime(Logic::IsDay3Night, Logic::AtNight);
+		}
+	}
+	return false;
 }
 
 
 void Area::ResetVariables() {
+	day1Day = false;
+	day2Day = false;
+	day3Day = false;
+	day1Night = false;
+	day2Night = false;
+	day3Night = false;
 	addedToPool = false;
 	for (auto& exit : exits) {
 		exit.RemoveFromPool();
@@ -178,7 +255,7 @@ bool HasAccessTo(const AreaKey area) {
 void AreaTable_Init() {
 	//clear array from previous playthroughs
 	areaTable.fill(Area("Invalid Area", "Invalid Area", NONE, {}, {}, {}));
-						//Name, Scene, hint text, events, locations
+						//Name,          Scene,      hint text, events, locations, exits
 	areaTable[ROOT] = Area("Root", "", LINKS_POCKET, {}, { 
 			//Locations
 			LocationAccess(LINKS_POCKET, {[] {return true;}})
@@ -188,9 +265,9 @@ void AreaTable_Init() {
 			Entrance(ROOT_EXITS, {[]{return true;}})
 		});
 
-	areaTable[ROOT_EXITS] = Area("Root Exits", "", ROOT_EXITS, {}, {}, {
+	areaTable[ROOT_EXITS] = Area("Root Exits", "", NONE, {}, {}, {
 		//Exits
-		Entrance(S_CLOCK_TOWN, {[]{return true;}}),
+		Entrance(S_CLOCK_TOWN, {[]{return IsDay1Day;}}),
 	});
 
 	/*--------------------------
@@ -208,7 +285,7 @@ void AreaTable_Init() {
 		//Locations
 		//LocationAccess(N_CLOCK_TOWN_KEATON_QUIZ, {[] {return KeatonMask;}}),
 		//LocationAccess(N_CLOCK_TOWN_TREE, {[] {return true;}}),
-		LocationAccess(N_CLOCK_TOWN_OLD_LADY, {[] {return KokiriSword || HerosBow;}}),
+		LocationAccess(N_CLOCK_TOWN_OLD_LADY, {[] {return IsDay1Night && AtNight && (KokiriSword || HerosBow);}}),
 
 	},
 	{
@@ -220,7 +297,7 @@ void AreaTable_Init() {
 		Entrance(S_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_FAIRY_FOUNTAIN] = Area("Clock Town Fairy Fountain", "Clock Town Fairy Fountain", CLOCK_TOWN_FAIRY_FOUNTAIN, {
+	areaTable[CLOCK_TOWN_FAIRY_FOUNTAIN] = Area("Clock Town Fairy Fountain", "Clock Town Fairy Fountain", NONE, {
 		//Events
 	},
 	{
@@ -234,12 +311,12 @@ void AreaTable_Init() {
 		Entrance(N_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_DEKU_PLAYGROUND] = Area("Clock Town Deku Playground", "Clock Town Deku Playground", CLOCK_TOWN_DEKU_PLAYGROUND, {
+	areaTable[CLOCK_TOWN_DEKU_PLAYGROUND] = Area("Clock Town Deku Playground", "Clock Town Deku Playground", NONE, {
 		//Events
 	},
 	{
 		//Locations
-		//LocationAccess(N_CLOCK_TOWN_DEKU_PLAYGROUND_3DAYS, {[] {return DekuMask;}}),
+		//LocationAccess(N_CLOCK_TOWN_DEKU_PLAYGROUND_3DAYS, {[] {return IsDay3Day && DekuMask;}}),
 	},
 	{
 		//Exits
@@ -279,12 +356,12 @@ void AreaTable_Init() {
 	{
 		//Exits
 		Entrance(STOCKPOTINN_GUEST_ROOM, {[]{return RoomKey;}}),
-		Entrance(STOCKPOTINN_STAFF_ROOM, {[]{return true;}}),
+		Entrance(STOCKPOTINN_STAFF_ROOM, {[]{return IsDay3Night && AtNight;}}),
 		Entrance(STOCKPOTINN_GRANDMA_ROOM, {[]{return true;}}),
 		Entrance(E_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[STOCKPOTINN_GUEST_ROOM] = Area("StockPotInn Guest Room", "StockPotInn Guest Room", STOCKPOTINN_GUEST_ROOM, {
+	areaTable[STOCKPOTINN_GUEST_ROOM] = Area("StockPotInn Guest Room", "StockPotInn Guest Room", NONE, {
 		//Events
 		//Listen to Anju?
 	},
@@ -297,7 +374,7 @@ void AreaTable_Init() {
 		Entrance(STOCKPOTINN, {[]{return true;}}),
 	});
 
-	areaTable[STOCKPOTINN_STAFF_ROOM] = Area("StockPotInn Staff Room", "StockPotInn Staff Room", STOCKPOTINN_STAFF_ROOM, {
+	areaTable[STOCKPOTINN_STAFF_ROOM] = Area("StockPotInn Staff Room", "StockPotInn Staff Room", NONE, {
 		//Events
 		//Anju & Kafei Reunited
 		//Midnight Meeting
@@ -313,7 +390,7 @@ void AreaTable_Init() {
 		Entrance(STOCKPOTINN, {[]{return true;}}),
 	});
 
-	areaTable[STOCKPOTINN_GRANDMA_ROOM] = Area("StockPotInn Grandma's Room", "StockPotInn Grandma's Room", STOCKPOTINN_GRANDMA_ROOM, {
+	areaTable[STOCKPOTINN_GRANDMA_ROOM] = Area("StockPotInn Grandma's Room", "StockPotInn Grandma's Room", NONE, {
 		//Events
 	},
 	{
@@ -326,7 +403,7 @@ void AreaTable_Init() {
 		Entrance(STOCKPOTINN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_OBSERVATORY] = Area("Astral Observatory/Bombers Hideout", "Astral Obseravtory/Bombers Hideout", CLOCK_TOWN_OBSERVATORY, {
+	areaTable[CLOCK_TOWN_OBSERVATORY] = Area("Astral Observatory/Bombers Hideout", "Astral Obseravtory/Bombers Hideout", NONE, {
 		//Events
 		//Watch Moon Tear Fall
 	},
@@ -340,7 +417,7 @@ void AreaTable_Init() {
 		Entrance(TERMINA_FIELD, {[]{return (DekuMask && MagicMeter) || Hookshot || HerosBow || ZoraMask;}}),
 	});
 
-	areaTable[CLOCK_TOWN_BAR] = Area("Milk Bar", "Milk Bar", CLOCK_TOWN_BAR, {
+	areaTable[CLOCK_TOWN_BAR] = Area("Milk Bar", "Milk Bar", NONE, {
 		//Events
 	},
 	{
@@ -353,7 +430,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(E_CLOCK_TOWN, {[]{return true;}}),
 	});
-	areaTable[CLOCK_TOWN_HONEY_DARLING] = Area("Honey And Darling Shop", "Honey And Darling Shop", CLOCK_TOWN_HONEY_DARLING, {
+	areaTable[CLOCK_TOWN_HONEY_DARLING] = Area("Honey And Darling Shop", "Honey And Darling Shop", NONE, {
 		//Events
 	},
 	{
@@ -364,7 +441,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(E_CLOCK_TOWN, {[]{return true;}}),
 	});
-	areaTable[CLOCK_TOWN_TREASURE_CHEST_GAME] = Area("Treasure Chest Game", "Treasure Chest Game", CLOCK_TOWN_TREASURE_CHEST_GAME, {
+	areaTable[CLOCK_TOWN_TREASURE_CHEST_GAME] = Area("Treasure Chest Game", "Treasure Chest Game", NONE, {
 		//Events
 	},
 	{
@@ -375,7 +452,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(E_CLOCK_TOWN, {[]{return true;}}),
 	});
-	areaTable[CLOCK_TOWN_ARCHERY] = Area("Clock Town Archery", "Clock Town Archery", CLOCK_TOWN_ARCHERY, {
+	areaTable[CLOCK_TOWN_ARCHERY] = Area("Clock Town Archery", "Clock Town Archery", NONE, {
 		//Events
 	},
 	{
@@ -387,7 +464,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(E_CLOCK_TOWN, {[]{return true;}}),
 	});
-	areaTable[CLOCK_TOWN_MAYOR_HOUSE] = Area("Mayor's House", "Mayor's House", CLOCK_TOWN_MAYOR_HOUSE, {
+	areaTable[CLOCK_TOWN_MAYOR_HOUSE] = Area("Mayor's House", "Mayor's House", NONE, {
 		//Events
 	},
 	{
@@ -424,7 +501,7 @@ void AreaTable_Init() {
 		Entrance(CLOCK_TOWN_CURIOSITY_SHOP, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_SWORDSMANS_SCHOOL] = Area("Swordmans' School", "Swordsmans' School", CLOCK_TOWN_SWORDSMANS_SCHOOL, {
+	areaTable[CLOCK_TOWN_SWORDSMANS_SCHOOL] = Area("Swordmans' School", "Swordsmans' School", NONE, {
 		//Events
 	},
 	{
@@ -437,7 +514,7 @@ void AreaTable_Init() {
 		Entrance(W_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_POSTMAN_HOUSE] = Area("Post Office", "Post Office", CLOCK_TOWN_POSTMAN_HOUSE, {
+	areaTable[CLOCK_TOWN_POSTMAN_HOUSE] = Area("Post Office", "Post Office", NONE, {
 		//Events
 	},
 	{
@@ -450,7 +527,7 @@ void AreaTable_Init() {
 		Entrance(W_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_LOTTERY] = Area("Lottery Shop", "Lottery Shop", CLOCK_TOWN_LOTTERY, {
+	areaTable[CLOCK_TOWN_LOTTERY] = Area("Lottery Shop", "Lottery Shop", NONE, {
 		//Events
 	},
 	{
@@ -463,7 +540,7 @@ void AreaTable_Init() {
 		Entrance(W_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_BOMB_SHOP] = Area("Clock Town Bomb Shop", "Clock Town Bomb Shop", CLOCK_TOWN_BOMB_SHOP, {
+	areaTable[CLOCK_TOWN_BOMB_SHOP] = Area("Clock Town Bomb Shop", "Clock Town Bomb Shop", NONE, {
 		//Events
 	},
 	{
@@ -476,7 +553,7 @@ void AreaTable_Init() {
 		Entrance(W_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_TRADING_POST] = Area("Trading Post", "Trading Post", CLOCK_TOWN_TRADING_POST, {
+	areaTable[CLOCK_TOWN_TRADING_POST] = Area("Trading Post", "Trading Post", NONE, {
 		//Events
 	},
 	{
@@ -487,7 +564,7 @@ void AreaTable_Init() {
 		Entrance(W_CLOCK_TOWN, {[]{return true;}}),
 	});
 
-	areaTable[CLOCK_TOWN_CURIOSITY_SHOP] = Area("Curiosity Shop", "Curiosity Shop", CLOCK_TOWN_CURIOSITY_SHOP, {
+	areaTable[CLOCK_TOWN_CURIOSITY_SHOP] = Area("Curiosity Shop", "Curiosity Shop", NONE, {
 		//Events
 	},
 	{
@@ -529,11 +606,11 @@ void AreaTable_Init() {
 	},
 	{
 		//Locations
-		//DekuMask
-		//BombersNotebook
-		//SongOfHealing
-		//KokiriSword?
-		//HerosShield?
+		LocationAccess(HMS_SONG_OF_HEALING, {[]{return true;}}),
+		//LocationAccess(HMS_BOMBERS_NOTEBOOK, {[]{return true;}}),
+		LocationAccess(HMS_DEKU_MASK, {[]{return true;}}),
+		LocationAccess(HMS_STARTING_SWORD, {[]{return true;}}),
+		//LocationAccess(HMS_STARTING_SHIELD, {[]{return true;}}),
 	},
 	{
 		//Exits
@@ -547,7 +624,7 @@ void AreaTable_Init() {
 	},
 	{
 		//Locations
-		//Ocarina
+		LocationAccess(CLOCK_TOWER_OCARINA_OF_TIME, {[]{return true;}}),
 	},
 	{
 		//Exits
@@ -572,7 +649,7 @@ void AreaTable_Init() {
 		Entrance(LAUNDRY_POOL_KAFEI_HIDEOUT, {[]{return LetterKafei;}}),
 	});
 
-	areaTable[LAUNDRY_POOL_KAFEI_HIDEOUT] = Area("Kafei's Hideout", "Kafei's Hideout", LAUNDRY_POOL_KAFEI_HIDEOUT, {
+	areaTable[LAUNDRY_POOL_KAFEI_HIDEOUT] = Area("Kafei's Hideout", "Kafei's Hideout", NONE, {
 		//Events
 	},
 	{
@@ -620,7 +697,7 @@ void AreaTable_Init() {
 		Entrance(ROAD_TO_IKANA, {[]{return true;}}),
 	});
 
-	areaTable[TERMINA_FIELD_PEAHAT_GROTTO] = Area("Termina Field Peahat Grotto","Termina Field Peahat Grotto", TERMINA_FIELD_PEAHAT_GROTTO,{
+	areaTable[TERMINA_FIELD_PEAHAT_GROTTO] = Area("Termina Field Peahat Grotto","Termina Field Peahat Grotto", NONE,{
 		//Events
 	},
 	{
@@ -632,7 +709,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_DODONGO_GROTTO] = Area("Termina Field Dodongo Grotto","Termina Field Dodongo Grotto", TERMINA_FIELD_DODONGO_GROTTO,{
+	areaTable[TERMINA_FIELD_DODONGO_GROTTO] = Area("Termina Field Dodongo Grotto","Termina Field Dodongo Grotto", NONE,{
 		//Events
 	},
 	{
@@ -644,7 +721,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_BIO_BABA_GROTTO] = Area("Termina Field Bio Baba Grotto","Termina Field Bio Baba Grotto", TERMINA_FIELD_BIO_BABA_GROTTO,{
+	areaTable[TERMINA_FIELD_BIO_BABA_GROTTO] = Area("Termina Field Bio Baba Grotto","Termina Field Bio Baba Grotto", NONE,{
 		//Events
 	},
 	{
@@ -656,7 +733,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_PILLAR_GROTTO] = Area("Termina Field Pillar Grotto","Termina Field Pillar Grotto", TERMINA_FIELD_PILLAR_GROTTO,{
+	areaTable[TERMINA_FIELD_PILLAR_GROTTO] = Area("Termina Field Pillar Grotto","Termina Field Pillar Grotto", NONE,{
 		//Events
 	},
 	{
@@ -668,7 +745,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_GRASS_GROTTO] = Area("Termina Field Grass Grotto","Termina Field Grass Grotto", TERMINA_FIELD_GRASS_GROTTO,{
+	areaTable[TERMINA_FIELD_GRASS_GROTTO] = Area("Termina Field Grass Grotto","Termina Field Grass Grotto", NONE,{
 		//Events
 	},
 	{
@@ -679,7 +756,7 @@ void AreaTable_Init() {
 	{
 		//Exits
 	});
-	areaTable[TERMINA_FIELD_BUSINESS_SCRUB_GROTTO] = Area("Termina Field Business Scrub Grotto","Termina Field Business Scrub Grotto", TERMINA_FIELD_BUSINESS_SCRUB_GROTTO,{
+	areaTable[TERMINA_FIELD_BUSINESS_SCRUB_GROTTO] = Area("Termina Field Business Scrub Grotto","Termina Field Business Scrub Grotto", NONE,{
 		//Events
 	},
 	{
@@ -691,7 +768,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_COW_GROTTO] = Area("Termina Field Cow Grotto","Termina Field Cow Grotto", TERMINA_FIELD_COW_GROTTO,{
+	areaTable[TERMINA_FIELD_COW_GROTTO] = Area("Termina Field Cow Grotto","Termina Field Cow Grotto", NONE,{
 		//Events
 	},
 	{
@@ -703,7 +780,7 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(TERMINA_FIELD, {[]{return true;}}),
 	});
-	areaTable[TERMINA_FIELD_GOSSIP_STONES_GROTTO] = Area("Termina Field Gossip Stones Grotto","Termina Field Gossip Stones Grotto", TERMINA_FIELD_GOSSIP_STONES_GROTTO,{
+	areaTable[TERMINA_FIELD_GOSSIP_STONES_GROTTO] = Area("Termina Field Gossip Stones Grotto","Termina Field Gossip Stones Grotto", NONE,{
 		//Events
 	},
 	{
@@ -733,7 +810,7 @@ void AreaTable_Init() {
 		//Entrance(ROAD_TO_SWAMP_FISHING_HOLE, {[]{return true;}}), //eventually add?
 	});
 
-	areaTable[ROAD_TO_SOUTHERN_SWAMP_ARCHERY] = Area("Road To Southern Swamp Archery", "Road to Southern Swamp Archery", ROAD_TO_SOUTHERN_SWAMP_ARCHERY, {
+	areaTable[ROAD_TO_SOUTHERN_SWAMP_ARCHERY] = Area("Road To Southern Swamp Archery", "Road to Southern Swamp Archery", NONE, {
 		//Events
 	},
 	{
@@ -747,7 +824,7 @@ void AreaTable_Init() {
 		Entrance(ROAD_TO_SOUTHERN_SWAMP, {[]{return true;}}),
 	});
 
-	areaTable[ROAD_TO_SWAMP_GROTTO] = Area("Road To Southen Swamp Grotto", "Road To Southern Swamp Grotto", ROAD_TO_SWAMP_GROTTO, {
+	areaTable[ROAD_TO_SWAMP_GROTTO] = Area("Road To Southen Swamp Grotto", "Road To Southern Swamp Grotto", NONE, {
 		//Events
 	},
 	{
@@ -782,7 +859,7 @@ void AreaTable_Init() {
 		Entrance(SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO, {[]{return DekuMask && WitchBottle;}}),
 	});
 
-	areaTable[SWAMP_TOURIST_CENTER] = Area("Swamp Tourist Center", "Swamp Tourist Center", SWAMP_TOURIST_CENTER, {
+	areaTable[SWAMP_TOURIST_CENTER] = Area("Swamp Tourist Center", "Swamp Tourist Center", NONE, {
 		//Events
 	},
 	{
@@ -797,7 +874,7 @@ void AreaTable_Init() {
 		Entrance(SOUTHERN_SWAMP, {[]{return true;}}),
 	});
 
-	areaTable[SOUTHERN_SWAMP_HAGS_POTION_SHOP] = Area("Swamp Potion Shop", "Swamp Potion Shop", SOUTHERN_SWAMP_HAGS_POTION_SHOP, {
+	areaTable[SOUTHERN_SWAMP_HAGS_POTION_SHOP] = Area("Swamp Potion Shop", "Swamp Potion Shop", NONE, {
 		//Events
 	},
 	{
@@ -823,7 +900,7 @@ void AreaTable_Init() {
 		Entrance(SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO, {[]{return true;}}),
 	});
 
-	areaTable[SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO] = Area("Mystery Woods Grotto", "Mystery Woods Grotto", SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO, {
+	areaTable[SOUTHERN_SWAMP_MYSTERY_WOODS_GROTTO] = Area("Mystery Woods Grotto", "Mystery Woods Grotto", NONE, {
 		//Events
 	},
 	{
@@ -835,7 +912,7 @@ void AreaTable_Init() {
 		Entrance(MYSTERY_WOODS, {[]{return true;}}),
 	});
 
-	areaTable[SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO] = Area("Near Swamp Spider House Grotto", "Near Swamp Spider House Grotto", SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO, {
+	areaTable[SOUTHERN_SWAMP_NEAR_SPIDER_HOUSE_GROTTO] = Area("Near Swamp Spider House Grotto", "Near Swamp Spider House Grotto", NONE, {
 		//Events
 	},
 	{
@@ -847,7 +924,7 @@ void AreaTable_Init() {
 		Entrance(SOUTHERN_SWAMP, {[]{return true;}}),
 	});
 
-	areaTable[SOUTHERN_SWAMP_TOP] = Area("Southern Swamp Top Route", "Southern Swamp Top Route", SOUTHERN_SWAMP_TOP, {
+	areaTable[SOUTHERN_SWAMP_TOP] = Area("Southern Swamp Top Route", "Southern Swamp Top Route", SOUTHERN_SWAMP, {
 		//Events
 	},
 	{
@@ -878,7 +955,7 @@ void AreaTable_Init() {
 		Entrance(DEKU_SHRINE, {[]{return DekuMask;}}),
 	});
 
-	areaTable[DEKU_PALACE_INTERIOR] = Area("Deku Palace Throne Room", "Deku Palace Throne Room", DEKU_PALACE_INTERIOR, {
+	areaTable[DEKU_PALACE_INTERIOR] = Area("Deku Palace Throne Room", "Deku Palace Throne Room", NONE, {
 		//Events
 		//turned in deku princess - enables getting deku shrine reward
 	},
@@ -891,7 +968,7 @@ void AreaTable_Init() {
 		Entrance(DEKU_PALACE, {[]{return true;}}),
 	});
 
-	areaTable[DEKU_PALACE_BEAN_GROTTO] = Area("Deku Palace Bean Grotto", "Deku Palace Bean Grotto", DEKU_PALACE_BEAN_GROTTO, {
+	areaTable[DEKU_PALACE_BEAN_GROTTO] = Area("Deku Palace Bean Grotto", "Deku Palace Bean Grotto", NONE, {
 		//Events
 		EventAccess(&LimitlessBeans, {[]{return LimitlessBeans;}}), 
 	},
@@ -905,7 +982,7 @@ void AreaTable_Init() {
 		Entrance(DEKU_PALACE, {[] {return true;}}),
 	});
 
-	areaTable[DEKU_SHRINE] = Area("Deku Shrine", "Deku Shrine", DEKU_SHRINE, {
+	areaTable[DEKU_SHRINE] = Area("Deku Shrine", "Deku Shrine", NONE, {
 		//Events
 	},
 	{
@@ -937,7 +1014,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_PRINCESS_ROOM, {[]{return WoodfallClear;}}),
 	});
 
-	areaTable[WOODFALL_FAIRY_FOUNTAIN] = Area("Woodfall Great Fairy Fountain", "Woodfall Great Fairy Fountain", WOODFALL_FAIRY_FOUNTAIN, {
+	areaTable[WOODFALL_FAIRY_FOUNTAIN] = Area("Woodfall Great Fairy Fountain", "Woodfall Great Fairy Fountain", NONE, {
 		//Events
 	},
 	{
@@ -982,7 +1059,7 @@ void AreaTable_Init() {
 		Entrance(MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO, {[]{return SnowheadClear;}}),
 	});
 
-	areaTable[GORON_GRAVEYARD] = Area("Goron Graveyard", "Goron Graveyard", GORON_GRAVEYARD, {
+	areaTable[GORON_GRAVEYARD] = Area("Goron Graveyard", "Goron Graveyard", NONE, {
 		//Events
 	},
 	{
@@ -994,7 +1071,7 @@ void AreaTable_Init() {
 		Entrance(MOUNTAIN_VILLAGE, {[]{return true;}}),
 	});
 
-	areaTable[MOUNTAIN_SMITHY] = Area("Mountain Smith", "Mountain Smith", MOUNTAIN_SMITHY, {
+	areaTable[MOUNTAIN_SMITHY] = Area("Mountain Smith", "Mountain Smith", NONE, {
 		//Events
 	},
 	{
@@ -1007,7 +1084,7 @@ void AreaTable_Init() {
 		Entrance(MOUNTAIN_VILLAGE, {[]{return true;}}),
 	});
 
-	areaTable[MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO] = Area("Mountain Village Spring Water Grotto", "Mountain Village Spring Water Grotto", MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO, {
+	areaTable[MOUNTAIN_VILLAGE_SPRING_WATER_GROTTO] = Area("Mountain Village Spring Water Grotto", "Mountain Village Spring Water Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1036,7 +1113,7 @@ void AreaTable_Init() {
 		Entrance(GORON_VILLAGE, {[]{return true;}}),
 	});
 
-	areaTable[GORON_RACETRACK] = Area("Goron Racetrack", "Goron Racetrack", GORON_RACETRACK, {
+	areaTable[GORON_RACETRACK] = Area("Goron Racetrack", "Goron Racetrack", NONE, {
 		//Events
 	},
 	{
@@ -1049,7 +1126,7 @@ void AreaTable_Init() {
 		Entrance(TWIN_ISLANDS_GORON_RACETRACK_GROTTO, {[]{return BombBag20;}}),
 	});
 
-	areaTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO] = Area("Goron Racetrack Grotto", "Goron Racetrack Grotto", TWIN_ISLANDS_GORON_RACETRACK_GROTTO, {
+	areaTable[TWIN_ISLANDS_GORON_RACETRACK_GROTTO] = Area("Goron Racetrack Grotto", "Goron Racetrack Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1058,10 +1135,10 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(TWIN_ISLANDS_GORON_RACETRACK, {[]{return true;}}),
+		Entrance(GORON_RACETRACK, {[]{return true;}}),
 	});
 
-	areaTable[TWIN_ISLANDS_SPRING_WATER_GROTTO] = Area("Twin Islands Hot Spring Water Grotto", "Twin Islands Hot Spring Water Grotto", TWIN_ISLANDS_SPRING_WATER_GROTTO, {
+	areaTable[TWIN_ISLANDS_SPRING_WATER_GROTTO] = Area("Twin Islands Hot Spring Water Grotto", "Twin Islands Hot Spring Water Grotto", NONE, {
 		//Events
 		EventAccess(&HotSpringWater, {[]{return HotSpringWater;}}),
 	},
@@ -1093,7 +1170,7 @@ void AreaTable_Init() {
 		Entrance(TWIN_ISLANDS, {[]{return true;}}),
 	});
 
-	areaTable[GORON_VILLAGE_LENS_CAVE] = Area("Lens of Truth Cave", "Lens of Truth Cave", GORON_VILLAGE_LENS_CAVE, {
+	areaTable[GORON_VILLAGE_LENS_CAVE] = Area("Lens of Truth Cave", "Lens of Truth Cave", NONE, {
 		//Events
 	},
 	{
@@ -1108,7 +1185,7 @@ void AreaTable_Init() {
 		Entrance(GORON_VILLAGE, {[]{return true;}}),
 	});
 
-	areaTable[GORON_VILLAGE_INTERIOR] = Area("Goron Village Interior", "Goron Village Interior", GORON_VILLAGE_INTERIOR, {
+	areaTable[GORON_VILLAGE_INTERIOR] = Area("Goron Village Interior", "Goron Village Interior", GORON_VILLAGE, {
 		//Events
 		//Light Torches?
 		//Rock Roast?
@@ -1122,6 +1199,17 @@ void AreaTable_Init() {
 		//Exits
 		Entrance(GORON_VILLAGE, {[]{return GoronMask;}}),
 		Entrance(GORON_VILLAGE_SHOP, {[]{return true;}}),
+	});
+
+	areaTable[GORON_VILLAGE_SHOP] = Area("Goron Village Shop", "Goron Village Shop", NONE, {
+		//Events
+	},
+	{
+		//Locations
+	},
+	{
+		//Exits
+		Entrance(GORON_VILLAGE_INTERIOR, {[]{return true;}}),
 	});
 
 	areaTable[ROAD_TO_SNOWHEAD] = Area("Road To Snowhead", "Road To Snowhead", ROAD_TO_SNOWHEAD, {
@@ -1139,7 +1227,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD, {[]{return GoronMask && MagicMeter;}}),
 	});
 
-	areaTable[ROAD_TO_SNOWHEAD_GROTTO] = Area("Road To Snowhead Grotto", "Road to Snowhead Grotto", ROAD_TO_SNOWHEAD_GROTTO, {
+	areaTable[ROAD_TO_SNOWHEAD_GROTTO] = Area("Road To Snowhead Grotto", "Road to Snowhead Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1165,7 +1253,7 @@ void AreaTable_Init() {
 		Entrance(ROAD_TO_SNOWHEAD, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_FAIRY_FOUNTAIN] = Area("Snowhead Fairy Fountain", "Snowhead Fairy Fountain", SNOWHEAD_FAIRY_FOUNTAIN, {
+	areaTable[SNOWHEAD_FAIRY_FOUNTAIN] = Area("Snowhead Fairy Fountain", "Snowhead Fairy Fountain", NONE, {
 		//Events
 	},
 	{
@@ -1190,7 +1278,7 @@ void AreaTable_Init() {
 		Entrance(ROMANI_RANCH, {[]{return true;}}), //Set to True because its open on Day 3 for one potential early check, checks for days 1 and 2 require powderkeg
 	});
 
-	areaTable[GORMAN_TRACK] = Area("Gorman Track", "Gorman Track", GORMAN_TRACK, {
+	areaTable[GORMAN_TRACK] = Area("Gorman Track", "Gorman Track", NONE, {
 		//Events
 	},
 	{
@@ -1219,7 +1307,7 @@ void AreaTable_Init() {
 		Entrance(ROMANI_RANCH_HOUSE, {[]{return true;}}),
 	});
 
-	areaTable[DOGGY_RACETRACK] = Area("Doggy Racetrack", "Doggy Racetrack", DOGGY_RACETRACK, {
+	areaTable[DOGGY_RACETRACK] = Area("Doggy Racetrack", "Doggy Racetrack", NONE, {
 		//Events
 	},
 	{
@@ -1232,7 +1320,7 @@ void AreaTable_Init() {
 		Entrance(ROMANI_RANCH, {[]{return true;}}),
 	});
 
-	areaTable[CUCCO_SHACK] = Area("Cucco Shack", "Cucco Shack", CUCCO_SHACK, {
+	areaTable[CUCCO_SHACK] = Area("Cucco Shack", "Cucco Shack", NONE, {
 		//Events
 	},
 	{
@@ -1244,7 +1332,7 @@ void AreaTable_Init() {
 		Entrance(ROMANI_RANCH, {[]{return true;}}),
 	});
 
-	areaTable[ROMANI_RANCH_HOUSE] = Area("Romani Ranch House", "Romani Ranch House", ROMANI_RANCH_HOUSE, {
+	areaTable[ROMANI_RANCH_HOUSE] = Area("Romani Ranch House", "Romani Ranch House", NONE, {
 		//Events
 	},
 	{
@@ -1279,7 +1367,7 @@ void AreaTable_Init() {
 		Entrance(FISHERMAN_HUT, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_COAST_MARINE_LAB] = Area("Great Bay Marine Lab", "Great Bay Marine Lab", GREAT_BAY_COAST_MARINE_LAB, {
+	areaTable[GREAT_BAY_COAST_MARINE_LAB] = Area("Great Bay Marine Lab", "Great Bay Marine Lab", NONE, {
 		//Events
 		//Zora Eggs?
 	},
@@ -1293,7 +1381,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_COAST, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_COAST_GROTTO] = Area("Great Bay Coast Grotto", "Great Bay Coast Grotto", GREAT_BAY_COAST_GROTTO, {
+	areaTable[GREAT_BAY_COAST_GROTTO] = Area("Great Bay Coast Grotto", "Great Bay Coast Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1305,7 +1393,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_COAST, {[]{return true;}}),
 	});
 
-	areaTable[FISHERMAN_HUT] = Area("Fisherman's Hut", "Fisherman's Hut", FISHERMAN_HUT, {
+	areaTable[FISHERMAN_HUT] = Area("Fisherman's Hut", "Fisherman's Hut", NONE, {
 		//Events
 	},
 	{
@@ -1354,7 +1442,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL_BACK_ENTRANCE, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[WATERFALL_RAPIDS] = Area("Waterfall Rapids", "Waterfall Rapids", WATERFALL_RAPIDS, {
+	areaTable[WATERFALL_RAPIDS] = Area("Waterfall Rapids", "Waterfall Rapids", NONE, {
 		//Events
 	},
 	{
@@ -1367,7 +1455,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_CAPE, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_FAIRY_FOUNTAIN] = Area("Great Bay Fairy Fountain", "Great Bay Fairy Fountain", GREAT_BAY_FAIRY_FOUNTAIN, {
+	areaTable[GREAT_BAY_FAIRY_FOUNTAIN] = Area("Great Bay Fairy Fountain", "Great Bay Fairy Fountain", NONE, {
 		//Events
 	},
 	{
@@ -1379,7 +1467,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_CAPE, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_CAPE_GROTTO] = Area("Zora Cape Grotto", "Zora Cape Grotto", ZORA_CAPE_GROTTO, {
+	areaTable[ZORA_CAPE_GROTTO] = Area("Zora Cape Grotto", "Zora Cape Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1413,7 +1501,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL_SHOP, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_HALL_EVANS_ROOM] = Area("Zora Hall Evan's Room", "Zora Hall Evan's Room", ZORA_HALL_EVANS_ROOM, {
+	areaTable[ZORA_HALL_EVANS_ROOM] = Area("Zora Hall Evan's Room", "Zora Hall Evan's Room", NONE, {
 		//Events
 	},
 	{
@@ -1425,7 +1513,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_HALL_LULUS_ROOM] = Area("Zora Hall Lulu's Room", "Zora Hall Lulu's Room", ZORA_HALL_LULUS_ROOM,{
+	areaTable[ZORA_HALL_LULUS_ROOM] = Area("Zora Hall Lulu's Room", "Zora Hall Lulu's Room", NONE,{
 		//Events
 	},
 	{
@@ -1439,7 +1527,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_HALL_JAPAS_ROOM] = Area("Zora Hall Japas' Room", "Zora Hall Japas' Room", ZORA_HALL_JAPAS_ROOM,{
+	areaTable[ZORA_HALL_JAPAS_ROOM] = Area("Zora Hall Japas' Room", "Zora Hall Japas' Room", NONE,{
 		//Events
 	},
 	{
@@ -1450,7 +1538,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_HALL_TIJOS_ROOM] = Area("Zora Hall Tijo's Room", "Zora Hall Tijo's Room", ZORA_HALL_TIJOS_ROOM, {
+	areaTable[ZORA_HALL_TIJOS_ROOM] = Area("Zora Hall Tijo's Room", "Zora Hall Tijo's Room", NONE, {
 		//Events
 	},
 	{
@@ -1461,7 +1549,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_HALL, {[]{return true;}}),
 	});
 
-	areaTable[ZORA_HALL_SHOP] = Area("Zora Hall Shop", "Zora Hall Shop", ZORA_HALL_SHOP, {
+	areaTable[ZORA_HALL_SHOP] = Area("Zora Hall Shop", "Zora Hall Shop", NONE, {
 		//Events
 	},
 	{
@@ -1476,7 +1564,7 @@ void AreaTable_Init() {
 	});
 
 	//This one might not be needed?? but there's two entrances/exits to Zora Hall that both go to Zora Cape
-	areaTable[ZORA_HALL_BACK_ENTRANCE] = Area("Zora Hall Back Entrance", "Zora Hall Back Entrance", ZORA_HALL_BACK_ENTRANCE, {
+	areaTable[ZORA_HALL_BACK_ENTRANCE] = Area("Zora Hall Back Entrance", "Zora Hall Back Entrance", ZORA_HALL, {
 		//Events
 	},
 	{
@@ -1504,7 +1592,7 @@ void AreaTable_Init() {
 		Entrance(ROAD_TO_IKANA_GROTTO, {[]{return EponasSong && GoronMask;}}),
 	});
 
-	areaTable[ROAD_TO_IKANA_GROTTO] = Area("Road To Ikana Grotto", "Road to Ikana Grotto", ROAD_TO_IKANA_GROTTO, {
+	areaTable[ROAD_TO_IKANA_GROTTO] = Area("Road To Ikana Grotto", "Road to Ikana Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1532,7 +1620,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_GROTTO, {[]{return BombBag20;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_GROTTO] = Area("Ikana Graveyard Grotto", "Ikana Graveyard Grotto", IKANA_GRAVEYARD_GROTTO, {
+	areaTable[IKANA_GRAVEYARD_GROTTO] = Area("Ikana Graveyard Grotto", "Ikana Graveyard Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1544,7 +1632,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE1] = Area("Ikana Graveyard Below Grave Day 1", "Ikana Graveyard Below Grave Day 1", IKANA_GRAVEYARD_BELOW_GRAVE1, {
+	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE1] = Area("Ikana Graveyard Below Grave Day 1", "Ikana Graveyard Below Grave Day 1", NONE, {
 		//Events
 	},
 	{
@@ -1556,7 +1644,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_BATS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_BATS_ROOM] = Area("Ikana Graveyard Below Graves Bats Room", "Ikana Graveyard Below Graves Bats Room", IKANA_GRAVEYARD_BATS_ROOM, {
+	areaTable[IKANA_GRAVEYARD_BATS_ROOM] = Area("Ikana Graveyard Below Graves Bats Room", "Ikana Graveyard Below Graves Bats Room", NONE, {
 		//Events
 	},
 	{
@@ -1569,7 +1657,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_TABLET_ROOM, {[]{return KokiriSword || DekuMask || ZoraMask || GoronMask;}}),//Fighting
 	});
 
-	areaTable[IKANA_GRAVEYARD_TABLET_ROOM] = Area("Ikana Graveyard Below Graves Tablet Room", "Ikana Graveyard Below Graves Tablet Room", IKANA_GRAVEYARD_TABLET_ROOM, {
+	areaTable[IKANA_GRAVEYARD_TABLET_ROOM] = Area("Ikana Graveyard Below Graves Tablet Room", "Ikana Graveyard Below Graves Tablet Room", NONE, {
 		//Events
 	},
 	{
@@ -1581,7 +1669,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_BATS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE2] = Area("Ikana Graveyard Below Graves Day 2", "Ikana Graveyard Below Graves Day 2", IKANA_GRAVEYARD_BELOW_GRAVE2, {
+	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE2] = Area("Ikana Graveyard Below Graves Day 2", "Ikana Graveyard Below Graves Day 2", NONE, {
 		//Events
 	},
 	{
@@ -1593,7 +1681,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM] = Area("Ikana Graveyard Below Graves Iron Knuckle Room", "Ikana Graveyard Below Graves Iron Knuckle Room", IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM, {
+	areaTable[IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM] = Area("Ikana Graveyard Below Graves Iron Knuckle Room", "Ikana Graveyard Below Graves Iron Knuckle Room", NONE, {
 		//Events
 	},
 	{
@@ -1605,7 +1693,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_BELOW_GRAVE2, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE3] = Area("Ikana Graveyard Below Graves Day 3", "Ikana Graveyard Below Graves Day 3", IKANA_GRAVEYARD_BELOW_GRAVE3, {
+	areaTable[IKANA_GRAVEYARD_BELOW_GRAVE3] = Area("Ikana Graveyard Below Graves Day 3", "Ikana Graveyard Below Graves Day 3", NONE, {
 		//Events
 	},
 	{
@@ -1617,7 +1705,7 @@ void AreaTable_Init() {
 		Entrance(DAMPES_HUT, {[]{return true;}}),
 	});
 
-	areaTable[DAMPES_HUT] = Area("Dampe's Hut", "Dampe's Hut", DAMPES_HUT, {
+	areaTable[DAMPES_HUT] = Area("Dampe's Hut", "Dampe's Hut", NONE, {
 		//Events
 	},
 	{
@@ -1630,7 +1718,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_GRAVEYARD_BELOW_GRAVE3, {[]{return false;}}),//I think this one is one way? if not easy fix
 	});
 
-	areaTable[IKANA_CANYON_LOWER] = Area("Lower Ikana Canyon", "Lower Ikana Canyon", IKANA_CANYON_LOWER, {
+	areaTable[IKANA_CANYON] = Area("Lower Ikana Canyon", "Lower Ikana Canyon", IKANA_CANYON, {
 		//Events
 		EventAccess(&EnterSakonHideout, {[]{return LetterKafei && LetterMama && PendantOfMemories && KafeisMask;}}),//probably missing a req
 	}, 
@@ -1649,7 +1737,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CANYON_UPPER, {[]{return IceArrows && MagicMeter && HerosBow && Hookshot;}}),
 	});
 
-	areaTable[IKANA_CANYON_UPPER] = Area("Upper Ikana Canyon", "Upper Ikana Canyon", IKANA_CANYON_UPPER, {
+	areaTable[IKANA_CANYON_UPPER] = Area("Upper Ikana Canyon", "Upper Ikana Canyon", IKANA_CANYON, {
 		//Events
 	},
 	{
@@ -1664,10 +1752,10 @@ void AreaTable_Init() {
 		Entrance(IKANA_CANYON_CAVE, {[]{return true;}}),
 		Entrance(IKANA_CASTLE, {[]{return MirrorShield;}}),
 		Entrance(BENEATH_THE_WELL_ENTRANCE, {[]{return true;}}),
-		Entrance(IKANA_CANYON_LOWER, {[]{return true;}}),
+		Entrance(IKANA_CANYON, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CANYON_CAVE] = Area("Ikana Canyon Cave", "Ikana Canyon Cave", IKANA_CANYON_CAVE, {
+	areaTable[IKANA_CANYON_CAVE] = Area("Ikana Canyon Cave", "Ikana Canyon Cave", NONE, {
 		//Events
 		EventAccess(&MusicBoxOn, {[]{return SongOfStorms;}}),
 	},
@@ -1676,7 +1764,7 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON, {[]{return true;}}),
+		Entrance(IKANA_CANYON_UPPER, {[]{return true;}}),
 	});
 
 	areaTable[SAKONS_HIDEOUT] = Area("Sakon's Hideout", "Sakon's Hideout", SAKONS_HIDEOUT, {
@@ -1691,7 +1779,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CANYON, {[]{return true;}}),
 	});
 
-	areaTable[MUSIC_BOX_HOUSE] = Area("Music Box House", "Music Box House", MUSIC_BOX_HOUSE, {
+	areaTable[MUSIC_BOX_HOUSE] = Area("Music Box House", "Music Box House", NONE, {
 		//Events
 	},
 	{
@@ -1700,22 +1788,22 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON, {[]{return true;}}),
+		Entrance(IKANA_CANYON_UPPER, {[]{return true;}}),
 	});
 	
-	areaTable[IKANA_CANYON_POE_HUT] = Area("Ikana Canyon Poe Hut", "Ikana Canyon Poe Hut", IKANA_CANYON_POE_HUT, {
+	areaTable[IKANA_CANYON_POE_HUT] = Area("Ikana Canyon Poe Hut", "Ikana Canyon Poe Hut", NONE, {
 		//Events
 	},
 	{
 		//Locations
-		//LocationAccess(IKANA_CANYON_POE_HUT, {[] {return IkanaCanyonAccess && Arrows && KokiriSword;}}),
+		//LocationAccess(IKANA_CANYON_POE_HUT_HP, {[] {return IkanaCanyonAccess && Arrows && KokiriSword;}}),
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON, {[]{return true;}}),
+		Entrance(IKANA_CANYON_UPPER, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CANYON_GREAT_FAIRY_FOUNTAIN] = Area("Ikana Canyon Great Fairy Fountain", "Ikana Canyon Great Fairy Fountain", IKANA_CANYON_GREAT_FAIRY_FOUNTAIN,{
+	areaTable[IKANA_CANYON_GREAT_FAIRY_FOUNTAIN] = Area("Ikana Canyon Great Fairy Fountain", "Ikana Canyon Great Fairy Fountain", NONE,{
 		//Events
 	},
 	{
@@ -1724,10 +1812,10 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON, {[]{return true;}}),
+		Entrance(IKANA_CANYON_UPPER, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CANYON_SECRET_SHRINE_GROTTO] = Area("Ikana Canyon Near Secret Shrine Grotto", "Ikana Canyon Near Secret Shrine Grotto", IKANA_CANYON_SECRET_SHRINE_GROTTO, {
+	areaTable[IKANA_CANYON_SECRET_SHRINE_GROTTO] = Area("Ikana Canyon Near Secret Shrine Grotto", "Ikana Canyon Near Secret Shrine Grotto", NONE, {
 		//Events
 	},
 	{
@@ -1747,7 +1835,7 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON, {[]{return true;}}),
+		Entrance(IKANA_CANYON_UPPER, {[]{return true;}}),
 		Entrance(STONE_TOWER_TEMPLE_ENTRANCE, {[]{return ElegyOfEmptiness && GoronMask && ZoraMask && DekuMask && Hookshot;}}),
 		Entrance(INVERTED_STONE_TOWER, {[]{return ElegyOfEmptiness && GoronMask && ZoraMask && DekuMask && Hookshot && HerosBow && LightArrows && MagicMeter;}}),
 	});
@@ -1776,7 +1864,7 @@ void AreaTable_Init() {
 	|      WOODFALL TEMPLE     |
 	---------------------------*/
 
-	areaTable[WOODFALL_TEMPLE_ENTRANCE] = Area("Woodfall Temple Entrance", "Woodfall Temple Entrance", WOODFALL_TEMPLE_ENTRANCE, {
+	areaTable[WOODFALL_TEMPLE_ENTRANCE] = Area("Woodfall Temple Entrance", "Woodfall Temple Entrance", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1790,7 +1878,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_MAIN_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_MAIN_ROOM] = Area("Woodfall Temple Main Room", "Woodfall Temple Main Room", WOODFALL_TEMPLE_MAIN_ROOM, {
+	areaTable[WOODFALL_TEMPLE_MAIN_ROOM] = Area("Woodfall Temple Main Room", "Woodfall Temple Main Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1807,7 +1895,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_UPPER_MAIN_ROOM, {[]{return SmallKeys(WoodfallTempleKeys, 1) && HerosBow && DekuMask;}}),//Main Room 2F switch pressed OR Hookshot trick OR Zora Jump?
 	});
 
-	areaTable[WOODFALL_TEMPLE_UPPER_MAIN_ROOM] = Area("Woodfall Temple Main Room 2F", "Woodfall Temple Main Room 2F", WOODFALL_TEMPLE_UPPER_MAIN_ROOM, {
+	areaTable[WOODFALL_TEMPLE_UPPER_MAIN_ROOM] = Area("Woodfall Temple Main Room 2F", "Woodfall Temple Main Room 2F", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1822,7 +1910,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_PRE_BOSS_ROOM, {[]{return HerosBow;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_PLATFORM_ROOM] = Area("Woodfall Temple Platform Room", "Woodfall Temple Platform Room", WOODFALL_TEMPLE_PLATFORM_ROOM, {
+	areaTable[WOODFALL_TEMPLE_PLATFORM_ROOM] = Area("Woodfall Temple Platform Room", "Woodfall Temple Platform Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1836,7 +1924,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_MAP_ROOM, {[]{return DekuMask;}}),
 	}),
 
-	areaTable[WOODFALL_TEMPLE_MAP_ROOM] = Area("Woodfall Temple Map Room", "Woodfall Temple Map Room", WOODFALL_TEMPLE_MAP_ROOM, {
+	areaTable[WOODFALL_TEMPLE_MAP_ROOM] = Area("Woodfall Temple Map Room", "Woodfall Temple Map Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1848,7 +1936,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_PLATFORM_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM] = Area("Woodfall Temple Upper Platform Room", "Woodfall Temple Upper Platform Room", WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM, {
+	areaTable[WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM] = Area("Woodfall Temple Upper Platform Room", "Woodfall Temple Upper Platform Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1862,7 +1950,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_UPPER_MAIN_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_BOSS_KEY_ROOM] = Area("Woodfall Temple Boss Key Room", "Woodfall Temple Boss Key Room", WOODFALL_TEMPLE_BOSS_KEY_ROOM, {
+	areaTable[WOODFALL_TEMPLE_BOSS_KEY_ROOM] = Area("Woodfall Temple Boss Key Room", "Woodfall Temple Boss Key Room", WOODFALL_TEMPLE, {
 		//Events
 		//Frog
 	},
@@ -1875,7 +1963,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_BOW_ROOM] = Area("Woodfall Temple Bow Room", "Woodfall Temple Bow Room", WOODFALL_TEMPLE_BOW_ROOM, {
+	areaTable[WOODFALL_TEMPLE_BOW_ROOM] = Area("Woodfall Temple Bow Room", "Woodfall Temple Bow Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1887,7 +1975,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_UPPER_PLATFORM_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_BRIDGE_ROOM] = Area("Woodfall Temple Bridge Room", "Woodfall Temple Bridge Room", WOODFALL_TEMPLE_BRIDGE_ROOM, {
+	areaTable[WOODFALL_TEMPLE_BRIDGE_ROOM] = Area("Woodfall Temple Bridge Room", "Woodfall Temple Bridge Room", WOODFALL_TEMPLE, {
 		//Events
 		//DekuBabaSticks
 		//Torch for firesource?
@@ -1904,7 +1992,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_DARK_ROOM, {[]{return true;}}),//HasFireSource || HasFireWithTorch
 	});
 
-	areaTable[WOODFALL_TEMPLE_COMPASS_ROOM] = Area("Woodfall Temple Compass Room", "Woodfall Temple Compass Room", WOODFALL_TEMPLE_COMPASS_ROOM, {
+	areaTable[WOODFALL_TEMPLE_COMPASS_ROOM] = Area("Woodfall Temple Compass Room", "Woodfall Temple Compass Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1916,7 +2004,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_BRIDGE_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_DARK_ROOM] = Area("Woodfall Temple Dark Room", "Woodfall Temple Dark Room", WOODFALL_TEMPLE_DARK_ROOM, {
+	areaTable[WOODFALL_TEMPLE_DARK_ROOM] = Area("Woodfall Temple Dark Room", "Woodfall Temple Dark Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1929,7 +2017,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_DRAGONFLY_ROOM, {[]{return true;}})//Fighting || HasFireSource || HasFireWithTorch
 	});
 
-	areaTable[WOODFALL_TEMPLE_DRAGONFLY_ROOM] = Area("Woodfall Temple Dragonfly Platform Room", "Woodfall Temple Dragonfly Platform Room", WOODFALL_TEMPLE_DRAGONFLY_ROOM, {
+	areaTable[WOODFALL_TEMPLE_DRAGONFLY_ROOM] = Area("Woodfall Temple Dragonfly Platform Room", "Woodfall Temple Dragonfly Platform Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1942,7 +2030,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_UPPER_MAIN_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_PRE_BOSS_ROOM] = Area("Woodfall Temple Pre-Boss Room", "Woodfall Temple Pre-Boss Room", WOODFALL_TEMPLE_PRE_BOSS_ROOM, {
+	areaTable[WOODFALL_TEMPLE_PRE_BOSS_ROOM] = Area("Woodfall Temple Pre-Boss Room", "Woodfall Temple Pre-Boss Room", WOODFALL_TEMPLE, {
 		//Events
 	},
 	{
@@ -1958,7 +2046,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_BOSS_ROOM, {[]{return DekuMask && HerosBow && BossKeyWoodfallTemple;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_BOSS_ROOM] = Area("Woodfall Temple Boss Room", "Woodfall Temple Boss Room", WOODFALL_TEMPLE_BOSS_ROOM, {
+	areaTable[WOODFALL_TEMPLE_BOSS_ROOM] = Area("Woodfall Temple Boss Room", "Woodfall Temple Boss Room", WOODFALL_TEMPLE, {
 		//Events
 		EventAccess(&WoodfallClear, {[]{return WoodfallClear || (BossKeyWoodfallTemple && DekuMask && HerosBow);}}),
 	}, 
@@ -1973,7 +2061,7 @@ void AreaTable_Init() {
 		Entrance(WOODFALL_TEMPLE_PRINCESS_ROOM, {[]{return WoodfallClear;}}),
 	});
 
-	areaTable[WOODFALL_TEMPLE_PRINCESS_ROOM] = Area("Deku Princess Room", "Deku Princess Room", WOODFALL_TEMPLE_PRINCESS_ROOM, {
+	areaTable[WOODFALL_TEMPLE_PRINCESS_ROOM] = Area("Deku Princess Room", "Deku Princess Room", WOODFALL_TEMPLE, {
 		//Events
 		//DekuPrincess access
 	},
@@ -1991,7 +2079,7 @@ void AreaTable_Init() {
 	|    SNOWHEAD TEMPLE       |
 	---------------------------*/
 
-	areaTable[SNOWHEAD_TEMPLE_ENTRANCE] = Area("Snowhead Temple Entrance", "Snowhead Temple Entrance", SNOWHEAD_TEMPLE_ENTRANCE, {
+	areaTable[SNOWHEAD_TEMPLE_ENTRANCE] = Area("Snowhead Temple Entrance", "Snowhead Temple Entrance", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2005,7 +2093,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_1F, {[]{return FireArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_BRIDGE_ROOM] = Area("Snowhead Temple Bridge Room", "Snowhead Temple Bridge Room", SNOWHEAD_TEMPLE_BRIDGE_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_BRIDGE_ROOM] = Area("Snowhead Temple Bridge Room", "Snowhead Temple Bridge Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2022,7 +2110,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_LOWER_MAP_ROOM, {[]{return GoronMask;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_LOWER_MAP_ROOM] = Area("Snowhead Temple Lower Map Room", "Snowhead Temple Lower Map Room", SNOWHEAD_TEMPLE_LOWER_MAP_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_LOWER_MAP_ROOM] = Area("Snowhead Temple Lower Map Room", "Snowhead Temple Lower Map Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2036,7 +2124,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_UPPER_MAP_ROOM, {[]{return FireArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_UPPER_MAP_ROOM] = Area("Snowhead Temple Upper Map Room", "Snowhead Temple Upper Map Room", SNOWHEAD_TEMPLE_UPPER_MAP_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_UPPER_MAP_ROOM] = Area("Snowhead Temple Upper Map Room", "Snowhead Temple Upper Map Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2050,7 +2138,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_2F, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_1F] = Area("Snowhead Temple Main Room 1F", "Snowhead Temple Main Room 1F", SNOWHEAD_TEMPLE_MAIN_ROOM_1F, {
+	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_1F] = Area("Snowhead Temple Main Room 1F", "Snowhead Temple Main Room 1F", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2064,7 +2152,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM, {[]{return FireArrows && HerosBow && MagicMeter;}}),//Has 2 entrances, left and right both need fire arrows though
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_BASEMENT]= Area("Snowhead Temple Basement", "Snowhead Temple Basement", SNOWHEAD_TEMPLE_BASEMENT, {
+	areaTable[SNOWHEAD_TEMPLE_BASEMENT]= Area("Snowhead Temple Basement", "Snowhead Temple Basement", SNOWHEAD_TEMPLE, {
 		//Events
 		//Pillar Lowering Switch
 	},
@@ -2078,7 +2166,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_LOWER_PILLAR_FREEZARDS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_LOWER_PILLAR_FREEZARDS_ROOM] = Area("Snowhead Temple Lower Pillar Freezards Room", "Snowhead Temple Lower Pillar Freezards Room", SNOWHEAD_TEMPLE_LOWER_PILLAR_FREEZARDS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_LOWER_PILLAR_FREEZARDS_ROOM] = Area("Snowhead Temple Lower Pillar Freezards Room", "Snowhead Temple Lower Pillar Freezards Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2090,7 +2178,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM, {[]{return DekuMask && FireArrows && MagicMeter && HerosBow;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_LOWER] = Area("Snowhead Temple Double Block Room Lower", "Snowhead Temple Block Room Lower", SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_LOWER, {
+	areaTable[SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_LOWER] = Area("Snowhead Temple Double Block Room Lower", "Snowhead Temple Block Room Lower", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2103,7 +2191,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_UPPER, {[]{return false;}}),//cant get up unless hookshot on SF chest?
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_UPPER] = Area("Snowhead Temple Double Block Room Upper", "Snowhead Temple Double Block Room Upper", SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_UPPER, {
+	areaTable[SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_UPPER] = Area("Snowhead Temple Double Block Room Upper", "Snowhead Temple Double Block Room Upper", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2116,7 +2204,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_DOUBLE_BLOCK_ROOM_LOWER, {[]{return true;}}),//jump lol
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_COMPASS_ROOM] = Area("Snowhead Temple Compass Room", "Snowhead Temple Compass Room", SNOWHEAD_TEMPLE_COMPASS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_COMPASS_ROOM] = Area("Snowhead Temple Compass Room", "Snowhead Temple Compass Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2135,7 +2223,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_ICICLE_ROOM, {[]{return BombBag20;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_ICICLE_ROOM] = Area("Snowhead Temple Icicle Room", "Snowhead Temple Icicle Room", SNOWHEAD_TEMPLE_ICICLE_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_ICICLE_ROOM] = Area("Snowhead Temple Icicle Room", "Snowhead Temple Icicle Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2149,7 +2237,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_GORON_SWITCH_PUZZLE_ROOM, {[]{return SmallKeys(SnowheadTempleKeys, 2);}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_GORON_SWITCH_PUZZLE_ROOM] = Area("Snowhead Temple Goron Switch Puzzle Room", "Snowhead Temple Goron Switch Puzzle Room", SNOWHEAD_TEMPLE_GORON_SWITCH_PUZZLE_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_GORON_SWITCH_PUZZLE_ROOM] = Area("Snowhead Temple Goron Switch Puzzle Room", "Snowhead Temple Goron Switch Puzzle Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2162,7 +2250,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_2F, {[]{return GoronMask || (FireArrows && MagicMeter && HerosBow);}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_2F] = Area("Snowhead Temple Main Room 2F", "Snowhead Temple Main Room 2F", SNOWHEAD_TEMPLE_MAIN_ROOM_2F, {
+	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_2F] = Area("Snowhead Temple Main Room 2F", "Snowhead Temple Main Room 2F", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2177,7 +2265,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_3F, {[]{return GoronMask && FireArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_MINIBOSS_ROOM] = Area("Snowhead Temple Miniboss Room", "Snowhead Temple Miniboss Room", SNOWHEAD_TEMPLE_MINIBOSS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_MINIBOSS_ROOM] = Area("Snowhead Temple Miniboss Room", "Snowhead Temple Miniboss Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2189,7 +2277,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_2F, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM] = Area("Snowhead Temple Pillar Freezards Room", "Snowhead Temple Pillar Freezards Room", SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM] = Area("Snowhead Temple Pillar Freezards Room", "Snowhead Temple Pillar Freezards Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2202,7 +2290,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_PILLAR_SWITCH_ROOM, {[]{return FireArrows && MagicMeter && HerosBow;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_PILLAR_SWITCH_ROOM] = Area("Snowhead Temple Pillar Switch Room", "Snowhead Temple Pillar Switch Room", SNOWHEAD_TEMPLE_PILLAR_SWITCH_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_PILLAR_SWITCH_ROOM] = Area("Snowhead Temple Pillar Switch Room", "Snowhead Temple Pillar Switch Room", SNOWHEAD_TEMPLE, {
 		//Events
 		EventAccess(&SHSwitchPress, {[]{return SHSwitchPress;}}),//Raise Pillar
 	},
@@ -2214,7 +2302,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_PILLAR_FREEZARDS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_3F] = Area("Snowhead Temple Main Room 3F", "Snowhead Temple Main Room 3F", SNOWHEAD_TEMPLE_MAIN_ROOM_3F, {
+	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_3F] = Area("Snowhead Temple Main Room 3F", "Snowhead Temple Main Room 3F", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2227,7 +2315,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_SNOW_ROOM, {[]{return SmallKeys(SnowheadTempleKeys, 3) && GoronMask;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_SNOW_ROOM] = Area("Snowhead Temple Snow Room", "Snowhead Temple Snow Room", SNOWHEAD_TEMPLE_SNOW_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_SNOW_ROOM] = Area("Snowhead Temple Snow Room", "Snowhead Temple Snow Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2240,7 +2328,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_DINOLFOS_ROOM, {[]{return true;}})//maybe FireArrows?
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_4F] = Area("Snowhead Temple Main Room 4F", "Snowhead Temple Main Room 4F", SNOWHEAD_TEMPLE_MAIN_ROOM_4F, {
+	areaTable[SNOWHEAD_TEMPLE_MAIN_ROOM_4F] = Area("Snowhead Temple Main Room 4F", "Snowhead Temple Main Room 4F", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2254,7 +2342,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_DINOLFOS_ROOM, {[]{return true;}}),//jump or use deku mask to fly over
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_DINOLFOS_ROOM] = Area("Snowhead Temple Dinolfos Room", "Snowhead Temple Dinolfos Room", SNOWHEAD_TEMPLE_DINOLFOS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_DINOLFOS_ROOM] = Area("Snowhead Temple Dinolfos Room", "Snowhead Temple Dinolfos Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2268,7 +2356,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_4F, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_WIZZROBE_ROOM] = Area("Snowhead Temple Wizzrobe Room", "Snowhead Temple Wizzrobe Room", SNOWHEAD_TEMPLE_WIZZROBE_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_WIZZROBE_ROOM] = Area("Snowhead Temple Wizzrobe Room", "Snowhead Temple Wizzrobe Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2280,7 +2368,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_BOSS_KEY_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_BOSS_KEY_ROOM] = Area("Snowhead Temple Boss Key Rom", "Snowhead Temple Boss Key Room", SNOWHEAD_TEMPLE_BOSS_KEY_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_BOSS_KEY_ROOM] = Area("Snowhead Temple Boss Key Rom", "Snowhead Temple Boss Key Room", SNOWHEAD_TEMPLE, {
 		//Events
 	},
 	{
@@ -2293,7 +2381,7 @@ void AreaTable_Init() {
 		Entrance(SNOWHEAD_TEMPLE_MAIN_ROOM_4F, {[]{return true;}}),
 	});
 
-	areaTable[SNOWHEAD_TEMPLE_BOSS_ROOM] = Area("Snowhead Temple Boss Room", "Snowhead Temple Boss Room", SNOWHEAD_TEMPLE_BOSS_ROOM, {
+	areaTable[SNOWHEAD_TEMPLE_BOSS_ROOM] = Area("Snowhead Temple Boss Room", "Snowhead Temple Boss Room", SNOWHEAD_TEMPLE, {
 		//Events
 		EventAccess(&SnowheadClear, {[]{return SnowheadClear || (BossKeySnowheadTemple && GoronMask && FireArrows && HerosBow && MagicMeter);}}),
 	}, 
@@ -2312,7 +2400,7 @@ void AreaTable_Init() {
 	|    GREAT BAY TEMPLE     |
 	---------------------------*/
 	
-	areaTable[GREAT_BAY_TEMPLE_ENTRANCE] = Area("Great Bay Temple Entrance", "Great Bay Temple Entrance", GREAT_BAY_TEMPLE_ENTRANCE, {
+	areaTable[GREAT_BAY_TEMPLE_ENTRANCE] = Area("Great Bay Temple Entrance", "Great Bay Temple Entrance", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2325,7 +2413,7 @@ void AreaTable_Init() {
 		Entrance(ZORA_CAPE, {[]{return Hookshot;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_WATER_CONTROL_ROOM] = Area("Great Bay Temple Water Control Room", "Great Bay Temple Water Control Room", GREAT_BAY_TEMPLE_WATER_CONTROL_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_WATER_CONTROL_ROOM] = Area("Great Bay Temple Water Control Room", "Great Bay Temple Water Control Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&ReverseWaterFlow, {[]{return RedSwitch && RedSwitch2;}}),
 	},
@@ -2340,7 +2428,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM, {[]{return ZoraMask;}}),//Needed to trun yellow switch
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM] = Area("Great Bay Temple Whirlpool Room", "Great Bay Temple Whirlpool Room", GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM] = Area("Great Bay Temple Whirlpool Room", "Great Bay Temple Whirlpool Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2357,7 +2445,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_COMPASS_ROOM, {[]{return ReverseWaterFlow && ZoraMask;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_RED_SWITCH_ROOM] = Area("Great Bay Temple Red Switch Room", "Great Bay Temple Red Switch Room", GREAT_BAY_TEMPLE_RED_SWITCH_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_RED_SWITCH_ROOM] = Area("Great Bay Temple Red Switch Room", "Great Bay Temple Red Switch Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&RedSwitch, {[]{return IceArrows && MagicMeter && HerosBow;}}),
 	},
@@ -2370,7 +2458,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM, {[]{return ZoraMask && SmallKeys(GreatBayTempleKeys, 1);}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_MAP_ROOM] = Area("Great Bay Temple Map Room", "Great Bay Temple Map Room", GREAT_BAY_TEMPLE_MAP_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_MAP_ROOM] = Area("Great Bay Temple Map Room", "Great Bay Temple Map Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2384,7 +2472,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_BIO_BABA_ROOM, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_RED_SWITCH2_ROOM] = Area("Great Bay Temple 2nd Red Switch Room", "Great Bay Temple 2nd Red Switch Room", GREAT_BAY_TEMPLE_RED_SWITCH2_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_RED_SWITCH2_ROOM] = Area("Great Bay Temple 2nd Red Switch Room", "Great Bay Temple 2nd Red Switch Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&RedSwitch2, {[]{return IceArrows && MagicMeter && HerosBow;}}),//Need to freeze chu to get to switch
 	},
@@ -2396,7 +2484,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_MAP_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_BIO_BABA_ROOM] = Area("Great Bay Temple Bio Baba Room", "Great Bay Temple Bio Baba Room", GREAT_BAY_TEMPLE_BIO_BABA_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_BIO_BABA_ROOM] = Area("Great Bay Temple Bio Baba Room", "Great Bay Temple Bio Baba Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2409,7 +2497,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_COMPASS_ROOM, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_COMPASS_ROOM] = Area("Great Bay Temple Compass/Key Room", "Great Bay Temple Compass/Key Room", GREAT_BAY_TEMPLE_COMPASS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_COMPASS_ROOM] = Area("Great Bay Temple Compass/Key Room", "Great Bay Temple Compass/Key Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2427,7 +2515,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_WATER_WHEEL_ROOM, {[]{return ReverseWaterFlow;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_FROG_MINIBOSS_ROOM] = Area("Great Bay Temple Frog MiniBoss", "Great Bay Temple Frog MiniBoss", GREAT_BAY_TEMPLE_FROG_MINIBOSS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_FROG_MINIBOSS_ROOM] = Area("Great Bay Temple Frog MiniBoss", "Great Bay Temple Frog MiniBoss", GREAT_BAY_TEMPLE, {
 		//Events
 		//Frog
 	},
@@ -2440,7 +2528,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_BOSS_KEY_ROOM, {[]{return IceArrows && HerosBow && MagicMeter;}}),//need to beat frog to leave
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_BOSS_KEY_ROOM] = Area("Great Bay Temple Boss Key Room", "Great Bay Temple Boss Key Room", GREAT_BAY_TEMPLE_BOSS_KEY_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_BOSS_KEY_ROOM] = Area("Great Bay Temple Boss Key Room", "Great Bay Temple Boss Key Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2453,7 +2541,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_COMPASS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM] = Area("Great Bay Temple Pre-Miniboss Room", "Great Bay Temple Pre-Miniboss Room", GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM] = Area("Great Bay Temple Pre-Miniboss Room", "Great Bay Temple Pre-Miniboss Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2465,7 +2553,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_MINI_BOSS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_MINI_BOSS_ROOM] = Area("Great Bay Temple Miniboss Room", "Great Bay Temple Miniboss Room", GREAT_BAY_TEMPLE_MINI_BOSS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_MINI_BOSS_ROOM] = Area("Great Bay Temple Miniboss Room", "Great Bay Temple Miniboss Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2477,7 +2565,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_PRE_MINIBOSS_ROOM, {[]{return ZoraMask || Hookshot || KokiriSword || HerosBow;}}),//some kind of fighting
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_GREEN_SWITCH_ROOM] = Area("Great Bay Temple Green Switch Room", "Great Bay Temple Green Switch Room", GREAT_BAY_TEMPLE_GREEN_SWITCH_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_GREEN_SWITCH_ROOM] = Area("Great Bay Temple Green Switch Room", "Great Bay Temple Green Switch Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&GreenSwitch, {[]{return ZoraMask && IceArrows && HerosBow && MagicMeter;}}),
 	},
@@ -2490,7 +2578,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_WHIRLPOOL_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_WATER_WHEEL_ROOM] = Area("Great Bay Temple Waterwheel Room", "Great Bay Temple Waterwheel Room", GREAT_BAY_TEMPLE_WATER_WHEEL_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_WATER_WHEEL_ROOM] = Area("Great Bay Temple Waterwheel Room", "Great Bay Temple Waterwheel Room", GREAT_BAY_TEMPLE, {
 		//Events
 	},
 	{
@@ -2504,7 +2592,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_SEESAW_ROOM, {[]{return IceArrows && FireArrows && HerosBow && MagicMeter;}}),//FireArrows included to avoid potential softlock
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_SEESAW_ROOM] = Area("Great Bay Temple Seesaw Room", "Great Bay Temple Seesaw Room", GREAT_BAY_TEMPLE_SEESAW_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_SEESAW_ROOM] = Area("Great Bay Temple Seesaw Room", "Great Bay Temple Seesaw Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&GreenSwitch2, {[]{return FireArrows && IceArrows && HerosBow && MagicMeter;}}),
 	},
@@ -2519,7 +2607,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_MAP_ROOM, {[]{return FireArrows && IceArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[GREAT_BAY_TEMPLE_PRE_BOSS_ROOM] = Area("Great Bay Temple Pre-Boss Room", "Great Bay Temple Pre-Boss Room", GREAT_BAY_TEMPLE_PRE_BOSS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_PRE_BOSS_ROOM] = Area("Great Bay Temple Pre-Boss Room", "Great Bay Temple Pre-Boss Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&GreenValve, {[]{return GreenSwitch && GreenSwitch2;}}),
 	},
@@ -2534,7 +2622,7 @@ void AreaTable_Init() {
 		Entrance(GREAT_BAY_TEMPLE_BOSS_ROOM, {[]{return BossKeyGreatBayTemple && GreenValve;}}),
 	});
 	
-	areaTable[GREAT_BAY_TEMPLE_BOSS_ROOM] = Area("Great Bay Temple Boss Room", "Great Bay Temple Boss Room", GREAT_BAY_TEMPLE_BOSS_ROOM, {
+	areaTable[GREAT_BAY_TEMPLE_BOSS_ROOM] = Area("Great Bay Temple Boss Room", "Great Bay Temple Boss Room", GREAT_BAY_TEMPLE, {
 		//Events
 		EventAccess(&GreatBayClear, {[]{return GreatBayClear || (BossKeyGreatBayTemple && ZoraMask && IceArrows && HerosBow && MagicMeter);}}),
 	},
@@ -2553,7 +2641,7 @@ void AreaTable_Init() {
 	|   STONE TOWER TEMPLE     |
 	---------------------------*/
 
-	areaTable[STONE_TOWER_TEMPLE_ENTRANCE] = Area("Stone Tower Temple Entrance", "Stone Tower Temple Entrance", STONE_TOWER_TEMPLE_ENTRANCE, {
+	areaTable[STONE_TOWER_TEMPLE_ENTRANCE] = Area("Stone Tower Temple Entrance", "Stone Tower Temple Entrance", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2568,7 +2656,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_EYEGORE_ROOM, {[]{return false;}}),//OneWay
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_UPRIGHT_DEATH_ARMOS_ROOM] = Area("Stone Tower Temple Upright Death Armos Room", "Stone Tower Temple Upright Death Armos Room", STONE_TOWER_TEMPLE_UPRIGHT_DEATH_ARMOS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_UPRIGHT_DEATH_ARMOS_ROOM] = Area("Stone Tower Temple Upright Death Armos Room", "Stone Tower Temple Upright Death Armos Room", STONE_TOWER_TEMPLE, {
 		//Events
 		EventAccess(&ArmosRoomLightHole, {[]{return ElegyOfEmptiness && ZoraMask && GoronMask && BombBag20;}}),
 	},
@@ -2582,7 +2670,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_WATER_BRIDGE_ROOM, {[]{return ElegyOfEmptiness && ZoraMask && GoronMask && SmallKeys(StoneTowerTempleKeys, 1);}}), 
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_ARMOS_ROOM] = Area("Stone Tower Temple Armos Room", "Stone Tower Temple Armos Room", STONE_TOWER_TEMPLE_ARMOS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_ARMOS_ROOM] = Area("Stone Tower Temple Armos Room", "Stone Tower Temple Armos Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2596,7 +2684,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_UPRIGHT_DEATH_ARMOS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_WATER_BRIDGE_ROOM] = Area("Stone Tower Temple Water Bridge Room", "Stone Tower Temple Water Bridge Room", STONE_TOWER_TEMPLE_WATER_BRIDGE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_WATER_BRIDGE_ROOM] = Area("Stone Tower Temple Water Bridge Room", "Stone Tower Temple Water Bridge Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2612,7 +2700,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_UPRIGHT_UPDRAFT_ROOM, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_UPRIGHT_UPDRAFT_ROOM] = Area("Stone Tower Temple Upright Updraft Room", "Stone Tower Temple Upright Updraft Room", STONE_TOWER_TEMPLE_UPRIGHT_UPDRAFT_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_UPRIGHT_UPDRAFT_ROOM] = Area("Stone Tower Temple Upright Updraft Room", "Stone Tower Temple Upright Updraft Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2625,7 +2713,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_SUN_BLOCK_PUZZLE_ROOM, {[]{return ZoraMask && SmallKeys(StoneTowerTempleKeys, 2);}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_SUN_BLOCK_PUZZLE_ROOM] = Area("Stone Tower Temple Sun Block Puzzle Room", "Stone Tower Temple Sun Block Puzzle Room", STONE_TOWER_TEMPLE_SUN_BLOCK_PUZZLE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_SUN_BLOCK_PUZZLE_ROOM] = Area("Stone Tower Temple Sun Block Puzzle Room", "Stone Tower Temple Sun Block Puzzle Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2639,7 +2727,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_LAVA_ROOM, {[]{return ((MirrorShield && GoronMask) || (LightArrows && MagicMeter && HerosBow));}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_LAVA_ROOM] = Area("Stone Tower Temple Lava Room", "Stone Tower Temple Lava Room", STONE_TOWER_TEMPLE_LAVA_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_LAVA_ROOM] = Area("Stone Tower Temple Lava Room", "Stone Tower Temple Lava Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2653,7 +2741,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_GARO_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_GARO_ROOM] = Area("Stone Tower Temple Garo Miniboss Room", "Stone Tower Temple Garo Miniboss Room", STONE_TOWER_TEMPLE_GARO_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_GARO_ROOM] = Area("Stone Tower Temple Garo Miniboss Room", "Stone Tower Temple Garo Miniboss Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2666,7 +2754,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_LAVA_ROOM, {[]{return false;}}),//OneWay Door
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_THIN_BRIDGE_ROOM] = Area("Stone Tower Temple Thin Bridge Room", "Stone Tower Temple Thin Bridge Room", STONE_TOWER_TEMPLE_THIN_BRIDGE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_THIN_BRIDGE_ROOM] = Area("Stone Tower Temple Thin Bridge Room", "Stone Tower Temple Thin Bridge Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2679,7 +2767,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_GARO_ROOM, {[]{return false;}})//One Way Door
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_EYEGORE_ROOM] = Area("Stone Tower Temple Eyegore Room", "Stone Tower Temple Eyegore Room", STONE_TOWER_TEMPLE_EYEGORE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_EYEGORE_ROOM] = Area("Stone Tower Temple Eyegore Room", "Stone Tower Temple Eyegore Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2692,7 +2780,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_THIN_BRIDGE_ROOM, {[]{return false;}}),//One Way Door
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_INVERTED_ENTRANCE] = Area("Inverted Stone Tower Temple Entrance Room", "Inverted Stone Tower Temple Entrance Room", STONE_TOWER_TEMPLE_INVERTED_ENTRANCE, {
+	areaTable[STONE_TOWER_TEMPLE_INVERTED_ENTRANCE] = Area("Inverted Stone Tower Temple Entrance Room", "Inverted Stone Tower Temple Entrance Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2705,7 +2793,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_INVERTED_THIN_BRIDGE_ROOM, {[]{return Hookshot && InvertedChestSpawn;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_UPDRAFT_ROOM] = Area("Inverted Stone Tower Temple Updraft Room", "Inverted Stone Tower Temple Updraft Room", STONE_TOWER_TEMPLE_UPDRAFT_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_UPDRAFT_ROOM] = Area("Inverted Stone Tower Temple Updraft Room", "Inverted Stone Tower Temple Updraft Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2721,7 +2809,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_FLIPPING_LAVA_ROOM, {[]{return DekuMask && SmallKeys(StoneTowerTempleKeys, 3);}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_FLIPPING_LAVA_ROOM] = Area("Inverted Stone Tower Temple Flipping Lava Room", "Inverted Stone Tower Temple Flipping Lava Room", STONE_TOWER_TEMPLE_FLIPPING_LAVA_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_FLIPPING_LAVA_ROOM] = Area("Inverted Stone Tower Temple Flipping Lava Room", "Inverted Stone Tower Temple Flipping Lava Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2733,7 +2821,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_FLIPPING_BLOCK_PUZZLE, {[]{return LightArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_FLIPPING_BLOCK_PUZZLE] = Area("Inverted Stone Tower Flipping Block Puzzle", "Inverted Stone Tower Flipping Block Puzzle", STONE_TOWER_TEMPLE_FLIPPING_BLOCK_PUZZLE, {
+	areaTable[STONE_TOWER_TEMPLE_FLIPPING_BLOCK_PUZZLE] = Area("Inverted Stone Tower Flipping Block Puzzle", "Inverted Stone Tower Flipping Block Puzzle", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2745,7 +2833,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_WIZZROBE_ROOM, {[]{return LightArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_WIZZROBE_ROOM] = Area("Inverted Stone Tower Temple Wizzrobe Room", "Inverted Stone Tower Temple Wizzrobe Room", STONE_TOWER_TEMPLE_WIZZROBE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_WIZZROBE_ROOM] = Area("Inverted Stone Tower Temple Wizzrobe Room", "Inverted Stone Tower Temple Wizzrobe Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2758,7 +2846,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM, {[]{return Hookshot;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM] = Area("Inverted Stone Tower Temple Death Armos Room", "Inverted Stone Tower Temple Death Armos Room", STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM] = Area("Inverted Stone Tower Temple Death Armos Room", "Inverted Stone Tower Temple Death Armos Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2771,7 +2859,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM] = Area("Inverted Stone Tower Temple Bridge Room", "Inverted Stone Tower Temple Bridge Room", STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM] = Area("Inverted Stone Tower Temple Bridge Room", "Inverted Stone Tower Temple Bridge Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2784,7 +2872,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM, {[]{return DekuMask && HerosBow;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_INVERTED_ENTRANCE_DEATH_ARMOS_LEDGE] = Area("Inverted Stone Tower Temple Entrance Death Armos Ledge", "Inverted Stone Tower Temple Entrance Death Armos Ledge", STONE_TOWER_TEMPLE_INVERTED_ENTRANCE_DEATH_ARMOS_LEDGE, {
+	areaTable[STONE_TOWER_TEMPLE_INVERTED_ENTRANCE_DEATH_ARMOS_LEDGE] = Area("Inverted Stone Tower Temple Entrance Death Armos Ledge", "Inverted Stone Tower Temple Entrance Death Armos Ledge", STONE_TOWER_TEMPLE, {
 		//Events
 		EventAccess(&InvertedChestSpawn, {[]{return true;}}),
 	},
@@ -2796,7 +2884,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_INVERTED_BRIDGE_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM] = Area("Inverted Stone Tower Temple Pre-Gomess Hallway", "Inverted Stone Tower Temple Pre-Gomess Hallway", STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM] = Area("Inverted Stone Tower Temple Pre-Gomess Hallway", "Inverted Stone Tower Temple Pre-Gomess Hallway", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2808,7 +2896,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_GOMESS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_GOMESS_ROOM] = Area("Inverted Stone Tower Temple Gomess Room", "Inverted Stone Tower Temple Gomess Room", STONE_TOWER_TEMPLE_GOMESS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_GOMESS_ROOM] = Area("Inverted Stone Tower Temple Gomess Room", "Inverted Stone Tower Temple Gomess Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2821,7 +2909,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_PRE_GOMESS_ROOM, {[]{return LightArrows && HerosBow && MagicMeter;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_INVERTED_THIN_BRIDGE_ROOM] = Area("Inverted Stone Tower Thin Bridge Room", "Inverted Stone Tower Thin Bridge Room", STONE_TOWER_TEMPLE_INVERTED_THIN_BRIDGE_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_INVERTED_THIN_BRIDGE_ROOM] = Area("Inverted Stone Tower Thin Bridge Room", "Inverted Stone Tower Thin Bridge Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2833,7 +2921,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_PRE_BOSS_ROOM, {[]{return BossKeyStoneTowerTemple && Hookshot;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_PRE_BOSS_ROOM] = Area("Stone Tower Temple Pre-Boss Room", "Stone Tower Temple Pre-Boss Room", STONE_TOWER_TEMPLE_PRE_BOSS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_PRE_BOSS_ROOM] = Area("Stone Tower Temple Pre-Boss Room", "Stone Tower Temple Pre-Boss Room", STONE_TOWER_TEMPLE, {
 		//Events
 	},
 	{
@@ -2844,7 +2932,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE_BOSS_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[STONE_TOWER_TEMPLE_BOSS_ROOM] = Area("Stone Tower Temple Boss Room", "Stone Tower Temple Boss Room", STONE_TOWER_TEMPLE_BOSS_ROOM, {
+	areaTable[STONE_TOWER_TEMPLE_BOSS_ROOM] = Area("Stone Tower Temple Boss Room", "Stone Tower Temple Boss Room", STONE_TOWER_TEMPLE, {
 		//Events
 		EventAccess(&StoneTowerClear, {[]{return StoneTowerClear || (BossKeyStoneTowerTemple && GiantsMask && LightArrows && HerosBow && MagicMeter);}}),
 	}, 
@@ -2860,7 +2948,7 @@ void AreaTable_Init() {
 		Entrance(STONE_TOWER_TEMPLE, {[]{return LightArrows && HerosBow && MagicMeter && BossKeyStoneTowerTemple && GiantsMask;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_EXTERIOR] = Area("Pirates Fortress Exterior", "Pirates Fortress Exterior", PIRATE_FORTRESS_EXTERIOR, {
+	areaTable[PIRATE_FORTRESS_EXTERIOR] = Area("Pirates Fortress Exterior", "Pirates Fortress Exterior", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2875,7 +2963,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_MAZE_ROOM, {[]{return ZoraMask && GoronMask;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_MAZE_ROOM] = Area("Pirates Fortress Maze Room", "Pirates Fortress Maze Room", PIRATE_FORTRESS_MAZE_ROOM, {
+	areaTable[PIRATE_FORTRESS_MAZE_ROOM] = Area("Pirates Fortress Maze Room", "Pirates Fortress Maze Room", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2888,7 +2976,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_CAGE_ROOM, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_CAGE_ROOM] = Area("Pirates Fortress Cage Room", "Pirates Fortress Cage Room", PIRATE_FORTRESS_CAGE_ROOM, {
+	areaTable[PIRATE_FORTRESS_CAGE_ROOM] = Area("Pirates Fortress Cage Room", "Pirates Fortress Cage Room", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2903,7 +2991,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_EXTERIOR_TOP, {[]{return ZoraMask;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_EXTERIOR_TOP] = Area("Pirates Fortress Exterior Top", "Pirates Fortress Exterior Top", PIRATE_FORTRESS_EXTERIOR_TOP, {
+	areaTable[PIRATE_FORTRESS_EXTERIOR_TOP] = Area("Pirates Fortress Exterior Top", "Pirates Fortress Exterior Top", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2916,7 +3004,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_INTERIOR, {[]{return true;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_INTERIOR] = Area("Pirates Fortress Interior", "Pirates Fortress Interior", PIRATE_FORTRESS_INTERIOR, {
+	areaTable[PIRATE_FORTRESS_INTERIOR] = Area("Pirates Fortress Interior", "Pirates Fortress Interior", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2935,7 +3023,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_GUARD_ROOM, {[]{return Hookshot;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_HOOKSHOT_ROOM] = Area("Pirates Fortress Hookshot Room", "Pirates Fortress Hookshot Room", PIRATE_FORTRESS_HOOKSHOT_ROOM, {
+	areaTable[PIRATE_FORTRESS_HOOKSHOT_ROOM] = Area("Pirates Fortress Hookshot Room", "Pirates Fortress Hookshot Room", PIRATE_FORTRESS, {
 		//Events
 		//ZoraEgg1
 	},
@@ -2948,7 +3036,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_INTERIOR, {[]{return true;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_HOOKSHOT_ROOM_TOP] = Area("Pirates Fortress Upper Hookshot Room", "Pirates Fortress Upper Hookshot Room", PIRATE_FORTRESS_HOOKSHOT_ROOM_TOP, {
+	areaTable[PIRATE_FORTRESS_HOOKSHOT_ROOM_TOP] = Area("Pirates Fortress Upper Hookshot Room", "Pirates Fortress Upper Hookshot Room", PIRATE_FORTRESS, {
 		//Events
 		EventAccess(&PirateBees, {[]{return HerosBow || Hookshot;}}),
 	},
@@ -2961,7 +3049,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_HOOKSHOT_ROOM, {[]{return PirateBees;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_BARREL_MAZE] = Area("Pirates Fortress Barrel Maze", "Pirates Fortress Barrel Maze", PIRATE_FORTRESS_BARREL_MAZE, {
+	areaTable[PIRATE_FORTRESS_BARREL_MAZE] = Area("Pirates Fortress Barrel Maze", "Pirates Fortress Barrel Maze", PIRATE_FORTRESS, {
 		//Events
 	},
 	{
@@ -2973,7 +3061,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_INTERIOR, {[]{return Hookshot && KokiriSword;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_LAVA_ROOM] = Area("Pirate Fortress Lava Room", "Pirate Fortress Lava Room", PIRATE_FORTRESS_LAVA_ROOM, {
+	areaTable[PIRATE_FORTRESS_LAVA_ROOM] = Area("Pirate Fortress Lava Room", "Pirate Fortress Lava Room", PIRATE_FORTRESS, {
 		//Events
 	}, 
 	{
@@ -2986,7 +3074,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_INTERIOR, {[]{return Hookshot && KokiriSword;}}),
 	});
 
-	areaTable[PIRATE_FORTRESS_GUARD_ROOM] = Area("Pirates Fortress Guard Room", "Pirates Fortress Guard Room", PIRATE_FORTRESS_GUARD_ROOM, {
+	areaTable[PIRATE_FORTRESS_GUARD_ROOM] = Area("Pirates Fortress Guard Room", "Pirates Fortress Guard Room", PIRATE_FORTRESS, {
 		//Events
 	}, 
 	{
@@ -2999,7 +3087,7 @@ void AreaTable_Init() {
 		Entrance(PIRATE_FORTRESS_INTERIOR, {[]{return Hookshot && KokiriSword;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_ENTRANCE] = Area("Beneath The Well Entrance", "Beneath The Well Entrance", BENEATH_THE_WELL_ENTRANCE, {
+	areaTable[BENEATH_THE_WELL_ENTRANCE] = Area("Beneath The Well Entrance", "Beneath The Well Entrance", BENEATH_THE_WELL, {
 		//Events
 	},
 	{
@@ -3012,7 +3100,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_RIGHT_PATH_ROOM, {[]{return GibdosMask && MagicBean;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_LEFT_PATH_ROOM] = Area("Beneath The Well Left Path", "Beneath The Well Left Path", BENEATH_THE_WELL_LEFT_PATH_ROOM, {
+	areaTable[BENEATH_THE_WELL_LEFT_PATH_ROOM] = Area("Beneath The Well Left Path", "Beneath The Well Left Path", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&LoneFish, {[]{return WitchBottle;}}),
 		EventAccess(&SpringWater, {[]{return WitchBottle;}}),
@@ -3027,7 +3115,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM, {[]{return GibdosMask && WitchBottle && SpringWater;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_LEFT_PATH_HOT_WATER_ROOM] = Area("Beneath The Well Hot Water Room", "Beneath The Well Hot Water Room", BENEATH_THE_WELL_LEFT_PATH_HOT_WATER_ROOM, {
+	areaTable[BENEATH_THE_WELL_LEFT_PATH_HOT_WATER_ROOM] = Area("Beneath The Well Hot Water Room", "Beneath The Well Hot Water Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&FishGroup, {[]{return WitchBottle;}}),
 		EventAccess(&HotSpringWater, {[]{return WitchBottle;}}),
@@ -3040,7 +3128,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_LEFT_PATH_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM] = Area("Beneath The Well Left Path Right Room", "Beneath The Well Left Path Right Room", BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM, {
+	areaTable[BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM] = Area("Beneath The Well Left Path Right Room", "Beneath The Well Left Path Right Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&WanderingBugs, {[]{return WitchBottle;}}),
 	},
@@ -3054,7 +3142,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_LEFT_PATH_CHEST_ROOM, {[]{return GibdosMask && BugsAccess && WitchBottle;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_LEFT_PATH_FAIRY_FOUNTAIN] = Area("Beneath The Well Fairy Fountain", "Beneath The Well Fairy Fountain", BENEATH_THE_WELL_LEFT_PATH_FAIRY_FOUNTAIN, {
+	areaTable[BENEATH_THE_WELL_LEFT_PATH_FAIRY_FOUNTAIN] = Area("Beneath The Well Fairy Fountain", "Beneath The Well Fairy Fountain", BENEATH_THE_WELL, {
 		//Events
 	},
 	{
@@ -3065,7 +3153,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_LEFT_PATH_CHEST_ROOM] = Area("Beneath The Well Left Path Chest", "Beneath The Well Left Path Chest", BENEATH_THE_WELL_LEFT_PATH_CHEST_ROOM, {
+	areaTable[BENEATH_THE_WELL_LEFT_PATH_CHEST_ROOM] = Area("Beneath The Well Left Path Chest", "Beneath The Well Left Path Chest", BENEATH_THE_WELL, {
 		//Events
 	},
 	{
@@ -3077,7 +3165,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_LEFT_PATH_RIGHT_DOOR_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_RIGHT_PATH_ROOM] = Area("Beneath The Well Right Path", "Beneath The Well Right Path", BENEATH_THE_WELL_RIGHT_PATH_ROOM, {
+	areaTable[BENEATH_THE_WELL_RIGHT_PATH_ROOM] = Area("Beneath The Well Right Path", "Beneath The Well Right Path", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&DekuBabaNuts, {[]{return KokiriSword;}}),
 		EventAccess(&DekuBabaSticks, {[]{return KokiriSword;}}),
@@ -3093,7 +3181,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM, {[]{return GibdosMask && DekuBabaNuts;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM] = Area("Beneath The Well Before Cow/Big Poe Room", "Beneath The Well Before Cow/Big Poe Room", BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM, {
+	areaTable[BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM] = Area("Beneath The Well Before Cow/Big Poe Room", "Beneath The Well Before Cow/Big Poe Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&WanderingBugs, {[]{return WitchBottle;}}),
 	},
@@ -3107,7 +3195,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_BIG_POE_ROOM, {[]{return GibdosMask && BombBag20;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_COW_ROOM] = Area("Beneath The Well Cow Room", "Beneath The Well Cow Room", BENEATH_THE_WELL_COW_ROOM, {
+	areaTable[BENEATH_THE_WELL_COW_ROOM] = Area("Beneath The Well Cow Room", "Beneath The Well Cow Room", BENEATH_THE_WELL, {
 		//Events
 		//Milk?
 	},
@@ -3120,7 +3208,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_BIG_POE_ROOM] = Area("Beneath The Well Big Poe Room", "Beneath The Well Big Poe Room", BENEATH_THE_WELL_BIG_POE_ROOM, {
+	areaTable[BENEATH_THE_WELL_BIG_POE_ROOM] = Area("Beneath The Well Big Poe Room", "Beneath The Well Big Poe Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&BigPoe, {[]{return HerosBow && WitchBottle;}}),
 	},
@@ -3132,7 +3220,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_PRE_COW_AND_BIG_POE_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_RIGHT_PATH_LEFT_DOOR_ROOM] = Area("Beneath The Well Right Path Left Door Room", "Beneath The Well Right Path Left Door Room", BENEATH_THE_WELL_RIGHT_PATH_LEFT_DOOR_ROOM, {
+	areaTable[BENEATH_THE_WELL_RIGHT_PATH_LEFT_DOOR_ROOM] = Area("Beneath The Well Right Path Left Door Room", "Beneath The Well Right Path Left Door Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&DekuBabaNuts, {[]{return KokiriSword;}}),
 		EventAccess(&DekuBabaSticks, {[]{return KokiriSword;}}),
@@ -3147,7 +3235,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_PRE_MIRROR_SHIELD_ROOM, {[]{return GibdosMask && WitchBottle && BigPoe;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_RIGHT_PATH_CHEST_ROOM] = Area("Beneath The Well Right Path Chest Room", "Beneath The Well Right Path Chest Room", BENEATH_THE_WELL_RIGHT_PATH_CHEST_ROOM, {
+	areaTable[BENEATH_THE_WELL_RIGHT_PATH_CHEST_ROOM] = Area("Beneath The Well Right Path Chest Room", "Beneath The Well Right Path Chest Room", BENEATH_THE_WELL, {
 		//Events
 	},
 	{
@@ -3159,7 +3247,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_RIGHT_PATH_LEFT_DOOR_ROOM, {[]{return true;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_PRE_MIRROR_SHIELD_ROOM] = Area("Beneath The Well Pre Mirror Shield Room", "Beneath The Well Pre Mirror Shield Room", BENEATH_THE_WELL_PRE_MIRROR_SHIELD_ROOM, {
+	areaTable[BENEATH_THE_WELL_PRE_MIRROR_SHIELD_ROOM] = Area("Beneath The Well Pre Mirror Shield Room", "Beneath The Well Pre Mirror Shield Room", BENEATH_THE_WELL, {
 		//Events
 		EventAccess(&WanderingBugs, {[]{return WitchBottle;}}),
 	},
@@ -3172,7 +3260,7 @@ void AreaTable_Init() {
 		Entrance(BENEATH_THE_WELL_MIRROR_SHIELD_ROOM, {[]{return WitchBottle;}}),
 	});
 
-	areaTable[BENEATH_THE_WELL_MIRROR_SHIELD_ROOM] = Area("Beneath The Well Mirror Shield Room", "Beneath The Well Mirror Shield Room", BENEATH_THE_WELL_MIRROR_SHIELD_ROOM, {
+	areaTable[BENEATH_THE_WELL_MIRROR_SHIELD_ROOM] = Area("Beneath The Well Mirror Shield Room", "Beneath The Well Mirror Shield Room", BENEATH_THE_WELL, {
 		//Events
 	}, 
 	{
@@ -3185,7 +3273,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_EXTERIOR_LOWER, {[]{return MirrorShield || (LightArrows && MagicMeter && HerosBow);}}),
 	});
 
-	areaTable[IKANA_CASTLE_EXTERIOR_LOWER] = Area("Ikana Castle Lower Exterior", "Ikana Castle Lower Exterior", IKANA_CASTLE_EXTERIOR_LOWER, {
+	areaTable[IKANA_CASTLE_EXTERIOR_LOWER] = Area("Ikana Castle Lower Exterior", "Ikana Castle Lower Exterior", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3198,7 +3286,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_ENTRANCE, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CASTLE_ENTRANCE] = Area("Ikana Castle Entrance", "Ikana Castle Entrance", IKANA_CASTLE_ENTRANCE, {
+	areaTable[IKANA_CASTLE_ENTRANCE] = Area("Ikana Castle Entrance", "Ikana Castle Entrance", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3211,7 +3299,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_THRONE_ROOM, {[]{return IkanaCastleRoofHole;}}),
 	});
 
-	areaTable[IKANA_CASTLE_LAVA_BLOCKS_ROOM] = Area("Ikana Castle Lava Blocks Room", "Ikana Castle Lava Blocks Room", IKANA_CASTLE_LAVA_BLOCKS_ROOM, {
+	areaTable[IKANA_CASTLE_LAVA_BLOCKS_ROOM] = Area("Ikana Castle Lava Blocks Room", "Ikana Castle Lava Blocks Room", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3223,7 +3311,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_NO_FLOOR_ROOM, {[]{return DekuMask;}}),
 	});
 
-	areaTable[IKANA_CASTLE_NO_FLOOR_ROOM] = Area("Ikana Castle No Floor Room", "Ikana Castle No Floor Room", IKANA_CASTLE_NO_FLOOR_ROOM, {
+	areaTable[IKANA_CASTLE_NO_FLOOR_ROOM] = Area("Ikana Castle No Floor Room", "Ikana Castle No Floor Room", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3235,7 +3323,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_LEFT_STAIRWELL, {[]{return DekuMask;}}),
 	});
 
-	areaTable[IKANA_CASTLE_LEFT_STAIRWELL] = Area("Ikana Castle Left Stairwell", "Ikana Castle Left Stairwell", IKANA_CASTLE_LEFT_STAIRWELL, {
+	areaTable[IKANA_CASTLE_LEFT_STAIRWELL] = Area("Ikana Castle Left Stairwell", "Ikana Castle Left Stairwell", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3247,7 +3335,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_EXTERIOR_UPPER_LEFT, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CASTLE_EXTERIOR_UPPER_LEFT] = Area("Ikana Castle Exterior Upper Left", "Ikana Castle Exterior Upper Left", IKANA_CASTLE_EXTERIOR_UPPER_LEFT, {
+	areaTable[IKANA_CASTLE_EXTERIOR_UPPER_LEFT] = Area("Ikana Castle Exterior Upper Left", "Ikana Castle Exterior Upper Left", IKANA_CASTLE, {
 		//Events
 		EventAccess(&IkanaLightSwitch, {[]{return DekuMask;}}),
 	},
@@ -3261,7 +3349,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_EXTERIOR_LOWER, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CASTLE_RIGHT_ROOM] = Area("Ikana Castle Right Room", "Ikana Castle Right Room", IKANA_CASTLE_RIGHT_ROOM, {
+	areaTable[IKANA_CASTLE_RIGHT_ROOM] = Area("Ikana Castle Right Room", "Ikana Castle Right Room", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3273,7 +3361,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_WIZZROBE_ROOM, {[]{return (MirrorShield && IkanaLightSwitch) || (LightArrows && MagicMeter && HerosBow);}})
 	});
 
-	areaTable[IKANA_CASTLE_WIZZROBE_ROOM] = Area("Ikana Castle Wizzrobe Room", "Ikana Castle Wizzrobe Room", IKANA_CASTLE_WIZZROBE_ROOM, {
+	areaTable[IKANA_CASTLE_WIZZROBE_ROOM] = Area("Ikana Castle Wizzrobe Room", "Ikana Castle Wizzrobe Room", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3285,7 +3373,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_RIGHT_STAIRWELL, {[]{return HerosBow;}}),
 	});
 
-	areaTable[IKANA_CASTLE_RIGHT_STAIRWELL] = Area("Ikana Castle Right Stairwell", "Ikana Castle Right Starwell", IKANA_CASTLE_RIGHT_STAIRWELL, {
+	areaTable[IKANA_CASTLE_RIGHT_STAIRWELL] = Area("Ikana Castle Right Stairwell", "Ikana Castle Right Starwell", IKANA_CASTLE, {
 		//Events
 	},
 	{
@@ -3297,7 +3385,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_EXTERIOR_UPPER_RIGHT, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CASTLE_EXTERIOR_UPPER_RIGHT] = Area("Ikana Castle Exterior Upper Right", "Ikana Caastle Exterior Upper Right", IKANA_CASTLE_EXTERIOR_UPPER_RIGHT, {
+	areaTable[IKANA_CASTLE_EXTERIOR_UPPER_RIGHT] = Area("Ikana Castle Exterior Upper Right", "Ikana Caastle Exterior Upper Right", IKANA_CASTLE, {
 		//Events
 		EventAccess(&IkanaCastleRoofHole, {[]{return PowderKeg;}}),
 	},
@@ -3311,7 +3399,7 @@ void AreaTable_Init() {
 		Entrance(IKANA_CASTLE_EXTERIOR_LOWER, {[]{return true;}}),
 	});
 
-	areaTable[IKANA_CASTLE_THRONE_ROOM] = Area("Ikana Castle Throne Room", "Ikana Castle Throne Room", IKANA_CASTLE_THRONE_ROOM, {
+	areaTable[IKANA_CASTLE_THRONE_ROOM] = Area("Ikana Castle Throne Room", "Ikana Castle Throne Room", IKANA_CASTLE, {
 		//Events
 	}, 
 	{
@@ -3337,7 +3425,7 @@ void AreaTable_Init() {
 	},
 	{
 		//Exits
-		Entrance(IKANA_CANYON_LOWER, {[]{return true;}}),
+		Entrance(IKANA_CANYON, {[]{return true;}}),
 	});
 
 	areaTable[THE_MOON] = Area("The Moon", "The Moon", THE_MOON, {
@@ -3399,6 +3487,7 @@ void AreaTable_Init() {
 		},
 		{
 			//Exits
+			Entrance(SOUTHERN_SWAMP, {[]{return true;}}),
 		});
 
 
@@ -3439,12 +3528,13 @@ void AreaTable_Init() {
 		},
 		{
 			//Exits
+			Entrance(GREAT_BAY_COAST, {[]{return GoronMask;}}),
 		});
 
 }
 
 namespace Areas {
-	static std::array < const AreaKey, 228> allAreas = {
+	static std::array < const AreaKey, 230> allAreas = {
 		ROOT,
 		ROOT_EXITS,
 		N_CLOCK_TOWN,
@@ -3510,6 +3600,7 @@ namespace Areas {
 		GORON_VILLAGE,
 		GORON_VILLAGE_LENS_CAVE,
 		GORON_VILLAGE_INTERIOR,
+		GORON_VILLAGE_SHOP,
 		ROAD_TO_SNOWHEAD,
 		ROAD_TO_SNOWHEAD_GROTTO,
 		SNOWHEAD,
@@ -3547,7 +3638,7 @@ namespace Areas {
 		IKANA_GRAVEYARD_IRON_KNUCKLE_ROOM,
 		IKANA_GRAVEYARD_BELOW_GRAVE3,
 		DAMPES_HUT,
-		IKANA_CANYON_LOWER,
+		IKANA_CANYON,
 		IKANA_CANYON_UPPER,
 		IKANA_CANYON_CAVE,
 		SAKONS_HIDEOUT,
@@ -3667,6 +3758,7 @@ namespace Areas {
 		IKANA_CASTLE_EXTERIOR_UPPER_LEFT,
 		IKANA_CASTLE_RIGHT_ROOM,
 		IKANA_CASTLE_WIZZROBE_ROOM,
+		IKANA_CASTLE_RIGHT_STAIRWELL,
 		IKANA_CASTLE_EXTERIOR_UPPER_RIGHT,
 		IKANA_CASTLE_THRONE_ROOM,
 		SECRET_SHRINE,
@@ -3695,7 +3787,8 @@ namespace Areas {
 
 	Area* AreaTable(const AreaKey areaKey) {
 		if (areaKey > KEY_ENUM_MAX) {
-			printf("\x1b[1;1HERROR: AREAKEY TOO BIG");
+			printf("\x1b[1;1HERROR: AREAKEY TOO BIG\n");
+			//printf("\x1b[1;1HAREAKEY SIZE: %ld", areaKey);
 			//needs error handling eventually
 			return 0;
 		}

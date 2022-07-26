@@ -196,12 +196,12 @@ static bool ValidateWorld(Entrance* entrancePlaced) {
 
   //ensure both Impa's House entrances are in the same hint area because the cow is reachable from both sides
 
-  //check certain conditions when certain types of ER are enabled
-  /*EntranceType type = EntranceType::None;
+  /*check certain conditions when certain types of ER are enabled
+  /EntranceType type = EntranceType::None;
   if (entrancePlaced != nullptr) {
     type = entrancePlaced->GetType();
   }*/
-  //if ((Settings::ShuffleOverworldEntrances /*|| specialInterior || spawnPositions*/) && (entrancePlaced == nullptr /*|| world.mix_entrance_pools != 'off'*/ ||
+  /*if ((Settings::ShuffleOverworldEntrances /*|| specialInterior || spawnPositions*/ /*) && (entrancePlaced == nullptr /*|| world.mix_entrance_pools != 'off'*/ //||
   /*type == EntranceType::SpecialInterior || type == EntranceType::Overworld || type == EntranceType::Spawn || type == EntranceType::WarpSong || type == EntranceType::OwlDrop)) {
     //At least one valid starting region with all basic refills should be reachable without using any items at the beginning of the seed
     Logic::LogicReset();
